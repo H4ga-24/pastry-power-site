@@ -1,0 +1,20 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to Hostinger
+        # Ici on utilise une action pour copier le contenu du dossier 'dist' vers ton FTP
+        # Je peux t'aider à configurer les identifiants FTP si tu veux cette option
