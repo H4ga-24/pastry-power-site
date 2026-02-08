@@ -34,17 +34,27 @@ const App = () => {
           <Route path="/mentions-legales" element={<LegalPage />} />
           <Route path="/a-propos" element={<AboutPage />} />
 
-          {/* Routes Catégories Principales */}
+          {/* --- ROUTES DES CATÉGORIES PRINCIPALES --- */}
           <Route path="/patisserie" element={<PatisseriePage category="root" />} />
           <Route path="/technologie" element={<PatisseriePage category="technologie" />} />
           <Route path="/confiserie" element={<PatisseriePage category="confiserie" />} />
           <Route path="/cuisine" element={<PatisseriePage category="cuisine" />} />
           
-          {/* Chocolaterie : On le dirige aussi vers PatisseriePage, qui va le traiter comme une liste */}
+          {/* Chocolaterie */}
           <Route path="/chocolaterie" element={<PatisseriePage category="chocolaterie" />} />
 
-          {/* Routes dynamiques pour les sous-dossiers */}
+          {/* 👇 LA NOUVELLE ROUTE POUR "ALTERNATIVE & BIEN-ÊTRE" 👇 */}
+          <Route path="/alternative" element={<PatisseriePage category="alternative" />} />
+
+          {/* --- ROUTES DYNAMIQUES POUR LES SOUS-DOSSIERS --- */}
+          
+          {/* Pour /patisserie/mousse, /patisserie/tarte... */}
           <Route path="/patisserie/:category" element={<PatisseriePage />} />
+          
+          {/* Pour /alternative/sans-gluten, /alternative/vegan... */}
+          <Route path="/alternative/:category" element={<PatisseriePage />} />
+          
+          {/* Fallback générique pour les autres cas */}
           <Route path="/:folder/:category" element={<PatisseriePage />} />
           
           {/* Route 404 (Doit être en dernier) */}

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Star, ChefHat, BookOpen, Crown, Check, Download, Lock, Wheat, Cake } from 'lucide-react';
-import { Button } from "@/components/ui/button"; // Assure-toi d'avoir cet import si tu utilises les composants Shadcn, sinon utilise les balises <button> classiques comme ci-dessous
+import { Check, Star, Lock, Wheat, Cake, Crown } from 'lucide-react';
+// import { Button } from "@/components/ui/button"; // Pas utilisé ici, on garde les <button> natifs
 
 const LandingPage = () => {
-  // Les 5 catégories principales
+  // Les 6 catégories principales (J'ai ajouté "Alternative")
   const categories = [
     { 
       title: "Pâtisserie", 
@@ -19,7 +19,7 @@ const LandingPage = () => {
     },
     { 
       title: "Confiserie", 
-      image: "https://images.unsplash.com/photo-1768676124314-b19c46ba7cd8?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: "https://images.unsplash.com/photo-1768676124314-b19c46ba7cd8?q=80&w=1472&auto=format&fit=crop",
       link: "/confiserie"
     },
     { 
@@ -31,6 +31,11 @@ const LandingPage = () => {
       title: "Cuisine", 
       image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=687&auto=format&fit=crop",
       link: "/cuisine"
+    },
+    { 
+      title: "Alternative", // 👈 La nouvelle catégorie !
+      image: "https://images.unsplash.com/photo-1606101204907-19e00aa49db2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      link: "/alternative"
     }
   ];
 
@@ -88,12 +93,13 @@ const LandingPage = () => {
           <div className="w-24 h-0.5 bg-[#D4AF37]/50 mx-auto mt-6"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-[1800px] mx-auto h-[600px] md:h-[500px]">
+        {/* J'ai changé lg:grid-cols-5 en lg:grid-cols-3 pour avoir 2 belles rangées de 3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1600px] mx-auto">
           {categories.map((cat, index) => (
             <Link 
               to={cat.link} 
               key={index} 
-              className="relative group overflow-hidden rounded-xl h-full border border-white/5 hover:border-[#D4AF37]/50 transition-colors"
+              className="relative group overflow-hidden rounded-xl h-[400px] border border-white/5 hover:border-[#D4AF37]/50 transition-colors"
             >
               <div className="absolute inset-0">
                 <img 
@@ -117,7 +123,6 @@ const LandingPage = () => {
 
       {/* --- SECTION BOUTIQUE & VIP --- */}
       <section id="shop-section" className="py-24 px-6 relative overflow-hidden bg-[#1a1a1a]">
-        {/* Fond décoratif */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -207,7 +212,7 @@ const LandingPage = () => {
             {/* 3. CARTE VIP (Stripe) */}
             <div className="bg-gradient-to-br from-[#121212] to-[#000] border border-[#D4AF37]/30 rounded-2xl overflow-hidden hover:shadow-[0_0_40px_-10px_rgba(212,175,55,0.2)] transition-all duration-500 group flex flex-col relative">
                <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-20">
-                  Le Top
+                 Le Top
                </div>
                <div className="h-48 relative overflow-hidden bg-[#D4AF37]/5 flex items-center justify-center">
                   <Crown size={64} className="text-[#D4AF37] opacity-80" />
@@ -237,7 +242,7 @@ const LandingPage = () => {
 
                  <a href="https://buy.stripe.com/TON_LIEN_ICI" target="_blank" rel="noopener noreferrer">
                       <button className="w-full bg-[#D4AF37] text-black hover:bg-white hover:text-black font-bold py-4 text-sm tracking-wide shadow-lg shadow-[#D4AF37]/20 transition-all duration-300 rounded-sm uppercase">
-                         S'abonner
+                          S'abonner
                       </button>
                  </a>
                </div>
