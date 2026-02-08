@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, Star, Lock, Wheat, Cake, Crown } from 'lucide-react';
-// import { Button } from "@/components/ui/button"; // Pas utilisé ici, on garde les <button> natifs
 
 const LandingPage = () => {
-  // Les 6 catégories principales (J'ai ajouté "Alternative")
   const categories = [
     { 
       title: "Pâtisserie", 
@@ -33,8 +31,8 @@ const LandingPage = () => {
       link: "/cuisine"
     },
     { 
-      title: "Alternative", // 👈 La nouvelle catégorie !
-      image: "https://images.unsplash.com/photo-1606101204907-19e00aa49db2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "Alternative", 
+      image: "https://images.unsplash.com/photo-1606101204907-19e00aa49db2?q=80&w=687&auto=format&fit=crop",
       link: "/alternative"
     }
   ];
@@ -57,26 +55,22 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-[#D4AF37] uppercase tracking-[0.2em] text-sm md:text-base mb-4 font-bold">
+            <h2 className="text-[#D4AF37] uppercase tracking-[0.2em] text-sm mb-4 font-bold">
               Pastry Power
             </h2>
-            <h1 className="text-6xl md:text-8xl font-serif text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-8xl font-serif text-white mb-6 leading-tight">
               L'Art de la <br/>
               <span className="text-[#D4AF37] italic font-light">Pâtisserie</span>
             </h1>
-            <div className="w-24 h-1 bg-[#D4AF37] mx-auto mb-8 rounded-full"></div>
-            <p className="text-gray-400 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto leading-relaxed">
-              Explorez un univers où la technique rencontre l'émotion. 
-              Des recettes d'exception pour les passionnés du goût.
-            </p>
+            <div className="w-16 h-1 bg-[#D4AF37] mx-auto mb-8 rounded-full"></div>
             
-            <div className="flex gap-4 justify-center">
+            <div className="flex gap-3 justify-center">
                 <Link to="/patisserie">
-                <button className="bg-[#D4AF37] text-[#121212] px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                <button className="bg-[#D4AF37] text-[#121212] px-6 md:px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.3)] text-xs md:text-sm">
                     Découvrir
                 </button>
                 </Link>
-                <button onClick={scrollToShop} className="border border-[#D4AF37] text-[#D4AF37] px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all duration-300">
+                <button onClick={scrollToShop} className="border border-[#D4AF37] text-[#D4AF37] px-6 md:px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all duration-300 text-xs md:text-sm">
                     Boutique
                 </button>
             </div>
@@ -84,164 +78,103 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- SECTION CATÉGORIES --- */}
-      <section className="py-20 px-4 md:px-8 bg-[#121212]">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif mb-4">
+      {/* --- SECTION CATÉGORIES (OPTIMISÉE 2X2 MOBILE) --- */}
+      <section className="py-12 lg:py-20 px-4 max-w-[1600px] mx-auto bg-[#121212]">
+        <div className="text-center mb-10 lg:mb-16">
+          <h2 className="text-3xl md:text-5xl font-serif mb-4">
             Catégories <span className="text-[#D4AF37] italic">Principales</span>
           </h2>
-          <div className="w-24 h-0.5 bg-[#D4AF37]/50 mx-auto mt-6"></div>
+          <div className="w-20 h-0.5 bg-[#D4AF37]/50 mx-auto mt-4"></div>
         </div>
 
-        {/* J'ai changé lg:grid-cols-5 en lg:grid-cols-3 pour avoir 2 belles rangées de 3 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1600px] mx-auto">
+        {/* grid-cols-2 sur mobile | lg:grid-cols-3 sur PC */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {categories.map((cat, index) => (
             <Link 
               to={cat.link} 
               key={index} 
-              className="relative group overflow-hidden rounded-xl h-[400px] border border-white/5 hover:border-[#D4AF37]/50 transition-colors"
+              className="relative group overflow-hidden rounded-lg h-[220px] md:h-[400px] border border-white/5 hover:border-[#D4AF37]/50 transition-colors"
             >
               <div className="absolute inset-0">
                 <img 
                   src={cat.image} 
                   alt={cat.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
               </div>
 
-              <div className="absolute bottom-0 left-0 w-full p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-2xl font-serif text-white mb-2 group-hover:text-[#D4AF37] transition-colors">
+              <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 transition-transform duration-300">
+                <h3 className="text-lg md:text-2xl font-serif text-white mb-1 group-hover:text-[#D4AF37]">
                   {cat.title}
                 </h3>
-                <div className="w-8 h-0.5 bg-[#D4AF37] group-hover:w-full transition-all duration-500"></div>
+                <div className="w-6 h-0.5 bg-[#D4AF37] group-hover:w-full transition-all duration-500"></div>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* --- SECTION BOUTIQUE & VIP --- */}
-      <section id="shop-section" className="py-24 px-6 relative overflow-hidden bg-[#1a1a1a]">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="max-w-[1600px] mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <span className="text-[#D4AF37] text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
-              Passez au niveau supérieur
+      {/* --- SECTION BOUTIQUE (COMPACTÉE SUR MOBILE) --- */}
+      <section id="shop-section" className="py-12 lg:py-24 px-4 relative overflow-hidden bg-[#1a1a1a]">
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="text-center mb-10">
+            <span className="text-[#D4AF37] text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase mb-2 block">
+              Support Professionnel
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">La Boutique du Chef</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto font-light">
-              Des supports professionnels pour accélérer votre progression.
-            </p>
+            <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">La Boutique</h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          {/* gap-3 sur mobile pour coller les offres | gap-8 sur PC */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-8 items-stretch">
             
-            {/* 1. CARTE PÂTISSERIE (Podia) */}
-            <div className="bg-[#121212] border border-white/10 rounded-2xl overflow-hidden hover:border-[#D4AF37]/50 transition-all duration-500 group flex flex-col">
-               <div className="h-48 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent z-10"></div>
-                  <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=800" alt="Carnet Pâtisserie" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            {/* 1. CARTE PÂTISSERIE */}
+            <div className="bg-[#121212] border border-white/10 rounded-xl overflow-hidden flex flex-col">
+               <div className="h-32 lg:h-48 relative overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=800" alt="Carnet Pâtisserie" className="w-full h-full object-cover opacity-70" />
                </div>
-               
-               <div className="p-8 flex flex-col flex-grow">
-                 <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-[#252525] p-2 rounded-lg text-[#D4AF37] border border-[#D4AF37]/20"><Cake size={24} /></div>
-                    <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-widest">E-Book</span>
-                 </div>
-                 
-                 <h3 className="text-2xl font-serif text-white mb-4">L'Art de la Pâtisserie</h3>
-                 <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                   Chaque recette est accompagnée de ses explications détaillées sur la réalisation du produit. Un guide indispensable.
-                 </p>
-                 
-                 <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-gray-300 text-xs">
-                      <Check className="text-[#D4AF37] w-3 h-3" /> +100 Recettes de bases
-                    </li>
-                    <li className="flex items-center gap-3 text-gray-300 text-xs">
-                      <Check className="text-[#D4AF37] w-3 h-3" /> Fiches Techniques Détaillées
-                    </li>
-                 </ul>
-
+               <div className="p-5 lg:p-8 flex flex-col flex-grow">
+                 <h3 className="text-xl font-serif text-white mb-2">L'Art de la Pâtisserie</h3>
+                 <p className="text-gray-400 text-xs mb-4 flex-grow line-clamp-2 lg:line-clamp-none">Le guide complet : +100 recettes et fiches techniques.</p>
                  <a href="https://alex24.podia.com/carnet-recette" target="_blank" rel="noopener noreferrer">
-                    <button className="w-full bg-white text-black hover:bg-[#D4AF37] hover:text-white font-bold py-4 text-sm tracking-wide transition-all duration-300 rounded-sm uppercase">
-                       Voir le carnet
+                    <button className="w-full bg-white/10 text-white hover:bg-white hover:text-black font-bold py-3 text-[10px] tracking-widest transition-all rounded-sm uppercase">
+                        Voir le carnet
                     </button>
                  </a>
                </div>
             </div>
 
-            {/* 2. CARTE BOULANGERIE (Podia) */}
-            <div className="bg-[#121212] border border-white/10 rounded-2xl overflow-hidden hover:border-[#D4AF37]/50 transition-all duration-500 group flex flex-col">
-               <div className="h-48 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent z-10"></div>
-                  <img src="https://images.unsplash.com/photo-1636906227201-f3ec32645129?q=80&w=687&auto=format&fit=crop" alt="Carnet Boulangerie" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            {/* 2. CARTE BOULANGERIE */}
+            <div className="bg-[#121212] border border-white/10 rounded-xl overflow-hidden flex flex-col">
+               <div className="h-32 lg:h-48 relative overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1636906227201-f3ec32645129?q=80&w=687&auto=format&fit=crop" alt="Carnet Boulangerie" className="w-full h-full object-cover opacity-70" />
                </div>
-               
-               <div className="p-8 flex flex-col flex-grow">
-                 <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-[#252525] p-2 rounded-lg text-[#D4AF37] border border-[#D4AF37]/20"><Wheat size={24} /></div>
-                    <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-widest">E-Book</span>
-                 </div>
-                 
-                 <h3 className="text-2xl font-serif text-white mb-4">Secrets de Boulangerie</h3>
-                 <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                   Chaque recette est accompagnée de ses explications détaillées sur la réalisation du produit. Maîtrisez la fermentation.
-                 </p>
-                 
-                 <ul className="space-y-3 mb-8">
-                    <li className="flex items-center gap-3 text-gray-300 text-xs">
-                      <Check className="text-[#D4AF37] w-3 h-3" /> +60 Recettes (Pain, Pizza, Brioche)
-                    </li>
-                    <li className="flex items-center gap-3 text-gray-300 text-xs">
-                      <Check className="text-[#D4AF37] w-3 h-3" /> Viennoiserie & Tourage
-                    </li>
-                 </ul>
-
+               <div className="p-5 lg:p-8 flex flex-col flex-grow">
+                 <h3 className="text-xl font-serif text-white mb-2">Secrets de Boulangerie</h3>
+                 <p className="text-gray-400 text-xs mb-4 flex-grow line-clamp-2 lg:line-clamp-none">+60 recettes pour maîtriser le pain et la viennoiserie.</p>
                  <a href="https://alex24.podia.com/carnet-boulangerie" target="_blank" rel="noopener noreferrer">
-                    <button className="w-full bg-white text-black hover:bg-[#D4AF37] hover:text-white font-bold py-4 text-sm tracking-wide transition-all duration-300 rounded-sm uppercase">
-                       Voir le carnet
+                    <button className="w-full bg-white/10 text-white hover:bg-white hover:text-black font-bold py-3 text-[10px] tracking-widest transition-all rounded-sm uppercase">
+                        Voir le carnet
                     </button>
                  </a>
                </div>
             </div>
 
-            {/* 3. CARTE VIP (Stripe) */}
-            <div className="bg-gradient-to-br from-[#121212] to-[#000] border border-[#D4AF37]/30 rounded-2xl overflow-hidden hover:shadow-[0_0_40px_-10px_rgba(212,175,55,0.2)] transition-all duration-500 group flex flex-col relative">
-               <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-20">
-                 Le Top
+            {/* 3. CARTE VIP (Mise en avant) */}
+            <div className="bg-gradient-to-br from-[#D4AF37]/20 to-[#000] border border-[#D4AF37]/40 rounded-xl overflow-hidden flex flex-col relative shadow-lg">
+               <div className="absolute top-3 right-3 bg-[#D4AF37] text-black text-[9px] font-bold px-2 py-0.5 rounded-full uppercase z-20">
+                 Populaire
                </div>
-               <div className="h-48 relative overflow-hidden bg-[#D4AF37]/5 flex items-center justify-center">
-                  <Crown size={64} className="text-[#D4AF37] opacity-80" />
-               </div>
-               
-               <div className="p-8 flex flex-col flex-grow">
-                 <h3 className="text-3xl font-serif text-white mb-2">Club <span className="text-[#D4AF37]">VIP</span></h3>
-                 <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-4xl font-bold text-white">9.90€</span>
-                    <span className="text-gray-400">/ mois</span>
+               <div className="p-6 lg:p-8 flex flex-col flex-grow items-center text-center">
+                 <Crown size={32} className="text-[#D4AF37] mb-3" />
+                 <h3 className="text-2xl font-serif text-white mb-1">Club <span className="text-[#D4AF37]">VIP</span></h3>
+                 <div className="flex items-baseline gap-1 mb-4">
+                    <span className="text-3xl font-bold text-white">9.90€</span>
+                    <span className="text-gray-400 text-xs">/ mois</span>
                  </div>
-                 
-                 <p className="text-gray-400 text-sm leading-relaxed mb-6 border-l-2 border-[#D4AF37] pl-4 flex-grow">
-                   L'expérience ultime. Accédez à des recettes exclusives "Signature", des conseils techniques approfondis et le support direct du chef.
-                 </p>
-                 
-                 <div className="space-y-3 mb-8 bg-[#252525]/50 p-4 rounded-lg">
-                    <div className="flex items-center gap-3 text-white text-xs">
-                      <Star className="text-[#D4AF37] w-3 h-3 fill-[#D4AF37]" /> 
-                      <span>De nouvelles recettes ajoutées chaque mois</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-white text-xs">
-                      <Lock className="text-[#D4AF37] w-3 h-3" /> 
-                      <span>Fiches techniques détaillées</span>
-                    </div>
-                 </div>
-
-                 <a href="https://buy.stripe.com/TON_LIEN_ICI" target="_blank" rel="noopener noreferrer">
-                      <button className="w-full bg-[#D4AF37] text-black hover:bg-white hover:text-black font-bold py-4 text-sm tracking-wide shadow-lg shadow-[#D4AF37]/20 transition-all duration-300 rounded-sm uppercase">
+                 <p className="text-gray-300 text-[11px] mb-6 leading-relaxed">Accès illimité aux recettes signatures et support direct.</p>
+                 <a href="https://buy.stripe.com/TON_LIEN_ICI" className="w-full mt-auto">
+                      <button className="w-full bg-[#D4AF37] text-black hover:bg-white font-bold py-4 text-xs tracking-widest shadow-xl transition-all rounded-sm uppercase">
                           S'abonner
                       </button>
                  </a>

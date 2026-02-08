@@ -44,7 +44,7 @@ const HUBS = {
       { title: "Farines", id: "farine", image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=80&w=687&auto=format&fit=crop", desc: "Blés et gluten." },
       { title: "Sucres", id: "sucre", image: "https://plus.unsplash.com/premium_photo-1744312220263-a93627dc6801?q=80&w=687&auto=format&fit=crop", desc: "Saccharose et sirops." },
       { title: "Corps Gras", id: "gras", image: "https://images.unsplash.com/photo-1652282556241-0ce13285d00f?q=80&w=687&auto=format&fit=crop", desc: "Beurre et huiles." },
-      { title: "Gélifiants", id: "gelifiant", image: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?q=80&w=1470&auto=format&fit=crop", desc: "Gélatine, Pectine..." },
+      { title: "Gélifiants", id: "gelifiant", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Gélatine, Pectine..." },
       { title: "Œufs", id: "oeuf", image: "https://images.unsplash.com/photo-1737099950756-9869b0383ba7?q=80&w=687&auto=format&fit=crop", desc: "Structure et émulsion." },
       { title: "Levures", id: "levure", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop", desc: "Fermentations et poudres." },
       { title: "Chocolat", id: "tech-chocolat", image: "https://plus.unsplash.com/premium_photo-1723568493016-5e5cdc069ff3?q=80&w=702&auto=format&fit=crop", desc: "Cristallisation et tempérage." }

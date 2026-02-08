@@ -20,9 +20,8 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Configuration des items du menu
+  // --- CONFIGURATION DES ITEMS DU MENU (ACCUEIL SUPPRIMÉ) ---
   const navItems = [
-    { title: 'Accueil', path: '/' },
     { 
       title: 'Pâtisserie', 
       path: '/patisserie', 
@@ -97,7 +96,7 @@ const Navigation = () => {
       }`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           
-          {/* LOGO */}
+          {/* LOGO (Sert d'accueil) */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="bg-[#D4AF37] p-2 rounded-full text-black group-hover:bg-white transition-colors duration-500">
               <ChefHat size={24} />
@@ -120,7 +119,7 @@ const Navigation = () => {
                 <Link 
                   to={item.path} 
                   className={`text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1 py-2
-                    ${location.pathname.includes(item.path) && item.path !== '/' ? 'text-[#D4AF37]' : 'text-gray-300 hover:text-white'}
+                    ${location.pathname.includes(item.path) ? 'text-[#D4AF37]' : 'text-gray-300 hover:text-white'}
                   `}
                 >
                   {item.title}
