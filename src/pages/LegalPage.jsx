@@ -21,9 +21,9 @@ const LegalPage = () => {
             Le site <strong>Pastry Power</strong> est édité par :<br/><br/>
             <strong>Entrepreneur Individuel :</strong> Alexandre PERREAU<br/>
             <strong>Statut :</strong> Micro-Entrepreneur<br/>
-            <strong>Siège social :</strong> 76000 Rouen<br/>
+            <strong>Siège social :</strong> 76000 Rouen (adresse diponible à la demande)<br/>
             <strong>Contact :</strong> <a href="mailto:pastrypower76@gmail.com" className="text-[#D4AF37] hover:underline">pastrypower76@gmail.com</a><br/>
-            <strong>SIRET :</strong> [TON NUMÉRO SIRET]
+            <strong>SIRET :</strong> 950 978 676 00019
           </p>
           <p className="text-xs text-gray-500 italic mt-4">
             *TVA non applicable, art. 293 B du CGI.<br/>

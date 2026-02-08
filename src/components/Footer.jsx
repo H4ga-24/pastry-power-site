@@ -42,7 +42,7 @@ const Footer = () => {
               
               {/* INSTAGRAM */}
               <li>
-                <a href="https://www.instagram.com/_pastrypower/?hl=fr" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors flex items-center gap-3">
+                <a href="https://www.instagram.com/_pastrypower" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors flex items-center gap-3">
                   <Instagram size={18} /> Instagram
                 </a>
               </li>
