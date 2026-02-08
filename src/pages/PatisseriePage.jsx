@@ -30,8 +30,8 @@ const HUBS = {
     description: "La pâtisserie adaptée à tous les régimes : sans gluten, IG bas, végétal...",
     image: "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1000",
     sections: [
-      { title: "Sans Gluten", id: "sans-gluten", image: "https://images.unsplash.com/photo-1542834371-d8ecb1000eb0?q=80&w=1000", desc: "Farines de riz, maïs, sarrasin..." },
-      { title: "Sans Sucre / IG Bas", id: "sans-sucre", image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1000", desc: "Miel, Agave, Coco, Édulcorants." },
+      { title: "Sans Gluten", id: "sans-gluten", image: "https://plus.unsplash.com/premium_photo-1700399458190-eb33043ae7b2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Farines de riz, maïs, sarrasin..." },
+      { title: "Sans Sucre / IG Bas", id: "sans-sucre", image: "https://images.unsplash.com/photo-1655169947079-5b2a38815147?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Miel, Agave, Coco, Édulcorants." },
       { title: "Végétal / Végan", id: "vegan", image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=1000", desc: "Sans produits animaux." },
       { title: "Sans Lactose", id: "sans-lactose", image: "https://images.unsplash.com/photo-1600788907416-456578634209?q=80&w=1000", desc: "Laits végétaux et huiles." }
     ]

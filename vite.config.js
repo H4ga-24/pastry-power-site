@@ -1,7 +1,7 @@
-import path from "path"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,7 +18,11 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(process.cwd(), "src"),
     },
   },
+  build: {
+    // On augmente la limite à 1000ko (1Mo) pour éviter l'avertissement
+    chunkSizeWarningLimit: 1000,
+  }
 })
