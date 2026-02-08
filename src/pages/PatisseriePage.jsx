@@ -25,6 +25,17 @@ const HUBS = {
       { title: "Desserts Régionaux", id: "regional", image: "https://images.unsplash.com/photo-1631978931011-a033b99bce1e?q=80&w=687&auto=format&fit=crop", desc: "Traditions..." }
     ]
   },
+  'alternative': {
+    title: "Alternative & Bien-être",
+    description: "La pâtisserie adaptée à tous les régimes : sans gluten, IG bas, végétal...",
+    image: "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1000",
+    sections: [
+      { title: "Sans Gluten", id: "sans-gluten", image: "https://images.unsplash.com/photo-1542834371-d8ecb1000eb0?q=80&w=1000", desc: "Farines de riz, maïs, sarrasin..." },
+      { title: "Sans Sucre / IG Bas", id: "sans-sucre", image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1000", desc: "Miel, Agave, Coco, Édulcorants." },
+      { title: "Végétal / Végan", id: "vegan", image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=1000", desc: "Sans produits animaux." },
+      { title: "Sans Lactose", id: "sans-lactose", image: "https://images.unsplash.com/photo-1600788907416-456578634209?q=80&w=1000", desc: "Laits végétaux et huiles." }
+    ]
+  },
   'technologie': {
     title: "Technologie",
     description: "La science des ingrédients et des réactions.",
@@ -63,7 +74,7 @@ const HUBS = {
 const SEARCH_MAPPING = {
   'chocolaterie': 'chocolat', 
   'petit-four': 'petit', 
-  'regional': 'regional', // Important !
+  'regional': 'regional',
   'cake-sale': 'cake-sale', 
   'choux': 'choux', 
   'macaron': 'macaron', 
@@ -72,10 +83,15 @@ const SEARCH_MAPPING = {
   'oeuf': 'oeuf',
   'levure': 'levure',
   'gras': 'corps gras',
-  'sauce': 'sauce'
+  'sauce': 'sauce',
+  // Mapping pour les alternatives
+  'sans-gluten': 'gluten',
+  'sans-sucre': 'sucre',
+  'vegan': 'vegan',
+  'sans-lactose': 'lactose'
 };
 
-// --- 2. LE SCANNER INTELLIGENT (Version "Forceur") ---
+// --- 2. LE SCANNER INTELLIGENT ---
 const modules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
   query: '?raw', 
   import: 'default', 
@@ -114,26 +130,35 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   }
 
   // D. LE "FORCEUR" DE CATÉGORIE (Priorités Absolues)
-  
-  // 1. PÂTE À CHOUX (Si "choux", "eclair", "religieuse", "paris-brest")
-  if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche')) {
+  // 1. ALTERNATIF (Nouvelles règles)
+  if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
+      category = "SANS-GLUTEN";
+  }
+  else if (lowerPath.includes('sucre') || lowerPath.includes('saccharose') || lowerPath.includes('diabete') || lowerPath.includes('ig-bas')) {
+      category = "SANS-SUCRE";
+  }
+  else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) {
+      category = "VEGAN";
+  }
+  else if (lowerPath.includes('lactose')) {
+      category = "SANS-LACTOSE";
+  }
+  // 2. CATEGORIES CLASSIQUES
+  else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche')) {
       category = "CHOUX";
   }
-  // 2. DESSERTS RÉGIONAUX (Si "regional", "kouign", "breton", "basque", "cannele", "clafoutis")
   else if (lowerPath.includes('regional') || lowerPath.includes('kouign') || lowerPath.includes('breton') || lowerPath.includes('basque') || lowerPath.includes('cannele') || lowerPath.includes('clafoutis') || lowerPath.includes('flan')) {
       category = "REGIONAL";
   }
-  // 3. CAKES SALÉS (Si "cake" ET indices salés)
   else if (lowerPath.includes('cake') && (lowerPath.includes('sale') || lowerContent.includes('poivre') || lowerContent.includes('jambon') || lowerContent.includes('olive') || lowerContent.includes('lardon') || lowerContent.includes('thon'))) {
       category = "CAKE-SALE";
   }
-  // 4. Déduction classique
   else if (!category) {
       if (lowerPath.includes('sauce')) category = "SAUCE";
       else if (lowerPath.includes('chocolat')) category = "CHOCOLATERIE";
       else if (lowerPath.includes('macaron')) category = "MACARON";
       else if (lowerPath.includes('techno')) category = "TECHNOLOGIE";
-      else if (lowerPath.includes('cake')) category = "GATEAU"; // Cake sucré par défaut
+      else if (lowerPath.includes('cake')) category = "GATEAU";
       else category = "AUTRE";
   }
 
@@ -206,7 +231,11 @@ const PatisseriePage = ({ category: propCategory }) => {
   // Gestion spéciale des tags exacts
   if (urlCategory === 'cake-sale') searchTerm = 'cake-sale';
   else if (urlCategory === 'choux') searchTerm = 'choux';
-  else if (urlCategory === 'regional') searchTerm = 'regional'; // 👈 On ajoute Regional ici
+  else if (urlCategory === 'regional') searchTerm = 'regional';
+  else if (urlCategory === 'sans-gluten') searchTerm = 'gluten'; // Exact match
+  else if (urlCategory === 'sans-sucre') searchTerm = 'sucre'; // Exact match
+  else if (urlCategory === 'vegan') searchTerm = 'vegan'; // Exact match
+  else if (urlCategory === 'sans-lactose') searchTerm = 'lactose'; // Exact match
   else searchTerm = SEARCH_MAPPING[urlCategory] || urlCategory;
   
   const normalizedSearch = normalize(searchTerm);
@@ -218,10 +247,13 @@ const PatisseriePage = ({ category: propCategory }) => {
     
     if (isTechSection) return item.isTech && itemCat.includes(normalizedSearch);
     
-    // Filtres Stricts
+    // Filtres Stricts & Alternatives
     if (urlCategory === 'cake-sale') return itemCat === 'cake-sale';
     if (urlCategory === 'choux') return itemCat === 'choux';
-    if (urlCategory === 'regional') return itemCat === 'regional'; // 👈 Match strict pour Regional
+    if (urlCategory === 'regional') return itemCat === 'regional';
+    if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
+    if (urlCategory === 'sans-sucre') return itemCat.includes('sucre');
+    if (urlCategory === 'vegan') return itemCat.includes('vegan');
     
     // Filtres Souples
     if (urlCategory === 'confiserie-diverse') return itemCat.includes('confiserie') && !itemCat.includes('macaron');
