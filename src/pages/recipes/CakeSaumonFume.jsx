@@ -1,0 +1,66 @@
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { Clock, ChefHat, Users, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
+
+const CakeSaumonFume = () => {
+  const ingredients = [
+    { name: "Oeufs", amount: "3" },
+    { name: "Farine", amount: "150g" },
+    { name: "Levure chimique", amount: "10g" },
+    { name: "Huile", amount: "100g" },
+    { name: "Lait", amount: "125g" },
+    { name: "Gruyère", amount: "100g" },
+    { name: "Saumon fumé", amount: "150g" },
+    { name: "Harengs marinés", amount: "50g" },
+    { name: "Raifort râpé", amount: "3g" },
+    { name: "Branche d'aneth", amount: "1" },
+    { name: "Poivre", amount: "2 pincées" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#121212] text-white font-sans pt-32 pb-20">
+      <Helmet><title>Cake Saumon Fumé & Harengs - Maison Dorée</title></Helmet>
+      <div className="container mx-auto px-4 max-w-5xl">
+        <Link to="/patisserie/gateaux/gateaux-de-voyage/cakes-sales">
+          <Button variant="ghost" className="text-[#D4AF37] hover:text-white mb-8 pl-0"><ArrowLeft className="w-4 h-4 mr-2" /> Retour</Button>
+        </Link>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <img className="w-full h-96 object-cover rounded-sm mb-8" alt="Cake Saumon Fumé" src="https://www.clickmiam.fr/images/recettes/cake-saumon-fume.webp" />
+            <h1 className="text-4xl font-serif mb-6 text-white">Cake Saumon Fumé & Harengs</h1>
+            <div className="flex gap-6 text-sm text-gray-400 mb-8 border-y border-white/10 py-4">
+              <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#D4AF37]" /> 55 MIN</div>
+              <div className="flex items-center gap-2"><ChefHat className="w-4 h-4 text-[#D4AF37]" /> FACILE</div>
+              <div className="flex items-center gap-2"><Users className="w-4 h-4 text-[#D4AF37]" /> 8 PERS</div>
+            </div>
+            <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5">
+              <h3 className="text-xl font-serif mb-6 text-[#D4AF37]">Ingrédients</h3>
+              <ul className="space-y-3 text-gray-300">
+                {ingredients.map((ing, i) => (
+                  <li key={i} className="flex justify-between border-b border-white/5 pb-2 last:border-0">
+                    <span>{ing.name}</span>
+                    <span className="font-medium text-[#D4AF37]">{ing.amount}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="space-y-8">
+            <h3 className="text-2xl font-serif text-white">Préparation</h3>
+            <div className="space-y-6 text-gray-300 leading-relaxed">
+              <p><span className="text-[#D4AF37] font-bold">1.</span> Préchauffez votre four à 180°C (thermostat 6). Détaillez le saumon fumé et les harengs en petits morceaux. Ciselez l'aneth.</p>
+              <p><span className="text-[#D4AF37] font-bold">2.</span> Dans un bol, mélangez la farine et la levure. Ajoutez les œufs entiers et mélangez bien.</p>
+              <p><span className="text-[#D4AF37] font-bold">3.</span> Incorporez petit à petit l'huile et le lait tiédi pour obtenir une pâte lisse. Ajoutez le raifort râpé et le poivre (évitez de saler, les poissons le sont déjà).</p>
+              <p><span className="text-[#D4AF37] font-bold">4.</span> Ajoutez le gruyère râpé, les morceaux de saumon et de hareng, ainsi que l'aneth. Mélangez délicatement à la spatule.</p>
+              <p><span className="text-[#D4AF37] font-bold">5.</span> Versez la préparation dans un moule à cake et enfournez pour 45 minutes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CakeSaumonFume;

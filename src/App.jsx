@@ -1,58 +1,60 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navigation from '@/components/Navigation';
-import LandingPage from '@/pages/LandingPage';
-import ModeleRecette from '@/pages/ModeleRecette';
-import PlaceholderPage from '@/components/PlaceholderPage';
-import PatisseriePage from '@/pages/PatisseriePage';
+import { Routes, Route } from 'react-router-dom';
 
-// Import de ton nouveau Template Unique
-import RecipePage from './pages/RecipePage';
+// 1. Imports des composants
+import Navigation from './components/Navigation';
+import DynamicPage from './components/DynamicPage';
+import FloatingBackButton from './components/FloatingBackButton';
+import Footer from './components/Footer';
 
-// Main Pages
-import TechnologiePage from '@/pages/TechnologiePage';
+// 2. Imports des pages
+import PatisseriePage from './pages/PatisseriePage'; 
+import LandingPage from './pages/LandingPage';
+import NotFoundPage from './pages/NotFoundPage';
+import LegalPage from './pages/LegalPage';
+import AboutPage from './pages/AboutPage';
 
-// Categories Pages
-import BiscuitsPage from '@/pages/categories/BiscuitsPage';
-import PatesPage from '@/pages/categories/PatesPage';
-import CremesPage from '@/pages/categories/CremesPage';
-import GlacagesPage from '@/pages/categories/GlacagesPage';
-import MoussesPage from '@/pages/categories/MoussesPage';
-import InsertsPage from '@/pages/categories/InsertsPage';
-import CremeuxPage from '@/pages/categories/CremeuxPage';
-
-import { Toaster } from '@/components/ui/toaster';
-
-function App() {
+const App = () => {
   return (
-    <Router>
-      <div className="min-h-screen bg-[#121212]">
-        <Navigation />
+    <div className="flex flex-col min-h-screen bg-[#121212]">
+      <Navigation />
+      
+      {/* BOUTON RETOUR FLOTTANT */}
+      <FloatingBackButton />
+      
+      <main className="flex-grow">
         <Routes>
+          {/* Page d'accueil */}
           <Route path="/" element={<LandingPage />} />
-          
-          {/* --- NOUVELLE ROUTE DYNAMIQUE --- */}
-          {/* Cette ligne permet d'afficher n'importe quelle recette de ton fichier data */}
-          <Route path="/recipe/:recipeId" element={<RecipePage />} />
-          
-          {/* Tes autres routes statiques */}
-          <Route path="/technologie" element={<TechnologiePage />} />
-          <Route path="/patisserie" element={<PatisseriePage />} />
-          <Route path="/patisserie/bases/biscuits" element={<BiscuitsPage />} />
-          <Route path="/patisserie/bases/pates" element={<PatesPage />} />
-          <Route path="/patisserie/bases/cremes" element={<CremesPage />} />
-          <Route path="/patisserie/bases/glacages" element={<GlacagesPage />} />
-          <Route path="/patisserie/bases/mousses" element={<MoussesPage />} />
-          <Route path="/patisserie/bases/inserts" element={<InsertsPage />} />
-          <Route path="/patisserie/bases/cremeux" element={<CremeuxPage />} />
 
-          {/* Catch-all */}
-          <Route path="*" element={<PlaceholderPage />} />
+          {/* Page de recette individuelle (avec Mode Cuisine auto) */}
+          <Route path="/recipe/:id" element={<DynamicPage />} />
+
+          {/* Pages "Statiques" */}
+          <Route path="/mentions-legales" element={<LegalPage />} />
+          <Route path="/a-propos" element={<AboutPage />} />
+
+          {/* Routes Catégories Principales */}
+          <Route path="/patisserie" element={<PatisseriePage category="root" />} />
+          <Route path="/technologie" element={<PatisseriePage category="technologie" />} />
+          <Route path="/confiserie" element={<PatisseriePage category="confiserie" />} />
+          <Route path="/cuisine" element={<PatisseriePage category="cuisine" />} />
+          
+          {/* Chocolaterie : On le dirige aussi vers PatisseriePage, qui va le traiter comme une liste */}
+          <Route path="/chocolaterie" element={<PatisseriePage category="chocolaterie" />} />
+
+          {/* Routes dynamiques pour les sous-dossiers */}
+          <Route path="/patisserie/:category" element={<PatisseriePage />} />
+          <Route path="/:folder/:category" element={<PatisseriePage />} />
+          
+          {/* Route 404 (Doit être en dernier) */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        <Toaster />
-      </div>
-    </Router>
+      </main>
+
+      <Footer />
+    </div>
   );
-}
+};
 
 export default App;
