@@ -17,47 +17,45 @@ import AboutPage from './pages/AboutPage';
 const App = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#121212]">
+      {/* Barre de navigation haute */}
       <Navigation />
       
-      {/* BOUTON RETOUR FLOTTANT */}
+      {/* Bouton retour qui apparaît quand on scrolle ou change de page */}
       <FloatingBackButton />
       
       <main className="flex-grow">
         <Routes>
-          {/* Page d'accueil */}
+          {/* --- ACCUEIL --- */}
           <Route path="/" element={<LandingPage />} />
 
-          {/* Page de recette individuelle (avec Mode Cuisine auto) */}
+          {/* --- FICHE RECETTE DYNAMIQUE --- */}
           <Route path="/recipe/:id" element={<DynamicPage />} />
 
-          {/* Pages "Statiques" */}
+          {/* --- PAGES STATIQUES --- */}
           <Route path="/mentions-legales" element={<LegalPage />} />
           <Route path="/a-propos" element={<AboutPage />} />
 
-          {/* --- ROUTES DES CATÉGORIES PRINCIPALES --- */}
+          {/* --- ROUTES DES CATÉGORIES PRINCIPALES (ROOT) --- */}
+          {/* Ces routes affichent toutes les recettes de la catégorie parente */}
           <Route path="/patisserie" element={<PatisseriePage category="root" />} />
-          <Route path="/technologie" element={<PatisseriePage category="technologie" />} />
-          <Route path="/confiserie" element={<PatisseriePage category="confiserie" />} />
-          <Route path="/cuisine" element={<PatisseriePage category="cuisine" />} />
+          <Route path="/alternative" element={<PatisseriePage category="alternative" />} />
           
-          {/* Chocolaterie */}
+          {/* Routes directes pour les autres onglets du menu */}
           <Route path="/chocolaterie" element={<PatisseriePage category="chocolaterie" />} />
 
-          {/* 👇 LA NOUVELLE ROUTE POUR "ALTERNATIVE & BIEN-ÊTRE" 👇 */}
-          <Route path="/alternative" element={<PatisseriePage category="alternative" />} />
-
-          {/* --- ROUTES DYNAMIQUES POUR LES SOUS-DOSSIERS --- */}
+          {/* --- ROUTES DYNAMIQUES (SOUS-CATÉGORIES) --- */}
           
-          {/* Pour /patisserie/mousse, /patisserie/tarte... */}
+          {/* Gère /patisserie/tarte, /patisserie/mousse, /patisserie/technologie etc. */}
           <Route path="/patisserie/:category" element={<PatisseriePage />} />
           
-          {/* Pour /alternative/sans-gluten, /alternative/vegan... */}
+          {/* Gère /alternative/sans-gluten, /alternative/vegetal etc. */}
           <Route path="/alternative/:category" element={<PatisseriePage />} />
-          
-          {/* Fallback générique pour les autres cas */}
+
+          {/* --- CAS PARTICULIERS DU MENU --- */}
+          {/* Si tu as des liens qui ne commencent pas par /patisserie/ ou /alternative/ */}
           <Route path="/:folder/:category" element={<PatisseriePage />} />
           
-          {/* Route 404 (Doit être en dernier) */}
+          {/* --- PAGE 404 --- */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

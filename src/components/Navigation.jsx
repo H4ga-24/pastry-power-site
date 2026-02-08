@@ -3,15 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Search, ChefHat } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// 👇 1. On importe le nouveau composant de recherche
+// Import du composant de recherche
 import SearchModal from './SearchModal';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
-  
-  // 👇 2. Nouvel état pour gérer l'ouverture de la recherche
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   
   const location = useLocation();
@@ -22,6 +20,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Configuration des items du menu
   const navItems = [
     { title: 'Accueil', path: '/' },
     { 
@@ -79,6 +78,15 @@ const Navigation = () => {
         { title: 'Traiteur', path: '/patisserie/traiteur' },
         { title: 'Sauces', path: '/patisserie/sauce' }
       ]
+    },
+    { 
+      title: 'Alternative', 
+      path: '/alternative', 
+      submenu: [
+        { title: 'Sans Gluten', path: '/alternative/sans-gluten' },
+        { title: 'Sans Sucre', path: '/alternative/sans-sucre' },
+        { title: 'Végétal', path: '/alternative/vegetal' }
+      ] 
     }
   ];
 
@@ -116,7 +124,9 @@ const Navigation = () => {
                   `}
                 >
                   {item.title}
-                  {item.submenu && item.submenu.length > 0 && <ChevronDown size={14} className={`transition-transform duration-300 ${activeSubmenu === index ? 'rotate-180' : ''}`} />}
+                  {item.submenu && item.submenu.length > 0 && (
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${activeSubmenu === index ? 'rotate-180' : ''}`} />
+                  )}
                 </Link>
 
                 {/* SOUS-MENU */}
@@ -153,8 +163,6 @@ const Navigation = () => {
 
           {/* ICONES & MOBILE */}
           <div className="flex items-center gap-4">
-            
-            {/* 👇 3. LE BOUTON RECHERCHE ACTIVE */}
             <button 
               className="text-white hover:text-[#D4AF37] transition-colors p-2"
               onClick={() => setIsSearchOpen(true)}
@@ -168,7 +176,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* MENU MOBILE (Reste inchangé) */}
+        {/* MENU MOBILE */}
         <AnimatePresence>
           {isOpen && (
             <motion.div 
@@ -188,7 +196,7 @@ const Navigation = () => {
                     >
                       {item.title}
                     </Link>
-                    {item.submenu && (
+                    {item.submenu && item.submenu.length > 0 && (
                       <div className="flex flex-col gap-3 pl-4 border-l border-[#D4AF37]/20">
                         {item.submenu.map((sub, subIndex) => (
                           !sub.isLabel &&
@@ -211,7 +219,7 @@ const Navigation = () => {
         </AnimatePresence>
       </nav>
 
-      {/* 👇 4. LE MODAL DE RECHERCHE EST AJOUTÉ ICI */}
+      {/* MODAL DE RECHERCHE */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );
