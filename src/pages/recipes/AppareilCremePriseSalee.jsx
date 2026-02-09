@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Clock, ChefHat, Minus, Plus, Printer, Star, Sparkles } from 'lucide-react';
+import { Clock, ChefHat, Minus, Plus, Sparkles } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const AppareilCremePriseSalee = () => {
@@ -9,7 +9,8 @@ const AppareilCremePriseSalee = () => {
   const [servings, setServings] = useState(baseServings);
 
   const recipeData = {
-    category: "CUISINE • BASES",
+    // 👇 MODIFICATION ICI : Format "PÂTISSERIE • SOUS-CATÉGORIE"
+    category: "PÂTISSERIE • CRÈMES", 
     title: "Appareil à crème prise salée",
     prepTime: "5 MIN",
     cookTime: "30-40 MIN",
@@ -53,11 +54,37 @@ const AppareilCremePriseSalee = () => {
   const increment = () => setServings(prev => prev + 100);
   const decrement = () => setServings(prev => (prev > 100 ? prev - 100 : 100));
 
+  // --- DONNÉES STRUCTURÉES POUR GOOGLE (SEO) ---
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": recipeData.title,
+    "image": [recipeData.image],
+    "description": recipeData.description,
+    "author": {
+      "@type": "Person",
+      "name": "Maison Dorée"
+    },
+    "prepTime": "PT5M",
+    "cookTime": "PT40M",
+    "recipeCategory": "Plat principal",
+    "recipeIngredient": ingredients.map(ing => `${ing.amount} ${ing.unit} ${ing.name}`),
+    "recipeInstructions": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.text
+    }))
+  };
+
   return (
     <>
       <Helmet>
         <title>{recipeData.title} - Maison Dorée</title>
         <meta name="description" content={recipeData.description} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
@@ -90,8 +117,8 @@ const AppareilCremePriseSalee = () => {
                  <div className="bg-[#1a1a1a] border-t-2 border-[#D4AF37] p-6 mb-8">
                    <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/10">
                      <h3 className="font-serif text-2xl text-white">Ingrédients</h3>
-                     <Printer className="w-4 h-4 text-gray-500 hover:text-white cursor-pointer transition-colors" />
                    </div>
+                   
                    <div className="flex items-center justify-between bg-[#121212] p-3 rounded mb-6">
                      <span className="text-sm text-gray-400">Quantité (ml)</span>
                      <div className="flex items-center gap-4">
@@ -131,10 +158,10 @@ const AppareilCremePriseSalee = () => {
               <div className="bg-[#1a1a1a] border border-white/5">
                 <Tabs defaultValue="conseils" className="w-full">
                   <TabsList className="w-full flex bg-transparent border-b border-white/10 p-0 h-auto rounded-none">
-                     <TabsTrigger value="conseils" className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37] data-[state=active]:bg-[#D4AF37]/5 data-[state=active]:text-[#D4AF37] text-gray-500 py-4 text-xs uppercase tracking-widest"><Sparkles className="w-3 h-3 mr-2" />Conseils</TabsTrigger>
+                      <TabsTrigger value="conseils" className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37] data-[state=active]:bg-[#D4AF37]/5 data-[state=active]:text-[#D4AF37] text-gray-500 py-4 text-xs uppercase tracking-widest"><Sparkles className="w-3 h-3 mr-2" />Conseils</TabsTrigger>
                   </TabsList>
                   <div className="p-8">
-                     <TabsContent value="conseils" className="m-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                      <TabsContent value="conseils" className="m-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
                       <h4 className="text-[#D4AF37] font-serif text-xl mb-4">Richesse</h4>
                       <p className="text-gray-400 font-light leading-relaxed">Pour une quiche plus légère, remplacez une partie de la crème par du lait, mais attention à la tenue ! Pour une version plus riche, n'utilisez que de la crème.</p>
                     </TabsContent>
