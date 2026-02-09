@@ -85,9 +85,9 @@ const SEARCH_MAPPING = {
   'gras': 'corps gras',
   'sauce': 'sauce',
   'sans-gluten': 'gluten',
-  'sans-sucre': 'sucre',
   'vegan': 'vegan',
   'sans-lactose': 'lactose'
+  // NOTE: J'ai retiré 'sans-sucre' d'ici pour le gérer manuellement plus bas de façon stricte
 };
 
 // --- 2. LE SCANNER INTELLIGENT ---
@@ -129,6 +129,7 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
       category = "SANS-GLUTEN";
   }
+  // 🟢 CORRECTION SCANNER : On force le Sans-Sucre UNIQUEMENT si hors technologie
   else if (
     !lowerPath.includes('technologie') && (
       lowerPath.includes('sans-sucre') || 
@@ -183,12 +184,8 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
 
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
-  // 🔴 CORRECTION FINALE : On récupère TOUS les paramètres possibles
-  // Cela marchera peu importe si c'est 'category', 'subcategory' ou 'id'
   const params = useParams();
   const urlParam = params.category || params.subcategory || params.id;
-  
-  // Ordre de priorité : La Props > Le paramètre URL > 'patisserie'
   const activeCategory = propCategory || urlParam || 'patisserie';
 
   useEffect(() => { window.scrollTo(0, 0); }, [activeCategory]);
@@ -196,7 +193,7 @@ const PatisseriePage = ({ category: propCategory }) => {
   const activeHub = HUBS[activeCategory];
   const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
   
-  // A. MODE HUB (Affichage des tuiles)
+  // A. MODE HUB
   if (activeHub) {
     return (
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
@@ -208,7 +205,6 @@ const PatisseriePage = ({ category: propCategory }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeHub.sections.map((sub) => (
-              // On construit un lien intelligent qui garde la racine actuelle (ex: /alternative/sans-gluten)
               <Link key={sub.id} to={`/${activeCategory}/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
                 <div className="aspect-video bg-gray-900 flex items-center justify-center overflow-hidden">
                   {sub.image ? (
@@ -240,7 +236,11 @@ const PatisseriePage = ({ category: propCategory }) => {
   else if (urlCategory === 'choux') searchTerm = 'choux';
   else if (urlCategory === 'regional') searchTerm = 'regional';
   else if (urlCategory === 'sans-gluten') searchTerm = 'gluten'; 
-  else if (urlCategory === 'sans-sucre') searchTerm = 'sucre'; 
+  
+  // 🟢 CORRECTION FILTRE : Pour 'sans-sucre', on ne définit PAS de searchTerm
+  // On gérera ça directement dans le filtre en dessous pour être STRICT.
+  else if (urlCategory === 'sans-sucre') searchTerm = ''; 
+
   else if (urlCategory === 'vegan') searchTerm = 'vegan'; 
   else if (urlCategory === 'sans-lactose') searchTerm = 'lactose'; 
   else searchTerm = SEARCH_MAPPING[urlCategory] || urlCategory;
@@ -258,7 +258,10 @@ const PatisseriePage = ({ category: propCategory }) => {
     if (urlCategory === 'choux') return itemCat === 'choux';
     if (urlCategory === 'regional') return itemCat === 'regional';
     if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
-    if (urlCategory === 'sans-sucre') return itemCat.includes('sucre');
+    
+    // 🟢 LA CORRECTION EST ICI : STRICTE ÉGALITÉ
+    if (urlCategory === 'sans-sucre') return itemCat === 'sans-sucre';
+
     if (urlCategory === 'vegan') return itemCat.includes('vegan');
     
     if (urlCategory === 'confiserie-diverse') return itemCat.includes('confiserie') && !itemCat.includes('macaron');
