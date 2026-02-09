@@ -4,7 +4,6 @@ import { ChefHat, ArrowRight, Lock } from 'lucide-react';
 
 // --- 1. CONFIGURATION DES HUBS ---
 const HUBS = {
-  // 'root' est renommé en 'patisserie' pour correspondre à ton App.jsx
   'patisserie': {
     title: "Pâtisserie",
     description: "L'excellence technique au service de la gourmandise.",
@@ -184,8 +183,13 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
 
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
-  const { category: paramCategory } = useParams();
-  const activeCategory = propCategory || paramCategory || 'patisserie';
+  // 🔴 CORRECTION FINALE : On récupère TOUS les paramètres possibles
+  // Cela marchera peu importe si c'est 'category', 'subcategory' ou 'id'
+  const params = useParams();
+  const urlParam = params.category || params.subcategory || params.id;
+  
+  // Ordre de priorité : La Props > Le paramètre URL > 'patisserie'
+  const activeCategory = propCategory || urlParam || 'patisserie';
 
   useEffect(() => { window.scrollTo(0, 0); }, [activeCategory]);
 
@@ -204,7 +208,7 @@ const PatisseriePage = ({ category: propCategory }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeHub.sections.map((sub) => (
-              // ICI : Le lien est dynamique. Si tu es dans "alternative", ça fera /alternative/sans-gluten
+              // On construit un lien intelligent qui garde la racine actuelle (ex: /alternative/sans-gluten)
               <Link key={sub.id} to={`/${activeCategory}/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
                 <div className="aspect-video bg-gray-900 flex items-center justify-center overflow-hidden">
                   {sub.image ? (
