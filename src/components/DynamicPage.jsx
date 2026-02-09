@@ -39,6 +39,10 @@ const DynamicPage = () => {
         // --- DÉBUT EXTRACTION UNIVERSELLE ---
         const rawCode = rawModules[foundPath];
         
+        // 0. DÉTECTION DU TYPE DE CONTENU (Pour le bouton Cuisine)
+        // Si le chemin contient "/technologie/", c'est une fiche technique -> Pas de bouton
+        const isTechFile = foundPath.includes('/technologie/');
+
         // 1. TITRE
         const titleMatch = rawCode.match(/title:\s*["']([^"']+)["']/) || rawCode.match(/<h1[^>]*>([^<]+)<\/h1>/);
         const title = titleMatch ? titleMatch[1] : "Recette";
@@ -46,7 +50,7 @@ const DynamicPage = () => {
         // 2. INGRÉDIENTS (Stratégie à 3 niveaux)
         let ingredients = [];
 
-        // Niveau A : Structure complexe (Pâte à tartiner) -> items: [ ... ]
+        // Niveau A : Structure complexe
         const complexIngRegex = /items:\s*\[([\s\S]*?)\]/g;
         let complexMatch;
         while ((complexMatch = complexIngRegex.exec(rawCode)) !== null) {
@@ -58,66 +62,55 @@ const DynamicPage = () => {
            }
         }
 
-        // Niveau B : Structure simple (Mousse) -> const ingredients = [ ... ]
+        // Niveau B : Structure simple
         if (ingredients.length === 0) {
             const simpleIngRegex = /name:\s*["']([^"']+)["'][\s\S]*?amount:\s*(\d+)[\s\S]*?unit:\s*["']([^"']+)["']/g;
             let simpleMatch;
             while ((simpleMatch = simpleIngRegex.exec(rawCode)) !== null) {
-              // On vérifie qu'on n'a pas déjà attrapé ça avec le niveau A
               const ingStr = `${simpleMatch[1]} (${simpleMatch[2]} ${simpleMatch[3]})`;
               if (!ingredients.includes(ingStr)) ingredients.push(ingStr);
             }
         }
 
-        // Niveau C : HTML Brut (Sauce Samouraï) -> <li>...</li>
+        // Niveau C : HTML Brut
         if (ingredients.length === 0) {
-           // On cherche les <li> qui contiennent des ingrédients (souvent avec une classe ou dans une liste)
-           // Astuce : On cherche les <li> qui contiennent "span" ou "strong" (structure typique de tes listes)
            const htmlLiRegex = /<li[^>]*>([\s\S]*?)<\/li>/g;
            let liMatch;
            while ((liMatch = htmlLiRegex.exec(rawCode)) !== null) {
-              // On nettoie le HTML pour ne garder que le texte
-              const cleanText = liMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-              // Filtre simple : si le texte est trop long (> 150 chars), c'est probablement pas un ingrédient
-              if (cleanText.length > 5 && cleanText.length < 150) {
+             const cleanText = liMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+             if (cleanText.length > 5 && cleanText.length < 150) {
                  ingredients.push(cleanText);
-              }
+             }
            }
         }
 
         // 3. ÉTAPES (Stratégie à 3 niveaux)
         let steps = [];
 
-        // Niveau A : Tableau d'objets (Mousse) -> text: "..."
+        // Niveau A : Tableau d'objets
         const objStepRegex = /text:\s*["']([^"']+)["']/g;
         let objStepMatch;
         while ((objStepMatch = objStepRegex.exec(rawCode)) !== null) {
            steps.push(objStepMatch[1]);
         }
 
-        // Niveau B : HTML Structuré (Sauce Samouraï) -> <h3>...</h3> <p>...</p>
+        // Niveau B : HTML Structuré
         if (steps.length === 0) {
-           // On cherche les blocs <p> qui suivent un titre h3 ou h4 (souvent les étapes)
-           // Ou simplement les <p> qui contiennent du texte d'instruction
-           // Pour Samouraï, c'est <h3...>Titre</h3> <p...>Texte</p>
-           
            const htmlStepRegex = /<h3[^>]*>([^<]+)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
            let htmlStepMatch;
            while ((htmlStepMatch = htmlStepRegex.exec(rawCode)) !== null) {
-              const stepTitle = htmlStepMatch[1];
-              const stepText = htmlStepMatch[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-              steps.push(`${stepTitle} : ${stepText}`);
+             const stepTitle = htmlStepMatch[1];
+             const stepText = htmlStepMatch[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+             steps.push(`${stepTitle} : ${stepText}`);
            }
         }
         
-        // Niveau C : Fallback HTML simple (si juste des <p> dans une div étapes)
+        // Niveau C : Fallback HTML simple
         if (steps.length === 0) {
-            // On cherche des phrases longues dans des paragraphes
             const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/g;
             let pMatch;
             while ((pMatch = pRegex.exec(rawCode)) !== null) {
                const text = pMatch[1].replace(/<[^>]+>/g, '').trim();
-               // On garde si ça ressemble à une phrase (pas un titre court)
                if (text.length > 30 && !ingredients.includes(text)) {
                   steps.push(text);
                }
@@ -126,8 +119,9 @@ const DynamicPage = () => {
 
         setExtractedData({
           title,
-          ingredients: ingredients.length > 0 ? ingredients : ["Ingrédients non détectés (Format complexe)"],
-          steps: steps.length > 0 ? steps : ["Étapes non détectées (Format complexe)"]
+          ingredients: ingredients.length > 0 ? ingredients : [],
+          steps: steps.length > 0 ? steps : [],
+          isTech: isTechFile // On stocke l'info ici
         });
         // --- FIN EXTRACTION ---
       }
@@ -143,17 +137,23 @@ const DynamicPage = () => {
     <div className="min-h-screen bg-[#121212] pt-20">
       <RecipeComponent />
       
-      <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsCookingMode(true)}
-        className="fixed bottom-6 right-6 z-40 bg-[#D4AF37] text-black px-6 py-4 rounded-full shadow-lg shadow-[#D4AF37]/20 flex items-center gap-3 font-bold uppercase tracking-widest hover:bg-white transition-colors group"
-      >
-        <PlayCircle size={24} className="group-hover:scale-110 transition-transform" />
-        <span className="text-sm">Mode Cuisine</span>
-      </motion.button>
+      {/* CONDITION D'AFFICHAGE DU BOUTON :
+          1. Les données doivent être chargées (extractedData)
+          2. Ce ne doit PAS être une fiche technique (!extractedData.isTech)
+      */}
+      {extractedData && !extractedData.isTech && (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setIsCookingMode(true)}
+          className="fixed bottom-6 right-6 z-40 bg-[#D4AF37] text-black px-6 py-4 rounded-full shadow-lg shadow-[#D4AF37]/20 flex items-center gap-3 font-bold uppercase tracking-widest hover:bg-white transition-colors group"
+        >
+          <PlayCircle size={24} className="group-hover:scale-110 transition-transform" />
+          <span className="text-sm">Mode Cuisine</span>
+        </motion.button>
+      )}
 
       <AnimatePresence>
         {isCookingMode && extractedData && (

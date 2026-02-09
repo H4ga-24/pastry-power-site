@@ -20,7 +20,15 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- CONFIGURATION DES ITEMS DU MENU (ACCUEIL SUPPRIMÉ) ---
+  // Empêcher le scroll du site quand le menu est ouvert
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   const navItems = [
     { 
       title: 'Pâtisserie', 
@@ -46,36 +54,36 @@ const Navigation = () => {
     },
     { 
       title: 'Technologie', 
-      path: '/patisserie/technologie',
+      path: '/technologie', 
       submenu: [
-        { title: 'Farines', path: '/patisserie/farine' },
-        { title: 'Sucres', path: '/patisserie/sucre' },
-        { title: 'Corps Gras', path: '/patisserie/gras' },
-        { title: 'Œufs', path: '/patisserie/oeuf' },
-        { title: 'Gélifiants', path: '/patisserie/gelifiant' },
-        { title: 'Poudres Levantes', path: '/patisserie/levure' },
-        { title: 'Chocolat (Tech)', path: '/patisserie/tech-chocolat' }
+        { title: 'Farines', path: '/technologie/farine' },
+        { title: 'Sucres', path: '/technologie/sucre' },
+        { title: 'Corps Gras', path: '/technologie/gras' },
+        { title: 'Œufs', path: '/technologie/oeuf' },
+        { title: 'Gélifiants', path: '/technologie/gelifiant' },
+        { title: 'Poudres Levantes', path: '/technologie/levure' },
+        { title: 'Chocolat (Tech)', path: '/technologie/tech-chocolat' }
       ]
     },
     { 
       title: 'Confiserie', 
-      path: '/patisserie/confiserie',
+      path: '/confiserie', 
       submenu: [
-        { title: 'Macarons', path: '/patisserie/macaron' },
-        { title: 'Autres Confiseries', path: '/patisserie/confiserie-diverse' }
+        { title: 'Macarons', path: '/confiserie/macaron' },
+        { title: 'Autres Confiseries', path: '/confiserie/confiserie-diverse' }
       ]
     },
     { 
       title: 'Chocolaterie', 
-      path: '/patisserie/chocolaterie', 
+      path: '/chocolaterie', 
       submenu: [] 
     },
     { 
       title: 'Cuisine', 
-      path: '/patisserie/cuisine',
+      path: '/cuisine', 
       submenu: [
-        { title: 'Traiteur', path: '/patisserie/traiteur' },
-        { title: 'Sauces', path: '/patisserie/sauce' }
+        { title: 'Traiteur', path: '/cuisine/traiteur' },
+        { title: 'Sauces', path: '/cuisine/sauce' }
       ]
     },
     { 
@@ -91,13 +99,17 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#121212]/95 backdrop-blur-md py-4 shadow-xl border-b border-white/5' : 'bg-transparent py-6'
+      <nav className={`fixed top-0 left-0 w-full z-[500] transition-all duration-300 border-b ${
+        isOpen 
+          ? 'bg-transparent border-transparent' // On laisse le menu gérer le fond quand il est ouvert
+          : scrolled 
+            ? 'bg-[#121212]/95 backdrop-blur-md py-4 shadow-xl border-white/5' 
+            : 'bg-transparent py-6 border-transparent'
       }`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           
-          {/* LOGO (Sert d'accueil) */}
-          <Link to="/" className="flex items-center gap-2 group">
+          {/* LOGO */}
+          <Link to="/" className="flex items-center gap-2 group z-[501]">
             <div className="bg-[#D4AF37] p-2 rounded-full text-black group-hover:bg-white transition-colors duration-500">
               <ChefHat size={24} />
             </div>
@@ -128,7 +140,7 @@ const Navigation = () => {
                   )}
                 </Link>
 
-                {/* SOUS-MENU */}
+                {/* SOUS-MENU BUREAU */}
                 {item.submenu && item.submenu.length > 0 && (
                   <AnimatePresence>
                     {activeSubmenu === index && (
@@ -161,7 +173,7 @@ const Navigation = () => {
           </div>
 
           {/* ICONES & MOBILE */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 z-[501]">
             <button 
               className="text-white hover:text-[#D4AF37] transition-colors p-2"
               onClick={() => setIsSearchOpen(true)}
@@ -169,54 +181,55 @@ const Navigation = () => {
               <Search size={20} />
             </button>
 
-            <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <button className="lg:hidden text-white p-2" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X size={24} className="text-[#D4AF37]" /> : <Menu size={24} />}
             </button>
           </div>
         </div>
-
-        {/* MENU MOBILE */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div 
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: "tween" }}
-              className="fixed inset-0 bg-[#121212] z-40 flex flex-col pt-24 px-6 overflow-y-auto lg:hidden"
-            >
-              <div className="flex flex-col gap-8 pb-10">
-                {navItems.map((item, index) => (
-                  <div key={index} className="flex flex-col gap-3 border-b border-white/5 pb-4">
-                    <Link 
-                      to={item.path} 
-                      onClick={() => setIsOpen(false)}
-                      className="text-2xl font-serif text-white hover:text-[#D4AF37]"
-                    >
-                      {item.title}
-                    </Link>
-                    {item.submenu && item.submenu.length > 0 && (
-                      <div className="flex flex-col gap-3 pl-4 border-l border-[#D4AF37]/20">
-                        {item.submenu.map((sub, subIndex) => (
-                          !sub.isLabel &&
-                          <Link 
-                            key={subIndex} 
-                            to={sub.path} 
-                            onClick={() => setIsOpen(false)}
-                            className="text-sm text-gray-500 uppercase tracking-widest"
-                          >
-                            {sub.title}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* --- MENU MOBILE (SORTI DE LA NAV POUR FIXER LE BUG DE SCROLL) --- */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "tween", duration: 0.3 }}
+            // fixed inset-0 garantit qu'il couvre tout l'écran, peu importe le scroll
+            className="fixed inset-0 bg-[#121212] z-[490] flex flex-col pt-24 px-6 h-[100dvh] overflow-y-auto lg:hidden"
+          >
+            <div className="flex flex-col gap-8 pb-10">
+              {navItems.map((item, index) => (
+                <div key={index} className="flex flex-col gap-3 border-b border-white/5 pb-4">
+                  <Link 
+                    to={item.path} 
+                    onClick={() => setIsOpen(false)}
+                    className="text-2xl font-serif text-white hover:text-[#D4AF37]"
+                  >
+                    {item.title}
+                  </Link>
+                  {item.submenu && item.submenu.length > 0 && (
+                    <div className="flex flex-col gap-3 pl-4 border-l border-[#D4AF37]/20">
+                      {item.submenu.map((sub, subIndex) => (
+                        !sub.isLabel &&
+                        <Link 
+                          key={subIndex} 
+                          to={sub.path} 
+                          onClick={() => setIsOpen(false)}
+                          className="text-sm text-gray-500 uppercase tracking-widest active:text-[#D4AF37]"
+                        >
+                          {sub.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* MODAL DE RECHERCHE */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { ChefHat, ArrowRight, Lock } from 'lucide-react';
 
 // --- 1. CONFIGURATION DES HUBS ---
@@ -130,11 +130,19 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   }
 
   // D. LE "FORCEUR" DE CATÉGORIE (Priorités Absolues)
-  // 1. ALTERNATIF (Nouvelles règles)
+  // 1. ALTERNATIF (Correction pour le Sans Sucre)
   if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
       category = "SANS-GLUTEN";
   }
-  else if (lowerPath.includes('sucre') || lowerPath.includes('saccharose') || lowerPath.includes('diabete') || lowerPath.includes('ig-bas')) {
+  // 👇 MODIFICATION ICI : On exclut le dossier Technologie et on cherche "sans-sucre"
+  else if (
+    !lowerPath.includes('technologie') && (
+      lowerPath.includes('sans-sucre') || 
+      lowerPath.includes('zero-sucre') || 
+      lowerPath.includes('diabete') || 
+      lowerPath.includes('ig-bas')
+    )
+  ) {
       category = "SANS-SUCRE";
   }
   else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) {
@@ -189,6 +197,9 @@ const PatisseriePage = ({ category: propCategory }) => {
 
   const activeHub = HUBS[activeCategory];
   const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+  
+  // Sécurité pour les boutons (Cuisine/Pâtisserie)
+  const showKitchenSwitch = activeCategory === 'root' || activeCategory === 'cuisine';
 
   // A. MODE HUB
   if (activeHub) {
@@ -197,11 +208,37 @@ const PatisseriePage = ({ category: propCategory }) => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-serif mb-6">{activeHub.title}</h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">{activeHub.description}</p>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg mb-8">{activeHub.description}</p>
+            
+            {showKitchenSwitch && (
+              <div className="flex justify-center gap-4">
+                <Link
+                  to="/patisserie"
+                  className={`px-6 py-2 rounded-full border transition-all ${
+                    activeCategory === 'root' 
+                      ? 'bg-[#D4AF37] text-black border-[#D4AF37] font-bold' 
+                      : 'bg-transparent text-gray-400 border-gray-700 hover:border-white'
+                  }`}
+                >
+                  Pâtisserie
+                </Link>
+                <Link
+                  to="/cuisine"
+                  className={`px-6 py-2 rounded-full border transition-all ${
+                    activeCategory === 'cuisine' 
+                      ? 'bg-[#D4AF37] text-black border-[#D4AF37] font-bold' 
+                      : 'bg-transparent text-gray-400 border-gray-700 hover:border-white'
+                  }`}
+                >
+                  Cuisine
+                </Link>
+              </div>
+            )}
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeHub.sections.map((sub) => (
-              <Link key={sub.id} to={`/patisserie/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
+              <Link key={sub.id} to={`/${activeCategory === 'cuisine' ? 'cuisine' : activeCategory === 'root' ? 'patisserie' : activeCategory}/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
                 <div className="aspect-video bg-gray-900 flex items-center justify-center overflow-hidden">
                   {sub.image ? (
                     <img src={sub.image} alt={sub.title} className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
@@ -228,7 +265,6 @@ const PatisseriePage = ({ category: propCategory }) => {
   const urlCategory = activeCategory || "";
   let searchTerm;
   
-  // Gestion spéciale des tags exacts
   if (urlCategory === 'cake-sale') searchTerm = 'cake-sale';
   else if (urlCategory === 'choux') searchTerm = 'choux';
   else if (urlCategory === 'regional') searchTerm = 'regional';
@@ -247,7 +283,6 @@ const PatisseriePage = ({ category: propCategory }) => {
     
     if (isTechSection) return item.isTech && itemCat.includes(normalizedSearch);
     
-    // Filtres Stricts & Alternatives
     if (urlCategory === 'cake-sale') return itemCat === 'cake-sale';
     if (urlCategory === 'choux') return itemCat === 'choux';
     if (urlCategory === 'regional') return itemCat === 'regional';
@@ -255,7 +290,6 @@ const PatisseriePage = ({ category: propCategory }) => {
     if (urlCategory === 'sans-sucre') return itemCat.includes('sucre');
     if (urlCategory === 'vegan') return itemCat.includes('vegan');
     
-    // Filtres Souples
     if (urlCategory === 'confiserie-diverse') return itemCat.includes('confiserie') && !itemCat.includes('macaron');
     if (urlCategory === 'macaron') return itemCat.includes('macaron');
     

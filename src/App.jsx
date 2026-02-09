@@ -28,34 +28,63 @@ const App = () => {
           {/* --- ACCUEIL --- */}
           <Route path="/" element={<LandingPage />} />
 
-          {/* --- FICHE RECETTE DYNAMIQUE --- */}
+          {/* --- FICHE RECETTE DYNAMIQUE (Détail d'un gâteau) --- */}
           <Route path="/recipe/:id" element={<DynamicPage />} />
 
           {/* --- PAGES STATIQUES --- */}
           <Route path="/mentions-legales" element={<LegalPage />} />
           <Route path="/a-propos" element={<AboutPage />} />
 
-          {/* --- ROUTES DES CATÉGORIES PRINCIPALES (ROOT) --- */}
-          {/* Ces routes affichent toutes les recettes de la catégorie parente */}
-          <Route path="/patisserie" element={<PatisseriePage category="root" />} />
-          <Route path="/alternative" element={<PatisseriePage category="alternative" />} />
-          
-          {/* Routes directes pour les autres onglets du menu */}
+
+          {/* ========================================================
+              SECTION PÂTISSERIE 
+             ======================================================== */}
+          {/* La racine : Affiche tout ce qui est "patisserie" */}
+          <Route path="/patisserie" element={<PatisseriePage category="patisserie" />} />
+          {/* Les sous-catégories : ex: /patisserie/tarte */}
+          <Route path="/patisserie/:subcategory" element={<PatisseriePage />} />
+
+
+          {/* ========================================================
+              SECTION TECHNOLOGIE (Séparée !)
+             ======================================================== */}
+          {/* La racine : Affiche tout ce qui est "technologie" */}
+          <Route path="/technologie" element={<PatisseriePage category="technologie" />} />
+          {/* Les sous-catégories : ex: /technologie/farine */}
+          <Route path="/technologie/:subcategory" element={<PatisseriePage />} />
+
+
+          {/* ========================================================
+              SECTION CUISINE (Séparée !)
+             ======================================================== */}
+          {/* La racine : Affiche tout ce qui est "cuisine" */}
+          <Route path="/cuisine" element={<PatisseriePage category="cuisine" />} />
+          {/* Les sous-catégories : ex: /cuisine/sauce */}
+          <Route path="/cuisine/:subcategory" element={<PatisseriePage />} />
+
+
+          {/* ========================================================
+              SECTION CONFISERIE
+             ======================================================== */}
+          <Route path="/confiserie" element={<PatisseriePage category="confiserie" />} />
+          <Route path="/confiserie/:subcategory" element={<PatisseriePage />} />
+
+
+          {/* ========================================================
+              SECTION CHOCOLATERIE
+             ======================================================== */}
+          {/* Souvent pas de sous-catégorie pour l'instant */}
           <Route path="/chocolaterie" element={<PatisseriePage category="chocolaterie" />} />
 
-          {/* --- ROUTES DYNAMIQUES (SOUS-CATÉGORIES) --- */}
-          
-          {/* Gère /patisserie/tarte, /patisserie/mousse, /patisserie/technologie etc. */}
-          <Route path="/patisserie/:category" element={<PatisseriePage />} />
-          
-          {/* Gère /alternative/sans-gluten, /alternative/vegetal etc. */}
-          <Route path="/alternative/:category" element={<PatisseriePage />} />
 
-          {/* --- CAS PARTICULIERS DU MENU --- */}
-          {/* Si tu as des liens qui ne commencent pas par /patisserie/ ou /alternative/ */}
-          <Route path="/:folder/:category" element={<PatisseriePage />} />
-          
-          {/* --- PAGE 404 --- */}
+          {/* ========================================================
+              SECTION ALTERNATIVE
+             ======================================================== */}
+          <Route path="/alternative" element={<PatisseriePage category="alternative" />} />
+          <Route path="/alternative/:subcategory" element={<PatisseriePage />} />
+
+
+          {/* --- PAGE 404 (Si aucune route ne correspond) --- */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
