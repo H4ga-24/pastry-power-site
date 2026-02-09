@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Clock, ChefHat, Minus, Plus, Printer, Star, Sparkles } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Helmet } from 'react-helmet-async';
+import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 const PateSucreeFoncage = () => {
-  const baseServings = 5;
-  const [servings, setServings] = useState(baseServings);
-
   const recipeData = {
     category: "PÂTISSERIE • PÂTES",
     title: "Pâte sucrée spéciale fonçage",
@@ -16,6 +13,23 @@ const PateSucreeFoncage = () => {
     difficulty: "FACILE",
     description: "Cette recette permet d'obtenir une belle tenue lors de fonçages à blanc, évitant que les bords ne retombent à la cuisson.",
     image: "https://www.aureliencohen.fr/wp-content/uploads/2020/04/Pa%CC%82te-sucre%CC%81e-tutoriel-recette-49.jpg",
+    baseServings: 5, // Base pour environ 5 tartelettes ou 1 grande tarte
+  };
+
+  const [servings, setServings] = useState(recipeData.baseServings);
+
+  const updateServings = (change) => {
+    const newServings = servings + change;
+    if (newServings >= 1) setServings(newServings);
+  };
+
+  // 🧮 FONCTION DE CALCUL STANDARDISÉE
+  const calculateQuantity = (amount, base) => {
+    if (!amount) return "";
+    const numAmount = parseFloat(amount);
+    if (isNaN(numAmount)) return amount;
+    const scaled = (numAmount * servings) / base;
+    return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
 
   const ingredients = [
@@ -28,127 +42,178 @@ const PateSucreeFoncage = () => {
 
   const steps = [
     {
-      title: "SABLAGE.",
+      title: "SABLAGE",
       text: "Dans la cuve du batteur, sabler ensemble le beurre froid coupé en dés et la farine jusqu'à obtenir une texture poudreuse."
     },
     {
-      title: "PRÉPARATION LIQUIDE.",
+      title: "PRÉPARATION LIQUIDE",
       text: "Dans un bol à part, fouetter légèrement les oeufs avec le sel et le sucre glace pour les dissoudre sommairement."
     },
     {
-      title: "MÉLANGE.",
+      title: "MÉLANGE",
       text: "Ajouter le mélange liquide (oeufs/sucre/sel) au sablage (beurre/farine). Mélanger brièvement."
     },
     {
-      title: "FRAISAGE.",
+      title: "FRAISAGE",
       text: "Fraser la pâte sur le plan de travail (l'écraser avec la paume de la main) pour l'homogénéiser sans lui donner de corps (élasticité). Aplatir en forme de galette."
     },
     {
-      title: "REPOS.",
+      title: "REPOS",
       text: "Filmer au contact et réserver au réfrigérateur au moins 20 minutes (idéalement 2h) avant utilisation pour faciliter le fonçage."
     }
   ];
 
-  const calculateAmount = (baseAmount) => {
-    return ((baseAmount * servings) / baseServings).toFixed(baseAmount % 1 === 0 ? 0 : 1);
+  // --- GOOGLE SEO (JSON-LD) ---
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": recipeData.title,
+    "image": [recipeData.image],
+    "description": recipeData.description,
+    "author": { "@type": "Person", "name": "Pastrypower" },
+    "prepTime": "PT10M",
+    "cookTime": "PT25M",
+    "recipeYield": `${servings} parts`,
+    "recipeIngredient": ingredients.map(ing => `${calculateQuantity(ing.amount, recipeData.baseServings)} ${ing.unit} ${ing.name}`),
+    "recipeInstructions": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.text
+    }))
   };
-
-  const increment = () => setServings(prev => prev + 1);
-  const decrement = () => setServings(prev => (prev > 1 ? prev - 1 : 1));
 
   return (
     <>
       <Helmet>
-        <title>{recipeData.title} - Maison Dorée</title>
+        <title>{recipeData.title} - Pastrypower</title>
         <meta name="description" content={recipeData.description} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
+        {/* HEADER IMAGE */}
         <div className="relative h-[60vh] w-full overflow-hidden">
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
           <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
-          <div className="absolute bottom-0 left-0 w-full z-20 pb-16">
+          <div className="absolute bottom-0 left-0 w-full z-20 pb-12">
             <div className="container mx-auto px-4 max-w-6xl">
-              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block">{recipeData.category}</span>
-              <h1 className="text-4xl md:text-6xl font-serif text-white mb-8 max-w-4xl leading-tight">{recipeData.title}</h1>
-              <div className="flex flex-wrap items-center gap-8 text-xs tracking-widest font-medium text-white/80">
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#D4AF37]" /><span>{recipeData.prepTime} PRÉPARATION</span></div>
-                <div className="flex items-center gap-2"><ChefHat className="w-4 h-4 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
-                <div className="border border-[#D4AF37] text-[#D4AF37] px-3 py-1 rounded-full text-[10px]">{recipeData.difficulty}</div>
+              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block animate-fade-in">{recipeData.category}</span>
+              <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-tight">{recipeData.title}</h1>
+              <div className="flex flex-wrap gap-8 text-sm tracking-widest font-medium text-white/90">
+                <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.prepTime} PREP</span></div>
+                <div className="flex items-center gap-3"><ChefHat className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
+                <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.difficulty}</span></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 max-w-6xl pb-24">
-          <div className="flex gap-4 mb-16 max-w-4xl ml-auto">
-            <span className="text-[#D4AF37] text-6xl font-serif leading-none">“</span>
-            <p className="text-gray-300 font-light text-lg italic leading-relaxed pt-4">{recipeData.description}</p>
-          </div>
+        {/* CONTENU PRINCIPAL */}
+        <div className="container mx-auto px-4 max-w-6xl pb-24 mt-16">
+          <div className="grid md:grid-cols-12 gap-12">
+            
+            {/* COLONNE GAUCHE */}
+            <div className="md:col-span-4 space-y-8">
+              <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5 sticky top-24">
+                {/* Calculateur Portions */}
+                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+                  <div className="flex items-center gap-2 text-[#D4AF37]">
+                    <Users className="w-5 h-5" />
+                    <span className="font-serif text-lg">Portions</span>
+                  </div>
+                  <div className="flex items-center gap-4 bg-[#252525] rounded-full px-2 py-1">
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(-1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    <span className="font-bold text-lg min-w-[2ch] text-center">{servings}</span>
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
 
-          <div className="grid lg:grid-cols-[350px_1fr] gap-16">
-            <div>
-               <div className="sticky top-24">
-                 <div className="bg-[#1a1a1a] border-t-2 border-[#D4AF37] p-6 mb-8">
-                   <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/10">
-                     <h3 className="font-serif text-2xl text-white">Ingrédients</h3>
-                     <Printer className="w-4 h-4 text-gray-500 hover:text-white cursor-pointer transition-colors" />
-                   </div>
-                   <div className="flex items-center justify-between bg-[#121212] p-3 rounded mb-6">
-                     <span className="text-sm text-gray-400">Portions</span>
-                     <div className="flex items-center gap-4">
-                       <button onClick={decrement} className="text-[#D4AF37] hover:text-white transition-colors"><Minus className="w-4 h-4" /></button>
-                       <span className="text-white font-serif text-lg w-4 text-center">{servings}</span>
-                       <button onClick={increment} className="text-[#D4AF37] hover:text-white transition-colors"><Plus className="w-4 h-4" /></button>
-                     </div>
-                   </div>
-                   <ul className="space-y-4">
-                     {ingredients.map((ing, i) => (
-                       <li key={i} className="flex justify-between text-sm">
-                         <span className="text-gray-300">{ing.name}</span>
-                         <span className="text-[#D4AF37] font-medium">{calculateAmount(ing.amount)} {ing.unit}</span>
-                       </li>
-                     ))}
-                   </ul>
-                 </div>
-               </div>
+                {/* Liste Ingrédients */}
+                <h3 className="text-xl font-serif text-white mb-6">Ingrédients</h3>
+                <ul className="space-y-4">
+                  {ingredients.map((ing, i) => (
+                    <li key={i} className="flex justify-between items-center text-sm pb-2 border-b border-white/5 last:border-0">
+                      <span className="text-gray-300 font-light">{ing.name}</span>
+                      <span className="text-[#D4AF37] font-medium">
+                        {calculateQuantity(ing.amount, recipeData.baseServings)} {ing.unit}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div>
-              <h2 className="text-3xl font-serif text-white mb-10 border-b border-white/10 pb-4">Étapes de réalisation</h2>
-              <div className="space-y-10 mb-16">
-                {steps.map((step, index) => (
-                  <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="flex gap-6 group">
-                    <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-serif text-sm group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-300">{index + 1}</div>
-                    </div>
-                    <div>
-                      <h3 className="text-[#D4AF37] font-serif text-lg mb-2 uppercase tracking-wide">{step.title}</h3>
-                      <p className="text-gray-400 font-light leading-relaxed">{step.text}</p>
-                    </div>
-                  </motion.div>
+            {/* COLONNE DROITE */}
+            <div className="md:col-span-8">
+              <div className="space-y-12 mb-16">
+                {steps.map((step, i) => (
+                  <div key={i} className="flex gap-6 group">
+                      <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
+                      <div>
+                        <h3 className="text-white text-xl mb-3 font-serif">{step.title}</h3>
+                        <p className="text-gray-400 font-light text-lg leading-relaxed">{step.text}</p>
+                      </div>
+                  </div>
                 ))}
               </div>
 
-              <div className="bg-[#1a1a1a] border border-white/5">
-                <Tabs defaultValue="conseils" className="w-full">
-                  <TabsList className="w-full flex bg-transparent border-b border-white/10 p-0 h-auto rounded-none">
-                    <TabsTrigger value="conseils" className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37] data-[state=active]:bg-[#D4AF37]/5 data-[state=active]:text-[#D4AF37] text-gray-500 py-4 text-xs uppercase tracking-widest"><Sparkles className="w-3 h-3 mr-2" />Conseils</TabsTrigger>
-                    <TabsTrigger value="astuces" className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37] data-[state=active]:bg-[#D4AF37]/5 data-[state=active]:text-[#D4AF37] text-gray-500 py-4 text-xs uppercase tracking-widest"><Star className="w-3 h-3 mr-2" />Astuces</TabsTrigger>
-                  </TabsList>
-                  <div className="p-8">
-                    <TabsContent value="conseils" className="m-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                      <h4 className="text-[#D4AF37] font-serif text-xl mb-4">Méthode Sablage</h4>
-                      <p className="text-gray-400 font-light leading-relaxed">La méthode par sablage permet d'enrober la farine de gras avant l'ajout d'humidité, ce qui limite le développement du réseau glutineux et garantit une pâte friable.</p>
-                    </TabsContent>
-                    <TabsContent value="astuces" className="m-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                      <h4 className="text-[#D4AF37] font-serif text-xl mb-4">Fonçage</h4>
-                      <p className="text-gray-400 font-light leading-relaxed">Assurez-vous que la pâte soit bien froide lors du fonçage. Si elle ramollit, remettez-la au frais quelques minutes.</p>
-                    </TabsContent>
-                  </div>
-                </Tabs>
-              </div>
+              {/* Onglets Conseils / Chef / Ustensiles */}
+              <Tabs defaultValue="conseils" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
+                  <TabsTrigger value="conseils" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Conseils</TabsTrigger>
+                  <TabsTrigger value="chef" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Le Mot du Chef</TabsTrigger>
+                  <TabsTrigger value="ustensiles" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Ustensiles</TabsTrigger>
+                </TabsList>
+                
+                <div className="bg-[#1a1a1a] border-x border-b border-white/5 p-8 mt-0 min-h-[200px]">
+                  <TabsContent value="conseils" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Lightbulb className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Technique</h4>
+                        <ul className="space-y-3 text-gray-400 leading-relaxed">
+                           <li><strong>Sablage :</strong> Cette méthode permet d'enrober la farine de gras avant l'ajout d'humidité, ce qui limite le développement du gluten et garantit une pâte friable (sablée) et non élastique.</li>
+                           <li><strong>Température :</strong> Assurez-vous que la pâte soit bien froide lors du fonçage. Si elle ramollit trop, remettez-la au frais 10 minutes. Une pâte froide garde sa forme à la cuisson.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="chef" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Quote className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">L'avis du Chef</h4>
+                        <p className="text-gray-400 leading-relaxed italic">
+                          "Cette recette est un basique absolu. Le secret d'un fonçage net qui ne rétracte pas réside dans le repos. Ne sautez jamais l'étape du frigo après le fonçage et avant la cuisson, c'est elle qui détend le gluten."
+                        </p>
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="ustensiles" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Utensils className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Matériel recommandé</h4>
+                        <ul className="grid grid-cols-2 gap-2 text-gray-400">
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Robot pâtissier (feuille)</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Rouleau à pâtisserie</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Film alimentaire</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Cercle à tarte</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
             </div>
           </div>
         </div>
@@ -156,5 +221,4 @@ const PateSucreeFoncage = () => {
     </>
   );
 };
-
 export default PateSucreeFoncage;

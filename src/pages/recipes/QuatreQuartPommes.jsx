@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -23,24 +23,23 @@ const QuatreQuartPommes = () => {
     if (newServings >= 1) setServings(newServings);
   };
 
-  const scaleIngredient = (amount, base) => {
-    const match = amount.match(/^([\d\.,]+)\s*(.*)$/);
-    if (!match) return amount;
-    const val = parseFloat(match[1].replace(',', '.'));
-    if (isNaN(val)) return amount;
-    const scaled = (val * servings / base);
-    const formatted = Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
-    return `${formatted} ${match[2]}`;
+  // 🧮 FONCTION DE CALCUL STANDARDISÉE
+  const calculateQuantity = (amount, base) => {
+    if (!amount) return "";
+    const numAmount = parseFloat(amount);
+    if (isNaN(numAmount)) return amount;
+    const scaled = (numAmount * servings) / base;
+    return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
 
   const ingredients = [
-    { name: "Oeufs entiers", amount: "200g (4)" },
-    { name: "Sucre semoule", amount: "200g" },
-    { name: "Farine T55", amount: "200g" },
-    { name: "Beurre demi-sel", amount: "200g" },
-    { name: "Levure chimique", amount: "6g" },
-    { name: "Pommes (Golden)", amount: "3" },
-    { name: "Cassonade", amount: "20g" }
+    { name: "Oeufs entiers", amount: 200, unit: "g (4 pcs)" },
+    { name: "Sucre semoule", amount: 200, unit: "g" },
+    { name: "Farine T55", amount: 200, unit: "g" },
+    { name: "Beurre demi-sel", amount: 200, unit: "g" },
+    { name: "Levure chimique", amount: 6, unit: "g" },
+    { name: "Pommes (Golden)", amount: 3, unit: "pièces" },
+    { name: "Cassonade (finition)", amount: 20, unit: "g" }
   ];
 
   const steps = [
@@ -51,10 +50,38 @@ const QuatreQuartPommes = () => {
     { title: "Cuisson", text: "Saupoudrer de cassonade. Cuire à 180°C pendant 40-45 minutes." }
   ];
 
+  // --- GOOGLE SEO (JSON-LD) ---
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": recipeData.title,
+    "image": [recipeData.image],
+    "description": recipeData.description,
+    "author": { "@type": "Person", "name": "Pastrypower" },
+    "prepTime": "PT20M",
+    "cookTime": "PT40M",
+    "recipeYield": `${servings} parts`,
+    "recipeIngredient": ingredients.map(ing => `${calculateQuantity(ing.amount, recipeData.baseServings)} ${ing.unit} ${ing.name}`),
+    "recipeInstructions": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.text
+    }))
+  };
+
   return (
     <>
-      <Helmet><title>{recipeData.title} - Maison Dorée</title></Helmet>
+      <Helmet>
+        <title>{recipeData.title} - Pastrypower</title>
+        <meta name="description" content={recipeData.description} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
       <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
+        {/* HEADER IMAGE */}
         <div className="relative h-[60vh] w-full overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
           <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
@@ -71,10 +98,14 @@ const QuatreQuartPommes = () => {
           </div>
         </div>
 
+        {/* CONTENU PRINCIPAL */}
         <div className="container mx-auto px-4 max-w-6xl pb-24 mt-16">
           <div className="grid md:grid-cols-12 gap-12">
+            
+            {/* COLONNE GAUCHE */}
             <div className="md:col-span-4 space-y-8">
-              <div className="bg-[#1a1a1a] p-8 rounded-sm border ororder-white/5 sticky top-24">
+              <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5 sticky top-24">
+                {/* Calculateur Portions */}
                 <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
                   <div className="flex items-center gap-2 text-[#D4AF37]">
                     <Users className="w-5 h-5" />
@@ -84,37 +115,43 @@ const QuatreQuartPommes = () => {
                     <Button variant="ghost" size="icon" onClick={() => updateServings(-1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
                       <Minus className="w-4 h-4" />
                     </Button>
-                    <span className="font-sans font-bold text-lg min-w-[2ch] text-center">{servings}</span>
+                    <span className="font-bold text-lg min-w-[2ch] text-center">{servings}</span>
                     <Button variant="ghost" size="icon" onClick={() => updateServings(1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
                       <Plus className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
+
+                {/* Liste Ingrédients */}
                 <h3 className="text-xl font-serif text-white mb-6">Ingrédients</h3>
                 <ul className="space-y-4">
                   {ingredients.map((ing, i) => (
                     <li key={i} className="flex justify-between items-center text-sm pb-2 border-b border-white/5 last:border-0">
                       <span className="text-gray-300 font-light">{ing.name}</span>
-                      <span className="text-[#D4AF37] font-medium">{scaleIngredient(ing.amount, recipeData.baseServings)}</span>
+                      <span className="text-[#D4AF37] font-medium">
+                        {calculateQuantity(ing.amount, recipeData.baseServings)} {ing.unit}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
+            {/* COLONNE DROITE */}
             <div className="md:col-span-8">
               <div className="space-y-12 mb-16">
                 {steps.map((step, i) => (
                   <div key={i} className="flex gap-6 group">
-                     <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
-                     <div>
-                       <h3 className="text-white text-xl mb-3 font-serif">{step.title}</h3>
-                       <p className="text-gray-400 font-light text-lg leading-relaxed">{step.text}</p>
-                     </div>
+                      <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
+                      <div>
+                        <h3 className="text-white text-xl mb-3 font-serif">{step.title}</h3>
+                        <p className="text-gray-400 font-light text-lg leading-relaxed">{step.text}</p>
+                      </div>
                   </div>
                 ))}
               </div>
 
+              {/* Onglets Conseils / Chef / Ustensiles */}
               <Tabs defaultValue="conseils" className="w-full">
                 <TabsList className="grid w-full grid-cols-3 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
                   <TabsTrigger value="conseils" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Conseils</TabsTrigger>
