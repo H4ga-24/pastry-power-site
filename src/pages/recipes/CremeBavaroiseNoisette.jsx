@@ -14,6 +14,7 @@ const CremeBavaroiseNoisette = () => {
   const recipeData = {
     category: "PÂTISSERIE • CRÈMES",
     title: "Crème bavaroise à la noisette",
+    vip: true,
     prepTime: "25 MIN + Repos",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

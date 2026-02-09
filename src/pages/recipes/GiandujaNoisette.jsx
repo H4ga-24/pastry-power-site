@@ -9,6 +9,7 @@ const GiandujaNoisette = () => {
   const recipeData = {
     title: "Gianduja Noisette",
     category: "CONFISERIE",
+    vip: true,
     prepTime: "25 MIN",
     cookTime: "15 MIN",
     difficulty: "MOYEN",

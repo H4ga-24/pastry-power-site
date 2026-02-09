@@ -14,6 +14,7 @@ const CremeMarrons = () => {
   const recipeData = {
     category: "PÂTISSERIE • CRÈMES",
     title: "Crème aux marrons",
+    vip: true,
     prepTime: "20 MIN",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

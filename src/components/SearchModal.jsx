@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { X, Search, ChevronRight, ChefHat } from 'lucide-react';
+import { X, Search, ChevronRight, ChefHat, Lock } from 'lucide-react';
 
-// --- SCANNER DE RECETTES (Version Pâtisserie Pure) ---
-// ❌ J'ai retiré '../pages/technologie/**/*.jsx' de la liste
-// ✅ Il ne scanne plus que les recettes
+// --- SCANNER DE RECETTES ---
 const modules = import.meta.glob(['../pages/recipes/**/*.jsx'], { 
   query: '?raw', 
   import: 'default', 
@@ -14,29 +12,38 @@ const modules = import.meta.glob(['../pages/recipes/**/*.jsx'], {
 // On prépare la liste une seule fois au chargement
 const allRecipes = Object.entries(modules).map(([path, rawContent]) => {
   
-  // Sécurité supplémentaire : Si par hasard un fichier tech traîne, on l'ignore
+  // Sécurité : on ignore le dossier technologie s'il apparait
   if (path.includes('/technologie/')) return null;
 
-  // Regex blindée pour les titres
+  const fileName = path.split('/').pop().replace('.jsx', '');
+
+  // 1. DÉTECTION VIP (Nom de fichier OU contenu)
+  let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
+  const vipMatch = rawContent.match(/vip:\s*(true|false)/);
+  if (vipMatch && vipMatch[1] === 'true') isVip = true;
+
+  // 2. EXTRACTION TITRE
   const secureTitleMatch = rawContent.match(/(?:recipeData|recipeMeta)\s*=\s*\{[\s\S]*?title:\s*(?:"([^"]*)"|'([^']*)')/);
   const fallbackTitleMatch = rawContent.match(/title:\s*(?:"([^"]*)"|'([^']*)')/);
   
   let title = null;
   if (secureTitleMatch) title = secureTitleMatch[1] || secureTitleMatch[2];
   else if (fallbackTitleMatch) title = fallbackTitleMatch[1] || fallbackTitleMatch[2];
+  
+  // Titre par défaut si non trouvé (nettoyage du nom de fichier)
+  if (!title) title = fileName.replace(/^vip-/i, '').replace(/([A-Z])/g, ' $1').trim();
 
+  // 3. EXTRACTION AUTRES DONNÉES
   const catMatch = rawContent.match(/category:\s*(?:"([^"]*)"|'([^']*)')/);
   const imgMatch = rawContent.match(/image:\s*(?:"([^"]*)"|'([^']*)')/);
 
-  if (title) {
-    return {
-      id: path.split('/').pop().replace('.jsx', ''),
-      title: title,
-      category: catMatch ? (catMatch[1] || catMatch[2]) : "Pâtisserie",
-      image: imgMatch ? (imgMatch[1] || imgMatch[2]) : null
-    };
-  }
-  return null;
+  return {
+    id: fileName,
+    title: title,
+    category: catMatch ? (catMatch[1] || catMatch[2]) : "Pâtisserie",
+    image: imgMatch ? (imgMatch[1] || imgMatch[2]) : null,
+    isVip: isVip // On stocke l'info VIP
+  };
 }).filter(Boolean);
 
 
@@ -65,7 +72,7 @@ const SearchModal = ({ isOpen, onClose }) => {
       const lowerCat = item.category.toLowerCase();
       // On cherche dans le titre ou la catégorie
       return lowerTitle.includes(lowerQuery) || lowerCat.includes(lowerQuery);
-    }).slice(0, 5); // On limite à 5 résultats pour garder l'interface propre
+    }).slice(0, 5); // On limite à 5 résultats
 
     setResults(filtered);
   }, [query]);
@@ -103,12 +110,13 @@ const SearchModal = ({ isOpen, onClose }) => {
               {results.map((item) => (
                 <Link 
                   key={item.id} 
-                  to={`/recipe/${item.id}`} 
+                  // 👉 C'EST ICI QUE SE FAIT LA MAGIE : SI VIP -> /vip/, SINON -> /recipe/
+                  to={item.isVip ? `/vip/${item.id}` : `/recipe/${item.id}`} 
                   onClick={onClose}
-                  className="flex items-center gap-4 p-4 hover:bg-white/5 rounded-xl transition-colors group"
+                  className="flex items-center gap-4 p-4 hover:bg-white/5 rounded-xl transition-colors group relative"
                 >
                   {/* Image miniature */}
-                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0 border border-white/10">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0 border border-white/10 relative">
                     {item.image ? (
                       <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                     ) : (
@@ -116,11 +124,26 @@ const SearchModal = ({ isOpen, onClose }) => {
                         <ChefHat size={20} />
                       </div>
                     )}
+                    
+                    {/* Petit cadenas sur l'image si VIP */}
+                    {item.isVip && (
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <Lock size={16} className="text-[#D4AF37]" />
+                      </div>
+                    )}
                   </div>
                   
                   {/* Texte */}
                   <div className="flex-grow">
-                    <h4 className="text-white text-lg font-serif group-hover:text-[#D4AF37] transition-colors">{item.title}</h4>
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-white text-lg font-serif group-hover:text-[#D4AF37] transition-colors">
+                        {item.title}
+                      </h4>
+                      {/* Badge VIP à côté du titre */}
+                      {item.isVip && (
+                        <span className="bg-[#D4AF37] text-black text-[10px] font-bold px-1.5 py-0.5 rounded">VIP</span>
+                      )}
+                    </div>
                     <span className="text-xs text-gray-500 uppercase tracking-wider">{item.category}</span>
                   </div>
                   

@@ -11,7 +11,7 @@ const Eclair = () => {
   const [servings, setServings] = useState(baseServings);
 
   const recipeData = {
-    category: "PÂTISSERIE • GÂTEAUX",
+    category: "PÂTISSERIE • Pâte à Choux",
     title: "L'Éclair",
     prepTime: "1H",
     cookTime: "35 MIN",

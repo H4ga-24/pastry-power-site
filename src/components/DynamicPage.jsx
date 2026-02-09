@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { PlayCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async'; // 👈 IMPORT IMPORTANT
 
 // Import du Mode Cuisine
 import CookingMode from './CookingMode';
@@ -36,94 +37,92 @@ const DynamicPage = () => {
       if (foundPath) {
         setRecipeComponent(() => modules[foundPath]);
         
-        // --- DÉBUT EXTRACTION UNIVERSELLE ---
         const rawCode = rawModules[foundPath];
         
-        // 0. DÉTECTION DU TYPE DE CONTENU (Pour le bouton Cuisine)
-        // Si le chemin contient "/technologie/", c'est une fiche technique -> Pas de bouton
+        // 🧹 FONCTION DE NETTOYAGE
+        const cleanText = (text) => {
+            if (!text) return "";
+            return text.replace(/\\'/g, "'").replace(/\\"/g, '"');
+        };
+
         const isTechFile = foundPath.includes('/technologie/');
 
         // 1. TITRE
-        const titleMatch = rawCode.match(/title:\s*["']([^"']+)["']/) || rawCode.match(/<h1[^>]*>([^<]+)<\/h1>/);
-        const title = titleMatch ? titleMatch[1] : "Recette";
+        const titleMatch = rawCode.match(/title:\s*["']((?:[^"'\\]|\\.)*)["']/) || rawCode.match(/<h1[^>]*>([^<]+)<\/h1>/);
+        const title = titleMatch ? cleanText(titleMatch[1]) : "Recette Pastry Power";
 
-        // 2. INGRÉDIENTS (Stratégie à 3 niveaux)
+        // 🟢 2. IMAGE (Google en a besoin pour le carrousel !)
+        const imgMatch = rawCode.match(/image:\s*["']([^"']+)["']/) || rawCode.match(/<img[^>]+src=["']([^"']+)["']/);
+        const image = imgMatch ? imgMatch[1] : "https://ton-site.com/default-pastry.jpg"; // Mets une image par défaut ici
+
+        // 3. DESCRIPTION (Optionnel mais recommandé)
+        const descMatch = rawCode.match(/description:\s*["']((?:[^"'\\]|\\.)*)["']/);
+        const description = descMatch ? cleanText(descMatch[1]) : `Découvrez la recette de ${title} sur Pastry Power.`;
+
+        // 4. INGRÉDIENTS
         let ingredients = [];
-
-        // Niveau A : Structure complexe
         const complexIngRegex = /items:\s*\[([\s\S]*?)\]/g;
         let complexMatch;
         while ((complexMatch = complexIngRegex.exec(rawCode)) !== null) {
            const content = complexMatch[1];
-           const itemRegex = /name:\s*["']([^"']+)["'][\s\S]*?qty:\s*["']?([^"',}]+)["']?[\s\S]*?unit:\s*["']([^"']*)["']/g;
+           const itemRegex = /name:\s*["']((?:[^"'\\]|\\.)*)["'][\s\S]*?qty:\s*["']?([^"',}]+)["']?[\s\S]*?unit:\s*["']([^"']*)["']/g;
            let item;
            while ((item = itemRegex.exec(content)) !== null) {
-             ingredients.push(`${item[1]} (${item[2]} ${item[3]})`);
+             ingredients.push(`${cleanText(item[1])} (${cleanText(item[2])} ${cleanText(item[3])})`);
            }
         }
-
-        // Niveau B : Structure simple
         if (ingredients.length === 0) {
-            const simpleIngRegex = /name:\s*["']([^"']+)["'][\s\S]*?amount:\s*(\d+)[\s\S]*?unit:\s*["']([^"']+)["']/g;
+            const simpleIngRegex = /name:\s*["']((?:[^"'\\]|\\.)*)["'][\s\S]*?amount:\s*(\d+)[\s\S]*?unit:\s*["']([^"']+)["']/g;
             let simpleMatch;
             while ((simpleMatch = simpleIngRegex.exec(rawCode)) !== null) {
-              const ingStr = `${simpleMatch[1]} (${simpleMatch[2]} ${simpleMatch[3]})`;
+              const ingStr = `${cleanText(simpleMatch[1])} (${simpleMatch[2]} ${cleanText(simpleMatch[3])})`;
               if (!ingredients.includes(ingStr)) ingredients.push(ingStr);
             }
         }
-
-        // Niveau C : HTML Brut
         if (ingredients.length === 0) {
            const htmlLiRegex = /<li[^>]*>([\s\S]*?)<\/li>/g;
            let liMatch;
            while ((liMatch = htmlLiRegex.exec(rawCode)) !== null) {
-             const cleanText = liMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-             if (cleanText.length > 5 && cleanText.length < 150) {
-                 ingredients.push(cleanText);
+             const rawLi = liMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+             if (rawLi.length > 5 && rawLi.length < 150) {
+                 ingredients.push(cleanText(rawLi));
              }
            }
         }
 
-        // 3. ÉTAPES (Stratégie à 3 niveaux)
+        // 5. ÉTAPES
         let steps = [];
-
-        // Niveau A : Tableau d'objets
-        const objStepRegex = /text:\s*["']([^"']+)["']/g;
+        const objStepRegex = /text:\s*["']((?:[^"'\\]|\\.)*)["']/g;
         let objStepMatch;
         while ((objStepMatch = objStepRegex.exec(rawCode)) !== null) {
-           steps.push(objStepMatch[1]);
+           steps.push(cleanText(objStepMatch[1]));
         }
-
-        // Niveau B : HTML Structuré
         if (steps.length === 0) {
            const htmlStepRegex = /<h3[^>]*>([^<]+)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
            let htmlStepMatch;
            while ((htmlStepMatch = htmlStepRegex.exec(rawCode)) !== null) {
-             const stepTitle = htmlStepMatch[1];
-             const stepText = htmlStepMatch[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-             steps.push(`${stepTitle} : ${stepText}`);
+             steps.push(`${cleanText(htmlStepMatch[1])} : ${cleanText(htmlStepMatch[2].replace(/<[^>]+>/g, '').trim())}`);
            }
         }
-        
-        // Niveau C : Fallback HTML simple
         if (steps.length === 0) {
             const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/g;
             let pMatch;
             while ((pMatch = pRegex.exec(rawCode)) !== null) {
                const text = pMatch[1].replace(/<[^>]+>/g, '').trim();
                if (text.length > 30 && !ingredients.includes(text)) {
-                  steps.push(text);
+                  steps.push(cleanText(text));
                }
             }
         }
 
         setExtractedData({
           title,
+          description,
+          image,
           ingredients: ingredients.length > 0 ? ingredients : [],
           steps: steps.length > 0 ? steps : [],
-          isTech: isTechFile // On stocke l'info ici
+          isTech: isTechFile
         });
-        // --- FIN EXTRACTION ---
       }
     };
 
@@ -131,16 +130,49 @@ const DynamicPage = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  // --- GÉNÉRATION DU JSON-LD POUR GOOGLE ---
+  const generateStructuredData = () => {
+    if (!extractedData || extractedData.isTech) return null;
+
+    const structuredData = {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": extractedData.title,
+      "image": [extractedData.image],
+      "description": extractedData.description,
+      "author": {
+        "@type": "Person",
+        "name": "Pastry Power" // Tu peux mettre ton nom ici
+      },
+      "datePublished": new Date().toISOString().split('T')[0], // Date du jour par défaut
+      "recipeIngredient": extractedData.ingredients,
+      "recipeInstructions": extractedData.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        "position": index + 1,
+        "text": step
+      }))
+    };
+
+    return JSON.stringify(structuredData);
+  };
+
   if (!RecipeComponent) return <div className="text-white text-center mt-20">Chargement...</div>;
 
   return (
     <div className="min-h-screen bg-[#121212] pt-20">
+      {/* 🟢 C'EST ICI QUE TU PARLES À GOOGLE */}
+      <Helmet>
+        <title>{extractedData ? `${extractedData.title} | Pastry Power` : 'Recette'}</title>
+        <meta name="description" content={extractedData?.description || "Recette de pâtisserie"} />
+        {extractedData && !extractedData.isTech && (
+          <script type="application/ld+json">
+            {generateStructuredData()}
+          </script>
+        )}
+      </Helmet>
+
       <RecipeComponent />
       
-      {/* CONDITION D'AFFICHAGE DU BOUTON :
-          1. Les données doivent être chargées (extractedData)
-          2. Ce ne doit PAS être une fiche technique (!extractedData.isTech)
-      */}
       {extractedData && !extractedData.isTech && (
         <motion.button
           initial={{ scale: 0 }}

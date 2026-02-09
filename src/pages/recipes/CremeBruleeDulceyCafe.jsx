@@ -13,6 +13,7 @@ const CremeBruleeDulceyCafe = () => {
 
   const recipeData = {
     category: "PÂTISSERIE • CRÈMES",
+    vip: true,
     title: "Crème brulée Dulcey café",
     prepTime: "20 MIN + Repos",
     cookTime: "45 MIN",

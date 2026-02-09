@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check, Coffee, Clock } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const CookingMode = ({ recipe, onClose }) => {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
   const [checkedSteps, setCheckedSteps] = useState([]);
   const [wakeLock, setWakeLock] = useState(null);
+
+  // --- FONCTION DE NETTOYAGE ---
+  // C'est elle qui va retirer les '\' qui gênent l'affichage
+  const cleanText = (text) => {
+    if (!text) return "";
+    return text.replace(/\\'/g, "'").replace(/\\"/g, '"');
+  };
 
   // 1. GESTION DU WAKE LOCK (Empêcher l'écran de s'éteindre)
   useEffect(() => {
@@ -53,7 +60,8 @@ const CookingMode = ({ recipe, onClose }) => {
       <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/10 p-4 flex justify-between items-center z-10 shadow-xl">
         <div>
           <h2 className="text-[#D4AF37] font-serif text-xl font-bold truncate max-w-[200px] md:max-w-md">
-            {recipe.title}
+            {/* On nettoie le titre ici */}
+            {cleanText(recipe.title)}
           </h2>
           <p className="text-green-500 text-xs flex items-center gap-1">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -93,7 +101,8 @@ const CookingMode = ({ recipe, onClose }) => {
                   {checkedIngredients.includes(idx) && <Check size={14} />}
                 </div>
                 <span className={`text-lg ${checkedIngredients.includes(idx) ? 'text-gray-400 line-through' : 'text-gray-200'}`}>
-                  {ing}
+                  {/* On nettoie l'ingrédient ici */}
+                  {cleanText(ing)}
                 </span>
               </div>
             ))}
@@ -122,7 +131,8 @@ const CookingMode = ({ recipe, onClose }) => {
                   {checkedSteps.includes(idx) ? <Check size={18} /> : idx + 1}
                 </div>
                 <p className={`text-xl leading-relaxed ${checkedSteps.includes(idx) ? 'text-gray-500 line-through' : 'text-gray-200'}`}>
-                  {step}
+                  {/* On nettoie l'étape ici */}
+                  {cleanText(step)}
                 </p>
               </div>
             ))}

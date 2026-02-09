@@ -11,6 +11,7 @@ const GlacageExotique = () => {
   const recipeData = {
     category: "PÂTISSERIE • GLAÇAGES",
     title: "Glaçage Exotique",
+    vip: true,
     prepTime: "15 MIN",
     cookTime: "5 MIN",
     difficulty: "MOYEN",
