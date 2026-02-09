@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ChefHat, ArrowRight, Lock } from 'lucide-react';
 
 // --- 1. CONFIGURATION DES HUBS ---
 const HUBS = {
-  'root': {
+  // 'root' est renommé en 'patisserie' pour correspondre à ton App.jsx
+  'patisserie': {
     title: "Pâtisserie",
     description: "L'excellence technique au service de la gourmandise.",
     image: "https://images.unsplash.com/photo-1694449053032-c48fd40fce89?q=80&w=1555&auto=format&fit=crop",
@@ -84,7 +85,6 @@ const SEARCH_MAPPING = {
   'levure': 'levure',
   'gras': 'corps gras',
   'sauce': 'sauce',
-  // Mapping pour les alternatives
   'sans-gluten': 'gluten',
   'sans-sucre': 'sucre',
   'vegan': 'vegan',
@@ -103,12 +103,10 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   const lowerPath = path.toLowerCase();
   const lowerContent = rawContent.toLowerCase();
 
-  // A. Détection du VIP
   let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
   const vipMatch = rawContent.match(/vip:\s*(true|false)/); 
   if (vipMatch && vipMatch[1] === 'true') isVip = true;
 
-  // B. Détection des Données
   const secureTitleMatch = rawContent.match(/(?:recipeData|recipeMeta)\s*=\s*\{[\s\S]*?title:\s*(?:"([^"]*)"|'([^']*)')/);
   const catMatch = rawContent.match(/category:\s*(?:"([^"]*)"|'([^']*)')/);
   const imgMatch = rawContent.match(/image:\s*(?:"([^"]*)"|'([^']*)')/);
@@ -119,7 +117,6 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   let image = imgMatch ? (imgMatch[1] || imgMatch[2]) : null;
   let description = descMatch ? (descMatch[1] || descMatch[2]) : "";
 
-  // C. MODE "DÉTECTIVE" (Titre & Image manquants)
   if (!title) {
     const h1Match = rawContent.match(/<h1[^>]*>([^<]+)<\/h1>/);
     title = h1Match ? h1Match[1] : fileName.replace(/^vip-/i, '').replace(/([A-Z])/g, ' $1').trim();
@@ -129,12 +126,10 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
     if (htmlImgMatch) image = htmlImgMatch[1];
   }
 
-  // D. LE "FORCEUR" DE CATÉGORIE (Priorités Absolues)
-  // 1. ALTERNATIF (Correction pour le Sans Sucre)
+  // FORCEUR DE CATEGORIE
   if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
       category = "SANS-GLUTEN";
   }
-  // 👇 MODIFICATION ICI : On exclut le dossier Technologie et on cherche "sans-sucre"
   else if (
     !lowerPath.includes('technologie') && (
       lowerPath.includes('sans-sucre') || 
@@ -151,7 +146,6 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   else if (lowerPath.includes('lactose')) {
       category = "SANS-LACTOSE";
   }
-  // 2. CATEGORIES CLASSIQUES
   else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche')) {
       category = "CHOUX";
   }
@@ -191,17 +185,14 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
   const { category: paramCategory } = useParams();
-  const activeCategory = propCategory || paramCategory || 'root';
+  const activeCategory = propCategory || paramCategory || 'patisserie';
 
   useEffect(() => { window.scrollTo(0, 0); }, [activeCategory]);
 
   const activeHub = HUBS[activeCategory];
   const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
   
-  // Sécurité pour les boutons (Cuisine/Pâtisserie)
-  const showKitchenSwitch = activeCategory === 'root' || activeCategory === 'cuisine';
-
-  // A. MODE HUB
+  // A. MODE HUB (Affichage des tuiles)
   if (activeHub) {
     return (
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
@@ -209,36 +200,12 @@ const PatisseriePage = ({ category: propCategory }) => {
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-serif mb-6">{activeHub.title}</h1>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg mb-8">{activeHub.description}</p>
-            
-            {showKitchenSwitch && (
-              <div className="flex justify-center gap-4">
-                <Link
-                  to="/patisserie"
-                  className={`px-6 py-2 rounded-full border transition-all ${
-                    activeCategory === 'root' 
-                      ? 'bg-[#D4AF37] text-black border-[#D4AF37] font-bold' 
-                      : 'bg-transparent text-gray-400 border-gray-700 hover:border-white'
-                  }`}
-                >
-                  Pâtisserie
-                </Link>
-                <Link
-                  to="/cuisine"
-                  className={`px-6 py-2 rounded-full border transition-all ${
-                    activeCategory === 'cuisine' 
-                      ? 'bg-[#D4AF37] text-black border-[#D4AF37] font-bold' 
-                      : 'bg-transparent text-gray-400 border-gray-700 hover:border-white'
-                  }`}
-                >
-                  Cuisine
-                </Link>
-              </div>
-            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeHub.sections.map((sub) => (
-              <Link key={sub.id} to={`/${activeCategory === 'cuisine' ? 'cuisine' : activeCategory === 'root' ? 'patisserie' : activeCategory}/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
+              // ICI : Le lien est dynamique. Si tu es dans "alternative", ça fera /alternative/sans-gluten
+              <Link key={sub.id} to={`/${activeCategory}/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
                 <div className="aspect-video bg-gray-900 flex items-center justify-center overflow-hidden">
                   {sub.image ? (
                     <img src={sub.image} alt={sub.title} className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
@@ -268,10 +235,10 @@ const PatisseriePage = ({ category: propCategory }) => {
   if (urlCategory === 'cake-sale') searchTerm = 'cake-sale';
   else if (urlCategory === 'choux') searchTerm = 'choux';
   else if (urlCategory === 'regional') searchTerm = 'regional';
-  else if (urlCategory === 'sans-gluten') searchTerm = 'gluten'; // Exact match
-  else if (urlCategory === 'sans-sucre') searchTerm = 'sucre'; // Exact match
-  else if (urlCategory === 'vegan') searchTerm = 'vegan'; // Exact match
-  else if (urlCategory === 'sans-lactose') searchTerm = 'lactose'; // Exact match
+  else if (urlCategory === 'sans-gluten') searchTerm = 'gluten'; 
+  else if (urlCategory === 'sans-sucre') searchTerm = 'sucre'; 
+  else if (urlCategory === 'vegan') searchTerm = 'vegan'; 
+  else if (urlCategory === 'sans-lactose') searchTerm = 'lactose'; 
   else searchTerm = SEARCH_MAPPING[urlCategory] || urlCategory;
   
   const normalizedSearch = normalize(searchTerm);
