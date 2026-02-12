@@ -1,182 +1,252 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote, Crown } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Clock, ChefHat, Scale, UtensilsCrossed, Info } from 'lucide-react';
-import RecipeIngredients from '@/components/RecipeIngredients';
 
 const BonbonBeijing = () => {
   const recipeData = {
-    title: "Bonbon Chocolat Beijing (Alunga & Confiture de Lait)",
     category: "CHOCOLATERIE",
-    prepTime: "2H + 12H (Cristallisation)",
+    title: "Bonbon Chocolat Beijing",
+    isVip: true, // 👈 ACTIVE LE MODE VIP
+    prepTime: "2H + 12H",
     cookTime: "45 MIN",
     difficulty: "EXPERT",
-    yield: "750 pièces",
-    weight: "~9.8 kg",
+    description: "Un bonbon bi-texture d'une grande technicité : socle de ganache lait Alunga surmonté d'un dôme de confiture de lait maison, le tout enrobé de chocolat noir.",
     image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6fc1ae009d495697691e2419b05e886d.jpg",
-    description: "Un bonbon bi-texture d'une grande technicité. Sur un socle de ganache au chocolat au lait Alunga, un dôme de confiture de lait maison est poché avant d'être enrobé de chocolat noir. Le contraste entre le lacté puissant et le caramel fondant."
+    baseServings: 750, // Rendement professionnel (environ 1 cadre)
+  };
+
+  const [servings, setServings] = useState(recipeData.baseServings);
+
+  // On ajuste par tranches de 50 car c'est de la chocolaterie de masse
+  const updateServings = (change) => {
+    const newServings = servings + change;
+    if (newServings >= 50) setServings(newServings);
+  };
+
+  // 🧮 FONCTION DE CALCUL STANDARDISÉE
+  const calculateQuantity = (amount, base) => {
+    if (!amount) return "";
+    const numAmount = parseFloat(amount);
+    if (isNaN(numAmount)) return amount;
+    const scaled = (numAmount * servings) / base;
+    return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
 
   const ingredients = [
+    // --- Ganache Alunga ---
+    { name: "Crème fleurette 35% (Ganache)", amount: 1450, unit: "g" },
+    { name: "Sirop de glucose (Ganache)", amount: 300, unit: "g" },
+    { name: "Sorbitol cristallisé (Ganache)", amount: 150, unit: "g" },
+    { name: "Chocolat Lait Alunga 41% (Ganache)", amount: 2600, unit: "g" },
+    { name: "Beurre sec 84% (Ganache)", amount: 250, unit: "g" },
+    // --- Confiture de Lait ---
+    { name: "Lait entier (Confiture)", amount: 2000, unit: "g" },
+    { name: "Sucre semoule (Confiture)", amount: 1000, unit: "g" },
+    { name: "Sirop de glucose (Confiture)", amount: 200, unit: "g" },
+    { name: "Gousses de vanille (Confiture)", amount: 2, unit: "pcs" },
+    { name: "Bicarbonate de soude (Confiture)", amount: 2, unit: "g" },
+    // --- Enrobage ---
+    { name: "Couverture Noire 64% (Enrobage)", amount: 3000, unit: "g" }
+  ];
+
+  const steps = [
     {
-      title: "1. Ganache Alunga (Socle)",
-      items: [
-        { name: "Crème fleurette 35%", qty: 1450, unit: "g" },
-        { name: "Sirop de glucose", qty: 300, unit: "g" },
-        { name: "Sorbitol cristallisé", qty: 150, unit: "g" },
-        { name: "Chocolat Lait Alunga 41%", qty: 2600, unit: "g" },
-        { name: "Beurre sec (84% MG)", qty: 250, unit: "g" }
-      ]
+      title: "La Ganache Alunga",
+      text: "Chauffer la crème, le glucose et le sorbitol à 75°C précisement. Verser sur le chocolat Alunga (non fondu). Laisser reposer 2 min pour amorcer la fonte. Émulsionner au mixeur plongeant. Ajouter le beurre dés à 35-40°C. Couler en cadre de 6mm. Cristalliser 12h à 16-18°C."
     },
     {
-      title: "2. Confiture de Lait Maison (Dôme)",
-      items: [
-        { name: "Lait entier", qty: 2000, unit: "g" },
-        { name: "Sucre semoule", qty: 1000, unit: "g" },
-        { name: "Sirop de glucose", qty: 200, unit: "g" },
-        { name: "Gousse de vanille", qty: 2, unit: "pce" },
-        { name: "Bicarbonate de soude (pincée)", qty: 2, unit: "g" }
-      ]
+      title: "Confiture de Lait Maison",
+      text: "Porter à ébullition le lait, sucre, glucose, vanille et bicarbonate. Baisser le feu et laisser réduire en remuant jusqu'à atteindre 104°C (texture nappante). Débarrasser, filmer et laisser refroidir totalement pour qu'elle épaississe."
     },
     {
-      title: "3. Enrobage & Finition",
-      items: [
-        { name: "Couverture Noire 64% (Enrobage)", qty: 3000, unit: "g" },
-        { name: "Feuille structure ou peigne (facultatif)", qty: 1, unit: "pce" }
-      ]
+      title: "Détaillage & Pochage",
+      text: "Chablonner la ganache cristallisée. Détailler en carrés de 2.5cm. Pocher une boule de confiture de lait (3-4g) sur chaque carré avec une douille n°8. Laisser croûter légèrement."
+    },
+    {
+      title: "Enrobage",
+      text: "Mettre au point la couverture noire. Enrober les bonbons en plongeant le dôme vers le bas, retourner et sortir délicatement sans écraser la confiture de lait."
     }
   ];
 
+  // --- GOOGLE SEO (JSON-LD) ---
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": recipeData.title,
+    "image": [recipeData.image],
+    "description": recipeData.description,
+    "author": { "@type": "Person", "name": "Pastrypower" },
+    "prepTime": "PT14H", // 2H prep + 12H repos
+    "cookTime": "PT45M",
+    "recipeYield": `${servings} pièces`,
+    "recipeCategory": "Confiserie",
+    "keywords": "chocolat, bonbon, ganache, confiture de lait, alunga",
+    "recipeIngredient": ingredients.map(ing => `${calculateQuantity(ing.amount, recipeData.baseServings)} ${ing.unit} ${ing.name}`),
+    "recipeInstructions": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.text
+    }))
+  };
+
   return (
-    <div className="min-h-screen bg-[#121212] text-white font-sans pt-32 pb-20">
-      <Helmet><title>{recipeData.title} - Maison Dorée</title></Helmet>
-      <div className="container mx-auto px-4 max-w-5xl">
-        <Link to="/chocolaterie">
-          <Button variant="ghost" className="text-[#D4AF37] hover:text-white mb-8 pl-0">
-            <ArrowLeft className="w-4 h-4 mr-2" /> Retour à la Chocolaterie
-          </Button>
-        </Link>
-        
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div className="rounded-sm overflow-hidden h-[400px] border border-white/10 relative group">
-             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
-             <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-          </div>
-          <div className="flex flex-col justify-center">
-             <span className="text-[#D4AF37] text-sm font-bold tracking-widest uppercase mb-4">{recipeData.category}</span>
-             <h1 className="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">{recipeData.title}</h1>
-             <p className="text-gray-400 mb-8 text-lg font-light">{recipeData.description}</p>
-             <div className="grid grid-cols-2 gap-6">
-                <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /> <span>Process: {recipeData.prepTime}</span></div>
-                <div className="flex items-center gap-3"><UtensilsCrossed className="w-5 h-5 text-[#D4AF37]" /> <span>Cuisson: {recipeData.cookTime}</span></div>
-                <div className="flex items-center gap-3"><ChefHat className="w-5 h-5 text-[#D4AF37]" /> <span>{recipeData.difficulty}</span></div>
-                <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /> <span>{recipeData.yield}</span></div>
-             </div>
-             
-             <div className="mt-8 p-4 bg-[#1a1a1a] border-l-2 border-[#D4AF37] rounded-r-sm">
-                <div className="flex items-start gap-3">
-                   <Info className="w-5 h-5 text-[#D4AF37] mt-1 flex-shrink-0" />
-                   <div>
-                      <h4 className="font-bold text-white text-sm mb-1">Info Technique</h4>
-                      <p className="text-gray-400 text-xs">Cadrage de la ganache à 6mm. Pochage du dôme à la douille n°8. Enrobage délicat pour ne pas écraser le relief.</p>
-                   </div>
+    <>
+      <Helmet>
+        <title>{recipeData.title} - Pastrypower</title>
+        <meta name="description" content={recipeData.description} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
+      <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
+        {/* HEADER IMAGE */}
+        <div className="relative h-[60vh] w-full overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
+          
+          {/* --- 💎 BADGE VIP --- */}
+          {recipeData.isVip && (
+            <div className="absolute top-6 right-6 z-30 animate-fade-in">
+                <div className="bg-[#D4AF37] text-black font-bold px-4 py-2 rounded-sm uppercase tracking-widest text-xs flex items-center gap-2 shadow-lg shadow-black/20">
+                    <Crown className="w-4 h-4" /> VIP ONLY
                 </div>
-             </div>
+            </div>
+          )}
+
+          <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
+          <div className="absolute bottom-0 left-0 w-full z-20 pb-12">
+            <div className="container mx-auto px-4 max-w-6xl">
+              <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase block animate-fade-in">{recipeData.category}</span>
+                  {recipeData.isVip && (
+                      <span className="bg-white/10 text-[#D4AF37] border border-[#D4AF37] px-2 py-0.5 text-[10px] font-bold uppercase rounded-sm tracking-wider">
+                          Exclusif
+                      </span>
+                  )}
+              </div>
+              <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-tight">{recipeData.title}</h1>
+              <div className="flex flex-wrap gap-8 text-sm tracking-widest font-medium text-white/90">
+                <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.prepTime} PREP</span></div>
+                <div className="flex items-center gap-3"><ChefHat className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
+                <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.difficulty}</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-[1fr_1.5fr] gap-12">
-           {/* Ingrédients Dynamiques */}
-           <RecipeIngredients 
-             ingredients={ingredients} 
-             initialYield={750}
-             yieldUnit="pièces"
-             step={50}
-           />
+        {/* CONTENU PRINCIPAL */}
+        <div className="container mx-auto px-4 max-w-6xl pb-24 mt-16">
+          <div className="grid md:grid-cols-12 gap-12">
+            
+            {/* COLONNE GAUCHE */}
+            <div className="md:col-span-4 space-y-8">
+              <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5 sticky top-24">
+                {/* Calculateur Portions */}
+                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+                  <div className="flex items-center gap-2 text-[#D4AF37]">
+                    <Users className="w-5 h-5" />
+                    <span className="font-serif text-lg">Bonbons</span>
+                  </div>
+                  <div className="flex items-center gap-4 bg-[#252525] rounded-full px-2 py-1">
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(-50)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    <span className="font-bold text-lg min-w-[3ch] text-center">{servings}</span>
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(50)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
 
-           {/* Étapes */}
-           <div className="space-y-12">
-              <h3 className="font-serif text-3xl text-white border-b border-[#D4AF37]/30 pb-4">Étapes de Réalisation</h3>
-              
-              <div className="space-y-10">
-                 {/* Étape I */}
-                 <div className="relative pl-8 border-l border-[#D4AF37]/20">
-                    <span className="absolute -left-3 top-0 w-6 h-6 flex items-center justify-center rounded-full bg-[#121212] border border-[#D4AF37] text-[#D4AF37] font-bold text-xs">I</span>
-                    <h4 className="text-xl text-white mb-4 font-serif">La Ganache Alunga</h4>
-                    <p className="text-gray-400 leading-relaxed mb-4">
-                       Chauffer la crème liquide, le glucose et le sorbitol à 75°C précisément.
-                       Verser sur le chocolat Alunga en pistoles (non fondu). Laisser reposer 2 minutes sans toucher pour amorcer la fonte.
-                    </p>
-                    <p className="text-gray-400 leading-relaxed">
-                       Émulsionner au mixeur plongeant en incorporant le beurre sec coupé en petits dés dès que le mélange atteint 35-40°C.
-                       Couler en cadre de 6mm d'épaisseur sur feuille guitare. Laisser cristalliser 12h à 16-18°C.
-                    </p>
-                 </div>
+                {/* Liste Ingrédients */}
+                <h3 className="text-xl font-serif text-white mb-6">Ingrédients</h3>
+                <div className="max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                    <ul className="space-y-4">
+                    {ingredients.map((ing, i) => (
+                        <li key={i} className="flex justify-between items-center text-sm pb-2 border-b border-white/5 last:border-0">
+                        <span className="text-gray-300 font-light truncate pr-4" title={ing.name}>{ing.name}</span>
+                        <span className="text-[#D4AF37] font-medium whitespace-nowrap">
+                            {calculateQuantity(ing.amount, recipeData.baseServings)} {ing.unit}
+                        </span>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+              </div>
+            </div>
 
-                 {/* Étape II */}
-                 <div className="relative pl-8 border-l border-[#D4AF37]/20">
-                    <span className="absolute -left-3 top-0 w-6 h-6 flex items-center justify-center rounded-full bg-[#121212] border border-[#D4AF37] text-[#D4AF37] font-bold text-xs">II</span>
-                    <h4 className="text-xl text-white mb-4 font-serif">La Confiture de Lait Maison</h4>
-                    <p className="text-gray-400 leading-relaxed mb-4">
-                       Dans une large casserole, porter à ébullition le lait, le sucre, le glucose, les graines de vanille et le bicarbonate.
-                       Baisser le feu et laisser réduire en remuant régulièrement. La préparation va prendre une couleur caramel clair.
-                    </p>
-                    <p className="text-gray-400 leading-relaxed">
-                       Cuire jusqu'à atteindre 104°C (texture nappante). Débarrasser et filmer au contact.
-                       Laisser refroidir complètement à température ambiante pour qu'elle épaississe et devienne pochable.
-                    </p>
-                 </div>
-
-                 {/* Étape III */}
-                 <div className="relative pl-8 border-l border-[#D4AF37]/20">
-                    <span className="absolute -left-3 top-0 w-6 h-6 flex items-center justify-center rounded-full bg-[#121212] border border-[#D4AF37] text-[#D4AF37] font-bold text-xs">III</span>
-                    <h4 className="text-xl text-white mb-4 font-serif">Montage et Enrobage</h4>
-                    <p className="text-gray-400 leading-relaxed mb-4">
-                       Chablonner le cadre de ganache Alunga. Retourner et détailler à la guitare en carrés de 2.5 x 2.5 cm.
-                       Sur chaque carré de ganache, pocher une belle boule de confiture de lait (environ 3-4g) à l'aide d'une poche munie d'une douille unie n°8 ou 10. Laisser croûter légèrement.
-                    </p>
-                    <p className="text-gray-400 leading-relaxed">
-                       Mettre au point la couverture noire d'enrobage.
-                       Enrober les bonbons en veillant à bien recouvrir le dôme de confiture de lait sans l'écraser.
-                       Déposer sur feuille structure ou marquer le dessus pour rappeler la forme du dôme.
-                    </p>
-                 </div>
+            {/* COLONNE DROITE */}
+            <div className="md:col-span-8">
+              <div className="space-y-12 mb-16">
+                {steps.map((step, i) => (
+                  <div key={i} className="flex gap-6 group">
+                      <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
+                      <div>
+                        <h3 className="text-white text-xl mb-3 font-serif">{step.title}</h3>
+                        <p className="text-gray-400 font-light text-lg leading-relaxed">{step.text}</p>
+                      </div>
+                  </div>
+                ))}
               </div>
 
-              {/* Conseils du Chef */}
-              <div className="mt-16 p-8 bg-[#1a1a1a] border border-[#D4AF37]/20 rounded-sm relative overflow-hidden">
-                 <div className="absolute top-0 left-0 w-1 h-full bg-[#D4AF37]"></div>
-                 <h3 className="font-serif text-2xl text-white mb-6 flex items-center gap-3">
-                    <ChefHat className="w-6 h-6 text-[#D4AF37]" /> Astuces et Conseils du Chef
-                 </h3>
-                 <div className="grid md:grid-cols-2 gap-8 text-gray-400 text-sm leading-relaxed">
-                    <p>
-                       <strong className="text-white block mb-2">Température de Crème 75°C :</strong> Ne faites pas bouillir la crème ! 75°C suffit pour fondre le chocolat et pasteuriser légèrement sans dégrader la structure de l'émulsion lactée du chocolat au lait.
-                    </p>
-                    <p>
-                       <strong className="text-white block mb-2">Cuisson Confiture 104°C :</strong> C'est le degré précis pour obtenir une texture qui se tient (pochable) mais qui reste filante à la dégustation. En dessous, elle coulera partout à l'enrobage. Au dessus, elle sera caoutchouteuse.
-                    </p>
-                    <p>
-                       <strong className="text-white block mb-2">Le Repos de 2 Minutes :</strong> Laisser la crème chaude sur les pistoles sans remuer permet à la chaleur de pénétrer au cœur du chocolat. Si vous remuez tout de suite, vous baissez la température trop vite et risquez d'avoir des morceaux non fondus.
-                    </p>
-                    <p>
-                       <strong className="text-white block mb-2">Enrobage du Dôme :</strong> C'est la partie délicate. Utilisez une couverture assez fluide. Plongez le bonbon dôme vers le bas, retournez-le dans le chocolat, et sortez-le délicatement. Tapotez doucement pour ne pas déformer la confiture de lait.
-                    </p>
-                    <p>
-                       <strong className="text-white block mb-2">Bicarbonate de Soude :</strong> Il favorise la réaction de Maillard (brunissement) pour donner cette belle couleur caramel à la confiture de lait plus rapidement, sans brûler le sucre.
-                    </p>
-                    <p>
-                       <strong className="text-white block mb-2">Cristallisation Ganache :</strong> Respectez les 12h à 16-18°C. Une ganache lait est plus longue à cristalliser qu'une noire. Si vous coupez trop tôt, elle va s'écraser sous les fils de la guitare.
-                    </p>
-                 </div>
-              </div>
+              {/* Onglets Conseils / Chef / Ustensiles */}
+              <Tabs defaultValue="conseils" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
+                  <TabsTrigger value="conseils" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Conseils</TabsTrigger>
+                  <TabsTrigger value="chef" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Le Mot du Chef</TabsTrigger>
+                  <TabsTrigger value="ustensiles" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Ustensiles</TabsTrigger>
+                </TabsList>
+                
+                <div className="bg-[#1a1a1a] border-x border-b border-white/5 p-8 mt-0 min-h-[200px]">
+                  <TabsContent value="conseils" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Lightbulb className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Points critiques</h4>
+                        <ul className="space-y-3 text-gray-400 leading-relaxed">
+                           <li><strong>Ganache :</strong> Ne faites pas bouillir la crème (75°C max) pour préserver l'arôme lacté. Le repos de 2 min sur les pistoles est crucial pour amorcer la fonte sans choc thermique.</li>
+                           <li><strong>Confiture :</strong> Cuisson impérative à 104°C. En dessous, elle coulera à l'enrobage. Au-dessus, elle sera caoutchouteuse.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="chef" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Quote className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">La Science</h4>
+                        <p className="text-gray-400 leading-relaxed italic">
+                          "Le bicarbonate de soude n'est pas là pour lever la pâte (il n'y en a pas !). Il accélère la réaction de Maillard, donnant à la confiture de lait cette couleur caramel profond et ce goût typique bien plus rapidement."
+                        </p>
+                      </div>
+                    </div>
+                  </TabsContent>
 
-           </div>
+                  <TabsContent value="ustensiles" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Utensils className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Matériel recommandé</h4>
+                        <ul className="grid grid-cols-2 gap-2 text-gray-400">
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Thermomètre sonde</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Cadre 6mm</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Guitare (découpe)</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Mixeur plongeant</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
-
 export default BonbonBeijing;

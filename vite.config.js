@@ -16,6 +16,19 @@ export default defineConfig({
     },
   },
   build: {
-    chunkSizeWarningLimit: 2000,
+    // On augmente la limite de l'avertissement pour qu'il arrête de t'embêter (10Mo)
+    chunkSizeWarningLimit: 10000, 
+    
+    // C'est ici que la magie opère pour découper le code
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Si le code vient de node_modules (les outils installés), on le met à part
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      },
+    },
   }
 })
