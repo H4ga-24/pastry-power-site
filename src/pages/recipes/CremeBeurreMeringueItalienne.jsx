@@ -14,7 +14,7 @@ const CremeBeurreMeringueItalienne = () => {
   const recipeData = {
     category: "PÂTISSERIE • CRÈMES",
     title: "Crème au beurre (Meringue Italienne)",
-    vip: true,
+    isVip: true,
     prepTime: "30 MIN",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

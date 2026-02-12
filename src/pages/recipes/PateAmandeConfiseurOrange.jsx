@@ -9,6 +9,7 @@ const PateAmandeConfiseurOrange = () => {
   const recipeData = {
     title: "Pâte d'amande confiseur 30% à l'orange",
     category: "CONFISERIE",
+    isVip: true,
     prepTime: "20 MIN",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

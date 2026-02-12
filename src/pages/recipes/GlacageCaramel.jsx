@@ -11,7 +11,7 @@ const GlacageCaramel = () => {
   const recipeData = {
     category: "PÂTISSERIE • GLAÇAGES",
     title: "Glaçage Caramel",
-    vip: true,
+    isVip: true,
     prepTime: "20 MIN",
     cookTime: "15 MIN",
     difficulty: "DIFFICILE",

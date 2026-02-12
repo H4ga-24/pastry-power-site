@@ -26,6 +26,7 @@ const LeDesirBaileys = () => {
   const recipeData = {
     category: "PÂTISSERIE • ENTREMETS",
     title: "Le Désir Bailey's",
+    isVip: true,
     yield: "1 cadre de 37 x 28,5 cm (environ 12 à 15 parts)",
     type: "Entremets Prestige",
     prepTime: "2H 30",

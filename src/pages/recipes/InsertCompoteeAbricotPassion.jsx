@@ -11,6 +11,7 @@ const InsertCompoteeAbricotPassion = () => {
   const recipeData = {
     category: "PÂTISSERIE • INSERTS",
     title: "Insert Compotée Abricot Passion",
+    isVip: true,
     prepTime: "25 MIN",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

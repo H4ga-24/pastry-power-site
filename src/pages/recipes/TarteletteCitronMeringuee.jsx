@@ -1,150 +1,230 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Clock, ChefHat, Minus, Plus, ArrowLeft, Lightbulb, Quote } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
+import { Helmet } from 'react-helmet-async';
+import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 const TarteletteCitronMeringuee = () => {
-  const baseServings = 6;
-  const [servings, setServings] = useState(baseServings);
-
   const recipeData = {
     category: "PÂTISSERIE • TARTES",
     title: "Tartelette Citron Meringuée",
     prepTime: "1H 15",
     cookTime: "25 MIN",
     difficulty: "MOYEN",
-    description: "L'incontournable. Un équilibre subtil entre l'acidité tranchante du crémeux citron et la douceur nuageuse de la meringue italienne.",
+    description: "L'incontournable équilibre entre l'acidité tranchante du crémeux citron et la douceur nuageuse de la meringue italienne.",
     image: "https://tout-gourmand.fr/media/cache/voir_recette/media/images/recettes/26444-tout-gourmand-tartelettes-au-citron-meringuee.webp",
+    baseServings: 6, // Tartelettes
+  };
+
+  const [servings, setServings] = useState(recipeData.baseServings);
+
+  const updateServings = (change) => {
+    const newServings = servings + change;
+    if (newServings >= 1) setServings(newServings);
+  };
+
+  // 🧮 FONCTION DE CALCUL STANDARDISÉE
+  const calculateQuantity = (amount, base) => {
+    if (!amount) return "";
+    const numAmount = parseFloat(amount);
+    if (isNaN(numAmount)) return amount;
+    const scaled = (numAmount * servings) / base;
+    return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
 
   const ingredients = [
-    { name: 'Pâte sucrée', amount: 300, unit: 'g' },
-    { name: 'Jus de citron jaune', amount: 150, unit: 'g' },
-    { name: 'Zestes de citron', amount: 2, unit: 'pc' },
-    { name: 'Sucre semoule', amount: 150, unit: 'g' },
-    { name: 'Oeufs entiers', amount: 3, unit: 'pc' },
-    { name: 'Beurre', amount: 180, unit: 'g' },
-    { name: 'Blancs d\'œufs (Meringue)', amount: 100, unit: 'g' },
-    { name: 'Sucre (Meringue)', amount: 200, unit: 'g' },
-    { name: 'Eau (Meringue)', amount: 70, unit: 'g' }
+    { name: "Pâte sucrée", amount: 300, unit: "g" },
+    { name: "Jus de citron jaune", amount: 150, unit: "g" },
+    { name: "Zestes de citron", amount: 2, unit: "pcs" },
+    { name: "Sucre semoule (Crémeux)", amount: 150, unit: "g" },
+    { name: "Oeufs entiers", amount: 3, unit: "pcs" },
+    { name: "Beurre doux", amount: 180, unit: "g" },
+    { name: "Blancs d'œufs (Meringue)", amount: 100, unit: "g" },
+    { name: "Sucre (Meringue)", amount: 200, unit: "g" },
+    { name: "Eau (Meringue)", amount: 70, unit: "g" }
   ];
 
   const steps = [
     {
       title: "Fonds de tarte",
-      text: "Foncer les cercles à tartelette. Cuire à blanc à 170°C jusqu'à coloration dorée."
+      text: "Foncer les cercles à tartelette avec la pâte sucrée. Cuire à blanc à 170°C pendant 15-20 min jusqu'à coloration dorée. Laisser refroidir."
     },
     {
-      title: "Crémeux Citron",
-      text: "Chauffer jus, zestes, sucre et œufs au bain-marie jusqu'à 83-84°C en fouettant (comme une anglaise). Refroidir à 45°C. Ajouter le beurre et mixer longuement. Laisser cristalliser au frais 2h."
+      title: "Crémeux Citron (Base)",
+      text: "Dans un cul-de-poule, mélanger le jus de citron, les zestes, le sucre et les œufs. Cuire au bain-marie en fouettant jusqu'à épaississement (83-84°C), comme une crème anglaise."
+    },
+    {
+      title: "Emulsion du Crémeux",
+      text: "Laisser refroidir la crème à 45°C. Ajouter le beurre coupé en dés et mixer longuement au mixeur plongeant pour lisser et émulsionner. Laisser cristalliser au frais 2h."
     },
     {
       title: "Meringue Italienne",
-      text: "Cuire le sucre et l'eau à 121°C. Verser sur les blancs montés mousseux. Fouetter jusqu'à complet refroidissement."
+      text: "Cuire le sucre et l'eau à 121°C. Verser en filet sur les blancs montés mousseux. Fouetter à vitesse moyenne jusqu'à complet refroidissement."
     },
     {
-      title: "Montage",
-      text: "Garnir les fonds de tartelette avec le crémeux citron lissé. Lisser à la spatule ou former un dôme."
-    },
-    {
-      title: "Finition",
-      text: "Pocher la meringue italienne sur la tartelette (douille Saint-Honoré ou unie). Brûler légèrement au chalumeau pour dorer les arêtes."
+      title: "Montage & Finition",
+      text: "Garnir les fonds de tartelette avec le crémeux citron lissé (dôme ou à ras). Pocher la meringue italienne (douille Saint-Honoré ou unie). Brûler légèrement au chalumeau."
     }
   ];
 
-  const calculateAmount = (baseAmount) => ((baseAmount * servings) / baseServings).toFixed(0);
+  // --- GOOGLE SEO (JSON-LD) ---
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": recipeData.title,
+    "image": [recipeData.image],
+    "description": recipeData.description,
+    "author": { "@type": "Person", "name": "Pastrypower" },
+    "prepTime": "PT75M",
+    "cookTime": "PT25M",
+    "recipeYield": `${servings} tartelettes`,
+    "recipeCategory": "Dessert",
+    "keywords": "tarte citron meringue, lemon pie, pâtisserie française",
+    "recipeIngredient": ingredients.map(ing => `${calculateQuantity(ing.amount, recipeData.baseServings)} ${ing.unit} ${ing.name}`),
+    "recipeInstructions": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.text
+    }))
+  };
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white font-sans pt-32 pb-20">
-      <Helmet><title>{recipeData.title} - Maison Dorée</title></Helmet>
-      <div className="container mx-auto px-4 max-w-6xl">
-        <Link to="/patisserie/gateaux/tartes">
-          <Button variant="ghost" className="text-[#D4AF37] hover:text-white mb-8 pl-0"><ArrowLeft className="w-4 h-4 mr-2" /> Retour</Button>
-        </Link>
-        <div className="relative h-[60vh] w-full overflow-hidden rounded-sm mb-12">
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
+    <>
+      <Helmet>
+        <title>{recipeData.title} - Pastrypower</title>
+        <meta name="description" content={recipeData.description} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
+      <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
+        {/* HEADER IMAGE */}
+        <div className="relative h-[60vh] w-full overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
           <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
-          <div className="absolute bottom-0 left-0 w-full z-20 p-8 md:p-16">
-            <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block">{recipeData.category}</span>
-            <h1 className="text-4xl md:text-6xl font-serif text-white mb-6">{recipeData.title}</h1>
-            <div className="flex gap-6 text-xs tracking-widest font-medium text-white/80">
-              <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#D4AF37]" /> {recipeData.prepTime}</div>
-              <div className="flex items-center gap-2"><ChefHat className="w-4 h-4 text-[#D4AF37]" /> {recipeData.difficulty}</div>
+          <div className="absolute bottom-0 left-0 w-full z-20 pb-12">
+            <div className="container mx-auto px-4 max-w-6xl">
+              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block animate-fade-in">{recipeData.category}</span>
+              <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-tight">{recipeData.title}</h1>
+              <div className="flex flex-wrap gap-8 text-sm tracking-widest font-medium text-white/90">
+                <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.prepTime} PREP</span></div>
+                <div className="flex items-center gap-3"><ChefHat className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
+                <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.difficulty}</span></div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="grid lg:grid-cols-[350px_1fr] gap-16">
-          <div className="bg-[#1a1a1a] p-6 border border-white/5 rounded-sm h-fit">
-             <div className="flex justify-between items-center mb-6">
-                <h3 className="font-serif text-xl text-white">Ingrédients</h3>
-                <div className="flex items-center gap-3 bg-[#121212] px-3 py-1 rounded-full">
-                  <button onClick={() => setServings(s => Math.max(1, s - 1))} className="text-[#D4AF37]"><Minus className="w-3 h-3" /></button>
-                  <span className="text-sm font-sans w-4 text-center">{servings}</span>
-                  <button onClick={() => setServings(s => s + 1)} className="text-[#D4AF37]"><Plus className="w-3 h-3" /></button>
-                </div>
-             </div>
-             <ul className="space-y-3 text-sm text-gray-400">
-               {ingredients.map((ing, i) => (
-                 <li key={i} className="flex justify-between border-b border-white/5 pb-2 last:border-0">
-                   <span>{ing.name}</span>
-                   <span className="text-white font-medium">{calculateAmount(ing.amount)} {ing.unit}</span>
-                 </li>
-               ))}
-             </ul>
-          </div>
-          <div className="space-y-8">
-            <h2 className="text-2xl font-serif text-white mb-6">Préparation</h2>
-            {steps.map((step, index) => (
-                <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-[#D4AF37] text-[#D4AF37] font-serif">{index + 1}</span>
-                  <div>
-                    <h3 className="text-lg text-white font-serif mb-2">{step.title}</h3>
-                    <p className="text-gray-400 leading-relaxed">{step.text}</p>
-                  </div>
-                </motion.div>
-            ))}
 
-            <Tabs defaultValue="conseils" className="w-full mt-12">
-                <TabsList className="grid w-full grid-cols-2 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
-                  <TabsTrigger value="conseils" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Conseils et astuces</TabsTrigger>
-                  <TabsTrigger value="chef" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Mot du chef</TabsTrigger>
+        {/* CONTENU PRINCIPAL */}
+        <div className="container mx-auto px-4 max-w-6xl pb-24 mt-16">
+          <div className="grid md:grid-cols-12 gap-12">
+            
+            {/* COLONNE GAUCHE */}
+            <div className="md:col-span-4 space-y-8">
+              <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5 sticky top-24">
+                {/* Calculateur Portions */}
+                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+                  <div className="flex items-center gap-2 text-[#D4AF37]">
+                    <Users className="w-5 h-5" />
+                    <span className="font-serif text-lg">Tartelettes</span>
+                  </div>
+                  <div className="flex items-center gap-4 bg-[#252525] rounded-full px-2 py-1">
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(-1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    <span className="font-bold text-lg min-w-[2ch] text-center">{servings}</span>
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Liste Ingrédients */}
+                <h3 className="text-xl font-serif text-white mb-6">Ingrédients</h3>
+                <ul className="space-y-4">
+                  {ingredients.map((ing, i) => (
+                    <li key={i} className="flex justify-between items-center text-sm pb-2 border-b border-white/5 last:border-0">
+                      <span className="text-gray-300 font-light">{ing.name}</span>
+                      <span className="text-[#D4AF37] font-medium">
+                        {calculateQuantity(ing.amount, recipeData.baseServings)} {ing.unit}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* COLONNE DROITE */}
+            <div className="md:col-span-8">
+              <div className="space-y-12 mb-16">
+                {steps.map((step, i) => (
+                  <div key={i} className="flex gap-6 group">
+                      <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
+                      <div>
+                        <h3 className="text-white text-xl mb-3 font-serif">{step.title}</h3>
+                        <p className="text-gray-400 font-light text-lg leading-relaxed">{step.text}</p>
+                      </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Onglets Conseils / Chef / Ustensiles */}
+              <Tabs defaultValue="conseils" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
+                  <TabsTrigger value="conseils" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Conseils</TabsTrigger>
+                  <TabsTrigger value="chef" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Le Mot du Chef</TabsTrigger>
+                  <TabsTrigger value="ustensiles" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Ustensiles</TabsTrigger>
                 </TabsList>
                 
-                <div className="bg-[#1a1a1a] border-x border-b border-white/5 p-8 mt-0">
+                <div className="bg-[#1a1a1a] border-x border-b border-white/5 p-8 mt-0 min-h-[200px]">
                   <TabsContent value="conseils" className="mt-0 focus-visible:outline-none">
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 animate-fade-in">
                       <Lightbulb className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
                       <div className="space-y-4">
-                        <h4 className="text-lg font-serif text-white">Les secrets de la réussite</h4>
-                        <ul className="space-y-3 text-gray-400 leading-relaxed text-sm">
-                           <li>Pour un crémeux parfait, ne dépassez pas 85°C lors de la cuisson, sinon les œufs coagulent et donnent un goût d'omelette.</li>
-                           <li>L'incorporation du beurre à 45°C est cruciale : trop chaud le beurre fond et graisse la crème, trop froid il ne s'émulsionne pas.</li>
-                           <li>Zestez les citrons directement dans le sucre et frottez-les entre vos doigts pour extraire toutes les huiles essentielles avant de commencer.</li>
+                        <h4 className="text-lg font-serif text-white">Technique Crémeux</h4>
+                        <ul className="space-y-3 text-gray-400 leading-relaxed">
+                           <li>Ne dépassez jamais 85°C lors de la cuisson du crémeux, sinon les œufs coagulent (goût d'omelette).</li>
+                           <li>L'ajout du beurre à 45°C est crucial : trop chaud il fond (gras), trop froid il ne s'émulsionne pas. C'est ce qui donne la texture fondante.</li>
                         </ul>
                       </div>
                     </div>
                   </TabsContent>
                   
                   <TabsContent value="chef" className="mt-0 focus-visible:outline-none">
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 animate-fade-in">
                       <Quote className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
                       <div className="space-y-4">
-                        <h4 className="text-lg font-serif text-white">L'œil de l'expert</h4>
-                        <p className="text-gray-400 leading-relaxed italic text-sm">
-                          "La tarte au citron est un exercice d'équilibre. N'ayez pas peur de l'acidité, c'est elle qui donne du relief. La meringue est là pour l'adoucir, pas pour l'étouffer. Dosez-la avec parcimonie."
+                        <h4 className="text-lg font-serif text-white">L'avis du Chef</h4>
+                        <p className="text-gray-400 leading-relaxed italic">
+                          "Frottez les zestes de citron dans le sucre avec vos doigts avant de commencer : cela libère les huiles essentielles et décuple le parfum du citron sans ajouter d'acidité."
                         </p>
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="ustensiles" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Utensils className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Matériel recommandé</h4>
+                        <ul className="grid grid-cols-2 gap-2 text-gray-400">
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Cercles tatelettes</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Thermomètre</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Mixeur plongeant</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Chalumeau</li>
+                        </ul>
                       </div>
                     </div>
                   </TabsContent>
                 </div>
               </Tabs>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default TarteletteCitronMeringuee;

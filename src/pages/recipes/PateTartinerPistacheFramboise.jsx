@@ -9,6 +9,7 @@ const PateTartinerPistacheFramboise = () => {
   const recipeData = {
     title: "Pâte à Tartiner Pistache Framboise",
     category: "CONFISERIE",
+    isVip: true,
     prepTime: "25 MIN",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

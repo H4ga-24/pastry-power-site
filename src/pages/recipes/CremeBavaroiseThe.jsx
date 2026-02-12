@@ -14,7 +14,7 @@ const CremeBavaroiseThe = () => {
   const recipeData = {
     category: "PÂTISSERIE • CRÈMES",
     title: "Crème bavaroise au thé",
-    vip: true,
+    isVip: true,
     prepTime: "25 MIN + Repos",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

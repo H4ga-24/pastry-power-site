@@ -13,6 +13,7 @@ const TarteCacaoNoisetteRizSouffle = () => {
   const recipeData = {
     category: "PÂTISSERIE • TARTES",
     title: "Tarte Cacao Noisette Riz Soufflé",
+    isVip: true,
     prepTime: "1H 30",
     cookTime: "30 MIN",
     difficulty: "MOYEN",

@@ -1,240 +1,229 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Clock, ChefHat, Minus, Plus, Printer, Star, Sparkles } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Helmet } from 'react-helmet-async';
+import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 const PateDeRiz = () => {
-  const baseServings = 6;
-  const [servings, setServings] = useState(baseServings);
-
   const recipeData = {
-    category: "PÂTISSERIE • BISCUITS",
-    title: "Biscuits Sacher",
+    category: "ALTERNATIVE • SANS GLUTEN", // 👈 Classé correctement
+    title: "Biscuit Sacher (Sans Gluten)",
     prepTime: "15 MIN",
     cookTime: "20 MIN",
     difficulty: "FACILE",
-    description: "Ce biscuit est réalisé à partir d'une pâte d'amande 50%. Il est moelleux et très agréable en goût. Une alternative sans gluten parfaite pour vos entremets.",
+    description: "Un biscuit moelleux au chocolat réalisé à base de pâte d'amande et de farine de riz. Une alternative sans gluten parfaite, idéale comme base d'entremets.",
     image: "https://res.cloudinary.com/valrhona/image/upload/c_limit,f_auto,fl_progressive,h_600,q_auto,w_800/dam/21e43eb93a5a5884",
+    baseServings: 1, // 1 Feuille/Plaque
+  };
+
+  const [servings, setServings] = useState(recipeData.baseServings);
+
+  const updateServings = (change) => {
+    const newServings = servings + change;
+    if (newServings >= 1) setServings(newServings);
+  };
+
+  // 🧮 FONCTION DE CALCUL STANDARDISÉE
+  const calculateQuantity = (amount, base) => {
+    if (!amount) return "";
+    const numAmount = parseFloat(amount);
+    if (isNaN(numAmount)) return amount;
+    const scaled = (numAmount * servings) / base;
+    return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
 
   const ingredients = [
-    { name: 'Pâte d\'amande 50%', amount: 160, unit: 'g' },
-    { name: 'Sucre glace', amount: 60, unit: 'g' },
-    { name: 'Jaunes d\'oeufs', amount: 100, unit: 'g' },
-    { name: 'Oeufs', amount: 50, unit: 'g' },
-    { name: 'Blancs d\'oeuf', amount: 150, unit: 'g' },
-    { name: 'Sucre semoule', amount: 60, unit: 'g' },
-    { name: 'Cacao poudre', amount: 48, unit: 'g' },
-    { name: 'Farine type 55', amount: 48, unit: 'g' },
-    { name: 'Beurre', amount: 48, unit: 'g' },
-    { name: 'Feuille(s) obtenue(s)', amount: 724, unit: 'g' }
+    { name: "Pâte d'amande 50%", amount: 160, unit: "g" },
+    { name: "Sucre glace", amount: 60, unit: "g" },
+    { name: "Jaunes d'oeufs", amount: 100, unit: "g" },
+    { name: "Oeufs entiers", amount: 50, unit: "g" },
+    { name: "Blancs d'oeuf", amount: 150, unit: "g" },
+    { name: "Sucre semoule", amount: 60, unit: "g" },
+    { name: "Cacao poudre", amount: 48, unit: "g" },
+    { name: "Farine de Riz", amount: 48, unit: "g" }, // 👈 CORRECTION (au lieu de T55)
+    { name: "Beurre fondu", amount: 48, unit: "g" }
   ];
 
   const steps = [
     {
-      title: "DÉTENDRE LA PÂTE D'AMANDE.",
-      text: "Détendre la pâte d'amandes au batteur mélangeur à l'aide de la feuille en incorporant un petit peu du mélange jaunes oeufs."
+      title: "Détendre la pâte",
+      text: "Dans la cuve du batteur avec la feuille, détendre la pâte d'amande en incorporant petit à petit le mélange jaunes d'œufs et œufs entiers."
     },
     {
-      title: "EMULSIONNER.",
-      text: "Cornet le tout et continuer à émulsionner au fouet en incorporant le restant du sucre, jaune et œufs. Réserver la masse."
+      title: "Émulsionner",
+      text: "Remplacer la feuille par le fouet. Ajouter le sucre glace et fouetter vivement pour émulsionner et monter l'appareil (ruban)."
     },
     {
-      title: "MERINGUE.",
-      text: "Monter très ferme les blancs et SERRER avec le sucre."
+      title: "Meringue",
+      text: "Monter les blancs d'œufs très fermes et les serrer avec le sucre semoule."
     },
     {
-      title: "MÉLANGE 1.",
-      text: "Ajouter sans tarder une partie de la meringue dans la masse amandes."
+      title: "Mélange 1",
+      text: "Incorporer délicatement une petite partie de la meringue dans la masse amande/œufs pour détendre l'appareil."
     },
     {
-      title: "MÉLANGE 2.",
-      text: "Ajouter en pluie les poudres tamisées et le restant de la meringue et le BEURRE FONDU froid."
+      title: "Mélange 2",
+      text: "Ajouter en pluie le cacao et la farine de riz tamisés ensemble, le reste de la meringue, et enfin le beurre fondu froid. Mélanger délicatement à la maryse."
     },
     {
-      title: "MOULAGE.",
-      text: "Pour le moulage en cercle, il faudra beurrer celui-ci. Garnir le cercle au trois quarts, recouvrir d'une feuille et d'une plaque et cuire le tout recouvert d'une plaque noire."
-    },
-    {
-      title: "CUISSON.",
-      text: "Cuisson dans un four à 180°C sans buée pendant 20 à 25 minutes pour les feuilles et 30 à 45 minutes pour les moules à génoise."
-    },
-    {
-      title: "FINITION.",
-      text: "Décercler en passant la lame d'un couteau, et laisser refroidir sur grille."
+      title: "Cuisson",
+      text: "Étaler sur une plaque recouverte d'un papier cuisson (ou Silpat). Cuire à 180°C pendant 20 à 25 minutes. Laisser refroidir sur grille."
     }
   ];
 
-  const calculateAmount = (baseAmount) => {
-    return ((baseAmount * servings) / baseServings).toFixed(baseAmount % 1 === 0 ? 0 : 1);
+  // --- GOOGLE SEO (JSON-LD) ---
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": recipeData.title,
+    "image": [recipeData.image],
+    "description": recipeData.description,
+    "author": { "@type": "Person", "name": "Pastrypower" },
+    "prepTime": "PT15M",
+    "cookTime": "PT20M",
+    "recipeYield": `${servings} plaque(s)`,
+    "recipeCategory": "Gluten-free",
+    "keywords": "biscuit sacher, sans gluten, farine de riz, pâte d'amande, biscuit chocolat",
+    "recipeIngredient": ingredients.map(ing => `${calculateQuantity(ing.amount, recipeData.baseServings)} ${ing.unit} ${ing.name}`),
+    "recipeInstructions": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.text
+    }))
   };
-
-  const increment = () => setServings(prev => prev + 1);
-  const decrement = () => setServings(prev => (prev > 1 ? prev - 1 : 1));
 
   return (
     <>
       <Helmet>
-        <title>{recipeData.title} - Maison Dorée</title>
+        <title>{recipeData.title} - Pastrypower</title>
         <meta name="description" content={recipeData.description} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
-        
-        {/* Header Image & Title */}
+        {/* HEADER IMAGE */}
         <div className="relative h-[60vh] w-full overflow-hidden">
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent z-10"></div>
-          <img 
-            src={recipeData.image} 
-            alt={recipeData.title} 
-            className="w-full h-full object-cover"
-          />
-          
-          <div className="absolute bottom-0 left-0 w-full z-20 pb-16">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
+          <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
+          <div className="absolute bottom-0 left-0 w-full z-20 pb-12">
             <div className="container mx-auto px-4 max-w-6xl">
-              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block">
-                {recipeData.category}
-              </span>
-              <h1 className="text-4xl md:text-6xl font-serif text-white mb-8 max-w-4xl leading-tight">
-                {recipeData.title}
-              </h1>
-              
-              <div className="flex flex-wrap items-center gap-8 text-xs tracking-widest font-medium text-white/80">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#D4AF37]" />
-                  <span>{recipeData.prepTime} PRÉPARATION</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ChefHat className="w-4 h-4 text-[#D4AF37]" />
-                  <span>{recipeData.cookTime} CUISSON</span>
-                </div>
-                <div className="border border-[#D4AF37] text-[#D4AF37] px-3 py-1 rounded-full text-[10px]">
-                  {recipeData.difficulty}
-                </div>
+              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block animate-fade-in">{recipeData.category}</span>
+              <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-tight">{recipeData.title}</h1>
+              <div className="flex flex-wrap gap-8 text-sm tracking-widest font-medium text-white/90">
+                <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.prepTime} PREP</span></div>
+                <div className="flex items-center gap-3"><ChefHat className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
+                <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.difficulty}</span></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 max-w-6xl pb-24">
-          
-          <div className="flex gap-4 mb-16 max-w-4xl ml-auto">
-            <span className="text-[#D4AF37] text-6xl font-serif leading-none">“</span>
-            <p className="text-gray-300 font-light text-lg italic leading-relaxed pt-4">
-              Recette pour une feuille de 22cm de diamètre.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-[350px_1fr] gap-16">
+        {/* CONTENU PRINCIPAL */}
+        <div className="container mx-auto px-4 max-w-6xl pb-24 mt-16">
+          <div className="grid md:grid-cols-12 gap-12">
             
-            {/* LEFT COLUMN: Ingredients */}
-            <div>
-               <div className="sticky top-24">
-                 <div className="bg-[#1a1a1a] border-t-2 border-[#D4AF37] p-6 mb-8">
-                   <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/10">
-                     <h3 className="font-serif text-2xl text-white">Ingrédients</h3>
-                     <Printer className="w-4 h-4 text-gray-500 hover:text-white cursor-pointer transition-colors" />
-                   </div>
+            {/* COLONNE GAUCHE */}
+            <div className="md:col-span-4 space-y-8">
+              <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5 sticky top-24">
+                {/* Calculateur Portions */}
+                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+                  <div className="flex items-center gap-2 text-[#D4AF37]">
+                    <Users className="w-5 h-5" />
+                    <span className="font-serif text-lg">Plaques</span>
+                  </div>
+                  <div className="flex items-center gap-4 bg-[#252525] rounded-full px-2 py-1">
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(-1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    <span className="font-bold text-lg min-w-[2ch] text-center">{servings}</span>
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(1)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
 
-                   <div className="flex items-center justify-between bg-[#121212] p-3 rounded mb-6">
-                     <span className="text-sm text-gray-400">Portions</span>
-                     <div className="flex items-center gap-4">
-                       <button onClick={decrement} className="text-[#D4AF37] hover:text-white transition-colors">
-                         <Minus className="w-4 h-4" />
-                       </button>
-                       <span className="text-white font-serif text-lg w-4 text-center">{servings}</span>
-                       <button onClick={increment} className="text-[#D4AF37] hover:text-white transition-colors">
-                         <Plus className="w-4 h-4" />
-                       </button>
-                     </div>
-                   </div>
-
-                   <ul className="space-y-4">
-                     {ingredients.map((ing, i) => (
-                       <li key={i} className="flex justify-between text-sm">
-                         <span className="text-gray-300">{ing.name}</span>
-                         <span className="text-[#D4AF37] font-medium">
-                           {calculateAmount(ing.amount)} {ing.unit}
-                         </span>
-                       </li>
-                     ))}
-                   </ul>
-                 </div>
-               </div>
+                {/* Liste Ingrédients */}
+                <h3 className="text-xl font-serif text-white mb-6">Ingrédients</h3>
+                <ul className="space-y-4">
+                  {ingredients.map((ing, i) => (
+                    <li key={i} className="flex justify-between items-center text-sm pb-2 border-b border-white/5 last:border-0">
+                      <span className="text-gray-300 font-light">{ing.name}</span>
+                      <span className="text-[#D4AF37] font-medium">
+                        {calculateQuantity(ing.amount, recipeData.baseServings)} {ing.unit}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            {/* RIGHT COLUMN: Steps & Tabs */}
-            <div>
-              <h2 className="text-3xl font-serif text-white mb-10 border-b border-white/10 pb-4">
-                Étapes de réalisation
-              </h2>
-
-              <div className="space-y-10 mb-16">
-                {steps.map((step, index) => (
-                  <motion.div 
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                    className="flex gap-6 group"
-                  >
-                    <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-serif text-sm group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-300">
-                        {index + 1}
+            {/* COLONNE DROITE */}
+            <div className="md:col-span-8">
+              <div className="space-y-12 mb-16">
+                {steps.map((step, i) => (
+                  <div key={i} className="flex gap-6 group">
+                      <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
+                      <div>
+                        <h3 className="text-white text-xl mb-3 font-serif">{step.title}</h3>
+                        <p className="text-gray-400 font-light text-lg leading-relaxed">{step.text}</p>
                       </div>
-                    </div>
-                    <div>
-                      <h3 className="text-[#D4AF37] font-serif text-lg mb-2 uppercase tracking-wide">
-                        {step.title}
-                      </h3>
-                      <p className="text-gray-400 font-light leading-relaxed">
-                        {step.text}
-                      </p>
-                    </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
-              <div className="bg-[#1a1a1a] border border-white/5">
-                <Tabs defaultValue="conseils" className="w-full">
-                  <TabsList className="w-full flex bg-transparent border-b border-white/10 p-0 h-auto rounded-none">
-                    <TabsTrigger 
-                      value="conseils"
-                      className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37] data-[state=active]:bg-[#D4AF37]/5 data-[state=active]:text-[#D4AF37] text-gray-500 py-4 text-xs uppercase tracking-widest"
-                    >
-                      <Sparkles className="w-3 h-3 mr-2" />
-                      Conseils
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="astuces"
-                      className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37] data-[state=active]:bg-[#D4AF37]/5 data-[state=active]:text-[#D4AF37] text-gray-500 py-4 text-xs uppercase tracking-widest"
-                    >
-                      <Star className="w-3 h-3 mr-2" />
-                      Astuces
-                    </TabsTrigger>
-                  </TabsList>
+              {/* Onglets Conseils / Chef / Ustensiles */}
+              <Tabs defaultValue="conseils" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
+                  <TabsTrigger value="conseils" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Conseils</TabsTrigger>
+                  <TabsTrigger value="chef" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Le Mot du Chef</TabsTrigger>
+                  <TabsTrigger value="ustensiles" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Ustensiles</TabsTrigger>
+                </TabsList>
+                
+                <div className="bg-[#1a1a1a] border-x border-b border-white/5 p-8 mt-0 min-h-[200px]">
+                  <TabsContent value="conseils" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Lightbulb className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Pourquoi la farine de riz ?</h4>
+                        <ul className="space-y-3 text-gray-400 leading-relaxed">
+                           <li>Pour respecter l'intitulé "Sans Gluten", la farine T55 (blé) a été remplacée par de la farine de riz. Elle apporte de la légèreté.</li>
+                           <li>Si vous n'êtes pas intolérant, vous pouvez utiliser de la T55 classique poids pour poids.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="chef" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Quote className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">L'avis du Chef</h4>
+                        <p className="text-gray-400 leading-relaxed italic">
+                          "Ce biscuit est une merveille de moelleux grâce à la pâte d'amande. Il est beaucoup plus riche et fondant qu'une génoise classique au cacao. Parfait pour des entremets type 'Opéra' ou 'Forêt Noire'."
+                        </p>
+                      </div>
+                    </div>
+                  </TabsContent>
 
-                  <div className="p-8">
-                    <TabsContent value="conseils" className="m-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                      <h4 className="text-[#D4AF37] font-serif text-xl mb-4">Sans Gluten</h4>
-                      <p className="text-gray-400 font-light leading-relaxed">
-                        Bien que cette recette utilise une base de "Pain de Gênes" (riche en amandes), elle est adaptée ici avec de la fécule ou de la farine de riz pour une version sans gluten, légère et savoureuse.
-                      </p>
-                    </TabsContent>
-                    
-                    <TabsContent value="astuces" className="m-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                      <h4 className="text-[#D4AF37] font-serif text-xl mb-4">Cuisson</h4>
-                      <p className="text-gray-400 font-light leading-relaxed">
-                        Le fait de cuire le biscuit recouvert d'une plaque noire permet d'éviter le dessèchement du dessus et d'obtenir une cuisson très uniforme à cœur.
-                      </p>
-                    </TabsContent>
-                  </div>
-                </Tabs>
-              </div>
-
+                  <TabsContent value="ustensiles" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Utensils className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Matériel recommandé</h4>
+                        <ul className="grid grid-cols-2 gap-2 text-gray-400">
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Robot batteur</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Spatule maryse</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Plaque de cuisson</li>
+                          <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>Feuille cuisson</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
             </div>
           </div>
         </div>
@@ -242,5 +231,4 @@ const PateDeRiz = () => {
     </>
   );
 };
-
 export default PateDeRiz;

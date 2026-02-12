@@ -14,7 +14,7 @@ const CremeNougat = () => {
   const recipeData = {
     category: "PÂTISSERIE • CRÈMES",
     title: "Crème au nougat",
-    vip: true,
+    isVip: true,
     prepTime: "20 MIN",
     cookTime: "15 MIN",
     difficulty: "MOYEN",

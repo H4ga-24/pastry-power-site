@@ -1,74 +1,80 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
-import { Clock, ChefHat, Minus, Plus, Sparkles } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 const AppareilCremePriseSalee = () => {
-  const baseServings = 400; // ml
-  const [servings, setServings] = useState(baseServings);
-
   const recipeData = {
-    // 👇 MODIFICATION ICI : Format "PÂTISSERIE • SOUS-CATÉGORIE"
-    category: "PÂTISSERIE • CRÈMES", 
-    title: "Appareil à crème prise salée",
+    category: "CUISINE • SAUCES", // 👈 Déplacé en Cuisine car c'est une base salée
+    title: "Appareil à Crème Prise Salée",
+    isVip: false,
     prepTime: "5 MIN",
-    cookTime: "30-40 MIN",
+    cookTime: "40 MIN",
     difficulty: "TRÈS FACILE",
-    description: "La base indispensable pour toutes vos quiches, tartes salées et flans de légumes.",
+    description: "La base indispensable et inratable pour toutes vos quiches, tartes salées et flans de légumes. Une texture soyeuse et un équilibre parfait.",
     image: "https://res.cloudinary.com/hv9ssmzrz/image/fetch/c_fill,f_auto,h_1500,q_auto,w_1500/https://s3-eu-west-1.amazonaws.com/images-ca-1-0-1-eu/recipe_photos/original/15/appareil-a-creme-prise-sale-0.jpg",
+    baseServings: 450, // ml total environ
+  };
+
+  const [servings, setServings] = useState(recipeData.baseServings);
+
+  const updateServings = (change) => {
+    const newServings = servings + change;
+    if (newServings >= 100) setServings(newServings);
+  };
+
+  // 🧮 FONCTION DE CALCUL STANDARDISÉE
+  const calculateQuantity = (amount, base) => {
+    if (!amount) return "";
+    const numAmount = parseFloat(amount);
+    if (isNaN(numAmount)) return amount;
+    const scaled = (numAmount * servings) / base;
+    return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
 
   const ingredients = [
-    { name: 'Oeufs entiers', amount: 150, unit: 'g' },
-    { name: 'Crème liquide', amount: 150, unit: 'g' },
-    { name: 'Lait entier', amount: 150, unit: 'g' },
-    { name: 'Sel fin', amount: 4, unit: 'g' },
-    { name: 'Poivre', amount: 1, unit: 'pincée' },
-    { name: 'Noix de muscade', amount: 1, unit: 'pincée' }
+    { name: "Oeufs entiers", amount: 150, unit: "g" },
+    { name: "Crème liquide 35%", amount: 150, unit: "g" },
+    { name: "Lait entier", amount: 150, unit: "g" },
+    { name: "Sel fin", amount: 4, unit: "g" },
+    { name: "Poivre du moulin", amount: 1, unit: "pincée" },
+    { name: "Noix de muscade", amount: 1, unit: "pincée" }
   ];
 
   const steps = [
     {
-      title: "OEUFS.",
-      text: "Dans un cul de poule, battre légèrement les oeufs à la fourchette pour les casser."
+      title: "Préparation des œufs",
+      text: "Dans un cul-de-poule, casser les œufs. Les battre légèrement à la fourchette ou au fouet pour les lier sans chercher à incorporer de l'air."
     },
     {
-      title: "MÉLANGE.",
-      text: "Ajouter la crème liquide et le lait. Mélanger au fouet sans incorporer trop d'air."
+      title: "Mélange des liquides",
+      text: "Ajouter la crème liquide et le lait entier. Mélanger doucement jusqu'à l'obtention d'un liquide homogène."
     },
     {
-      title: "ASSAISONNEMENT.",
-      text: "Ajouter le sel, le poivre et la muscade râpée."
+      title: "Assaisonnement",
+      text: "Ajouter le sel, le poivre et la noix de muscade fraîchement râpée. C'est le secret d'une quiche savoureuse."
     },
     {
-      title: "UTILISATION.",
-      text: "Verser sur le fond de tarte garni (lardons, légumes, fromage...). Cuire à 180°C pendant 35 à 45 minutes selon l'épaisseur."
+      title: "Utilisation & Cuisson",
+      text: "Verser l'appareil sur votre fond de tarte déjà garni. Cuire à 180°C pendant 35 à 45 minutes. L'appareil doit être figé et légèrement doré."
     }
   ];
 
-  const calculateAmount = (baseAmount) => {
-    return ((baseAmount * servings) / baseServings).toFixed(baseAmount % 1 === 0 ? 0 : 1);
-  };
-
-  const increment = () => setServings(prev => prev + 100);
-  const decrement = () => setServings(prev => (prev > 100 ? prev - 100 : 100));
-
-  // --- DONNÉES STRUCTURÉES POUR GOOGLE (SEO) ---
+  // --- GOOGLE SEO (JSON-LD) ---
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Recipe",
     "name": recipeData.title,
     "image": [recipeData.image],
     "description": recipeData.description,
-    "author": {
-      "@type": "Person",
-      "name": "Maison Dorée"
-    },
+    "author": { "@type": "Person", "name": "Pastrypower" },
     "prepTime": "PT5M",
     "cookTime": "PT40M",
-    "recipeCategory": "Plat principal",
-    "recipeIngredient": ingredients.map(ing => `${ing.amount} ${ing.unit} ${ing.name}`),
+    "recipeYield": `${servings} ml`,
+    "recipeCategory": "Base culinaire",
+    "keywords": "appareil à quiche, crème prise salée, base cuisine, flan salé",
+    "recipeIngredient": ingredients.map(ing => `${calculateQuantity(ing.amount, recipeData.baseServings)} ${ing.unit} ${ing.name}`),
     "recipeInstructions": steps.map((step, index) => ({
       "@type": "HowToStep",
       "position": index + 1,
@@ -80,7 +86,7 @@ const AppareilCremePriseSalee = () => {
   return (
     <>
       <Helmet>
-        <title>{recipeData.title} - Maison Dorée</title>
+        <title>{recipeData.title} - Pastrypower</title>
         <meta name="description" content={recipeData.description} />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
@@ -88,86 +94,109 @@ const AppareilCremePriseSalee = () => {
       </Helmet>
 
       <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
+        {/* HEADER IMAGE */}
         <div className="relative h-[60vh] w-full overflow-hidden">
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
           <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
-          <div className="absolute bottom-0 left-0 w-full z-20 pb-16">
+          <div className="absolute bottom-0 left-0 w-full z-20 pb-12">
             <div className="container mx-auto px-4 max-w-6xl">
-              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block">{recipeData.category}</span>
-              <h1 className="text-4xl md:text-6xl font-serif text-white mb-8 max-w-4xl leading-tight">{recipeData.title}</h1>
-              <div className="flex flex-wrap items-center gap-8 text-xs tracking-widest font-medium text-white/80">
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#D4AF37]" /><span>{recipeData.prepTime} PRÉPARATION</span></div>
-                <div className="flex items-center gap-2"><ChefHat className="w-4 h-4 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
-                <div className="border border-[#D4AF37] text-[#D4AF37] px-3 py-1 rounded-full text-[10px]">{recipeData.difficulty}</div>
+              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block animate-fade-in">{recipeData.category}</span>
+              <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-tight">{recipeData.title}</h1>
+              <div className="flex flex-wrap gap-8 text-sm tracking-widest font-medium text-white/90">
+                <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.prepTime} PREP</span></div>
+                <div className="flex items-center gap-3"><ChefHat className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
+                <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipeData.difficulty}</span></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 max-w-6xl pb-24">
-          <div className="flex gap-4 mb-16 max-w-4xl ml-auto">
-            <span className="text-[#D4AF37] text-6xl font-serif leading-none">“</span>
-            <p className="text-gray-300 font-light text-lg italic leading-relaxed pt-4">{recipeData.description}</p>
-          </div>
+        {/* CONTENU PRINCIPAL */}
+        <div className="container mx-auto px-4 max-w-6xl pb-24 mt-16">
+          <div className="grid md:grid-cols-12 gap-12">
+            
+            {/* COLONNE GAUCHE */}
+            <div className="md:col-span-4 space-y-8">
+              <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5 sticky top-24">
+                {/* Calculateur Portions */}
+                <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+                  <div className="flex items-center gap-2 text-[#D4AF37]">
+                    <Users className="w-5 h-5" />
+                    <span className="font-serif text-lg">Volume (ml)</span>
+                  </div>
+                  <div className="flex items-center gap-4 bg-[#252525] rounded-full px-2 py-1">
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(-50)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    <span className="font-bold text-lg min-w-[3ch] text-center">{servings}</span>
+                    <Button variant="ghost" size="icon" onClick={() => updateServings(50)} className="text-white hover:text-[#D4AF37] h-8 w-8 rounded-full">
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
 
-          <div className="grid lg:grid-cols-[350px_1fr] gap-16">
-            <div>
-               <div className="sticky top-24">
-                 <div className="bg-[#1a1a1a] border-t-2 border-[#D4AF37] p-6 mb-8">
-                   <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/10">
-                     <h3 className="font-serif text-2xl text-white">Ingrédients</h3>
-                   </div>
-                   
-                   <div className="flex items-center justify-between bg-[#121212] p-3 rounded mb-6">
-                     <span className="text-sm text-gray-400">Quantité (ml)</span>
-                     <div className="flex items-center gap-4">
-                       <button onClick={decrement} className="text-[#D4AF37] hover:text-white transition-colors"><Minus className="w-4 h-4" /></button>
-                       <span className="text-white font-serif text-lg w-12 text-center">{servings}</span>
-                       <button onClick={increment} className="text-[#D4AF37] hover:text-white transition-colors"><Plus className="w-4 h-4" /></button>
-                     </div>
-                   </div>
-                   <ul className="space-y-4">
-                     {ingredients.map((ing, i) => (
-                       <li key={i} className="flex justify-between text-sm">
-                         <span className="text-gray-300">{ing.name}</span>
-                         <span className="text-[#D4AF37] font-medium">{calculateAmount(ing.amount)} {ing.unit}</span>
-                       </li>
-                     ))}
-                   </ul>
-                 </div>
-               </div>
+                {/* Liste Ingrédients */}
+                <h3 className="text-xl font-serif text-white mb-6">Ingrédients</h3>
+                <ul className="space-y-4">
+                  {ingredients.map((ing, i) => (
+                    <li key={i} className="flex justify-between items-center text-sm pb-2 border-b border-white/5 last:border-0">
+                      <span className="text-gray-300 font-light">{ing.name}</span>
+                      <span className="text-[#D4AF37] font-medium">
+                        {calculateQuantity(ing.amount, recipeData.baseServings)} {ing.unit}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div>
-              <h2 className="text-3xl font-serif text-white mb-10 border-b border-white/10 pb-4">Étapes de réalisation</h2>
-              <div className="space-y-10 mb-16">
-                {steps.map((step, index) => (
-                  <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="flex gap-6 group">
-                    <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-serif text-sm group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-300">{index + 1}</div>
-                    </div>
-                    <div>
-                      <h3 className="text-[#D4AF37] font-serif text-lg mb-2 uppercase tracking-wide">{step.title}</h3>
-                      <p className="text-gray-400 font-light leading-relaxed">{step.text}</p>
-                    </div>
-                  </motion.div>
+            {/* COLONNE DROITE */}
+            <div className="md:col-span-8">
+              <div className="space-y-12 mb-16">
+                {steps.map((step, i) => (
+                  <div key={i} className="flex gap-6 group">
+                      <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
+                      <div>
+                        <h3 className="text-white text-xl mb-3 font-serif">{step.title}</h3>
+                        <p className="text-gray-400 font-light text-lg leading-relaxed">{step.text}</p>
+                      </div>
+                  </div>
                 ))}
               </div>
 
-              <div className="bg-[#1a1a1a] border border-white/5">
-                <Tabs defaultValue="conseils" className="w-full">
-                  <TabsList className="w-full flex bg-transparent border-b border-white/10 p-0 h-auto rounded-none">
-                      <TabsTrigger value="conseils" className="flex-1 rounded-none border-b-2 border-transparent data-[state=active]:border-[#D4AF37] data-[state=active]:bg-[#D4AF37]/5 data-[state=active]:text-[#D4AF37] text-gray-500 py-4 text-xs uppercase tracking-widest"><Sparkles className="w-3 h-3 mr-2" />Conseils</TabsTrigger>
-                  </TabsList>
-                  <div className="p-8">
-                      <TabsContent value="conseils" className="m-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                      <h4 className="text-[#D4AF37] font-serif text-xl mb-4">Richesse</h4>
-                      <p className="text-gray-400 font-light leading-relaxed">Pour une quiche plus légère, remplacez une partie de la crème par du lait, mais attention à la tenue ! Pour une version plus riche, n'utilisez que de la crème.</p>
-                    </TabsContent>
-                  </div>
-                </Tabs>
-              </div>
+              {/* Onglets Conseils / Chef */}
+              <Tabs defaultValue="conseils" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
+                  <TabsTrigger value="conseils" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Conseils</TabsTrigger>
+                  <TabsTrigger value="chef" className="data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black text-gray-400 py-3 rounded-none uppercase tracking-widest text-xs font-bold transition-all">Le Mot du Chef</TabsTrigger>
+                </TabsList>
+                
+                <div className="bg-[#1a1a1a] border-x border-b border-white/5 p-8 mt-0 min-h-[150px]">
+                  <TabsContent value="conseils" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Lightbulb className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Variantes de texture</h4>
+                        <p className="text-gray-400 leading-relaxed">
+                          Pour une quiche plus légère, remplacez une partie de la crème par du lait. Pour une version "Traiteur" très riche, n'utilisez que de la crème 35%.
+                        </p>
+                      </div>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="chef" className="mt-0 focus-visible:outline-none">
+                    <div className="flex items-start gap-4 animate-fade-in">
+                      <Quote className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1" />
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-serif text-white">Le secret de l'assaisonnement</h4>
+                        <p className="text-gray-400 leading-relaxed italic">
+                          "Ne lésinez pas sur la noix de muscade, c'est elle qui donne l'identité à cet appareil. Si vous utilisez des garnitures déjà salées (lardons, fromage), réduisez légèrement la dose de sel."
+                        </p>
+                      </div>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
             </div>
           </div>
         </div>

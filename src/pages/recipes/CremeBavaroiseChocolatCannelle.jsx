@@ -14,7 +14,7 @@ const CremeBavaroiseChocolatCannelle = () => {
   const recipeData = {
     category: "PÂTISSERIE • CRÈMES",
     title: "Crème bavaroise chocolat cannelle",
-    vip: true,
+    isVip: true,
     prepTime: "25 MIN + Repos",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

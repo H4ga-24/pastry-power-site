@@ -19,6 +19,7 @@ const MacaronCarotte = () => {
   const recipeData = {
     title: "Macaron Carotte",
     subtitle: "Coques orange + Crème de carottes",
+    isVip: true,
     description: "Une création originale mariant la douceur naturelle de la carotte à l'onctuosité du chocolat blanc. Une couleur vibrante pour un goût surprenant.",
     prepTime: "2H 00",
     cookTime: "14 MIN",

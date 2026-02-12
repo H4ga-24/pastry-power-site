@@ -11,6 +11,7 @@ const MousseRhubarbe = () => {
   const recipeData = {
     category: "PÂTISSERIE • MOUSSES",
     title: "Mousse Rhubarbe",
+    isVip: true,
     prepTime: "30 MIN",
     cookTime: "15 MIN",
     difficulty: "MOYEN",

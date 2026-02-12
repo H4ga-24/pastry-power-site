@@ -11,6 +11,7 @@ const MousseMenthe = () => {
   const recipeData = {
     category: "PÂTISSERIE • MOUSSES",
     title: "Mousse Menthe",
+    isVip: true,
     prepTime: "25 MIN",
     cookTime: "10 MIN",
     difficulty: "MOYEN",

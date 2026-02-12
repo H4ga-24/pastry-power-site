@@ -11,6 +11,7 @@ const InsertAppareilNoix = () => {
   const recipeData = {
     category: "PÂTISSERIE • INSERTS",
     title: "Insert Appareil Noix",
+    isVip: true,
     prepTime: "20 MIN",
     cookTime: "15 MIN",
     difficulty: "MOYEN",
