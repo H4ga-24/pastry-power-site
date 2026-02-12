@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ChefHat, ArrowRight, Lock } from 'lucide-react';
+import { ChefHat, ArrowRight, Lock, Crown } from 'lucide-react';
 
 // --- 1. CONFIGURATION DES HUBS ---
 const HUBS = {
@@ -103,7 +103,7 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   const lowerContent = rawContent.toLowerCase();
 
   let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
-  const vipMatch = rawContent.match(/vip:\s*(true|false)/); 
+  const vipMatch = rawContent.match(/isVip:\s*(true|false)/); // CORRECTION: isVip au lieu de vip
   if (vipMatch && vipMatch[1] === 'true') isVip = true;
 
   const secureTitleMatch = rawContent.match(/(?:recipeData|recipeMeta)\s*=\s*\{[\s\S]*?title:\s*(?:"([^"]*)"|'([^']*)')/);
@@ -236,11 +236,7 @@ const PatisseriePage = ({ category: propCategory }) => {
   else if (urlCategory === 'choux') searchTerm = 'choux';
   else if (urlCategory === 'regional') searchTerm = 'regional';
   else if (urlCategory === 'sans-gluten') searchTerm = 'gluten'; 
-  
-  // 🟢 CORRECTION FILTRE : Pour 'sans-sucre', on ne définit PAS de searchTerm
-  // On gérera ça directement dans le filtre en dessous pour être STRICT.
   else if (urlCategory === 'sans-sucre') searchTerm = ''; 
-
   else if (urlCategory === 'vegan') searchTerm = 'vegan'; 
   else if (urlCategory === 'sans-lactose') searchTerm = 'lactose'; 
   else searchTerm = SEARCH_MAPPING[urlCategory] || urlCategory;
@@ -258,8 +254,6 @@ const PatisseriePage = ({ category: propCategory }) => {
     if (urlCategory === 'choux') return itemCat === 'choux';
     if (urlCategory === 'regional') return itemCat === 'regional';
     if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
-    
-    // 🟢 LA CORRECTION EST ICI : STRICTE ÉGALITÉ
     if (urlCategory === 'sans-sucre') return itemCat === 'sans-sucre';
 
     if (urlCategory === 'vegan') return itemCat.includes('vegan');
@@ -282,11 +276,17 @@ const PatisseriePage = ({ category: propCategory }) => {
         {filteredItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map(item => (
-              <Link key={item.id} to={`/recipe/${item.id}`} className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative">
+              // 🟢 LA CORRECTION MAJEURE EST ICI :
+              <Link 
+                key={item.id} 
+                to={item.isVip ? `/vip/${item.id}` : `/recipe/${item.id}`} // 👈 SI VIP ALORS /vip/ SINON /recipe/
+                className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
+              >
                 
+                {/* Badge VIP */}
                 {item.isVip && (
-                  <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-lg">
-                    <Lock size={12} /> VIP
+                  <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-lg shadow-black/40">
+                    <Crown size={12} fill="black" /> VIP
                   </div>
                 )}
 
