@@ -7,6 +7,10 @@ import DynamicPage from './components/DynamicPage';
 import FloatingBackButton from './components/FloatingBackButton';
 import Footer from './components/Footer';
 
+// --- NOUVEAUX IMPORTS SECURITE ---
+import ProtectedRoute from './ProtectedRoute'; // Le fichier que tu viens de créer
+import Login from './Login'; // Le fichier de connexion
+
 // 2. Imports des pages
 import PatisseriePage from './pages/PatisseriePage'; 
 import LandingPage from './pages/LandingPage';
@@ -28,12 +32,22 @@ const App = () => {
           {/* --- ACCUEIL --- */}
           <Route path="/" element={<LandingPage />} />
 
-          {/* --- FICHE RECETTE STANDARD --- */}
+          {/* --- PAGE DE CONNEXION --- */}
+          <Route path="/login" element={<Login />} />
+
+          {/* --- FICHE RECETTE STANDARD (Gratuit) --- */}
           <Route path="/recipe/:id" element={<DynamicPage />} />
 
-          {/* --- FICHE RECETTE VIP (Pour MemberSpace) --- */}
-          {/* C'est ici que MemberSpace viendra bloquer l'accès si pas abonné */}
-          <Route path="/vip/:id" element={<DynamicPage />} />
+          {/* --- FICHE RECETTE VIP (PROTEGÉ) --- */}
+          {/* Si pas connecté ou pas payé -> Redirige ou affiche le blocage Stripe */}
+          <Route 
+            path="/vip/:id" 
+            element={
+              <ProtectedRoute>
+                <DynamicPage />
+              </ProtectedRoute>
+            } 
+          />
 
           {/* --- PAGES STATIQUES --- */}
           <Route path="/mentions-legales" element={<LegalPage />} />
