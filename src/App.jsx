@@ -8,8 +8,8 @@ import FloatingBackButton from './components/FloatingBackButton';
 import Footer from './components/Footer';
 
 // --- NOUVEAUX IMPORTS SECURITE ---
-import ProtectedRoute from './ProtectedRoute'; // Le fichier que tu viens de créer
-import Login from './Login'; // Le fichier de connexion
+import ProtectedRoute from './ProtectedRoute'; 
+import Login from './Login'; 
 
 // 2. Imports des pages
 import PatisseriePage from './pages/PatisseriePage'; 
@@ -17,6 +17,7 @@ import LandingPage from './pages/LandingPage';
 import NotFoundPage from './pages/NotFoundPage';
 import LegalPage from './pages/LegalPage';
 import AboutPage from './pages/AboutPage';
+import VipPage from './pages/VipPage'; // <--- 1. L'IMPORT EST AJOUTÉ ICI
 
 const App = () => {
   return (
@@ -35,11 +36,14 @@ const App = () => {
           {/* --- PAGE DE CONNEXION --- */}
           <Route path="/login" element={<Login />} />
 
+          {/* --- PAGE D'ABONNEMENT VIP --- */}
+          {/* C'est la route qui manquait pour que le lien fonctionne ! */}
+          <Route path="/vip" element={<VipPage />} />
+
           {/* --- FICHE RECETTE STANDARD (Gratuit) --- */}
           <Route path="/recipe/:id" element={<DynamicPage />} />
 
           {/* --- FICHE RECETTE VIP (PROTEGÉ) --- */}
-          {/* Si pas connecté ou pas payé -> Redirige ou affiche le blocage Stripe */}
           <Route 
             path="/vip/:id" 
             element={
