@@ -3,25 +3,28 @@ import { GLOSSARY } from '../data/glossary';
 
 const GlossaryScanner = () => {
   useEffect(() => {
-    // On attend un court instant que React ait fini de dessiner la page
     const timer = setTimeout(() => {
-      const content = document.querySelector('main'); // Il scanne tout le contenu principal
+      const content = document.querySelector('main');
       if (!content) return;
 
-      const terms = Object.keys(GLOSSARY);
+      // 1. On trie les mots du plus long au plus court 
+      // (Pour éviter que "pâte" soit pris à la place de "pâte à choux")
+      const terms = Object.keys(GLOSSARY).sort((a, b) => b.length - a.length);
       
-      // Fonction pour scanner les noeuds de texte sans casser le HTML
       const walk = document.createNodeIterator(content, NodeFilter.SHOW_TEXT, null, false);
       let node;
       const nodesToReplace = [];
 
       while (node = walk.nextNode()) {
         const parent = node.parentNode;
-        // On ne touche pas aux textes dans les boutons, liens ou scripts
-        if (['SCRIPT', 'STYLE', 'BUTTON', 'A', 'HEADER'].includes(parent.tagName)) continue;
-        
+        if (['SCRIPT', 'STYLE', 'BUTTON', 'A', 'HEADER', 'H1'].includes(parent.tagName)) continue;
+        if (parent.closest('.jargon-term')) continue; // Évite de scanner ce qu'on a déjà traité
+
         const text = node.nodeValue;
-        const regex = new RegExp(`\\b(${terms.join('|')})\\b`, 'gi');
+        
+        // Nouvelle Regex qui vérifie qu'il n'y a pas de lettre AVANT ou APRÈS le mot
+        // On utilise [a-zA-ZÀ-ÿ] pour inclure tous les caractères accentués français
+        const regex = new RegExp(`(?<![a-zA-ZÀ-ÿ])(${terms.join('|')})(?![a-zA-ZÀ-ÿ])`, 'gi');
 
         if (regex.test(text)) {
           nodesToReplace.push(node);
@@ -30,7 +33,7 @@ const GlossaryScanner = () => {
 
       nodesToReplace.forEach(node => {
         const text = node.nodeValue;
-        const termsRegex = new RegExp(`\\b(${terms.join('|')})\\b`, 'gi');
+        const termsRegex = new RegExp(`(?<![a-zA-ZÀ-ÿ])(${terms.join('|')})(?![a-zA-ZÀ-ÿ])`, 'gi');
         
         const newHTML = text.replace(termsRegex, (match) => {
           const def = GLOSSARY[match.toLowerCase()];
@@ -41,12 +44,12 @@ const GlossaryScanner = () => {
         span.innerHTML = newHTML;
         node.replaceWith(span);
       });
-    }, 500); // Délai de 500ms pour être sûr que la page est chargée
+    }, 600); 
 
     return () => clearTimeout(timer);
   }, []);
 
-  return null; // Ce composant est invisible
+  return null;
 };
 
 export default GlossaryScanner;
