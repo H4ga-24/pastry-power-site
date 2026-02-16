@@ -5,4 +5,72 @@
 body {
   background-color: #121212;
   color: white;
+  font-family: 'Inter', sans-serif; /* Ou ta police actuelle */
+}
+
+/* ============================================================
+   SYSTÈME DE GLOSSAIRE (Mots Techniques)
+   ============================================================ */
+
+/* Style du mot dans le texte */
+.jargon-term {
+  color: #D4AF37; /* Ton doré signature */
+  border-bottom: 1px dashed #D4AF37;
+  cursor: help;
+  position: relative;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.jargon-term:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* L'infobulle (Tooltip) */
+.jargon-term::after {
+  content: attr(data-definition); /* Récupère la définition auto */
+  position: absolute;
+  bottom: 130%; /* Positionnée au-dessus du mot */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #eeeeee;
+  padding: 10px 14px;
+  border: 1px solid #D4AF37;
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  width: 240px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  pointer-events: none; /* Évite de gêner la souris */
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* Triangle sous l'infobulle */
+.jargon-term::before {
+  content: '';
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 8px 0 8px;
+  border-style: solid;
+  border-color: #D4AF37 transparent transparent transparent;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1001;
+}
+
+/* Affichage au survol */
+.jargon-term:hover::after,
+.jargon-term:hover::before {
+  visibility: visible;
+  opacity: 1;
 }

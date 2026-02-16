@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
 import CookingMode from './CookingMode';
+// --- AJOUT DU DÉTECTEUR ---
+import GlossaryScanner from './GlossaryScanner'; 
 
 const modules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { 
   eager: true,
@@ -50,7 +52,7 @@ const DynamicPage = () => {
         const title = titleMatch ? cleanText(titleMatch[1]) : "Recette";
         
         const descMatch = rawCode.match(/description:\s*["']((?:[^"'\\]|\\.)*)["']/);
-        const description = descMatch ? cleanText(descMatch[1]) : "";
+        const description = descMatch ? cleanText(description[1]) : "";
 
         const imgMatch = rawCode.match(/image:\s*["']([^"']+)["']/) || rawCode.match(/<img[^>]+src=["']([^"']+)["']/);
         const image = imgMatch ? imgMatch[1] : "";
@@ -195,6 +197,9 @@ const DynamicPage = () => {
       </Helmet>
 
       <RecipeComponent />
+
+      {/* --- LE DÉTECTEUR EST APPELÉ ICI --- */}
+      <GlossaryScanner key={id} />
       
       {extractedData && !extractedData.isTech && (
         <motion.button
