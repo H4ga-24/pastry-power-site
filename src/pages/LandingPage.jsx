@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Star, Lock, Wheat, Cake, Crown } from 'lucide-react';
+import { Crown } from 'lucide-react';
 
 const LandingPage = () => {
   const categories = [
@@ -78,7 +78,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- SECTION CATÉGORIES (OPTIMISÉE 2X2 MOBILE) --- */}
+      {/* --- SECTION CATÉGORIES --- */}
       <section className="py-12 lg:py-20 px-4 max-w-[1600px] mx-auto bg-[#121212]">
         <div className="text-center mb-10 lg:mb-16">
           <h2 className="text-3xl md:text-5xl font-serif mb-4">
@@ -87,7 +87,6 @@ const LandingPage = () => {
           <div className="w-20 h-0.5 bg-[#D4AF37]/50 mx-auto mt-4"></div>
         </div>
 
-        {/* grid-cols-2 sur mobile | lg:grid-cols-3 sur PC */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {categories.map((cat, index) => (
             <Link 
@@ -115,7 +114,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- SECTION BOUTIQUE (COMPACTÉE SUR MOBILE) --- */}
+      {/* --- SECTION BOUTIQUE --- */}
       <section id="shop-section" className="py-12 lg:py-24 px-4 relative overflow-hidden bg-[#1a1a1a]">
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="text-center mb-10">
@@ -125,7 +124,6 @@ const LandingPage = () => {
             <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">La Boutique</h2>
           </div>
 
-          {/* gap-3 sur mobile pour coller les offres | gap-8 sur PC */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-8 items-stretch">
             
             {/* 1. CARTE PÂTISSERIE */}
@@ -160,7 +158,7 @@ const LandingPage = () => {
                </div>
             </div>
 
-            {/* 3. CARTE VIP (Mise en avant) */}
+            {/* 3. CARTE VIP (PRIX CORRIGÉ) */}
             <div className="bg-gradient-to-br from-[#D4AF37]/20 to-[#000] border border-[#D4AF37]/40 rounded-xl overflow-hidden flex flex-col relative shadow-lg">
                <div className="absolute top-3 right-3 bg-[#D4AF37] text-black text-[9px] font-bold px-2 py-0.5 rounded-full uppercase z-20">
                  Populaire
@@ -168,16 +166,21 @@ const LandingPage = () => {
                <div className="p-6 lg:p-8 flex flex-col flex-grow items-center text-center">
                  <Crown size={32} className="text-[#D4AF37] mb-3" />
                  <h3 className="text-2xl font-serif text-white mb-1">Club <span className="text-[#D4AF37]">VIP</span></h3>
+                 
+                 {/* PRIX OFFICIEL 4.90€ */}
                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-3xl font-bold text-white">9.90€</span>
+                    <span className="text-3xl font-bold text-white">4.90€</span>
                     <span className="text-gray-400 text-xs">/ mois</span>
                  </div>
+                 
                  <p className="text-gray-300 text-[11px] mb-6 leading-relaxed">Accès illimité aux recettes signatures et support direct.</p>
-                 <a href="https://buy.stripe.com/TON_LIEN_ICI" className="w-full mt-auto">
+                 
+                 {/* REDIRECTION VERS L'INSCRIPTION VIP */}
+                 <Link to="/vip" className="w-full mt-auto">
                       <button className="w-full bg-[#D4AF37] text-black hover:bg-white font-bold py-4 text-xs tracking-widest shadow-xl transition-all rounded-sm uppercase">
                           S'abonner
                       </button>
-                 </a>
+                 </Link>
                </div>
             </div>
 

@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
-import { supabase } from './supabase'; // Vérifie que le nom du fichier est bien supabase.js
+import { supabase } from './supabase'; 
 import { Button } from "@/components/ui/button";
 import { Crown, Mail, Lock, Loader2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // <--- Importation pour la navigation
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  
+  const navigate = useNavigate(); // <--- Initialisation du hook
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signUp({ email, password });
+    // Ajout de l'option pour rediriger vers la page VIP après confirmation mail
+    const { error } = await supabase.auth.signUp({ 
+      email, 
+      password,
+      options: {
+        emailRedirectTo: 'https://pastrypower.fr/vip' 
+      }
+    });
     if (error) setMessage(error.message);
     else setMessage("Vérifie ta boîte mail pour confirmer l'inscription !");
     setLoading(false);
@@ -21,9 +31,42 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) setMessage(error.message);
-    else setMessage("Connexion réussie !");
+    setMessage(""); // Reset message
+
+    // 1. Connexion de base
+    const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
+    
+    if (authError) {
+      setMessage(authError.message);
+      setLoading(false);
+      return;
+    }
+
+    // 2. Vérification du statut VIP dans la table 'profiles'
+    try {
+      const { data: profile, error: profileError } = await supabase
+        .from('profiles')
+        .select('is_vip')
+        .eq('id', authData.user.id)
+        .single();
+
+      // S'il y a une erreur ou si le profil n'existe pas, on considère qu'il n'est pas VIP
+      // et on l'envoie vers la page d'abonnement par sécurité.
+      if (profileError || !profile) {
+        navigate('/vip'); 
+      } else {
+        // 3. Redirection intelligente
+        if (profile.is_vip === true) {
+          navigate('/'); // Si VIP -> Accueil
+        } else {
+          navigate('/vip'); // Si pas VIP -> Page d'abonnement
+        }
+      }
+    } catch (error) {
+      console.error("Erreur de redirection:", error);
+      navigate('/vip'); // En cas de pépin, on envoie vers l'offre
+    }
+    
     setLoading(false);
   };
 

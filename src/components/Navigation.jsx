@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Import du composant de recherche
 import SearchModal from './SearchModal';
+// 1. IMPORT DU NOUVEAU MENU UTILISATEUR
+import UserMenu from './UserMenu';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +22,6 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Empêcher le scroll du site quand le menu est ouvert
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -101,7 +102,7 @@ const Navigation = () => {
     <>
       <nav className={`fixed top-0 left-0 w-full z-[500] transition-all duration-300 border-b ${
         isOpen 
-          ? 'bg-transparent border-transparent' // On laisse le menu gérer le fond quand il est ouvert
+          ? 'bg-transparent border-transparent' 
           : scrolled 
             ? 'bg-[#121212]/95 backdrop-blur-md py-4 shadow-xl border-white/5' 
             : 'bg-transparent py-6 border-transparent'
@@ -119,7 +120,7 @@ const Navigation = () => {
             </div>
           </Link>
 
-          {/* MENU BUREAU */}
+          {/* MENU BUREAU (Navigation centrale) */}
           <div className="hidden lg:flex items-center gap-6">
             {navItems.map((item, index) => (
               <div 
@@ -172,8 +173,14 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* ICONES & MOBILE */}
+          {/* ICONES & ACTIONS (Droite) */}
           <div className="flex items-center gap-4 z-[501]">
+            
+            {/* 2. MENU UTILISATEUR (Visible seulement sur PC pour ne pas encombrer le mobile) */}
+            <div className="hidden lg:block">
+              <UserMenu />
+            </div>
+
             <button 
               className="text-white hover:text-[#D4AF37] transition-colors p-2"
               onClick={() => setIsSearchOpen(true)}
@@ -188,7 +195,7 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* --- MENU MOBILE (SORTI DE LA NAV POUR FIXER LE BUG DE SCROLL) --- */}
+      {/* --- MENU MOBILE --- */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -196,10 +203,15 @@ const Navigation = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: "tween", duration: 0.3 }}
-            // fixed inset-0 garantit qu'il couvre tout l'écran, peu importe le scroll
             className="fixed inset-0 bg-[#121212] z-[490] flex flex-col pt-24 px-6 h-[100dvh] overflow-y-auto lg:hidden"
           >
             <div className="flex flex-col gap-8 pb-10">
+              
+              {/* 3. MENU UTILISATEUR MOBILE (Ajouté ici pour être bien visible) */}
+              <div className="border-b border-white/10 pb-6 mb-2">
+                <UserMenu />
+              </div>
+
               {navItems.map((item, index) => (
                 <div key={index} className="flex flex-col gap-3 border-b border-white/5 pb-4">
                   <Link 
@@ -231,7 +243,6 @@ const Navigation = () => {
         )}
       </AnimatePresence>
 
-      {/* MODAL DE RECHERCHE */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );
