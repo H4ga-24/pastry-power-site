@@ -63,7 +63,6 @@ const DynamicPage = () => {
         let ingredients = [];
 
         // MÉTHODE 1 : La méthode propre (Variable JavaScript)
-        // On cherche le tableau de données structuré
         const ingredientsBlockMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
 
         if (ingredientsBlockMatch) {
@@ -90,15 +89,11 @@ const DynamicPage = () => {
         }
 
         // MÉTHODE 2 : Le Filet de Sécurité (HTML brut)
-        // S'active UNIQUEMENT si la méthode 1 n'a rien trouvé
         if (ingredients.length === 0) {
            const htmlLiRegex = /<li[^>]*>([\s\S]*?)<\/li>/g;
            let liMatch;
            while ((liMatch = htmlLiRegex.exec(rawCode)) !== null) {
              const rawLi = liMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-             
-             // 🚨 PROTECTION ANTI-CODE :
-             // On ignore la ligne si elle contient "{" ou "}" (c'est du code React, pas un ingrédient)
              if (!rawLi.includes('{') && !rawLi.includes('}') && rawLi.length > 2) {
                  ingredients.push(cleanText(rawLi));
              }
@@ -126,7 +121,6 @@ const DynamicPage = () => {
             }
         }
         
-        // Fallback HTML pour les étapes (Si pas de tableau steps)
         if (steps.length === 0) {
            const htmlStepRegex = /<h3[^>]*>([^<]+)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
            let htmlStepMatch;
@@ -134,13 +128,12 @@ const DynamicPage = () => {
              steps.push(`${cleanText(htmlStepMatch[1])} : ${cleanText(htmlStepMatch[2].replace(/<[^>]+>/g, '').trim())}`);
            }
         }
-        // Fallback ultime (paragraphes simples)
+
         if (steps.length === 0) {
             const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/g;
             let pMatch;
             while ((pMatch = pRegex.exec(rawCode)) !== null) {
                const text = pMatch[1].replace(/<[^>]+>/g, '').trim();
-               // On filtre les paragraphes trop courts ou qui ressemblent à des ingrédients
                if (text.length > 30 && !text.includes('{')) {
                   steps.push(cleanText(text));
                }
@@ -196,11 +189,13 @@ const DynamicPage = () => {
         )}
       </Helmet>
 
+      {/* TA RECETTE ORIGINALE (Design respecté à 100%) */}
       <RecipeComponent />
 
       {/* --- LE DÉTECTEUR EST APPELÉ ICI --- */}
       <GlossaryScanner key={id} />
       
+      {/* BOUTON MODE CUISINE */}
       {extractedData && !extractedData.isTech && (
         <motion.button
           initial={{ scale: 0 }}
