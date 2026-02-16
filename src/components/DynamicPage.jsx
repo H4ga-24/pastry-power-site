@@ -40,13 +40,20 @@ const DynamicPage = () => {
         
         // 🌟 Fonction de nettoyage améliorée (Apostrophes & Sauts de ligne)
         const cleanText = (text) => {
-            if (!text) return "";
-            return text
-              .replace(/\\'/g, "'") 
-              .replace(/\\"/g, '"')
-              .replace(/\\n/g, " ")
-              .trim();
-        };
+    if (!text) return "";
+    return text
+        // 1. Remplace l'échappement de l'apostrophe (\') par une vraie (')
+        .replace(/\\'/g, "'")
+        // 2. Remplace l'échappement des guillemets (\") par des (")
+        .replace(/\\"/g, '"')
+        // 3. Supprime les barres obliques résiduelles avant une parenthèse ou un espace
+        .replace(/\\(?=\s|\()/g, "") 
+        // 4. Nettoie les sauts de ligne de code (\n)
+        .replace(/\\n/g, " ")
+        // 5. Supprime les espaces multiples pour un rendu propre
+        .replace(/\s+/g, " ")
+        .trim();
+};
 
         // 🌟 LE SCANNER "BULLETPROOF" POUR LES APOSTROPHES
         // Cette fonction capture le texte peu importe le type de guillemet utilisé
