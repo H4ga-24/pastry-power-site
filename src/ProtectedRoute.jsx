@@ -10,7 +10,6 @@ const ProtectedRoute = ({ children }) => {
   const [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
-    // 1. Vérifie si connecté
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session) checkPremium(session.user.id);
@@ -27,19 +26,21 @@ const ProtectedRoute = ({ children }) => {
   }, []);
 
   const checkPremium = async (userId) => {
+    // 🚨 CORRECTION ICI : On cherche 'is_vip' au lieu de 'is_premium'
     const { data } = await supabase
       .from('profiles')
-      .select('is_premium')
+      .select('is_vip') 
       .eq('id', userId)
       .single();
     
-    if (data) setIsPremium(data.is_premium);
+    // On met à jour l'état avec la bonne colonne
+    if (data) setIsPremium(data.is_vip);
     setLoading(false);
   };
 
   if (loading) return <div className="h-screen bg-[#121212] flex items-center justify-center"><Loader2 className="animate-spin text-[#D4AF37]" /></div>;
 
-  // CAS 1 : Pas connecté -> On envoie au Login
+  // CAS 1 : Pas connecté
   if (!session) {
     return (
       <div className="h-screen bg-[#121212] flex flex-col items-center justify-center text-white p-4">
@@ -53,7 +54,7 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  // CAS 2 : Connecté mais PAS Premium -> On demande de payer
+  // CAS 2 : Connecté mais PAS VIP
   if (!isPremium) {
     return (
       <div className="h-screen bg-[#121212] flex flex-col items-center justify-center text-white p-4">
@@ -63,17 +64,16 @@ const ProtectedRoute = ({ children }) => {
           Cette recette fait partie de la collection Masterclass. Abonnez-vous pour y accéder.
         </p>
         
-        {/* LIEN DE PAIEMENT STRIPE */}
-       {/* On ajoute l'ID de l'utilisateur dans le lien pour que Stripe le reconnaisse */}
-<a 
-  href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${session?.user?.id}`} 
-  target="_blank" 
-  rel="noopener noreferrer"
->
-  <Button className="bg-[#D4AF37] text-black font-bold px-8 py-6 text-lg rounded-none hover:bg-[#b8962e] shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-    S'abonner (4.90€ / mois)
-  </Button>
-</a>
+        {/* Lien Stripe avec ID Utilisateur */}
+        <a 
+          href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${session?.user?.id}`} 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <Button className="bg-[#D4AF37] text-black font-bold px-8 py-6 text-lg rounded-none hover:bg-[#b8962e] shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+            S'abonner (4.90€ / mois)
+          </Button>
+        </a>
         <button onClick={() => supabase.auth.signOut()} className="mt-6 text-sm text-gray-500 hover:text-white underline">
           Se déconnecter
         </button>
@@ -81,7 +81,6 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  // CAS 3 : Tout est bon -> On affiche la recette
   return children;
 };
 
