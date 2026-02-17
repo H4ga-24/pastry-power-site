@@ -14,7 +14,7 @@ const VipPage = () => {
 
   // --- TES LIENS STRIPE ---
   const STRIPE_MONTHLY = "https://buy.stripe.com/8x214o2df3Mbg05dmL2B203"; // Ton lien actuel
-  const STRIPE_ANNUAL = "VOTRE_LIEN_STRIPE_ANNUEL_ICI"; // 👈 N'oublie pas de coller ton lien annuel ici !
+  const STRIPE_ANNUAL = "https://buy.stripe.com/bJeaEY5pr1E35lrgyX2B204"; // 👈 N'oublie pas de coller ton lien annuel ici !
 
   // Fonction pour générer le bon lien avec l'ID utilisateur
   const getLink = (url) => {
