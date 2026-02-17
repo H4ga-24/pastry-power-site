@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { PlayCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -23,6 +23,8 @@ const DynamicPage = () => {
   const [RecipeComponent, setRecipeComponent] = useState(null);
   const [extractedData, setExtractedData] = useState(null);
   const [isCookingMode, setIsCookingMode] = useState(false);
+  
+  const recipeContentRef = useRef(null);
 
   useEffect(() => {
     const loadRecipe = async () => {
@@ -38,25 +40,11 @@ const DynamicPage = () => {
         setRecipeComponent(() => modules[foundPath]);
         const rawCode = rawModules[foundPath];
         
-        // 🌟 Fonction de nettoyage améliorée (Apostrophes & Sauts de ligne)
         const cleanText = (text) => {
-    if (!text) return "";
-    return text
-        // 1. Remplace l'échappement de l'apostrophe (\') par une vraie (')
-        .replace(/\\'/g, "'")
-        // 2. Remplace l'échappement des guillemets (\") par des (")
-        .replace(/\\"/g, '"')
-        // 3. Supprime les barres obliques résiduelles avant une parenthèse ou un espace
-        .replace(/\\(?=\s|\()/g, "") 
-        // 4. Nettoie les sauts de ligne de code (\n)
-        .replace(/\\n/g, " ")
-        // 5. Supprime les espaces multiples pour un rendu propre
-        .replace(/\s+/g, " ")
-        .trim();
-};
+            if (!text) return "";
+            return text.replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\(?=\s|\()/g, "").replace(/\\n/g, " ").replace(/\s+/g, " ").trim();
+        };
 
-        // 🌟 LE SCANNER "BULLETPROOF" POUR LES APOSTROPHES
-        // Cette fonction capture le texte peu importe le type de guillemet utilisé
         const extractString = (key, source) => {
           const regex = new RegExp(`${key}:\\s*(["'])([\\s\\S]*?)\\1`);
           const match = source.match(regex);
@@ -64,24 +52,19 @@ const DynamicPage = () => {
         };
 
         const isTechFile = foundPath.includes('/technologie/');
-
-        // --- TITRE & INFOS ---
         const title = extractString('title', rawCode) || "Recette";
         const description = extractString('description', rawCode) || "";
         const image = extractString('image', rawCode) || "";
 
-        // --- INGRÉDIENTS ---
+        // Extraction Ingrédients
         let ingredients = [];
         const ingredientsBlockMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
-
         if (ingredientsBlockMatch) {
             const blockContent = ingredientsBlockMatch[1];
             const objectRegex = /\{([\s\S]*?)\}/g;
             let match;
-            
             while ((match = objectRegex.exec(blockContent)) !== null) {
                 const itemContent = match[1];
-                // On utilise notre extracteur intelligent pour le nom de l'ingrédient
                 const name = extractString('name', itemContent);
                 const amountMatch = itemContent.match(/amount:\s*(\d+(?:\.\d+)?|["'][^"']*["'])/);
                 const unit = extractString('unit', itemContent) || "";
@@ -95,10 +78,9 @@ const DynamicPage = () => {
             }
         }
 
-        // --- ÉTAPES ---
+        // Extraction Étapes
         let steps = [];
         const stepsBlockMatch = rawCode.match(/const steps\s*=\s*\[([\s\S]*?)\];/);
-        
         if (stepsBlockMatch) {
             const blockContent = stepsBlockMatch[1];
             const objectRegex = /\{([\s\S]*?)\}/g;
@@ -107,14 +89,13 @@ const DynamicPage = () => {
                 const itemContent = match[1];
                 const stepTitle = extractString('title', itemContent);
                 const stepText = extractString('text', itemContent);
-                
                 if (stepText) {
                     steps.push(stepTitle ? `${stepTitle} : ${stepText}` : stepText);
                 }
             }
         }
         
-        // --- FALLBACKS (Si pas de format structuré) ---
+        // Fallbacks (Format Hostinger)
         if (ingredients.length === 0) {
            const htmlLiRegex = /<li[^>]*>([\s\S]*?)<\/li>/g;
            let liMatch;
@@ -135,9 +116,7 @@ const DynamicPage = () => {
         }
 
         setExtractedData({
-          title,
-          description,
-          image,
+          title, description, image,
           ingredients: ingredients.length > 0 ? ingredients : [],
           steps: steps.length > 0 ? steps : [],
           isTech: isTechFile
@@ -177,17 +156,19 @@ const DynamicPage = () => {
         )}
       </Helmet>
 
-      <RecipeComponent />
-      <GlossaryScanner key={id} />
+      <div ref={recipeContentRef}>
+        <RecipeComponent />
+      </div>
+
+      <GlossaryScanner targetRef={recipeContentRef} trigger={id} />
       
       {extractedData && extractedData.steps.length > 0 && !extractedData.isTech && (
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
           onClick={() => setIsCookingMode(true)}
-          className="fixed bottom-6 right-6 z-40 bg-[#D4AF37] text-black px-6 py-4 rounded-full shadow-lg shadow-[#D4AF37]/20 flex items-center gap-3 font-bold uppercase tracking-widest hover:bg-white transition-colors group"
+          className="fixed bottom-6 right-6 z-40 bg-[#D4AF37] text-black px-6 py-4 rounded-full shadow-lg flex items-center gap-3 font-bold uppercase tracking-widest hover:bg-white transition-colors group"
         >
           <PlayCircle size={24} className="group-hover:scale-110 transition-transform" />
           <span className="text-sm">Mode Cuisine</span>

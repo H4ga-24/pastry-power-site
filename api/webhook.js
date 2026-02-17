@@ -8,11 +8,10 @@ export const config = {
   },
 };
 
-// On initialise Stripe et Supabase avec les clés secrètes (Côté Serveur uniquement)
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY // Clé Admin (très importante)
+  process.env.SUPABASE_SERVICE_ROLE_KEY 
 );
 
 export default async function handler(req, res) {
@@ -28,30 +27,27 @@ export default async function handler(req, res) {
   let event;
 
   try {
-    // Vérification que c'est bien Stripe qui parle
     event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
   } catch (err) {
     console.error(`⚠️  Webhook Error: ${err.message}`);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  // Si le paiement est validé
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-    const userId = session.client_reference_id; // On récupère l'ID envoyé par ton bouton
+    const userId = session.client_reference_id;
 
     if (userId) {
-      // On débloque l'utilisateur dans Supabase
       const { error } = await supabase
         .from('profiles')
-        .update({ is_premium: true })
+        .update({ is_premium: true }) // ✅ Correction is_premium
         .eq('id', userId);
 
       if (error) {
         console.error('Erreur Supabase:', error);
         return res.status(500).send('Error updating user');
       }
-      console.log(`✅ Succès : L'utilisateur ${userId} est maintenant VIP.`);
+      console.log(`✅ Succès : L'utilisateur ${userId} est maintenant Premium.`);
     }
   }
 

@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { X, Check, Coffee, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import GlossaryText from './GlossaryText';
 
 const CookingMode = ({ recipe, onClose }) => {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
   const [checkedSteps, setCheckedSteps] = useState([]);
   const [wakeLock, setWakeLock] = useState(null);
 
-  // --- FONCTION DE NETTOYAGE ---
-  // C'est elle qui va retirer les '\' qui gênent l'affichage
   const cleanText = (text) => {
     if (!text) return "";
     return text.replace(/\\'/g, "'").replace(/\\"/g, '"');
   };
 
-  // 1. GESTION DU WAKE LOCK (Empêcher l'écran de s'éteindre)
   useEffect(() => {
     const requestWakeLock = async () => {
       if ('wakeLock' in navigator) {
@@ -27,16 +25,12 @@ const CookingMode = ({ recipe, onClose }) => {
         }
       }
     };
-
     requestWakeLock();
-
-    // Nettoyage quand on quitte le mode
     return () => {
       if (wakeLock) wakeLock.release();
     };
   }, []);
 
-  // Gestion des cases à cocher
   const toggleIngredient = (idx) => {
     setCheckedIngredients(prev => 
       prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]
@@ -56,11 +50,9 @@ const CookingMode = ({ recipe, onClose }) => {
       exit={{ opacity: 0, y: '100%' }}
       className="fixed inset-0 bg-[#0a0a0a] z-[100] overflow-y-auto"
     >
-      {/* HEADER FIXE */}
       <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/10 p-4 flex justify-between items-center z-10 shadow-xl">
         <div>
           <h2 className="text-[#D4AF37] font-serif text-xl font-bold truncate max-w-[200px] md:max-w-md">
-            {/* On nettoie le titre ici */}
             {cleanText(recipe.title)}
           </h2>
           <p className="text-green-500 text-xs flex items-center gap-1">
@@ -76,10 +68,7 @@ const CookingMode = ({ recipe, onClose }) => {
         </button>
       </div>
 
-      {/* CONTENU SCROLLABLE */}
       <div className="max-w-3xl mx-auto p-6 pb-32 space-y-12">
-        
-        {/* INGRÉDIENTS */}
         <section>
           <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
             <Coffee className="text-[#D4AF37]" /> Ingrédients
@@ -95,21 +84,19 @@ const CookingMode = ({ recipe, onClose }) => {
                     : 'bg-[#1a1a1a] border-white/10 hover:border-[#D4AF37]'
                 }`}
               >
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${
                    checkedIngredients.includes(idx) ? 'border-green-500 bg-green-500 text-black' : 'border-gray-500'
                 }`}>
                   {checkedIngredients.includes(idx) && <Check size={14} />}
                 </div>
                 <span className={`text-lg ${checkedIngredients.includes(idx) ? 'text-gray-400 line-through' : 'text-gray-200'}`}>
-                  {/* On nettoie l'ingrédient ici */}
-                  {cleanText(ing)}
+                  <GlossaryText>{cleanText(ing)}</GlossaryText>
                 </span>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ÉTAPES */}
         <section>
           <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
             <Clock className="text-[#D4AF37]" /> Préparation
@@ -131,25 +118,22 @@ const CookingMode = ({ recipe, onClose }) => {
                   {checkedSteps.includes(idx) ? <Check size={18} /> : idx + 1}
                 </div>
                 <p className={`text-xl leading-relaxed ${checkedSteps.includes(idx) ? 'text-gray-500 line-through' : 'text-gray-200'}`}>
-                  {/* On nettoie l'étape ici */}
-                  {cleanText(step)}
+                  <GlossaryText>{cleanText(step)}</GlossaryText>
                 </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* FIN */}
         <div className="text-center pt-10">
           <p className="text-gray-500 italic">"La pâtisserie est une affaire de précision."</p>
           <button 
             onClick={onClose}
-            className="mt-8 px-8 py-4 bg-[#D4AF37] text-black font-bold uppercase tracking-widest rounded hover:bg-white transition-colors"
+            className="mt-8 px-8 py-4 bg-[#D4AF37] text-black font-bold uppercase tracking-widest rounded hover:bg-white transition-colors shadow-lg shadow-[#D4AF37]/20"
           >
             Terminer la recette
           </button>
         </div>
-
       </div>
     </motion.div>
   );

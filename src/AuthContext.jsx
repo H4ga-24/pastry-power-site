@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [isPremium, setIsPremium] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Fonction pour récupérer le profil (is_premium)
   const fetchProfile = async (userId) => {
     try {
       const { data, error } = await supabase
@@ -23,7 +22,7 @@ export const AuthProvider = ({ children }) => {
         setIsPremium(false);
       }
     } catch (err) {
-      console.error("Erreur profil:", err);
+      console.error("Erreur récupération profil:", err);
       setIsPremium(false);
     } finally {
       setLoading(false);
@@ -31,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // 1. Vérifier la session actuelle au chargement
+    // 1. Session initiale
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         setUser(session.user);
@@ -41,7 +40,7 @@ export const AuthProvider = ({ children }) => {
       }
     });
 
-    // 2. Écouter les changements (connexion / déconnexion)
+    // 2. Écoute des changements
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
         setUser(session.user);
@@ -67,5 +66,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Hook personnalisé pour utiliser le contexte facilement
 export const useAuth = () => useContext(AuthContext);

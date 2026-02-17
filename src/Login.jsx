@@ -32,7 +32,6 @@ const Login = () => {
     setLoading(true);
     setMessage(""); 
 
-    // 1. Connexion de base
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
     
     if (authError) {
@@ -41,28 +40,22 @@ const Login = () => {
       return;
     }
 
-    // 2. Vérification du statut Premium dans la table 'profiles'
+    // Vérification is_premium
     try {
-      const { data: profile, error: profileError } = await supabase
+      const { data: profile } = await supabase
         .from('profiles')
-        .select('is_premium') // ✅ CHANGÉ : is_vip -> is_premium
+        .select('is_premium')
         .eq('id', authData.user.id)
         .single();
 
-      if (profileError || !profile) {
-        // Si le profil n'existe pas encore ou erreur, direction offre VIP
-        navigate('/vip'); 
+      if (profile && profile.is_premium === true) {
+        navigate('/'); 
       } else {
-        // 3. Redirection intelligente
-        if (profile.is_premium === true) { // ✅ CHANGÉ : is_vip -> is_premium
-          navigate('/'); // Si déjà Premium -> Accueil
-        } else {
-          navigate('/vip'); // Si pas Premium -> Page d'abonnement
-        }
+        navigate('/vip'); 
       }
     } catch (error) {
-      console.error("Erreur de redirection:", error);
-      navigate('/vip');
+      console.error(error);
+      navigate('/vip'); 
     }
     
     setLoading(false);

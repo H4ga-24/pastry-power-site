@@ -1,29 +1,25 @@
 import React, { useEffect } from 'react';
 import { GLOSSARY } from '../data/glossary';
 
-const GlossaryScanner = () => {
+const GlossaryScanner = ({ targetRef, trigger }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      const content = document.querySelector('main');
-      if (!content) return;
+      if (!targetRef.current) return;
 
-      // 1. On trie les mots du plus long au plus court 
-      // (Pour éviter que "pâte" soit pris à la place de "pâte à choux")
+      const container = targetRef.current;
       const terms = Object.keys(GLOSSARY).sort((a, b) => b.length - a.length);
       
-      const walk = document.createNodeIterator(content, NodeFilter.SHOW_TEXT, null, false);
+      const walk = document.createNodeIterator(container, NodeFilter.SHOW_TEXT, null, false);
       let node;
       const nodesToReplace = [];
 
       while (node = walk.nextNode()) {
         const parent = node.parentNode;
-        if (['SCRIPT', 'STYLE', 'BUTTON', 'A', 'HEADER', 'H1'].includes(parent.tagName)) continue;
-        if (parent.closest('.jargon-term')) continue; // Évite de scanner ce qu'on a déjà traité
+        if (['SCRIPT', 'STYLE', 'BUTTON', 'A', 'HEADER'].includes(parent.tagName)) continue;
+        if (parent.closest('.jargon-term')) continue;
 
         const text = node.nodeValue;
-        
-        // Nouvelle Regex qui vérifie qu'il n'y a pas de lettre AVANT ou APRÈS le mot
-        // On utilise [a-zA-ZÀ-ÿ] pour inclure tous les caractères accentués français
+        // Regex avec lookbehind/lookahead pour éviter les mots partiels
         const regex = new RegExp(`(?<![a-zA-ZÀ-ÿ])(${terms.join('|')})(?![a-zA-ZÀ-ÿ])`, 'gi');
 
         if (regex.test(text)) {
@@ -44,10 +40,10 @@ const GlossaryScanner = () => {
         span.innerHTML = newHTML;
         node.replaceWith(span);
       });
-    }, 600); 
+    }, 500); 
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [trigger, targetRef]);
 
   return null;
 };

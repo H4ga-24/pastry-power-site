@@ -2,15 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Lock, Crown, Loader2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { useAuth } from './AuthContext'; // 👈 UTILISATION DU HOOK
+import { useAuth } from './AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const { user, isPremium, loading, signOut } = useAuth(); // 👈 ON RÉCUPÈRE TOUT ICI
+  const { user, isPremium, loading, signOut } = useAuth();
 
-  if (loading) {
-    return <div className="h-screen bg-[#121212] flex items-center justify-center"><Loader2 className="animate-spin text-[#D4AF37]" /></div>;
-  }
+  if (loading) return <div className="h-screen bg-[#121212] flex items-center justify-center"><Loader2 className="animate-spin text-[#D4AF37]" /></div>;
 
+  // Pas connecté
   if (!user) {
     return (
       <div className="h-screen bg-[#121212] flex flex-col items-center justify-center text-white p-4">
@@ -24,6 +23,7 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
+  // Connecté mais pas VIP
   if (!isPremium) {
     return (
       <div className="h-screen bg-[#121212] flex flex-col items-center justify-center text-white p-4">
@@ -32,7 +32,12 @@ const ProtectedRoute = ({ children }) => {
         <p className="text-gray-400 mb-8 text-center max-w-md">
           Cette recette fait partie de la collection Masterclass. Abonnez-vous pour y accéder.
         </p>
-        <a href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} target="_blank" rel="noopener noreferrer">
+        
+        <a 
+          href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
           <Button className="bg-[#D4AF37] text-black font-bold px-8 py-6 text-lg rounded-none hover:bg-[#b8962e] shadow-[0_0_20px_rgba(212,175,55,0.3)]">
             S'abonner (4.90€ / mois)
           </Button>

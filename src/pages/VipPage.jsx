@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { supabase } from '../supabase';
+import React from 'react';
+import { useAuth } from '../AuthContext';
 import { Crown, Check, ArrowRight, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const VipPage = () => {
-  const [session, setSession] = useState(null);
+  const { user } = useAuth();
   
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-  }, []);
+  const STRIPE_MONTHLY = "https://buy.stripe.com/8x214o2df3Mbg05dmL2B203";
+  const STRIPE_ANNUAL = "https://buy.stripe.com/bJeaEY5pr1E35lrgyX2B204";
 
-  // --- TES LIENS STRIPE ---
-  const STRIPE_MONTHLY = "https://buy.stripe.com/8x214o2df3Mbg05dmL2B203"; // Ton lien actuel
-  const STRIPE_ANNUAL = "https://buy.stripe.com/bJeaEY5pr1E35lrgyX2B204"; // 👈 N'oublie pas de coller ton lien annuel ici !
-
-  // Fonction pour générer le bon lien avec l'ID utilisateur
   const getLink = (url) => {
-    return session ? `${url}?client_reference_id=${session.user.id}` : url;
+    return user ? `${url}?client_reference_id=${user.id}` : url;
   };
 
   return (
     <div className="min-h-screen bg-[#121212] text-white py-20 px-4">
       
-      {/* 1. EN-TÊTE */}
       <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
         <h1 className="text-4xl md:text-6xl font-serif">
           Devenez <span className="text-[#D4AF37]">Membre VIP</span>
@@ -34,10 +25,9 @@ const VipPage = () => {
         </p>
       </div>
 
-      {/* 2. LES CARTES (Comparatif) */}
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         
-        {/* --- CARTE MENSUELLE (Standard) --- */}
+        {/* MENSUEL */}
         <div className="bg-[#1a1a1a] border border-white/10 p-8 rounded-xl flex flex-col hover:border-[#D4AF37]/50 transition-colors">
           <div className="mb-6">
             <h3 className="text-xl font-bold text-gray-300 mb-2">Mensuel</h3>
@@ -61,10 +51,8 @@ const VipPage = () => {
           </a>
         </div>
 
-        {/* --- CARTE ANNUELLE (Mise en avant) --- */}
+        {/* ANNUEL */}
         <div className="bg-[#1a1a1a] border-2 border-[#D4AF37] p-8 rounded-xl flex flex-col relative overflow-hidden shadow-[0_0_30px_rgba(212,175,55,0.15)] transform md:-translate-y-4">
-          
-          {/* BADGE PROMO */}
           <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-bold px-8 py-1 rotate-45 translate-x-8 translate-y-4 uppercase tracking-widest shadow-md">
             -15% Économisé
           </div>
@@ -78,7 +66,6 @@ const VipPage = () => {
               <span className="text-5xl font-bold text-white">50€</span>
               <span className="text-gray-500">/an</span>
             </div>
-            {/* Le fameux argument de vente */}
             <div className="inline-flex items-center gap-2 bg-green-900/30 text-green-400 border border-green-900/50 text-xs font-bold px-3 py-1.5 rounded-full mt-3">
                <Star size={12} className="fill-current" /> 2 MOIS OFFERTS
             </div>
@@ -86,8 +73,7 @@ const VipPage = () => {
 
           <ul className="space-y-4 mb-8 flex-grow">
             <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Tout du plan mensuel</li>
-            {/* Ligne modifiée ici */}
-            <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Paiement unique (Simplicité)</li>
+            <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Paiement unique</li>
             <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Zéro publicité</li>
           </ul>
 
@@ -100,8 +86,7 @@ const VipPage = () => {
 
       </div>
 
-      {/* 3. LIEN DE CONNEXION */}
-      {!session && (
+      {!user && (
         <div className="text-center mt-12">
           <p className="text-sm text-gray-500">
             Déjà un compte ? <Link to="/login" className="text-[#D4AF37] underline hover:text-white transition-colors">Connectez-vous</Link> pour lier votre abonnement.
