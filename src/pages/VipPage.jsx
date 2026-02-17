@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabase';
-import { Crown, Check, ArrowRight, Star, Zap } from 'lucide-react';
+import { Crown, Check, ArrowRight, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const VipPage = () => {
@@ -14,7 +14,7 @@ const VipPage = () => {
 
   // --- TES LIENS STRIPE ---
   const STRIPE_MONTHLY = "https://buy.stripe.com/8x214o2df3Mbg05dmL2B203"; // Ton lien actuel
-  const STRIPE_ANNUAL = "https://buy.stripe.com/bJeaEY5pr1E35lrgyX2B204"; // 👈 COLLE TON NOUVEAU LIEN ICI
+  const STRIPE_ANNUAL = "VOTRE_LIEN_STRIPE_ANNUEL_ICI"; // 👈 N'oublie pas de coller ton lien annuel ici !
 
   // Fonction pour générer le bon lien avec l'ID utilisateur
   const getLink = (url) => {
@@ -24,13 +24,13 @@ const VipPage = () => {
   return (
     <div className="min-h-screen bg-[#121212] text-white py-20 px-4">
       
-      {/* 1. EN-TÊTE (Texte centré) */}
+      {/* 1. EN-TÊTE */}
       <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
         <h1 className="text-4xl md:text-6xl font-serif">
           Devenez <span className="text-[#D4AF37]">Membre VIP</span>
         </h1>
         <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Accédez à l'intégralité des recettes techniques, aux masterclasses et au support direct avec le chef.
+          Accédez à l'intégralité des recettes techniques et au support direct avec le chef.
         </p>
       </div>
 
@@ -86,8 +86,9 @@ const VipPage = () => {
 
           <ul className="space-y-4 mb-8 flex-grow">
             <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Tout du plan mensuel</li>
-            <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> <span className="font-bold text-[#D4AF37]">Accès Masterclasses</span></li>
-            <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Paiement unique</li>
+            {/* Ligne modifiée ici */}
+            <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Paiement unique (Simplicité)</li>
+            <li className="flex items-center gap-3 text-white text-sm"><Check size={16} className="text-[#D4AF37]" /> Zéro publicité</li>
           </ul>
 
           <a href={getLink(STRIPE_ANNUAL)} target="_blank" rel="noopener noreferrer">
@@ -99,7 +100,7 @@ const VipPage = () => {
 
       </div>
 
-      {/* 3. LIEN DE CONNEXION (Si pas connecté) */}
+      {/* 3. LIEN DE CONNEXION */}
       {!session && (
         <div className="text-center mt-12">
           <p className="text-sm text-gray-500">
