@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { supabase } from './supabase'; 
 import { Button } from "@/components/ui/button";
 import { Crown, Mail, Lock, Loader2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // <--- Importation pour la navigation
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -10,12 +10,11 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   
-  const navigate = useNavigate(); // <--- Initialisation du hook
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Ajout de l'option pour rediriger vers la page VIP après confirmation mail
     const { error } = await supabase.auth.signUp({ 
       email, 
       password,
@@ -31,7 +30,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setMessage(""); // Reset message
+    setMessage(""); 
 
     // 1. Connexion de base
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
@@ -42,29 +41,28 @@ const Login = () => {
       return;
     }
 
-    // 2. Vérification du statut VIP dans la table 'profiles'
+    // 2. Vérification du statut Premium dans la table 'profiles'
     try {
       const { data: profile, error: profileError } = await supabase
         .from('profiles')
-        .select('is_vip')
+        .select('is_premium') // ✅ CHANGÉ : is_vip -> is_premium
         .eq('id', authData.user.id)
         .single();
 
-      // S'il y a une erreur ou si le profil n'existe pas, on considère qu'il n'est pas VIP
-      // et on l'envoie vers la page d'abonnement par sécurité.
       if (profileError || !profile) {
+        // Si le profil n'existe pas encore ou erreur, direction offre VIP
         navigate('/vip'); 
       } else {
         // 3. Redirection intelligente
-        if (profile.is_vip === true) {
-          navigate('/'); // Si VIP -> Accueil
+        if (profile.is_premium === true) { // ✅ CHANGÉ : is_vip -> is_premium
+          navigate('/'); // Si déjà Premium -> Accueil
         } else {
-          navigate('/vip'); // Si pas VIP -> Page d'abonnement
+          navigate('/vip'); // Si pas Premium -> Page d'abonnement
         }
       }
     } catch (error) {
       console.error("Erreur de redirection:", error);
-      navigate('/vip'); // En cas de pépin, on envoie vers l'offre
+      navigate('/vip');
     }
     
     setLoading(false);
