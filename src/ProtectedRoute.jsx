@@ -26,15 +26,15 @@ const ProtectedRoute = ({ children }) => {
   }, []);
 
   const checkPremium = async (userId) => {
-    // 🚨 CORRECTION ICI : On cherche 'is_vip' au lieu de 'is_premium'
+    // 🔍 CORRECTION : On pointe bien sur 'is_premium'
     const { data } = await supabase
       .from('profiles')
-      .select('is_vip') 
+      .select('is_premium') 
       .eq('id', userId)
       .single();
     
     // On met à jour l'état avec la bonne colonne
-    if (data) setIsPremium(data.is_vip);
+    if (data) setIsPremium(data.is_premium);
     setLoading(false);
   };
 
@@ -54,7 +54,7 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  // CAS 2 : Connecté mais PAS VIP
+  // CAS 2 : Connecté mais PAS Premium
   if (!isPremium) {
     return (
       <div className="h-screen bg-[#121212] flex flex-col items-center justify-center text-white p-4">

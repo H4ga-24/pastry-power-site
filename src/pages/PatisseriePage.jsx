@@ -21,7 +21,7 @@ const HUBS = {
       { title: "Cakes Salés", id: "cake-sale", image: "https://images.unsplash.com/photo-1584796101179-52cfea2e6f52?q=80&w=1374&auto=format&fit=crop", desc: "Traiteur..." },
       { title: "Pâte à Choux", id: "choux", image: "https://images.unsplash.com/photo-1761637604739-790197a32073?q=80&w=811&auto=format&fit=crop", desc: "Éclairs, Choux..." },
       { title: "Tartes", id: "tarte", image: "https://plus.unsplash.com/premium_photo-1664472613567-2176b50ddb28?q=80&w=880&auto=format&fit=crop", desc: "Fonds croquants..." },
-      { title: "Entremets", id: "entremets", image: "https://images.unsplash.com/photo-1660470356446-1d94ec3150c1?q=80&w=687&auto=format&fit=crop", desc: "Montages..." },
+      { title: "Entremets", id: "entremets", image: "https://images.unsplash.com/photo-1541779859250-7c67d623e4da?q=60&w=800&auto=format&fit=crop", desc: "Montages..." },
       { title: "Desserts Régionaux", id: "regional", image: "https://images.unsplash.com/photo-1631978931011-a033b99bce1e?q=80&w=687&auto=format&fit=crop", desc: "Traditions..." }
     ]
   },

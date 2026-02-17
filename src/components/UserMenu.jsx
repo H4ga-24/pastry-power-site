@@ -47,13 +47,15 @@ const UserMenu = () => {
   }, []);
 
   const checkVipStatus = async (userId) => {
+    // 🚨 CORRECTION ICI : On cherche la bonne colonne 'is_premium'
     const { data } = await supabase
       .from('profiles')
-      .select('is_vip')
+      .select('is_premium') 
       .eq('id', userId)
       .single();
     
-    if (data) setIsVip(data.is_vip);
+    // On met à jour l'état (si data.is_premium est true, isVip devient true)
+    if (data) setIsVip(data.is_premium);
   };
 
   const handleLogout = async () => {
