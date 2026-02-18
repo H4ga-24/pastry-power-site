@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom'; 
-import { PlayCircle, Lock, Crown, Loader2, BookOpen } from 'lucide-react';
+import { PlayCircle, Lock, Crown, Loader2 } from 'lucide-react'; // J'ai viré BookOpen qui ne servait plus
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
@@ -55,6 +55,7 @@ const DynamicPage = () => {
 
         let ingredients = [], steps = [];
         if (!isTechFile) {
+            // ... (Code extraction ingrédients inchangé) ...
             const ingMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
             if (ingMatch) {
                 const objectRegex = /\{([\s\S]*?)\}/g;
@@ -106,85 +107,56 @@ const DynamicPage = () => {
 
   if (!RecipeComponent || authLoading) return <div className="text-white text-center mt-20 flex justify-center"><Loader2 className="animate-spin" /></div>;
 
-  // =================================================================
-  // LOGIQUE D'AFFICHAGE
-  // =================================================================
-
   const isLocked = extractedData?.isVip && !isPremium;
 
-  // --- CAS 1 : PAGE TECHNOLOGIE (Freemium) ---
+  // --- CAS 1 : PAGE TECHNOLOGIE (La version propre) ---
   if (extractedData?.isTech) {
       return (
-        <div className="min-h-screen bg-[#121212] pt-24 px-6 pb-20">
+        <div className="min-h-screen bg-[#121212]">
             <Helmet>
                 <title>{extractedData.title} | Pastry Power</title>
                 <meta name="description" content={extractedData.description} />
             </Helmet>
 
-            <div className="max-w-4xl mx-auto">
-                {/* EN-TÊTE (Toujours visible) */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                        <BookOpen size={14} /> Technologie
-                        {extractedData.isVip && <span className="ml-2 bg-[#D4AF37] text-black px-1.5 rounded-sm">VIP</span>}
-                    </div>
-                    <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">{extractedData.title}</h1>
-                    {extractedData.image && (
-                        <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden mb-8 shadow-2xl border border-white/5">
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent z-10" />
-                            <img src={extractedData.image} alt={extractedData.title} className="w-full h-full object-cover opacity-80" />
-                        </div>
-                    )}
-                    <div className="bg-[#1a1a1a] p-8 rounded-xl border-l-4 border-[#D4AF37] text-left">
-                        <p className="text-xl text-gray-300 italic font-serif leading-relaxed">
-                            {extractedData.description}
-                        </p>
-                    </div>
+            {/* 👇 ICI C'EST LE NETTOYAGE
+               On n'affiche PLUS d'image, ni de titre, ni de description.
+               On affiche juste le composant. C'est LUI qui contient l'image Hero.
+            */}
+            <div className={`relative w-full ${isLocked ? 'h-screen overflow-hidden' : ''}`}>
+                
+                {/* On affiche ton fichier Fecules/Levure tel quel */}
+                <div ref={recipeContentRef}>
+                    <RecipeComponent />
                 </div>
+                
+                {!isLocked && <GlossaryScanner targetRef={recipeContentRef} trigger={id} />}
 
-                {/* CONTENU + MASQUE */}
-                <div className="relative">
-                    {/* ✅ MODIFICATION ICI : 
-                       J'ai renforcé le masquage pour cacher le doublon d'image
-                       qu'il soit dans un <p>, un <div> ou tout seul.
-                    */}
-                    <div className={`prose prose-invert prose-gold max-w-none prose-lg text-gray-300 leading-loose 
-                        [&_h1]:hidden 
-                        [&>img:first-of-type]:hidden 
-                        [&>p:first-of-type>img]:hidden 
-                        [&>div:first-of-type>img]:hidden
-                        ${isLocked ? 'h-[400px] overflow-hidden' : ''}`} 
-                        ref={recipeContentRef}
-                    >
-                        <RecipeComponent />
-                        {!isLocked && <GlossaryScanner targetRef={recipeContentRef} trigger={id} />}
-                    </div>
-
-                    {/* LE MASQUE EN DÉGRADÉ (Si bloqué) */}
-                    {isLocked && (
-                        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-10 bg-gradient-to-b from-transparent via-[#121212]/90 to-[#121212]">
-                            <div className="text-center p-6 w-full max-w-lg">
-                                <Crown className="w-12 h-12 text-[#D4AF37] mx-auto mb-4 animate-pulse" />
-                                <h3 className="text-2xl font-serif text-white mb-2">Cours complet réservé</h3>
-                                <p className="text-gray-400 mb-6 text-sm">Débloquez l'accès complet à ce cours technique, aux schémas et explications scientifiques.</p>
-                                
-                                {!user ? (
-                                    <Link to="/login">
-                                        <Button className="w-full bg-[#D4AF37] text-black font-bold h-12 hover:bg-white uppercase tracking-widest">
-                                            Se connecter
-                                        </Button>
-                                    </Link>
-                                ) : (
-                                    <a href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} target="_blank" rel="noopener noreferrer">
-                                        <Button className="w-full bg-gradient-to-r from-[#D4AF37] to-[#B8962E] text-black font-bold h-12 shadow-lg hover:scale-105 transition-transform uppercase tracking-widest flex items-center justify-center gap-2">
-                                            <Lock size={16} /> Débloquer (4.90€ / mois)
-                                        </Button>
-                                    </a>
-                                )}
-                            </div>
+                {/* LE MASQUE (Seulement si bloqué) */}
+                {isLocked && (
+                    <div className="absolute inset-0 z-50 flex flex-col items-center justify-end pb-20 bg-gradient-to-t from-[#121212] via-[#121212]/95 to-transparent">
+                        <div className="text-center p-6 w-full max-w-lg animate-in fade-in slide-in-from-bottom-10 duration-700">
+                            <Crown className="w-16 h-16 text-[#D4AF37] mx-auto mb-6 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]" />
+                            <h3 className="text-3xl font-serif text-white mb-4">La suite est réservée aux membres</h3>
+                            <p className="text-gray-400 mb-8 text-lg">
+                                Accédez aux schémas techniques, aux explications scientifiques et aux pièges à éviter.
+                            </p>
+                            
+                            {!user ? (
+                                <Link to="/login">
+                                    <Button className="w-full bg-[#D4AF37] text-black font-bold h-14 text-lg hover:bg-white uppercase tracking-widest shadow-xl">
+                                        Se connecter
+                                    </Button>
+                                </Link>
+                            ) : (
+                                <a href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} target="_blank" rel="noopener noreferrer">
+                                    <Button className="w-full bg-gradient-to-r from-[#D4AF37] to-[#B8962E] text-black font-bold h-14 text-lg shadow-xl hover:scale-105 transition-transform uppercase tracking-widest flex items-center justify-center gap-3">
+                                        <Lock size={20} /> Débloquer le cours (4.90€)
+                                    </Button>
+                                </a>
+                            )}
                         </div>
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
         </div>
       );
@@ -216,7 +188,7 @@ const DynamicPage = () => {
     );
   }
 
-  // --- CAS 3 : AFFICHAGE STANDARD ---
+  // --- CAS 3 : AFFICHAGE STANDARD RECETTE ---
   return (
     <div className="min-h-screen bg-[#121212] pt-20">
       <Helmet>
