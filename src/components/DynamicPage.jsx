@@ -145,13 +145,14 @@ const DynamicPage = () => {
                 {/* CONTENU + MASQUE */}
                 <div className="relative">
                     {/* ✅ MODIFICATION ICI : 
-                       J'ai ajouté [&>h1]:hidden et [&>img]:hidden pour cacher 
-                       les doublons à l'intérieur du texte 
+                       J'ai renforcé le masquage pour cacher le doublon d'image
+                       qu'il soit dans un <p>, un <div> ou tout seul.
                     */}
                     <div className={`prose prose-invert prose-gold max-w-none prose-lg text-gray-300 leading-loose 
-                        [&>h1]:hidden 
+                        [&_h1]:hidden 
                         [&>img:first-of-type]:hidden 
                         [&>p:first-of-type>img]:hidden 
+                        [&>div:first-of-type>img]:hidden
                         ${isLocked ? 'h-[400px] overflow-hidden' : ''}`} 
                         ref={recipeContentRef}
                     >
