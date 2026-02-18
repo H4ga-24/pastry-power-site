@@ -87,7 +87,6 @@ const SEARCH_MAPPING = {
   'sans-gluten': 'gluten',
   'vegan': 'vegan',
   'sans-lactose': 'lactose'
-  // NOTE: J'ai retiré 'sans-sucre' d'ici pour le gérer manuellement plus bas de façon stricte
 };
 
 // --- 2. LE SCANNER INTELLIGENT ---
@@ -103,7 +102,7 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   const lowerContent = rawContent.toLowerCase();
 
   let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
-  const vipMatch = rawContent.match(/isVip:\s*(true|false)/); // CORRECTION: isVip au lieu de vip
+  const vipMatch = rawContent.match(/isVip:\s*(true|false)/);
   if (vipMatch && vipMatch[1] === 'true') isVip = true;
 
   const secureTitleMatch = rawContent.match(/(?:recipeData|recipeMeta)\s*=\s*\{[\s\S]*?title:\s*(?:"([^"]*)"|'([^']*)')/);
@@ -129,7 +128,6 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
       category = "SANS-GLUTEN";
   }
-  // 🟢 CORRECTION SCANNER : On force le Sans-Sucre UNIQUEMENT si hors technologie
   else if (
     !lowerPath.includes('technologie') && (
       lowerPath.includes('sans-sucre') || 
@@ -275,29 +273,45 @@ const PatisseriePage = ({ category: propCategory }) => {
         
         {filteredItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map(item => (
-              // 🟢 LA CORRECTION MAJEURE EST ICI :
-              <Link 
-                key={item.id} 
-                to={item.isVip ? `/vip/${item.id}` : `/recipe/${item.id}`} // 👈 SI VIP ALORS /vip/ SINON /recipe/
-                className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
-              >
-                
-                {/* Badge VIP */}
-                {item.isVip && (
-                  <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-lg shadow-black/40">
-                    <Crown size={12} fill="black" /> VIP
-                  </div>
-                )}
+            {filteredItems.map(item => {
+              // --- 🟢 LA CORRECTION EST ICI ---
+              // On construit le lien intelligemment :
+              let linkUrl = `/recipe/${item.id}`; // Par défaut (Gratuit)
 
-                <div className="h-48 bg-gray-900 rounded-lg mb-6 overflow-hidden">
-                  {item.image && <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />}
-                </div>
-                <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">{item.category}</div>
-                <h3 className="text-2xl font-serif mb-4 group-hover:text-[#D4AF37] transition-colors">{item.title}</h3>
-                <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">{item.description}</p>
-              </Link>
-            ))}
+              if (item.isVip) {
+                 if (item.isTech) {
+                     // Si C'EST VIP + TECHNO -> On utilise le lien spécial qui ouvre le Freemium
+                     linkUrl = `/vip/technologie/${item.id}`;
+                 } else {
+                     // Si C'EST VIP + RECETTE -> On utilise le lien qui bloque tout
+                     linkUrl = `/vip/${item.id}`;
+                 }
+              }
+              // ---------------------------------
+
+              return (
+                <Link 
+                  key={item.id} 
+                  to={linkUrl}
+                  className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
+                >
+                  
+                  {/* Badge VIP */}
+                  {item.isVip && (
+                    <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-lg shadow-black/40">
+                      <Crown size={12} fill="black" /> VIP
+                    </div>
+                  )}
+
+                  <div className="h-48 bg-gray-900 rounded-lg mb-6 overflow-hidden">
+                    {item.image && <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />}
+                  </div>
+                  <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">{item.category}</div>
+                  <h3 className="text-2xl font-serif mb-4 group-hover:text-[#D4AF37] transition-colors">{item.title}</h3>
+                  <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">{item.description}</p>
+                </Link>
+              );
+            })}
           </div>
         ) : (
           <div className="text-center py-20 bg-[#1a1a1a] rounded-xl border border-white/5">
