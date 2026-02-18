@@ -11,7 +11,7 @@ export const recipeData = {
   image: "https://img-3.journaldesfemmes.fr/LRtqbv1Nnfkvkm_3P3bWWnLmxrU=/1500x/smart/b30b76812b8e4234a3817cdd0aaa9594/ccmcms-jdf/15657777.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie"
-  isVip: true
+  isVip: true,
 };
 // 👆 FIN DU BLOC 👆
 const LevureChimiquePage = () => {

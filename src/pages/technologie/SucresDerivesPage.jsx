@@ -11,7 +11,7 @@ export const recipeData = {
   image: "https://www.mon-petit-pot-de-miel.com/img/old_mppm_blog/pots%20de%20miel.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie"
-  isVip: true
+  isVip: true,
 };
 // 👆 FIN DU BLOC 👆
 const SucresDerivesPage = () => {
