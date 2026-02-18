@@ -11,6 +11,7 @@ export const recipeData = {
   image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Pectin_powder.jpg/800px-Pectin_powder.jpg",
   prepTime: "Théorie",
   difficulty: "Niveau 2"
+  isVip: true
 };
 const PectinesPage = () => {
   return (
