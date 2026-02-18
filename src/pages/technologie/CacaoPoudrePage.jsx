@@ -10,8 +10,8 @@ export const recipeData = {
   description: "Fiche technique détaillée.",
   image: "https://images.unsplash.com/photo-1704079783785-cfd81c4b99b6?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Image par défaut
   prepTime: "Lecture : 5 min",
-  difficulty: "Théorie"
-  isVip: true,
+  difficulty: "Théorie",
+  isVip: true
 };
 // 👆 FIN DU BLOC 👆
 const CacaoPoudrePage = () => {

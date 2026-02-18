@@ -10,8 +10,8 @@ export const recipeData = {
   description: "Fiche technique détaillée.",
   image: "https://img.cuisineaz.com/1200x675/2020/12/16/i158469-creme-liquide.jpeg", // Image par défaut
   prepTime: "Lecture : 5 min",
-  difficulty: "Théorie"
-  isVip: true,
+  difficulty: "Théorie",
+  isVip: true
 };
 // 👆 FIN DU BLOC 👆
 const CremePage = () => {

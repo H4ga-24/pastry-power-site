@@ -10,8 +10,8 @@ export const recipeData = {
   description: "Fiche technique détaillée.",
   image: "https://www.simkhabiocosmetiques.ca/wp-content/uploads/2015/09/beurre-cacao-morceaux.png", // Image par défaut
   prepTime: "Lecture : 5 min",
-  difficulty: "Théorie"
-  isVip: true,
+  difficulty: "Théorie",
+  isVip: true
 };
 // 👆 FIN DU BLOC 👆
 const HuilesBeurreCacaoPage = () => {

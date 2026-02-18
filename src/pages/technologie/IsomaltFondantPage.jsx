@@ -10,8 +10,8 @@ export const recipeData = {
   description: "Fiche technique détaillée.",
   image: "https://cdn8.futura-sciences.com/a1920/images/glossaire/Celine/pectine%20%C2%A0MaxCab%2C%20Adobe%20Stock.jpeg", // Image par défaut
   prepTime: "Lecture : 5 min",
-  difficulty: "Théorie"
-  isVip: true,
+  difficulty: "Théorie",
+  isVip: true
 };
 // 👆 FIN DU BLOC 👆
 const IsomaltFondantPage = () => {
