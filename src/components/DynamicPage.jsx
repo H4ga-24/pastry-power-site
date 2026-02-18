@@ -1,72 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { PlayCircle, Lock, Crown, Loader2, BookOpen } from 'lucide-react'; // Ajout icônes
+import { PlayCircle, Lock, Crown, Loader2, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 
-// Imports internes
 import { useAuth } from '../AuthContext'; 
 import CookingMode from './CookingMode';
 import GlossaryScanner from './GlossaryScanner'; 
 
-// --- LE COMPOSANT PAYWALL (Le masque flou) ---
-const PaywallBlur = ({ user }) => (
-  <div className="relative mt-8 text-center overflow-hidden">
-    {/* Faux texte flouté en arrière-plan */}
-    <div className="filter blur-sm select-none opacity-30 space-y-6 px-4 h-64 overflow-hidden pointer-events-none">
-      <h3 className="text-xl font-serif text-[#D4AF37]">1. Composition Chimique</h3>
-      <p className="text-gray-300">
-        La structure moléculaire change dès que la température atteint 60°C, provoquant une coagulation irréversible des protéines...
-      </p>
-      <h3 className="text-xl font-serif text-[#D4AF37]">2. Réactions de Maillard</h3>
-      <p className="text-gray-300">
-        Les sucres réducteurs interagissent avec les acides aminés pour créer cette saveur caractéristique de croûte dorée...
-      </p>
-      <p className="text-gray-300">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-    </div>
-
-    {/* Le panneau de blocage par-dessus */}
-    <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/90 to-transparent flex flex-col items-center justify-center pt-10 z-10">
-      <Crown className="w-12 h-12 text-[#D4AF37] mb-4 drop-shadow-[0_0_15px_rgba(212,175,55,0.6)] animate-pulse" />
-      <h3 className="text-2xl font-serif text-white mb-2">Contenu Expert</h3>
-      <p className="text-gray-400 mb-6 max-w-md px-4 text-sm leading-relaxed">
-        Ce cours technique est réservé aux membres. Débloquez l'accès aux schémas, aux explications scientifiques et aux secrets de chef.
-      </p>
-      
-      {/* Bouton d'action intelligent */}
-      {!user ? (
-         <Link to="/login">
-            <Button className="bg-[#D4AF37] text-black font-bold px-8 py-6 rounded-none hover:bg-white transition-all uppercase tracking-widest shadow-lg">
-                Se connecter pour lire la suite
-            </Button>
-         </Link>
-      ) : (
-         <a 
-            href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} 
-            target="_blank"
-            rel="noopener noreferrer"
-         >
-            <Button className="bg-gradient-to-r from-[#D4AF37] to-[#B8962E] text-black font-bold px-8 py-6 rounded-none hover:scale-105 transition-transform uppercase tracking-widest shadow-lg flex items-center gap-3">
-                <Lock size={18} /> Débloquer maintenant
-            </Button>
-         </a>
-      )}
-    </div>
-  </div>
-);
-
-// --- CHARGEMENT DES FICHIERS ---
+// --- SCANNER DES FICHIERS ---
 const modules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true, import: 'default' });
 const rawModules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true, query: '?raw', import: 'default' });
 
 const DynamicPage = () => {
   const { id } = useParams();
-  
-  // 🚀 Utilisation de AuthContext (Rapide !)
-  const { user, isPremium, loading: authLoading } = useAuth();
+  const { user, isPremium, loading: authLoading, signOut } = useAuth();
 
   const [RecipeComponent, setRecipeComponent] = useState(null);
   const [extractedData, setExtractedData] = useState(null);
@@ -93,16 +42,16 @@ const DynamicPage = () => {
           return match ? cleanText(match[2]) : null;
         };
 
-        // Détection VIP
         const vipMatch = rawCode.match(/(?:isVip|vip):\s*true/);
         const isRecipeVip = !!vipMatch;
 
+        // IMPORTANT : Détection si c'est une page Techno (Doit être dans le dossier technologie)
         const isTechFile = foundPath.includes('/technologie/');
+        
         const title = extractString('title', rawCode) || "Contenu";
         const description = extractString('description', rawCode) || "";
         const image = extractString('image', rawCode) || "";
 
-        // Extraction Ingrédients & Étapes (Pour les recettes uniquement)
         let ingredients = [], steps = [];
         if (!isTechFile) {
             const ingMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
@@ -126,7 +75,6 @@ const DynamicPage = () => {
                     if (txt) steps.push(t ? `${t} : ${txt}` : txt);
                 }
             }
-            // Fallbacks (Vieux format)
             if (ingredients.length === 0) {
                let liMatch; const r = /<li[^>]*>([\s\S]*?)<\/li>/g;
                while ((liMatch = r.exec(rawCode)) !== null) {
@@ -148,7 +96,6 @@ const DynamicPage = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  // SEO JSON-LD
   const generateStructuredData = () => {
     if (!extractedData || extractedData.isTech) return null;
     return JSON.stringify({
@@ -158,13 +105,88 @@ const DynamicPage = () => {
 
   if (!RecipeComponent || authLoading) return <div className="text-white text-center mt-20 flex justify-center"><Loader2 className="animate-spin" /></div>;
 
-  // --- LOGIQUE DE RENDU ---
+  // =================================================================
+  // LOGIQUE D'AFFICHAGE
+  // =================================================================
 
-  // CAS 1 : RECETTE VIP (Blocage Total)
-  // Si c'est une recette (pas une techno) et qu'elle est VIP et que l'user n'est pas Premium
-  if (!extractedData?.isTech && extractedData?.isVip && !isPremium) {
+  const isLocked = extractedData?.isVip && !isPremium;
+
+  // --- CAS 1 : PAGE TECHNOLOGIE (Effet "Journal Le Monde") ---
+  if (extractedData?.isTech) {
+      return (
+        <div className="min-h-screen bg-[#121212] pt-24 px-6 pb-20">
+            <Helmet>
+                <title>{extractedData.title} | Pastry Power</title>
+                <meta name="description" content={extractedData.description} />
+            </Helmet>
+
+            <div className="max-w-4xl mx-auto">
+                {/* EN-TÊTE (Toujours visible) */}
+                <div className="text-center mb-12">
+                    <div className="inline-flex items-center gap-2 text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                        <BookOpen size={14} /> Technologie
+                        {extractedData.isVip && <span className="ml-2 bg-[#D4AF37] text-black px-1.5 rounded-sm">VIP</span>}
+                    </div>
+                    <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">{extractedData.title}</h1>
+                    {extractedData.image && (
+                        <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden mb-8 shadow-2xl border border-white/5">
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent z-10" />
+                            <img src={extractedData.image} alt={extractedData.title} className="w-full h-full object-cover opacity-80" />
+                        </div>
+                    )}
+                    <div className="bg-[#1a1a1a] p-8 rounded-xl border-l-4 border-[#D4AF37] text-left">
+                        <p className="text-xl text-gray-300 italic font-serif leading-relaxed">
+                            {extractedData.description}
+                        </p>
+                    </div>
+                </div>
+
+                {/* CONTENU + MASQUE */}
+                <div className="relative">
+                    {/* 
+                       L'Astuce est ICI : 
+                       Si c'est bloqué, on contraint la hauteur (h-[400px]) et on cache ce qui dépasse (overflow-hidden)
+                       Sinon, on laisse la hauteur auto
+                    */}
+                    <div className={`prose prose-invert prose-gold max-w-none prose-lg text-gray-300 leading-loose ${isLocked ? 'h-[400px] overflow-hidden' : ''}`} ref={recipeContentRef}>
+                        <RecipeComponent />
+                        <GlossaryScanner targetRef={recipeContentRef} trigger={id} />
+                    </div>
+
+                    {/* LE MASQUE EN DÉGRADÉ (Si bloqué) */}
+                    {isLocked && (
+                        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-10 bg-gradient-to-b from-transparent via-[#121212]/80 to-[#121212]">
+                            <div className="text-center p-6 w-full max-w-lg">
+                                <Crown className="w-12 h-12 text-[#D4AF37] mx-auto mb-4 animate-pulse" />
+                                <h3 className="text-2xl font-serif text-white mb-2">La suite est réservée aux membres</h3>
+                                <p className="text-gray-400 mb-6 text-sm">Débloquez l'accès complet à ce cours technique et aux schémas explicatifs.</p>
+                                
+                                {!user ? (
+                                    <Link to="/login">
+                                        <Button className="w-full bg-[#D4AF37] text-black font-bold h-12 hover:bg-white uppercase tracking-widest">
+                                            Se connecter
+                                        </Button>
+                                    </Link>
+                                ) : (
+                                    <a href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} target="_blank" rel="noopener noreferrer">
+                                        <Button className="w-full bg-gradient-to-r from-[#D4AF37] to-[#B8962E] text-black font-bold h-12 shadow-lg hover:scale-105 transition-transform uppercase tracking-widest flex items-center justify-center gap-2">
+                                            <Lock size={16} /> Débloquer le cours
+                                        </Button>
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+      );
+  }
+
+  // --- CAS 2 : RECETTE DE PÂTISSERIE (Blocage Total ou Accès) ---
+  if (isLocked) {
     return (
-      <div className="min-h-screen bg-[#121212] pt-20 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+      <div className="min-h-screen bg-[#121212] pt-20 flex flex-col items-center justify-center p-6 text-center overflow-hidden relative">
         <div className="absolute inset-0 z-0 opacity-20 blur-xl scale-110"><img src={extractedData.image} alt="" className="w-full h-full object-cover" /></div>
         <div className="relative z-10 max-w-lg bg-[#1a1a1a]/90 backdrop-blur-md p-10 rounded-2xl border border-[#D4AF37]/30 shadow-2xl animate-in fade-in zoom-in duration-500">
             <Crown className="w-16 h-16 text-[#D4AF37] mx-auto mb-6" />
@@ -189,55 +211,7 @@ const DynamicPage = () => {
     );
   }
 
-  // CAS 2 : TECHNOLOGIE (Blocage Partiel "Paywall Journal")
-  if (extractedData?.isTech) {
-      // On bloque si c'est VIP et pas payé
-      const shouldBlock = extractedData.isVip && !isPremium;
-
-      return (
-        <div className="min-h-screen bg-[#121212] pt-24 px-6 pb-20">
-            <Helmet>
-                <title>{extractedData.title} | Pastry Power</title>
-                <meta name="description" content={extractedData.description} />
-            </Helmet>
-
-            <div className="max-w-4xl mx-auto">
-                {/* 1. Header (Toujours visible) */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                        <BookOpen size={14} /> Technologie
-                    </div>
-                    <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">{extractedData.title}</h1>
-                    {extractedData.image && (
-                        <div className="relative h-64 md:h-96 w-full rounded-2xl overflow-hidden mb-8 shadow-2xl border border-white/5">
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent z-10" />
-                            <img src={extractedData.image} alt={extractedData.title} className="w-full h-full object-cover opacity-80" />
-                        </div>
-                    )}
-                    {/* Intro / Chapeau (Toujours visible) */}
-                    <div className="bg-[#1a1a1a] p-8 rounded-xl border-l-4 border-[#D4AF37] text-left">
-                        <p className="text-xl text-gray-300 italic font-serif leading-relaxed">
-                            {extractedData.description}
-                        </p>
-                    </div>
-                </div>
-
-                {/* 2. Contenu (Masqué ou Visible) */}
-                {shouldBlock ? (
-                    <PaywallBlur user={user} />
-                ) : (
-                    <div className="prose prose-invert prose-gold max-w-none prose-lg text-gray-300 leading-loose" ref={recipeContentRef}>
-                        <RecipeComponent />
-                        {/* Le scanner ne s'active que si le contenu est visible */}
-                        <GlossaryScanner targetRef={recipeContentRef} trigger={id} />
-                    </div>
-                )}
-            </div>
-        </div>
-      );
-  }
-
-  // CAS 3 : RECETTE STANDARD (Toujours visible)
+  // --- CAS 3 : AFFICHAGE NORMAL ---
   return (
     <div className="min-h-screen bg-[#121212] pt-20">
       <Helmet>
