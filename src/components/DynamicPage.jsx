@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom'; // J'ai ajouté useLocation
+import { useParams, Link, useLocation } from 'react-router-dom'; 
 import { PlayCircle, Lock, Crown, Loader2, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -15,7 +15,7 @@ const rawModules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/tech
 
 const DynamicPage = () => {
   const { id } = useParams();
-  const location = useLocation(); // Pour lire l'URL
+  const location = useLocation(); 
   const { user, isPremium, loading: authLoading, signOut } = useAuth();
 
   const [RecipeComponent, setRecipeComponent] = useState(null);
@@ -27,7 +27,6 @@ const DynamicPage = () => {
     const loadRecipe = async () => {
       let foundPath = null;
       for (const path in modules) {
-        // On cherche le fichier qui correspond à l'ID
         if (path.includes(`/${id}.jsx`)) {
           foundPath = path;
           break;
@@ -44,22 +43,16 @@ const DynamicPage = () => {
           return match ? cleanText(match[2]) : null;
         };
 
-        // On regarde si le fichier est dans le dossier technologie
         const isTechFile = foundPath.includes('/technologie/');
         
-        // --- LOGIQUE DE VERROUILLAGE ---
-        // 1. Est-ce marqué VIP dans le fichier ?
         const fileSaysVip = !!rawCode.match(/(?:isVip|vip):\s*true/);
-        // 2. Est-ce que l'URL contient /vip/ ? (C'est ça qui nous intéresse pour ton lien)
         const urlSaysVip = location.pathname.includes('/vip/');
-        
         const isVip = fileSaysVip || urlSaysVip;
 
         const title = extractString('title', rawCode) || "Contenu";
         const description = extractString('description', rawCode) || "";
         const image = extractString('image', rawCode) || "";
 
-        // Extraction (inchangée)
         let ingredients = [], steps = [];
         if (!isTechFile) {
             const ingMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
@@ -102,7 +95,7 @@ const DynamicPage = () => {
 
     loadRecipe();
     window.scrollTo(0, 0);
-  }, [id, location.pathname]); // On rejoue si l'URL change
+  }, [id, location.pathname]);
 
   const generateStructuredData = () => {
     if (!extractedData || extractedData.isTech) return null;
@@ -117,7 +110,6 @@ const DynamicPage = () => {
   // LOGIQUE D'AFFICHAGE
   // =================================================================
 
-  // On est verrouillé SI c'est une page VIP ET qu'on n'est pas Premium
   const isLocked = extractedData?.isVip && !isPremium;
 
   // --- CAS 1 : PAGE TECHNOLOGIE (Freemium) ---
@@ -130,7 +122,7 @@ const DynamicPage = () => {
             </Helmet>
 
             <div className="max-w-4xl mx-auto">
-                {/* EN-TÊTE (Toujours visible - C'est ça que tu voulais !) */}
+                {/* EN-TÊTE (Toujours visible) */}
                 <div className="text-center mb-12">
                     <div className="inline-flex items-center gap-2 text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
                         <BookOpen size={14} /> Technologie
@@ -152,10 +144,18 @@ const DynamicPage = () => {
 
                 {/* CONTENU + MASQUE */}
                 <div className="relative">
-                    {/* Si verrouillé : Hauteur fixe et overflow caché */}
-                    <div className={`prose prose-invert prose-gold max-w-none prose-lg text-gray-300 leading-loose ${isLocked ? 'h-[400px] overflow-hidden' : ''}`} ref={recipeContentRef}>
+                    {/* ✅ MODIFICATION ICI : 
+                       J'ai ajouté [&>h1]:hidden et [&>img]:hidden pour cacher 
+                       les doublons à l'intérieur du texte 
+                    */}
+                    <div className={`prose prose-invert prose-gold max-w-none prose-lg text-gray-300 leading-loose 
+                        [&>h1]:hidden 
+                        [&>img:first-of-type]:hidden 
+                        [&>p:first-of-type>img]:hidden 
+                        ${isLocked ? 'h-[400px] overflow-hidden' : ''}`} 
+                        ref={recipeContentRef}
+                    >
                         <RecipeComponent />
-                        {/* On ne scanne pas le glossaire si c'est caché trop bas */}
                         {!isLocked && <GlossaryScanner targetRef={recipeContentRef} trigger={id} />}
                     </div>
 
@@ -215,7 +215,7 @@ const DynamicPage = () => {
     );
   }
 
-  // --- CAS 3 : AFFICHAGE STANDARD (Recette gratuite ou Débloquée) ---
+  // --- CAS 3 : AFFICHAGE STANDARD ---
   return (
     <div className="min-h-screen bg-[#121212] pt-20">
       <Helmet>
