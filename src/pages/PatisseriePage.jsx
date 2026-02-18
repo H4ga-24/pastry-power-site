@@ -13,14 +13,14 @@ const HUBS = {
       { title: "Pâtes", id: "pate", image: "https://plus.unsplash.com/premium_photo-1722693808030-ff33914c4107?q=80&w=1470&auto=format&fit=crop", desc: "Sablée, Feuilletée..." },
       { title: "Crèmes", id: "creme", image: "https://plus.unsplash.com/premium_photo-1664474573144-4375bd16e13c?q=80&w=688&auto=format&fit=crop", desc: "Pâtissière, Anglaise..." },
       { title: "Glaçages", id: "glacage", image: "https://plus.unsplash.com/premium_photo-1722686589246-f0969c3d72c4?q=80&w=789&auto=format&fit=crop", desc: "Miroir, Rocher..." },
-      { title: "Mousses", id: "mousse", image: "https://images.unsplash.com/flagged/photo-1557234985-425e10c9d7f1?q=80&w=764&auto=format&fit=crop", desc: "Légèreté aérienne..." },
-      { title: "Inserts", id: "insert", image: "https://www.femmeactuelle.fr/imgre/fit/~1~fac~2022~01~13~cbd82aad-1bf5-425d-b9b5-b8b62eb8ef92.jpeg/1200x630/focus-point/1189%2C933/patisserie-comment-faire-un-insert-comme-un-chef.jpg", desc: "Cœurs fruités..." },
+      { title: "Mousses", id: "mousse", image: "https://i.postimg.cc/gjp7FQ9F/Valrhona-com-Lexique-Recette-Mousse.webp", desc: "Légèreté aérienne..." },
+      { title: "Inserts", id: "insert", image: "https://i.postimg.cc/qq54Jppt/1-2373cfc6-fe5a-47b3-9b5e-7ba55b6162d1.png", desc: "Cœurs fruités..." },
       { title: "Crémeux", id: "cremeux", image: "https://plus.unsplash.com/premium_photo-1701210418103-4a912af9398f?q=80&w=1470&auto=format&fit=crop", desc: "Onctuosité..." },
       { title: "Petits Fours Secs", id: "petit-four", image: "https://plus.unsplash.com/premium_photo-1726072366210-8e83c3406c4b?q=80&w=687&auto=format&fit=crop", desc: "Sablés..." },
       { title: "Gâteaux de Voyage", id: "voyage", image: "https://images.unsplash.com/photo-1662793295930-15702b7a1f37?q=80&w=735&auto=format&fit=crop", desc: "Cakes, Madeleines..." },
-      { title: "Cakes Salés", id: "cake-sale", image: "https://images.unsplash.com/photo-1584796101179-52cfea2e6f52?q=80&w=1374&auto=format&fit=crop", desc: "Traiteur..." },
+      { title: "Cakes Salés", id: "cake-sale", image: "https://i.postimg.cc/rFQP3ffy/cake-sale-facon-flammenkuch-le-moulin-1704.png", desc: "Traiteur..." },
       { title: "Pâte à Choux", id: "choux", image: "https://images.unsplash.com/photo-1761637604739-790197a32073?q=80&w=811&auto=format&fit=crop", desc: "Éclairs, Choux..." },
-      { title: "Tartes", id: "tarte", image: "https://plus.unsplash.com/premium_photo-1664472613567-2176b50ddb28?q=80&w=880&auto=format&fit=crop", desc: "Fonds croquants..." },
+      { title: "Tartes", id: "tarte", image: "https://i.postimg.cc/FK2qG1Dy/tarte-choco-passion04-1200x900.jpg", desc: "Fonds croquants..." },
       { title: "Entremets", id: "entremets", image: "https://images.unsplash.com/photo-1541779859250-7c67d623e4da?q=60&w=800&auto=format&fit=crop", desc: "Montages..." },
       { title: "Desserts Régionaux", id: "regional", image: "https://images.unsplash.com/photo-1631978931011-a033b99bce1e?q=80&w=687&auto=format&fit=crop", desc: "Traditions..." }
     ]
@@ -44,7 +44,7 @@ const HUBS = {
       { title: "Farines", id: "farine", image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=80&w=687&auto=format&fit=crop", desc: "Blés et gluten." },
       { title: "Sucres", id: "sucre", image: "https://plus.unsplash.com/premium_photo-1744312220263-a93627dc6801?q=80&w=687&auto=format&fit=crop", desc: "Saccharose et sirops." },
       { title: "Corps Gras", id: "gras", image: "https://images.unsplash.com/photo-1652282556241-0ce13285d00f?q=80&w=687&auto=format&fit=crop", desc: "Beurre et huiles." },
-      { title: "Gélifiants", id: "gelifiant", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Gélatine, Pectine..." },
+      { title: "Gélifiants", id: "gelifiant", image: "https://i.postimg.cc/fL8dDSps/Gelatine-halal-trempee-jpg.webp", desc: "Gélatine, Pectine..." },
       { title: "Œufs", id: "oeuf", image: "https://images.unsplash.com/photo-1737099950756-9869b0383ba7?q=80&w=687&auto=format&fit=crop", desc: "Structure et émulsion." },
       { title: "Levures", id: "levure", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop", desc: "Fermentations et poudres." },
       { title: "Chocolat", id: "tech-chocolat", image: "https://plus.unsplash.com/premium_photo-1723568493016-5e5cdc069ff3?q=80&w=702&auto=format&fit=crop", desc: "Cristallisation et tempérage." }
