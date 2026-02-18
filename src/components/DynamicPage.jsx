@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom'; // J'ai ajouté useLocation
 import { PlayCircle, Lock, Crown, Loader2, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -15,6 +15,7 @@ const rawModules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/tech
 
 const DynamicPage = () => {
   const { id } = useParams();
+  const location = useLocation(); // Pour lire l'URL
   const { user, isPremium, loading: authLoading, signOut } = useAuth();
 
   const [RecipeComponent, setRecipeComponent] = useState(null);
@@ -26,6 +27,7 @@ const DynamicPage = () => {
     const loadRecipe = async () => {
       let foundPath = null;
       for (const path in modules) {
+        // On cherche le fichier qui correspond à l'ID
         if (path.includes(`/${id}.jsx`)) {
           foundPath = path;
           break;
@@ -42,16 +44,22 @@ const DynamicPage = () => {
           return match ? cleanText(match[2]) : null;
         };
 
-        const vipMatch = rawCode.match(/(?:isVip|vip):\s*true/);
-        const isRecipeVip = !!vipMatch;
-
-        // IMPORTANT : Détection si c'est une page Techno (Doit être dans le dossier technologie)
+        // On regarde si le fichier est dans le dossier technologie
         const isTechFile = foundPath.includes('/technologie/');
         
+        // --- LOGIQUE DE VERROUILLAGE ---
+        // 1. Est-ce marqué VIP dans le fichier ?
+        const fileSaysVip = !!rawCode.match(/(?:isVip|vip):\s*true/);
+        // 2. Est-ce que l'URL contient /vip/ ? (C'est ça qui nous intéresse pour ton lien)
+        const urlSaysVip = location.pathname.includes('/vip/');
+        
+        const isVip = fileSaysVip || urlSaysVip;
+
         const title = extractString('title', rawCode) || "Contenu";
         const description = extractString('description', rawCode) || "";
         const image = extractString('image', rawCode) || "";
 
+        // Extraction (inchangée)
         let ingredients = [], steps = [];
         if (!isTechFile) {
             const ingMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
@@ -88,13 +96,13 @@ const DynamicPage = () => {
             }
         }
 
-        setExtractedData({ title, description, image, ingredients, steps, isTech: isTechFile, isVip: isRecipeVip });
+        setExtractedData({ title, description, image, ingredients, steps, isTech: isTechFile, isVip: isVip });
       }
     };
 
     loadRecipe();
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [id, location.pathname]); // On rejoue si l'URL change
 
   const generateStructuredData = () => {
     if (!extractedData || extractedData.isTech) return null;
@@ -109,9 +117,10 @@ const DynamicPage = () => {
   // LOGIQUE D'AFFICHAGE
   // =================================================================
 
+  // On est verrouillé SI c'est une page VIP ET qu'on n'est pas Premium
   const isLocked = extractedData?.isVip && !isPremium;
 
-  // --- CAS 1 : PAGE TECHNOLOGIE (Effet "Journal Le Monde") ---
+  // --- CAS 1 : PAGE TECHNOLOGIE (Freemium) ---
   if (extractedData?.isTech) {
       return (
         <div className="min-h-screen bg-[#121212] pt-24 px-6 pb-20">
@@ -121,7 +130,7 @@ const DynamicPage = () => {
             </Helmet>
 
             <div className="max-w-4xl mx-auto">
-                {/* EN-TÊTE (Toujours visible) */}
+                {/* EN-TÊTE (Toujours visible - C'est ça que tu voulais !) */}
                 <div className="text-center mb-12">
                     <div className="inline-flex items-center gap-2 text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
                         <BookOpen size={14} /> Technologie
@@ -143,23 +152,20 @@ const DynamicPage = () => {
 
                 {/* CONTENU + MASQUE */}
                 <div className="relative">
-                    {/* 
-                       L'Astuce est ICI : 
-                       Si c'est bloqué, on contraint la hauteur (h-[400px]) et on cache ce qui dépasse (overflow-hidden)
-                       Sinon, on laisse la hauteur auto
-                    */}
+                    {/* Si verrouillé : Hauteur fixe et overflow caché */}
                     <div className={`prose prose-invert prose-gold max-w-none prose-lg text-gray-300 leading-loose ${isLocked ? 'h-[400px] overflow-hidden' : ''}`} ref={recipeContentRef}>
                         <RecipeComponent />
-                        <GlossaryScanner targetRef={recipeContentRef} trigger={id} />
+                        {/* On ne scanne pas le glossaire si c'est caché trop bas */}
+                        {!isLocked && <GlossaryScanner targetRef={recipeContentRef} trigger={id} />}
                     </div>
 
                     {/* LE MASQUE EN DÉGRADÉ (Si bloqué) */}
                     {isLocked && (
-                        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-10 bg-gradient-to-b from-transparent via-[#121212]/80 to-[#121212]">
+                        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-10 bg-gradient-to-b from-transparent via-[#121212]/90 to-[#121212]">
                             <div className="text-center p-6 w-full max-w-lg">
                                 <Crown className="w-12 h-12 text-[#D4AF37] mx-auto mb-4 animate-pulse" />
-                                <h3 className="text-2xl font-serif text-white mb-2">La suite est réservée aux membres</h3>
-                                <p className="text-gray-400 mb-6 text-sm">Débloquez l'accès complet à ce cours technique et aux schémas explicatifs.</p>
+                                <h3 className="text-2xl font-serif text-white mb-2">Cours complet réservé</h3>
+                                <p className="text-gray-400 mb-6 text-sm">Débloquez l'accès complet à ce cours technique, aux schémas et explications scientifiques.</p>
                                 
                                 {!user ? (
                                     <Link to="/login">
@@ -170,7 +176,7 @@ const DynamicPage = () => {
                                 ) : (
                                     <a href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} target="_blank" rel="noopener noreferrer">
                                         <Button className="w-full bg-gradient-to-r from-[#D4AF37] to-[#B8962E] text-black font-bold h-12 shadow-lg hover:scale-105 transition-transform uppercase tracking-widest flex items-center justify-center gap-2">
-                                            <Lock size={16} /> Débloquer le cours
+                                            <Lock size={16} /> Débloquer (4.90€ / mois)
                                         </Button>
                                     </a>
                                 )}
@@ -183,7 +189,7 @@ const DynamicPage = () => {
       );
   }
 
-  // --- CAS 2 : RECETTE DE PÂTISSERIE (Blocage Total ou Accès) ---
+  // --- CAS 2 : RECETTE CLASSIQUE (Si c'est VIP et bloqué, on bloque TOUT) ---
   if (isLocked) {
     return (
       <div className="min-h-screen bg-[#121212] pt-20 flex flex-col items-center justify-center p-6 text-center overflow-hidden relative">
@@ -196,14 +202,12 @@ const DynamicPage = () => {
             {!user ? (
                 <div className="space-y-4">
                     <Link to="/login"><Button className="w-full bg-[#D4AF37] text-black font-bold h-12 hover:bg-white transition-all">Se connecter</Button></Link>
-                    <p className="text-sm text-gray-500">Pas encore de compte ? <Link to="/vip" className="text-[#D4AF37] hover:underline">Voir les offres</Link></p>
                 </div>
             ) : (
                 <div className="space-y-4">
                     <a href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} target="_blank" rel="noopener noreferrer">
                         <Button className="w-full bg-gradient-to-r from-[#D4AF37] to-[#B8962E] text-black font-bold h-12 shadow-lg hover:scale-105 transition-transform">Débloquer (4.90€ / mois)</Button>
                     </a>
-                    <button onClick={signOut} className="text-sm text-gray-500 hover:text-white underline mt-4">Se déconnecter</button>
                 </div>
             )}
         </div>
@@ -211,7 +215,7 @@ const DynamicPage = () => {
     );
   }
 
-  // --- CAS 3 : AFFICHAGE NORMAL ---
+  // --- CAS 3 : AFFICHAGE STANDARD (Recette gratuite ou Débloquée) ---
   return (
     <div className="min-h-screen bg-[#121212] pt-20">
       <Helmet>

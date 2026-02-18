@@ -6,7 +6,7 @@ import Navigation from './components/Navigation';
 import DynamicPage from './components/DynamicPage';
 import FloatingBackButton from './components/FloatingBackButton';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop'; // <--- AJOUT ICI
+import ScrollToTop from './components/ScrollToTop';
 
 // Imports sécurité
 import ProtectedRoute from './ProtectedRoute'; 
@@ -23,7 +23,7 @@ import VipPage from './pages/VipPage';
 const App = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#121212]">
-      {/* <--- AJOUT DU SCROLL TO TOP ICI */}
+      {/* Remonte en haut de page à chaque changement de route */}
       <ScrollToTop />
       
       <Navigation />
@@ -36,10 +36,14 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/vip" element={<VipPage />} />
 
-          {/* --- RECETTE STANDARD --- */}
+          {/* --- RECETTE STANDARD (Gratuite) --- */}
           <Route path="/recipe/:id" element={<DynamicPage />} />
 
-          {/* --- RECETTE VIP --- */}
+          {/* 👇 NOUVEAU : Route Spéciale Technologie VIP (Freemium) 👇 */}
+          {/* On la met AVANT la route générique pour qu'elle ne soit pas bloquée par ProtectedRoute */}
+          <Route path="/vip/technologie/:id" element={<DynamicPage />} />
+
+          {/* --- RECETTE VIP (Totalement bloquée par le cadenas) --- */}
           <Route 
             path="/vip/:id" 
             element={
