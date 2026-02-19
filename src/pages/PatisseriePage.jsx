@@ -11,9 +11,9 @@ const HUBS = {
     sections: [
       { title: "Biscuits", id: "biscuit", image: "https://images.unsplash.com/photo-1691442563474-df78f0cf8f46?q=80&w=1470&auto=format&fit=crop", desc: "Les bases éponges..." },
       { title: "Pâtes", id: "pate", image: "https://plus.unsplash.com/premium_photo-1722693808030-ff33914c4107?q=80&w=1470&auto=format&fit=crop", desc: "Sablée, Feuilletée..." },
-      { title: "Crèmes", id: "creme", image: "https://plus.unsplash.com/premium_photo-1664474573144-4375bd16e13c?q=80&w=688&auto=format&fit=crop", desc: "Pâtissière, Anglaise..." },
+      { title: "Crèmes", id: "creme", image: "https://i.postimg.cc/gjp7FQ9F/Valrhona-com-Lexique-Recette-Mousse.webp", desc: "Pâtissière, Anglaise..." },
       { title: "Glaçages", id: "glacage", image: "https://plus.unsplash.com/premium_photo-1722686589246-f0969c3d72c4?q=80&w=789&auto=format&fit=crop", desc: "Miroir, Rocher..." },
-      { title: "Mousses", id: "mousse", image: "https://i.postimg.cc/gjp7FQ9F/Valrhona-com-Lexique-Recette-Mousse.webp", desc: "Légèreté aérienne..." },
+      { title: "Mousses", id: "mousse", image: "https://images.unsplash.com/flagged/photo-1557234985-425e10c9d7f1?q=80&w=764&auto=format&fit=crop", desc: "Légèreté aérienne..." },
       { title: "Inserts", id: "insert", image: "https://i.postimg.cc/qq54Jppt/1-2373cfc6-fe5a-47b3-9b5e-7ba55b6162d1.png", desc: "Cœurs fruités..." },
       { title: "Crémeux", id: "cremeux", image: "https://plus.unsplash.com/premium_photo-1701210418103-4a912af9398f?q=80&w=1470&auto=format&fit=crop", desc: "Onctuosité..." },
       { title: "Petits Fours Secs", id: "petit-four", image: "https://plus.unsplash.com/premium_photo-1726072366210-8e83c3406c4b?q=80&w=687&auto=format&fit=crop", desc: "Sablés..." },
