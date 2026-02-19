@@ -18,6 +18,7 @@ const PateDeFruits = () => {
     prepTime: "1H 00",
     cookTime: "30 MIN",
     difficulty: "AVANCÉ",
+    isVip: true,
     description: "La quintessence du fruit confit. Une texture fondante, un goût pur et intense. La maîtrise de la pectine jaune et de la cuisson au degré près est essentielle pour réussir cette confiserie d'exception.",
     image: "https://www.chocolaterie-charpot.fr/99-large_default/nos-pates-de-fruits-maison.jpg",
   };
