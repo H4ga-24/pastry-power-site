@@ -9,7 +9,7 @@ export const recipeData = {
   title: "L'Agar-Agar",
   category: "Technologie - Gélifiants",
   description: "L'algue rouge au pouvoir gélifiant puissant et cassant. Alternative végétale.",
-  image: "https://cdn.pixabay.com/photo/2016/09/13/11/24/agar-agar-1667086_1280.jpg",
+  image: "https://www.valpibio.com/wp-content/uploads/2015/06/agar-agar.jpg",
   prepTime: "Théorie",
   difficulty: "Niveau 1"
 };

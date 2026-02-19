@@ -8,7 +8,7 @@ export const recipeData = {
   category: "Technologie - Gélifiants",
   description: "Origine animale, degrés Bloom et hydratation. L'incontournable des bavarois.",
   // 👇 Image : Feuilles de gélatine (Vrai lien)
-  image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Gelatine_sheets.jpg/800px-Gelatine_sheets.jpg",
+  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg27fBxTwXr1uAhcW9IMJnEpGXY7Q1rFP297Y-41kroRQpgcoz_rbRNtpCVDdPF2Of_Ii1ki8UqRUdH5zJLIGgnCiADUv9famZY-7uDjmjjeHMEocyhb3Peo4az3OQ-ejtytuzgZsnbMtQZ/s660/20200106_211345.jpg",
   prepTime: "Théorie",
   difficulty: "Niveau 1"
 };

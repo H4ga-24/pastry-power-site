@@ -8,7 +8,7 @@ export const recipeData = {
   category: "Technologie - Gélifiants",
   description: "Gélifiant végétal activé par l'acidité. Idéal pour les confitures et pâtes de fruits.",
   // 👇 Image : Poudre blanche (Pectine)
-  image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Pectin_powder.jpg/800px-Pectin_powder.jpg",
+  image: "https://cdn8.futura-sciences.com/a1920/images/glossaire/Celine/pectine%20%C2%A0MaxCab%2C%20Adobe%20Stock.jpeg",
   prepTime: "Théorie",
   difficulty: "Niveau 2",
   isVip: true
