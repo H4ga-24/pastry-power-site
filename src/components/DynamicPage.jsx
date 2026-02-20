@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 // 👇 IMPORTS CORRIGÉS AVEC DES CHEMINS ABSOLUS (@)
 import { useAuth } from '@/AuthContext';
-import GlossaryScanner from '@/components/ui/GlossaryScanner'; 
+import GlossaryScanner from '@/components/GlossaryScanner';
 
 // Si ton fichier est directement dans src/components, c'est ce chemin :
 import CookingMode from '@/components/CookingMode';
