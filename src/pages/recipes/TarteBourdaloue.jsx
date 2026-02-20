@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// Import de l'image locale (assurez-vous qu'elle est dans src/assets)
+import tarteBourdaloueImg from '@/assets/tarte-Bourdaloue.jpg'; 
+
 const TarteBourdaloue = () => {
   const baseServings = 8;
   const [servings, setServings] = useState(baseServings);
@@ -17,8 +20,10 @@ const TarteBourdaloue = () => {
     cookTime: "40 MIN",
     difficulty: "MOYEN",
     description: "La tarte aux poires amandine par excellence, créée rue Bourdaloue à Paris au XIXe siècle. Une valeur sûre de la pâtisserie française.",
-    image: "https://www.latelierderoxane.com/blog/wp-content/uploads/recette-tarte-bourdaloue-787x590.jpg",
+    image: tarteBourdaloueImg, // Utilisation de l'image locale
   };
+
+  // ... le reste du code reste identique ...
 
   const ingredients = [
     { name: 'Pâte sucrée', amount: 300, unit: 'g' },

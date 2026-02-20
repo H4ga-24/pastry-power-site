@@ -4,6 +4,11 @@ import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 
+// 👇 1. IMPORT DE L'IMAGE LOCALE
+// Note : Les espaces dans les noms de fichiers fonctionnent généralement, 
+// mais il est souvent conseillé de les remplacer par des tirets (tarte-fine-aux-pommes.jpg)
+import tarteFineImg from '@/assets/Tarte Fine aux Pommes.jpg'; 
+
 const TarteAuxPommes = () => {
   const recipeData = {
     category: "PÂTISSERIE • TARTES",
@@ -12,7 +17,7 @@ const TarteAuxPommes = () => {
     cookTime: "35 MIN",
     difficulty: "FACILE",
     description: "La simplicité par excellence. Une fine couche de compote, des lamelles de pommes rangées comme des pétales, le tout caramélisé au four.",
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2LLYFduF1_nL7ctWtXzKz4iKbA5COmspRcc10CPn-bYYe4rmdFk4hp9d2_Np6EBjUtEa-wYw1s1xL7gL_lCHjvCnsv74H9GcObYO9JSgK5-iOZ0gcAvbfUz7T0s62UT2vGFsSFkO3ZIeo/s1600/tarte+pommes+compote+(20).JPG",
+    image: tarteFineImg, // 👈 2. UTILISATION DE LA VARIABLE
     baseServings: 6,
   };
 
@@ -73,9 +78,9 @@ const TarteAuxPommes = () => {
     "@context": "https://schema.org/",
     "@type": "Recipe",
     "name": recipeData.title,
-    "image": [recipeData.image],
+    "image": [recipeData.image], // Utilise maintenant l'image importée (le chemin final compilé)
     "description": recipeData.description,
-    "author": { "@type": "Person", "name": "Pastrypower" }, // 👈 CORRIGÉ ICI
+    "author": { "@type": "Person", "name": "Pastrypower" },
     "prepTime": "PT30M",
     "cookTime": "PT35M",
     "recipeYield": `${servings} parts`,
@@ -91,7 +96,7 @@ const TarteAuxPommes = () => {
   return (
     <>
       <Helmet>
-        <title>{recipeData.title} - Pastrypower</title> {/* 👈 CORRIGÉ ICI */}
+        <title>{recipeData.title} - Pastrypower</title>
         <meta name="description" content={recipeData.description} />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
@@ -102,6 +107,7 @@ const TarteAuxPommes = () => {
         {/* HEADER IMAGE */}
         <div className="relative h-[60vh] w-full overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
+          {/* L'image s'affiche ici via la variable */}
           <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
           <div className="absolute bottom-0 left-0 w-full z-20 pb-12">
             <div className="container mx-auto px-4 max-w-6xl">

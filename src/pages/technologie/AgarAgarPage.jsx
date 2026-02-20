@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Thermometer, FlaskConical, Leaf, Flame } from 'lucide-react';
 
+// 👇 1. IMPORT DE L'IMAGE LOCALE ICI
+// (Vérifiez l'extension : .jpg, .png ou .webp ?)
+import agarAgarImg from '@/assets/agar-agar.jpg'; 
+
 // 👇 DONNÉES DE LA PAGE (Menu) 👇
 export const recipeData = {
   title: "L'Agar-Agar",
   category: "Technologie - Gélifiants",
   description: "L'algue rouge au pouvoir gélifiant puissant et cassant. Alternative végétale.",
-  image: "https://www.valpibio.com/wp-content/uploads/2015/06/agar-agar.jpg",
+  image: agarAgarImg, // 👈 2. UTILISATION DE LA VARIABLE
   prepTime: "Théorie",
   difficulty: "Niveau 1"
 };
@@ -27,11 +31,14 @@ const AgarAgarPage = () => {
         {/* Hero Section */}
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
+          
+          {/* 👇 3. UTILISATION DE LA VARIABLE DANS L'IMAGE PRINCIPALE */}
           <img 
-            src="https://www.valpibio.com/wp-content/uploads/2015/06/agar-agar.jpg" 
+            src={agarAgarImg} 
             alt="L'Agar-agar" 
             className="w-full h-full object-cover"
           />
+          
           <div className="absolute inset-0 z-20 flex flex-col justify-end pb-16 px-6 md:px-20 bg-gradient-to-t from-[#121212] via-[#121212]/60 to-transparent">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
