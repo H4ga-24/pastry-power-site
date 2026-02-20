@@ -89,94 +89,90 @@ const SEARCH_MAPPING = {
   'sans-lactose': 'lactose'
 };
 
-// --- 2. LE SCANNER INTELLIGENT ---
+// --- 2. LE SCANNER HYBRIDE ---
 const modules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
-  query: '?raw', 
-  import: 'default', 
   eager: true 
 });
 
-const allItems = Object.entries(modules).map(([path, rawContent]) => {
+const rawModules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
+  eager: true,
+  query: '?raw',
+  import: 'default'
+});
+
+const allItems = Object.keys(modules).map((path) => {
+  const module = modules[path];
+  const rawCode = rawModules[path];
   const fileName = path.split('/').pop().replace('.jsx', '');
   const lowerPath = path.toLowerCase();
-  const lowerContent = rawContent.toLowerCase();
+  
+  // A. ESSAI AVEC LES DONNÉES EXPORTÉES
+  if (module.recipeData) {
+      const data = module.recipeData;
+      return {
+          id: fileName,
+          title: data.title,
+          category: data.category || "AUTRE",
+          image: data.image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
+          description: data.description || "Découvrez cette recette...",
+          isTech: path.includes('/technologie/'),
+          isVip: data.isVip || false
+      };
+  }
 
-  let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
-  const vipMatch = rawContent.match(/isVip:\s*(true|false)/);
-  if (vipMatch && vipMatch[1] === 'true') isVip = true;
+  // B. FALLBACK AVEC REGEX
+  const lowerContent = rawCode.toLowerCase();
+  const extractString = (key, source) => {
+      const match = source.match(new RegExp(`${key}:\\s*(["'])([\\s\\S]*?)\\1`));
+      return match ? match[2] : null;
+  };
 
-  const secureTitleMatch = rawContent.match(/(?:recipeData|recipeMeta)\s*=\s*\{[\s\S]*?title:\s*(?:"([^"]*)"|'([^']*)')/);
-  const catMatch = rawContent.match(/category:\s*(?:"([^"]*)"|'([^']*)')/);
-  const imgMatch = rawContent.match(/image:\s*(?:"([^"]*)"|'([^']*)')/);
-  const descMatch = rawContent.match(/description:\s*(?:"([^"]*)"|'([^']*)')/);
-
-  let title = secureTitleMatch ? (secureTitleMatch[1] || secureTitleMatch[2]) : null;
-  let category = catMatch ? (catMatch[1] || catMatch[2]) : null;
-  let image = imgMatch ? (imgMatch[1] || imgMatch[2]) : null;
-  let description = descMatch ? (descMatch[1] || descMatch[2]) : "";
-
+  let title = extractString('title', rawCode);
   if (!title) {
-    const h1Match = rawContent.match(/<h1[^>]*>([^<]+)<\/h1>/);
+    const h1Match = rawCode.match(/<h1[^>]*>([^<]+)<\/h1>/);
     title = h1Match ? h1Match[1] : fileName.replace(/^vip-/i, '').replace(/([A-Z])/g, ' $1').trim();
   }
-  if (!image) {
-    const htmlImgMatch = rawContent.match(/<img[^>]+src=["']([^"']+)["']/);
-    if (htmlImgMatch) image = htmlImgMatch[1];
-  }
 
-  // FORCEUR DE CATEGORIE
-  if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
-      category = "SANS-GLUTEN";
-  }
-  else if (
-    !lowerPath.includes('technologie') && (
-      lowerPath.includes('sans-sucre') || 
-      lowerPath.includes('zero-sucre') || 
-      lowerPath.includes('diabete') || 
-      lowerPath.includes('ig-bas')
-    )
-  ) {
-      category = "SANS-SUCRE";
-  }
-  else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) {
-      category = "VEGAN";
-  }
-  else if (lowerPath.includes('lactose')) {
-      category = "SANS-LACTOSE";
-  }
-  else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche')) {
-      category = "CHOUX";
-  }
-  else if (lowerPath.includes('regional') || lowerPath.includes('kouign') || lowerPath.includes('breton') || lowerPath.includes('basque') || lowerPath.includes('cannele') || lowerPath.includes('clafoutis') || lowerPath.includes('flan')) {
-      category = "REGIONAL";
-  }
-  else if (lowerPath.includes('cake') && (lowerPath.includes('sale') || lowerContent.includes('poivre') || lowerContent.includes('jambon') || lowerContent.includes('olive') || lowerContent.includes('lardon') || lowerContent.includes('thon'))) {
-      category = "CAKE-SALE";
-  }
-  else if (!category) {
-      if (lowerPath.includes('sauce')) category = "SAUCE";
+  if (!title) return null;
+
+  let category = extractString('category', rawCode);
+  let image = extractString('image', rawCode);
+  let description = extractString('description', rawCode);
+  
+  let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
+  const vipMatch = rawCode.match(/(?:isVip|vip):\s*true/);
+  if (vipMatch) isVip = true;
+
+  if (!category) {
+      if (lowerPath.includes('gluten') || title.toLowerCase().includes('gluten')) category = "SANS-GLUTEN";
+      else if (!path.includes('technologie') && (lowerPath.includes('sans-sucre') || lowerPath.includes('ig-bas'))) category = "SANS-SUCRE";
+      else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) category = "VEGAN";
+      else if (lowerPath.includes('lactose')) category = "SANS-LACTOSE";
+      else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche')) {
+          category = "CHOUX";
+      }
+      else if (lowerPath.includes('regional') || lowerPath.includes('kouign') || lowerPath.includes('breton') || lowerPath.includes('basque') || lowerPath.includes('cannele') || lowerPath.includes('clafoutis') || lowerPath.includes('flan')) {
+          category = "REGIONAL";
+      }
+      else if (lowerPath.includes('cake') && (lowerPath.includes('sale') || lowerContent.includes('poivre') || lowerContent.includes('jambon') || lowerContent.includes('olive') || lowerContent.includes('lardon') || lowerContent.includes('thon'))) {
+          category = "CAKE-SALE";
+      }
+      else if (lowerPath.includes('sauce')) category = "SAUCE";
       else if (lowerPath.includes('chocolat')) category = "CHOCOLATERIE";
       else if (lowerPath.includes('macaron')) category = "MACARON";
       else if (lowerPath.includes('techno')) category = "TECHNOLOGIE";
-      else if (lowerPath.includes('cake')) category = "GATEAU";
       else category = "AUTRE";
   }
 
-  const cleanTitle = title.replace(/^vip-/i, '').replace(/^VIP-/i, '');
-  const isTechFile = path.includes('/technologie/');
-
-  if (title) {
-    return {
-      id: fileName,
-      title: cleanTitle,
-      category: category ? category.toUpperCase() : "AUTRE",
-      image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
-      description: description || "Découvrez cette recette...",
-      isTech: isTechFile,
-      isVip: isVip
-    };
-  }
-  return null;
+  return {
+    id: fileName,
+    title: title.replace(/^vip-/i, '').replace(/^VIP-/i, ''),
+    category: category.toUpperCase(),
+    image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
+    description: description || "Découvrez cette recette...",
+    isTech: path.includes('/technologie/'),
+    isVip: isVip
+  };
 }).filter(Boolean);
 
 
@@ -253,10 +249,7 @@ const PatisseriePage = ({ category: propCategory }) => {
     if (urlCategory === 'regional') return itemCat === 'regional';
     if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
     if (urlCategory === 'sans-sucre') return itemCat === 'sans-sucre';
-
     if (urlCategory === 'vegan') return itemCat.includes('vegan');
-    
-    if (urlCategory === 'confiserie-diverse') return itemCat.includes('confiserie') && !itemCat.includes('macaron');
     if (urlCategory === 'macaron') return itemCat.includes('macaron');
     
     return !item.isTech && itemCat.includes(normalizedSearch);
@@ -273,45 +266,29 @@ const PatisseriePage = ({ category: propCategory }) => {
         
         {filteredItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map(item => {
-              // --- 🟢 LA CORRECTION EST ICI ---
-              // On construit le lien intelligemment :
-              let linkUrl = `/recipe/${item.id}`; // Par défaut (Gratuit)
-
-              if (item.isVip) {
-                 if (item.isTech) {
-                     // Si C'EST VIP + TECHNO -> On utilise le lien spécial qui ouvre le Freemium
-                     linkUrl = `/vip/technologie/${item.id}`;
-                 } else {
-                     // Si C'EST VIP + RECETTE -> On utilise le lien qui bloque tout
-                     linkUrl = `/vip/${item.id}`;
-                 }
-              }
-              // ---------------------------------
-
-              return (
-                <Link 
-                  key={item.id} 
-                  to={linkUrl}
-                  className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
-                >
-                  
-                  {/* Badge VIP */}
-                  {item.isVip && (
-                    <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-lg shadow-black/40">
-                      <Crown size={12} fill="black" /> VIP
-                    </div>
-                  )}
-
-                  <div className="h-48 bg-gray-900 rounded-lg mb-6 overflow-hidden">
-                    {item.image && <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />}
+            {filteredItems.map(item => (
+              <Link 
+                key={item.id} 
+                // ✅ LE LIEN MAGIQUE EST ICI : TOUT LE MONDE VA SUR /recipe/
+                to={`/recipe/${item.id}`}
+                className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
+              >
+                
+                {/* Badge VIP */}
+                {item.isVip && (
+                  <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-lg shadow-black/40">
+                    <Crown size={12} fill="black" /> VIP
                   </div>
-                  <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">{item.category}</div>
-                  <h3 className="text-2xl font-serif mb-4 group-hover:text-[#D4AF37] transition-colors">{item.title}</h3>
-                  <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">{item.description}</p>
-                </Link>
-              );
-            })}
+                )}
+
+                <div className="h-48 bg-gray-900 rounded-lg mb-6 overflow-hidden">
+                  {item.image && <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />}
+                </div>
+                <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">{item.category}</div>
+                <h3 className="text-2xl font-serif mb-4 group-hover:text-[#D4AF37] transition-colors">{item.title}</h3>
+                <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">{item.description}</p>
+              </Link>
+            ))}
           </div>
         ) : (
           <div className="text-center py-20 bg-[#1a1a1a] rounded-xl border border-white/5">
