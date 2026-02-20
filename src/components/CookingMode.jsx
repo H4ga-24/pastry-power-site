@@ -8,9 +8,14 @@ const CookingMode = ({ recipe, onClose }) => {
   const [checkedSteps, setCheckedSteps] = useState([]);
   const [wakeLock, setWakeLock] = useState(null);
 
+  // Fonction de nettoyage sécurisée
   const cleanText = (text) => {
     if (!text) return "";
-    return text.replace(/\\'/g, "'").replace(/\\"/g, '"');
+    // Sécurité supplémentaire : si on reçoit un objet par erreur, on essaie de l'afficher proprement
+    if (typeof text === 'object') {
+        return text.name || text.label || JSON.stringify(text);
+    }
+    return String(text).replace(/\\'/g, "'").replace(/\\"/g, '"');
   };
 
   useEffect(() => {
@@ -85,11 +90,12 @@ const CookingMode = ({ recipe, onClose }) => {
                 }`}
               >
                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                   checkedIngredients.includes(idx) ? 'border-green-500 bg-green-500 text-black' : 'border-gray-500'
+                    checkedIngredients.includes(idx) ? 'border-green-500 bg-green-500 text-black' : 'border-gray-500'
                 }`}>
                   {checkedIngredients.includes(idx) && <Check size={14} />}
                 </div>
                 <span className={`text-lg ${checkedIngredients.includes(idx) ? 'text-gray-400 line-through' : 'text-gray-200'}`}>
+                  {/* Utilisation de cleanText ici aussi pour sécuriser */}
                   <GlossaryText>{cleanText(ing)}</GlossaryText>
                 </span>
               </div>
