@@ -5,9 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 
 // 👇 1. IMPORT DE L'IMAGE LOCALE
-// Note : Les espaces dans les noms de fichiers fonctionnent généralement, 
-// mais il est souvent conseillé de les remplacer par des tirets (tarte-fine-aux-pommes.jpg)
-import tarteFineImg from '@/assets/Tarte Fine aux Pommes.jpg'; 
+import tarteImg from '../../assets/tarte-fine-aux-pommes.jpg'; 
 
 const TarteAuxPommes = () => {
   const recipeData = {
@@ -17,7 +15,7 @@ const TarteAuxPommes = () => {
     cookTime: "35 MIN",
     difficulty: "FACILE",
     description: "La simplicité par excellence. Une fine couche de compote, des lamelles de pommes rangées comme des pétales, le tout caramélisé au four.",
-    image: tarteFineImg, // 👈 2. UTILISATION DE LA VARIABLE
+    image: tarteImg, // 👈 2. UTILISATION DE LA VARIABLE
     baseServings: 6,
   };
 

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Import de l'image locale (assurez-vous qu'elle est dans src/assets)
-import tarteBourdaloueImg from '@/assets/tarte-Bourdaloue.jpg'; 
+import tarteBourdaloueImg from '../../assets/tarte-Bourdaloue.jpg'; 
 
 const TarteBourdaloue = () => {
   const baseServings = 8;

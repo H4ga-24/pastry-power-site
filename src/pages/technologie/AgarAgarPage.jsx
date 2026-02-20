@@ -6,7 +6,7 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Sn
 
 // 👇 1. IMPORT DE L'IMAGE LOCALE ICI
 // (Vérifiez l'extension : .jpg, .png ou .webp ?)
-import agarAgarImg from '@/assets/agar-agar.jpg'; 
+import agarAgarImg from '../../assets/agar-agar.jpg'; 
 
 // 👇 DONNÉES DE LA PAGE (Menu) 👇
 export const recipeData = {
