@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
-import { PlayCircle, Lock, Crown, Loader2, AlertTriangle } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { PlayCircle, Lock, Crown, Loader2, BookOpen, AlertTriangle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 
+// Imports internes
 import { useAuth } from '../AuthContext'; 
 import CookingMode from './CookingMode';
 import GlossaryScanner from './GlossaryScanner'; 
 
-// 1. On charge TOUT le module (pas juste le default) pour éviter les erreurs
-const modules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true });
+// Import des modules
+const modules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true, import: 'default' });
 const rawModules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true, query: '?raw', import: 'default' });
 
 const DynamicPage = () => {
@@ -29,14 +30,10 @@ const DynamicPage = () => {
       setNotFound(false);
       let foundPath = null;
 
-      // 🔍 DEBUG : Pour voir ce qui se passe dans la console (F12)
-      // console.log("ID recherché :", id);
-      // console.log("Fichiers disponibles :", Object.keys(modules));
-
-      // 2. Recherche SOUPLE (Insensible à la casse + partiel)
-      // C'est ça qui manquait : on cherche si le chemin CONTIENT l'ID
+      // 1. Recherche du fichier
       for (const path in modules) {
-        if (path.toLowerCase().includes(`/${id.toLowerCase()}.jsx`)) {
+        const fileName = path.split('/').pop().replace('.jsx', '').toLowerCase();
+        if (fileName === id.toLowerCase()) {
           foundPath = path;
           break;
         }
@@ -51,24 +48,31 @@ const DynamicPage = () => {
       const module = modules[foundPath];
       const Component = module.default;
 
-      // Si le fichier existe mais n'a pas de "export default function..."
       if (!Component) {
-          console.error("❌ Le fichier existe mais n'exporte pas de composant (default).", foundPath);
           setNotFound(true);
           return;
       }
 
       setRecipeComponent(() => Component);
 
-      // --- ANALYSE DES DONNÉES (Regex Tout-Terrain) ---
+      // --- ANALYSE DES DONNÉES ---
       const rawCode = rawModules[foundPath] || "";
       const exportedData = module.recipeData || {};
       
-      const cleanText = (text) => text ? text.replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\(?=\s|\()/g, "").trim() : "";
+      // ✅ NOUVELLE FONCTION DE NETTOYAGE RENFORCÉE
+      const cleanText = (text) => {
+        if (!text) return "";
+        return text
+          .replace(/\\'/g, "'")   // Remplace \' par '
+          .replace(/\\"/g, '"')   // Remplace \" par "
+          .replace(/\\n/g, " ")   // Enlève les sauts de ligne
+          .replace(/\s+/g, " ")   // Enlève les doubles espaces
+          .trim();
+      };
       
-      // Regex capable de lire dans 'const recipeData = { ... }' même non exporté
+      // Regex pour extraire les strings simples
       const extractFromObject = (objName, key) => {
-          const regex = new RegExp(`${objName}\\s*=\\s*{[\\s\\S]*?${key}:\\s*(["'])([\\s\\S]*?)\\1`);
+          const regex = new RegExp(`${objName}\\s*=\\s*{[\\s\\S]*?${key}:\\s*(["'])((?:\\\\.|[^\\\\])*?)\\1`);
           const match = rawCode.match(regex);
           return match ? cleanText(match[2]) : null;
       };
@@ -79,30 +83,36 @@ const DynamicPage = () => {
       const description = exportedData.description || extractFromObject('recipeData', 'description') || "";
       const image = exportedData.image || extractFromObject('recipeData', 'image') || "";
       
-      // Détection VIP (Export OU Regex OU URL)
       const isVip = exportedData.isVip !== undefined 
           ? exportedData.isVip 
           : (!!rawCode.match(/(?:isVip|vip):\s*true/) || location.pathname.includes('/vip/'));
 
-      // --- EXTRACTION INGRÉDIENTS ---
+      // --- EXTRACTION INGRÉDIENTS (REGEX AMÉLIORÉE) ---
       let ingredients = [];
       const ingBlockMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
       
       if (ingBlockMatch) {
           const content = ingBlockMatch[1];
-          // Regex pour attraper { name: "Farine", amount: 100, unit: "g" }
-          const itemRegex = /name:\s*(["'])(.*?)\1.*?amount:\s*(\d+(?:\.\d+)?|["'].*?["']).*?unit:\s*(["'])(.*?)\4/g;
+          
+          // 🛑 C'EST ICI LA CORRECTION MAJEURE 🛑
+          // On utilise (?:\\.|[^\\\\])*? au lieu de .*? pour capturer les apostrophes échappées
+          const itemRegex = /name:\s*(["'])((?:\\.|[^\\\\])*?)\1.*?amount:\s*(\d+(?:\.\d+)?|["'].*?["']).*?unit:\s*(["'])((?:\\.|[^\\\\])*?)\4/g;
+          
           let match;
           while ((match = itemRegex.exec(content)) !== null) {
-              const name = match[2];
-              const amount = match[3].replace(/["']/g, ""); // Enlève les guillemets si présents
-              const unit = match[5];
+              const name = cleanText(match[2]); // On nettoie le nom
+              const amount = match[3].replace(/["']/g, ""); 
+              const unit = cleanText(match[5]); // On nettoie l'unité
+              
               ingredients.push(`${name} (${amount} ${unit})`);
           }
+          
           // Fallback simple si le regex complexe échoue
           if (ingredients.length === 0) {
-             const simpleNameRegex = /name:\s*(["'])(.*?)\1/g;
-             while ((match = simpleNameRegex.exec(content)) !== null) ingredients.push(match[2]);
+             const simpleNameRegex = /name:\s*(["'])((?:\\.|[^\\\\])*?)\1/g;
+             while ((match = simpleNameRegex.exec(content)) !== null) {
+                 ingredients.push(cleanText(match[2]));
+             }
           }
       }
 
@@ -111,8 +121,8 @@ const DynamicPage = () => {
       const stepBlockMatch = rawCode.match(/const steps\s*=\s*\[([\s\S]*?)\];/);
       if (stepBlockMatch) {
           const content = stepBlockMatch[1];
-          // Cherche text: "..."
-          const textRegex = /text:\s*(["'])([\s\S]*?)\1/g;
+          // Même correction ici pour le texte des étapes
+          const textRegex = /text:\s*(["'])((?:\\.|[^\\\\])*?)\1/g;
           let match;
           while ((match = textRegex.exec(content)) !== null) steps.push(cleanText(match[2]));
       }
@@ -126,7 +136,6 @@ const DynamicPage = () => {
     window.scrollTo(0, 0);
   }, [id, location.pathname]);
 
-  // SEO
   const generateStructuredData = () => {
     if (!extractedData || extractedData.isTech) return null;
     return JSON.stringify({
@@ -147,7 +156,7 @@ const DynamicPage = () => {
 
   const isLocked = extractedData?.isVip && !isPremium;
 
-  // --- AFFICHAGE TECHNO (Paywall Flou) ---
+  // --- CAS 1 : TECHNO ---
   if (extractedData?.isTech) {
       return (
         <div className="min-h-screen bg-[#121212]">
@@ -162,7 +171,7 @@ const DynamicPage = () => {
                             <h3 className="text-4xl font-serif text-white mb-4">Contenu Expert</h3>
                             <p className="text-gray-400 mb-10 text-lg">Connectez-vous pour lire la suite.</p>
                             {!user ? (
-                                <Link to="/login"><Button className="w-full bg-[#D4AF37] text-black font-bold h-16 hover:bg-white uppercase tracking-widest">Se connecter</Button></Link>
+                                <Link to="/login"><Button className="w-full bg-[#D4AF37] text-black font-bold h-16 hover:bg-white uppercase tracking-widest">Se connecter pour lire</Button></Link>
                             ) : (
                                 <a href={`https://buy.stripe.com/8x214o2df3Mbg05dmL2B203?client_reference_id=${user.id}`} target="_blank" rel="noopener noreferrer"><Button className="w-full bg-gradient-to-r from-[#D4AF37] to-[#B8962E] text-black font-bold h-16 flex items-center justify-center gap-3"><Lock size={22} /> Débloquer</Button></a>
                             )}
@@ -174,7 +183,7 @@ const DynamicPage = () => {
       );
   }
 
-  // --- AFFICHAGE RECETTE VIP (Blocage) ---
+  // --- CAS 2 : RECETTE VIP ---
   if (isLocked) {
     return (
       <div className="min-h-screen bg-[#121212] flex items-center justify-center p-6 relative overflow-hidden">
@@ -193,7 +202,7 @@ const DynamicPage = () => {
     );
   }
 
-  // --- AFFICHAGE RECETTE (Libre) ---
+  // --- CAS 3 : ACCÈS LIBRE ---
   return (
     <div className="min-h-screen bg-[#121212] pt-20">
       <Helmet>
