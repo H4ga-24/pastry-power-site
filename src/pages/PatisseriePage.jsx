@@ -90,7 +90,10 @@ const SEARCH_MAPPING = {
 };
 
 // --- 2. LE SCANNER INTELLIGENT ---
-const modules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
+// 1. On charge les VRAIS modules (pour pouvoir lire les variables d'images importées)
+const realModules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { eager: true });
+// 2. On garde le texte brut pour le fallback
+const rawModules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
   query: '?raw', 
   import: 'default', 
   eager: true 
@@ -101,7 +104,9 @@ const cleanText = (text) => {
   return String(text).replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\/g, "");
 };
 
-const allItems = Object.entries(modules).map(([path, rawContent]) => {
+const allItems = Object.keys(realModules).map((path) => {
+  const module = realModules[path];
+  const rawContent = rawModules[path] || "";
   const fileName = path.split('/').pop().replace('.jsx', '');
   const lowerPath = path.toLowerCase();
   const lowerContent = rawContent.toLowerCase();
@@ -110,37 +115,48 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   const vipMatch = rawContent.match(/isVip:\s*(true|false)/);
   if (vipMatch && vipMatch[1] === 'true') isVip = true;
 
-  const secureTitleMatch = rawContent.match(/(?:recipeData|recipeMeta)\s*=\s*\{[\s\S]*?title:\s*(?:"([^"]*)"|'([^']*)')/);
-  const catMatch = rawContent.match(/category:\s*(?:"([^"]*)"|'([^']*)')/);
-  const imgMatch = rawContent.match(/image:\s*(?:"([^"]*)"|'([^']*)')/);
-  const descMatch = rawContent.match(/description:\s*(?:"([^"]*)"|'([^']*)')/);
+  let title = null;
+  let category = null;
+  let image = null;
+  let description = "";
 
-  let title = secureTitleMatch ? (secureTitleMatch[1] || secureTitleMatch[2]) : null;
-  let category = catMatch ? (catMatch[1] || catMatch[2]) : null;
-  let image = imgMatch ? (imgMatch[1] || imgMatch[2]) : null;
-  let description = descMatch ? (descMatch[1] || descMatch[2]) : "";
+  // 🔥 LA MAGIE OPÈRE ICI : On lit le VRAI objet JS (ce qui fait marcher agarAgarImg)
+  if (module && module.recipeData) {
+      title = module.recipeData.title;
+      category = module.recipeData.category;
+      image = module.recipeData.image; 
+      description = module.recipeData.description;
+      if (module.recipeData.isVip !== undefined) isVip = module.recipeData.isVip;
+  } 
+  // B. FALLBACK AVEC REGEX (si le fichier n'a pas été mis à jour avec recipeData)
+  else {
+      const extractString = (key, source) => {
+          const match = source.match(new RegExp(`${key}:\\s*(["'])((?:\\\\.|[^\\\\])*?)\\1`));
+          return match ? cleanText(match[2]) : null;
+      };
 
-  if (!title) {
-    const h1Match = rawContent.match(/<h1[^>]*>([^<]+)<\/h1>/);
-    title = h1Match ? h1Match[1] : fileName.replace(/^vip-/i, '').replace(/([A-Z])/g, ' $1').trim();
+      title = extractString('title', rawContent);
+      if (!title) {
+        const h1Match = rawContent.match(/<h1[^>]*>([^<]+)<\/h1>/);
+        title = h1Match ? h1Match[1] : fileName.replace(/^vip-/i, '').replace(/([A-Z])/g, ' $1').trim();
+      }
+
+      category = extractString('category', rawContent);
+      image = extractString('image', rawContent);
+      if (!image) {
+        const htmlImgMatch = rawContent.match(/<img[^>]+src=["']([^"']+)["']/);
+        if (htmlImgMatch) image = htmlImgMatch[1];
+      }
+      description = extractString('description', rawContent) || "";
   }
-  if (!image) {
-    const htmlImgMatch = rawContent.match(/<img[^>]+src=["']([^"']+)["']/);
-    if (htmlImgMatch) image = htmlImgMatch[1];
-  }
 
-  // 🔥 TON "FORCEUR DE CATÉGORIE" PARFAIT (Mise à jour avec les recettes manquantes)
+  if (!title) return null;
+
+  // 🔥 TON "FORCEUR DE CATÉGORIE" PARFAIT (Intact)
   if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
       category = "SANS-GLUTEN";
   }
-  else if (
-    !lowerPath.includes('technologie') && (
-      lowerPath.includes('sans-sucre') || 
-      lowerPath.includes('zero-sucre') || 
-      lowerPath.includes('diabete') || 
-      lowerPath.includes('ig-bas')
-    )
-  ) {
+  else if (!lowerPath.includes('technologie') && (lowerPath.includes('sans-sucre') || lowerPath.includes('zero-sucre') || lowerPath.includes('diabete') || lowerPath.includes('ig-bas'))) {
       category = "SANS-SUCRE";
   }
   else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) {
@@ -149,11 +165,9 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   else if (lowerPath.includes('lactose')) {
       category = "SANS-LACTOSE";
   }
-  // ✅ J'ai ajouté salambo, chouquette, profiterole et gougere ici :
   else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche') || lowerPath.includes('salambo') || lowerPath.includes('chouquette') || lowerPath.includes('profiterole') || lowerPath.includes('gougere')) {
       category = "CHOUX";
   }
-  // ✅ J'ai ajouté tatin, alsacien, savoie et teurgoule ici :
   else if (lowerPath.includes('regional') || lowerPath.includes('kouign') || lowerPath.includes('breton') || lowerPath.includes('basque') || lowerPath.includes('cannele') || lowerPath.includes('clafoutis') || lowerPath.includes('flan') || lowerPath.includes('tatin') || lowerPath.includes('alsacien') || lowerPath.includes('savoie') || lowerPath.includes('teurgoule')) {
       category = "REGIONAL";
   }
@@ -172,20 +186,16 @@ const allItems = Object.entries(modules).map(([path, rawContent]) => {
   const cleanTitle = title.replace(/^vip-/i, '').replace(/^VIP-/i, '');
   const isTechFile = path.includes('/technologie/');
 
-  if (title) {
-    return {
-      id: fileName,
-      title: cleanTitle,
-      category: category ? category.toUpperCase() : "AUTRE",
-      image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
-      description: description || "Découvrez cette recette...",
-      isTech: isTechFile,
-      isVip: isVip
-    };
-  }
-  return null;
+  return {
+    id: fileName,
+    title: cleanTitle,
+    category: category ? category.toUpperCase() : "AUTRE",
+    image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
+    description: description || "Découvrez cette recette...",
+    isTech: isTechFile,
+    isVip: isVip
+  };
 }).filter(Boolean);
-
 
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
