@@ -246,24 +246,93 @@ const PatisseriePage = ({ category: propCategory }) => {
   const techHub = HUBS['technologie'];
   const isTechSection = techHub && techHub.sections ? techHub.sections.some(s => s.id === urlCategory) : false;
 
-  // ✅ CORRECTION AI STUDIO : Filtres avec includes()
   const filteredItems = allItems.filter(item => {
     const itemCat = normalize(item.category);
-    
-    if (isTechSection) return item.isTech && itemCat.includes(normalizedSearch);
-    
-    // CORRECTION : On utilise .includes() au lieu de === pour ignorer les préfixes "PÂTISSERIE • "
-    if (urlCategory === 'cake-sale') return itemCat.includes('cake-sale') || itemCat.includes('cake');
-    if (urlCategory === 'choux') return itemCat.includes('choux') || itemCat.includes('eclair') || itemCat.includes('religieuse');
-    if (urlCategory === 'regional') return itemCat.includes('regional') || itemCat.includes('regionaux');
-    if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
-    if (urlCategory === 'sans-sucre') return itemCat.includes('sans-sucre') || itemCat.includes('ig-bas');
-    if (urlCategory === 'vegan') return itemCat.includes('vegan') || itemCat.includes('vegetal');
-    if (urlCategory === 'sans-lactose') return itemCat.includes('lactose');
-    if (urlCategory === 'macaron') return itemCat.includes('macaron');
-    
-    // Fallback standard
-    return !item.isTech && itemCat.includes(normalizedSearch);
+    const itemTitle = normalize(item.title);
+    const itemId = normalize(item.id);
+
+    // 🔥 LE CERVEAU : Cette fonction cherche le mot-clé dans la catégorie, le titre ET le nom du fichier.
+    const matches = (...words) => words.some(w => itemCat.includes(w) || itemTitle.includes(w) || itemId.includes(w));
+
+    if (isTechSection) return item.isTech && matches(normalizedSearch);
+
+    // 🧠 CLASSIFICATION INTELLIGENTE (Peu importe ce qui est écrit dans le fichier)
+    switch (urlCategory) {
+      case 'choux':
+        return matches('choux', 'eclair', 'religieuse', 'parisbrest', 'paris-brest', 'croquembouche', 'salambo', 'profiterole', 'chouquette', 'beignet', 'gougere');
+      
+      case 'regional':
+        return matches('regional', 'basque', 'breton', 'kouign', 'cannele', 'clafoutis', 'far', 'teurgoule', 'tatin', 'alsacien', 'savoie');
+      
+      case 'cake-sale':
+        // Tous les cakes, SAUF les sucrés
+        return matches('cake-sale', 'cakesale') || (matches('cake') && matches('anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt', 'sale'));
+      
+      case 'petit-four':
+        return matches('petit-four', 'petits fours', 'sable', 'cookie', 'financier', 'tuile', 'cigarette', 'langue', 'craquant', 'friand', 'amarretti', 'speculoos', 'baton', 'rocher', 'galette', 'diamant', 'spitz');
+      
+      case 'voyage':
+        // Tous les gâteaux de voyage (en excluant les ingrédients salés)
+        return matches('voyage', 'cake', 'madeleine', 'paindepice', 'pain-d-epice', 'brownie', 'marbre', 'moelleux') && !matches('anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt');
+      
+      case 'biscuit':
+        return matches('biscuit', 'dacquoise', 'genoise', 'joconde', 'paindegene', 'sponge', 'cuillere', 'meringue');
+      
+      case 'tarte':
+        return matches('tarte', 'flan', 'bourdaloue');
+      
+      case 'entremets':
+        return matches('entremets', 'bavarois', 'foretnoire', 'sainthonore', 'saint-honore', 'arlequin', 'mille-feuille', 'millefeuille');
+      
+      case 'cremeux':
+        return matches('cremeux');
+      
+      case 'mousse':
+        return matches('mousse');
+      
+      case 'insert':
+        return matches('insert', 'compotee', 'caramelbeurresale', 'blancmanger');
+      
+      case 'creme':
+        return matches('creme', 'patissiere', 'anglaise', 'diplomate', 'mousseline', 'chiboust', 'frangipane', 'bavaroise', 'chantilly', 'mascarpone');
+      
+      case 'glacage':
+        return matches('glacage');
+      
+      case 'pate':
+        return matches('pate', 'feuilletage', 'crumble', 'streusel', 'brioche', 'focaccia', 'pizza', 'craquelin');
+      
+      case 'chocolaterie':
+        return matches('chocolat', 'bonbon', 'truffe', 'rocher', 'tablette', 'gianduja', 'praline');
+      
+      case 'confiserie-diverse':
+        return matches('confiserie', 'caramel', 'pate-de-fruit', 'patedefruit', 'pateamande', 'nougat', 'orangette', 'fondant', 'isomalt');
+      
+      case 'sauce':
+        return matches('sauce', 'mayonnaise', 'appareil');
+      
+      case 'traiteur':
+        return matches('traiteur', 'gougere', 'focaccia', 'pain');
+        
+      case 'sans-gluten':
+        return matches('gluten');
+        
+      case 'sans-sucre':
+        return matches('sans-sucre', 'ig-bas', 'igbas');
+        
+      case 'vegan':
+        return matches('vegan', 'vegetal');
+        
+      case 'sans-lactose':
+        return matches('lactose');
+        
+      case 'macaron':
+        return matches('macaron') && !matches('cachemire'); // Évite le "biscuit macaron" dans la confiserie
+
+      default:
+        // Si la catégorie n'est pas listée au-dessus, on fait une recherche classique
+        return !item.isTech && matches(normalizedSearch);
+    }
   });
 
   return (
