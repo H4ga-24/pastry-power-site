@@ -248,90 +248,97 @@ const PatisseriePage = ({ category: propCategory }) => {
 
   const filteredItems = allItems.filter(item => {
     const itemCat = normalize(item.category);
-    const itemTitle = normalize(item.title);
-    const itemId = normalize(item.id);
+    // On se base sur le nom exact de ton fichier (en minuscules) pour ne jamais se tromper
+    const itemId = item.id.toLowerCase();
 
-    // 🔥 LE CERVEAU : Cette fonction cherche le mot-clé dans la catégorie, le titre ET le nom du fichier.
-    const matches = (...words) => words.some(w => itemCat.includes(w) || itemTitle.includes(w) || itemId.includes(w));
+    // 1. BARRIÈRE DE SÉCURITÉ ABSOLUE : TECHNOLOGIE VS PÂTISSERIE
+    if (isTechSection) {
+      if (!item.isTech) return false;
+      return itemCat.includes(normalizedSearch) || itemId.includes(normalizedSearch);
+    }
+    // Si on n'est PAS dans la section technologie, on bloque TOUTES les fiches tech
+    if (item.isTech) return false; 
 
-    if (isTechSection) return item.isTech && matches(normalizedSearch);
-
-    // 🧠 CLASSIFICATION INTELLIGENTE (Peu importe ce qui est écrit dans le fichier)
+    // 2. CLASSIFICATION CHIRURGICALE PAR NOM DE FICHIER
     switch (urlCategory) {
       case 'choux':
-        return matches('choux', 'eclair', 'religieuse', 'parisbrest', 'paris-brest', 'croquembouche', 'salambo', 'profiterole', 'chouquette', 'beignet', 'gougere');
-      
+        return ['choux', 'eclair', 'religieuse', 'parisbrest', 'croquembouche', 'salambo', 'profiterole', 'chouquette', 'beignet', 'gougere', 'churro'].some(w => itemId.includes(w));
+        
       case 'regional':
-        return matches('regional', 'basque', 'breton', 'kouign', 'cannele', 'clafoutis', 'far', 'teurgoule', 'tatin', 'alsacien', 'savoie');
-      
+        // On cible "farbreton" et non plus "far" pour éviter les bugs
+        return ['basque', 'breton', 'kouign', 'cannele', 'clafoutis', 'teurgoule', 'tatin', 'alsacien', 'savoie'].some(w => itemId.includes(w));
+        
       case 'cake-sale':
-        // Tous les cakes, SAUF les sucrés
-        return matches('cake-sale', 'cakesale') || (matches('cake') && matches('anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt', 'sale'));
-      
-      case 'petit-four':
-        return matches('petit-four', 'petits fours', 'sable', 'cookie', 'financier', 'tuile', 'cigarette', 'langue', 'craquant', 'friand', 'amarretti', 'speculoos', 'baton', 'rocher', 'galette', 'diamant', 'spitz');
-      
+        return itemId.includes('cake') && ['anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt', 'sale'].some(w => itemId.includes(w));
+        
       case 'voyage':
-        // Tous les gâteaux de voyage (en excluant les ingrédients salés)
-        return matches('voyage', 'cake', 'madeleine', 'paindepice', 'pain-d-epice', 'brownie', 'marbre', 'moelleux') && !matches('anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt');
-      
+        // Gâteaux de voyage SAUF les cakes salés
+        return ['cake', 'madeleine', 'paindepice', 'brownie', 'marbre', 'moelleux'].some(w => itemId.includes(w)) && !['anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt'].some(w => itemId.includes(w));
+        
+      case 'petit-four':
+        if (itemId.includes('macaron')) return false; // Le macaron a sa propre catégorie
+        return ['sable', 'cookie', 'financier', 'tuile', 'cigarette', 'langue', 'craquant', 'friand', 'speculoos', 'baton', 'galette', 'diamant', 'spitz', 'congolais'].some(w => itemId.includes(w));
+        
       case 'biscuit':
-        return matches('biscuit', 'dacquoise', 'genoise', 'joconde', 'paindegene', 'sponge', 'cuillere', 'meringue');
-      
+        if (['sable', 'cookie', 'macaron'].some(w => itemId.includes(w))) return false;
+        return ['biscuit', 'dacquoise', 'genoise', 'joconde', 'paindegene', 'sponge'].some(w => itemId.includes(w));
+        
       case 'tarte':
-        return matches('tarte', 'flan', 'bourdaloue');
-      
+        return ['tarte', 'flan', 'bourdaloue'].some(w => itemId.includes(w));
+        
       case 'entremets':
-        return matches('entremets', 'bavarois', 'foretnoire', 'sainthonore', 'saint-honore', 'arlequin', 'mille-feuille', 'millefeuille');
-      
-      case 'cremeux':
-        return matches('cremeux');
-      
-      case 'mousse':
-        return matches('mousse');
-      
-      case 'insert':
-        return matches('insert', 'compotee', 'caramelbeurresale', 'blancmanger');
-      
+        return ['entremets', 'bavarois', 'foretnoire', 'sainthonore', 'arlequin', 'millefeuille', 'opera', 'amarretti'].some(w => itemId.includes(w));
+        
       case 'creme':
-        return matches('creme', 'patissiere', 'anglaise', 'diplomate', 'mousseline', 'chiboust', 'frangipane', 'bavaroise', 'chantilly', 'mascarpone');
-      
+        if (itemId.includes('cremeux')) return false;
+        return ['creme', 'patissiere', 'anglaise', 'diplomate', 'mousseline', 'chiboust', 'frangipane', 'bavaroise', 'chantilly', 'mascarpone'].some(w => itemId.includes(w));
+        
+      case 'cremeux':
+        return itemId.includes('cremeux');
+        
+      case 'mousse':
+        return itemId.includes('mousse');
+        
+      case 'insert':
+        return ['insert', 'compotee', 'blancmanger'].some(w => itemId.includes(w));
+        
       case 'glacage':
-        return matches('glacage');
-      
+        return itemId.includes('glacage');
+        
       case 'pate':
-        return matches('pate', 'feuilletage', 'crumble', 'streusel', 'brioche', 'focaccia', 'pizza', 'craquelin');
-      
+        // Cible UNIQUEMENT les pâtes de base (évite "pâte de fruit" ou "pâte d'amande")
+        return ['lapate', 'patesucree', 'patesablee', 'patebrisee', 'patefeuilletee', 'feuilletage', 'crumble', 'streusel', 'brioche', 'focaccia', 'pizza', 'craquelin', 'pateababa'].some(w => itemId.includes(w));
+        
       case 'chocolaterie':
-        return matches('chocolat', 'bonbon', 'truffe', 'rocher', 'tablette', 'gianduja', 'praline');
-      
+        return ['bonbon', 'truffe', 'rocher', 'tablette', 'gianduja', 'praline'].some(w => itemId.includes(w));
+        
       case 'confiserie-diverse':
-        return matches('confiserie', 'caramel', 'pate-de-fruit', 'patedefruit', 'pateamande', 'nougat', 'orangette', 'fondant', 'isomalt');
-      
+        if (itemId.includes('macaron') || itemId.includes('chocolat')) return false;
+        return ['caramel', 'patedefruit', 'pateamande', 'nougat', 'orangette', 'fondant', 'isomalt', 'guimauve'].some(w => itemId.includes(w));
+        
       case 'sauce':
-        return matches('sauce', 'mayonnaise', 'appareil');
-      
+        return ['sauce', 'mayonnaise'].some(w => itemId.includes(w));
+        
       case 'traiteur':
-        return matches('traiteur', 'gougere', 'focaccia', 'pain');
-        
-      case 'sans-gluten':
-        return matches('gluten');
-        
-      case 'sans-sucre':
-        return matches('sans-sucre', 'ig-bas', 'igbas');
-        
-      case 'vegan':
-        return matches('vegan', 'vegetal');
-        
-      case 'sans-lactose':
-        return matches('lactose');
+        return ['traiteur', 'gougere', 'focaccia', 'pain'].some(w => itemId.includes(w));
         
       case 'macaron':
-        return matches('macaron') && !matches('cachemire'); // Évite le "biscuit macaron" dans la confiserie
+        return itemId.includes('macaron') && !itemId.includes('cachemire');
+
+      case 'sans-gluten':
+        return itemId.includes('gluten') || itemCat.includes('gluten');
+        
+      case 'sans-sucre':
+        return itemId.includes('sanssucre') || itemCat.includes('sans-sucre') || itemCat.includes('ig-bas');
+        
+      case 'vegan':
+        return itemId.includes('vegan') || itemId.includes('vegetal') || itemCat.includes('vegan') || itemCat.includes('vegetal');
+        
+      case 'sans-lactose':
+        return itemId.includes('lactose') || itemCat.includes('lactose');
 
       default:
-        // Si la catégorie n'est pas listée au-dessus, on fait une recherche classique
-        return !item.isTech && matches(normalizedSearch);
+        return itemCat.includes(normalizedSearch);
     }
   });
 
