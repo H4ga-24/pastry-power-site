@@ -100,6 +100,11 @@ const rawModules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.j
   import: 'default'
 });
 
+const cleanText = (text) => {
+  if (!text) return "";
+  return String(text).replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\/g, "");
+};
+
 const allItems = Object.keys(modules).map((path) => {
   const module = modules[path];
   const rawCode = rawModules[path];
@@ -122,9 +127,11 @@ const allItems = Object.keys(modules).map((path) => {
 
   // B. FALLBACK AVEC REGEX
   const lowerContent = rawCode.toLowerCase();
+  
+  // ✅ SÉCURITÉ : La même regex robuste
   const extractString = (key, source) => {
-      const match = source.match(new RegExp(`${key}:\\s*(["'])([\\s\\S]*?)\\1`));
-      return match ? match[2] : null;
+      const match = source.match(new RegExp(`${key}:\\s*(["'])((?:\\\\.|[^\\\\])*?)\\1`));
+      return match ? cleanText(match[2]) : null;
   };
 
   let title = extractString('title', rawCode);
@@ -239,6 +246,7 @@ const PatisseriePage = ({ category: propCategory }) => {
   const techHub = HUBS['technologie'];
   const isTechSection = techHub && techHub.sections ? techHub.sections.some(s => s.id === urlCategory) : false;
 
+  // ✅ CORRECTION AI STUDIO : Filtres avec includes()
   const filteredItems = allItems.filter(item => {
     const itemCat = normalize(item.category);
     
@@ -272,7 +280,6 @@ const PatisseriePage = ({ category: propCategory }) => {
             {filteredItems.map(item => (
               <Link 
                 key={item.id} 
-                // ✅ LE LIEN MAGIQUE EST ICI : TOUT LE MONDE VA SUR /recipe/
                 to={`/recipe/${item.id}`}
                 className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
               >
