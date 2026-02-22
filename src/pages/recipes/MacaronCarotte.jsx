@@ -7,14 +7,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
+import macaronCarotteImg from '../../assets/macaron-carrote.jpg';
 
 const MacaronCarotte = () => {
   const [servingsCoques, setServingsCoques] = useState(70);
   const [servingsGarniture, setServingsGarniture] = useState(140);
   const { toast } = useToast();
-
-  // User provided image URL
-  const IMAGE_URL = "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3136814061efbea0f1dcb3dd4c4ce124.png";
 
   const recipeData = {
     title: "Macaron Carotte",
@@ -24,8 +22,8 @@ const MacaronCarotte = () => {
     prepTime: "2H 00",
     cookTime: "14 MIN",
     difficulty: "DIFFICILE",
-    image: IMAGE_URL,
-    imageAlt: "Golden caramel macarons on white plate" // Updated alt text
+    image: macaronCarotteImg,
+    imageAlt: "Macarons carottes " // Updated alt text
   };
 
   const coquesIngredients = [
