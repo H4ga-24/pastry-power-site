@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
-import macaronCarotteImg from '../../assets/macaron-carrote.jpg';
+import macaronCarotteImg from '../../assets/macaron-carotte.jpg';
 
 const MacaronCarotte = () => {
   const [servingsCoques, setServingsCoques] = useState(70);
