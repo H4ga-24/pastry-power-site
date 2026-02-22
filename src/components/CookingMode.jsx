@@ -8,15 +8,28 @@ const CookingMode = ({ recipe, onClose }) => {
   const [checkedSteps, setCheckedSteps] = useState([]);
   const [wakeLock, setWakeLock] = useState(null);
 
-  // Fonction de nettoyage sécurisée
+  // --- 🟢 FONCTION DE NETTOYAGE RENFORCÉE ---
   const cleanText = (text) => {
     if (!text) return "";
+    
+    // Si c'est un objet, on essaie de l'afficher proprement
     if (typeof text === 'object') {
-        // Si c'est un objet (ex: ingrédient complet), on prend son nom
         return text.name || text.label || JSON.stringify(text);
     }
-    // On force la conversion en String pour éviter le crash
-    return String(text).replace(/\\'/g, "'").replace(/\\"/g, '"');
+
+    let str = String(text);
+
+    // 1. On remplace les séquences connues (\' -> ')
+    str = str.replace(/\\'/g, "'").replace(/\\"/g, '"');
+
+    // 2. On supprime les backslashes résiduels (ceux qui restent à la fin des mots comme "d\")
+    // Cette regex dit : "Enlève tout \ qui est à la fin d'un mot"
+    str = str.replace(/\\(?=\s|$)/g, ""); 
+
+    // 3. On enlève les backslashes orphelins bizarres s'il en reste
+    str = str.replace(/\\/g, "");
+
+    return str;
   };
 
   useEffect(() => {
@@ -49,7 +62,6 @@ const CookingMode = ({ recipe, onClose }) => {
     );
   };
 
-  // SÉCURITÉ : On s'assure que les listes existent avant de les mapper
   const safeIngredients = Array.isArray(recipe?.ingredients) ? recipe.ingredients : [];
   const safeSteps = Array.isArray(recipe?.steps) ? recipe.steps : [];
 
@@ -80,7 +92,6 @@ const CookingMode = ({ recipe, onClose }) => {
 
       <div className="max-w-3xl mx-auto p-6 pb-32 space-y-12">
         
-        {/* INGRÉDIENTS (Seulement si existent) */}
         {safeIngredients.length > 0 && (
             <section>
             <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
@@ -111,7 +122,6 @@ const CookingMode = ({ recipe, onClose }) => {
             </section>
         )}
 
-        {/* ÉTAPES (Seulement si existent) */}
         {safeSteps.length > 0 && (
             <section>
             <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
