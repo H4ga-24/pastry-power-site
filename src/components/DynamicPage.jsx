@@ -1,21 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
-import { PlayCircle, Lock, Crown, Loader2 } from 'lucide-react';
+import { PlayCircle, Lock, Crown, Loader2, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 
-// 👇 IMPORTS CORRIGÉS AVEC DES CHEMINS ABSOLUS (@)
-import { useAuth } from '@/AuthContext';
-import GlossaryScanner from '@/components/GlossaryScanner';
+// Imports
+import { useAuth } from '../AuthContext'; 
+import CookingMode from './CookingMode';
+import GlossaryScanner from './GlossaryScanner'; 
 
-// Si ton fichier est directement dans src/components, c'est ce chemin :
-import CookingMode from '@/components/CookingMode';
-// (Si jamais ça plante, essaie : import CookingMode from '@/components/ui/CookingMode';)
-
-// 👇 IMPORT DES PAGES (RECETTES)
-// On utilise ../pages car on est dans src/components, donc on remonte d'un cran vers src/pages
-const modules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true });
+// Import modules
+const modules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true, import: 'default' });
 const rawModules = import.meta.glob(['../pages/recipes/**/*.jsx', '../pages/technologie/**/*.jsx'], { eager: true, query: '?raw', import: 'default' });
 
 const DynamicPage = () => {
@@ -31,7 +27,7 @@ const DynamicPage = () => {
   useEffect(() => {
     const loadRecipe = async () => {
       let foundPath = null;
-      // Recherche du fichier correspondant à l'ID dans l'URL
+      // Recherche insensible à la casse
       for (const path in modules) {
         if (path.toLowerCase().endsWith(`/${id.toLowerCase()}.jsx`)) {
           foundPath = path;
@@ -41,18 +37,16 @@ const DynamicPage = () => {
 
       if (foundPath) {
         const module = modules[foundPath];
-        
-        // 1. Chargement du composant React
-        setRecipeComponent(() => module.default);
+        const Component = module.default;
+        setRecipeComponent(() => Component);
 
-        // 2. Récupération des données brutes pour le Regex (si besoin)
         const rawCode = rawModules[foundPath] || "";
-        
-        // 3. Récupération des données exportées (Nouvelle méthode via export const recipeData)
         const exportedData = module.recipeData || {};
         
-        // Fonctions utilitaires pour le fallback Regex (Ancienne méthode)
-        const cleanText = (text) => text ? text.replace(/\\'/g, "'").replace(/\\"/g, '"').trim() : "";
+        // --- 1. EXTRACTION DES DONNÉES DE BASE ---
+        
+        // Fonction de secours (Regex) pour les vieux fichiers
+        const cleanText = (text) => text ? text.replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\(?=\s|\()/g, "").trim() : "";
         const extractString = (key, source) => {
           const match = source.match(new RegExp(`${key}:\\s*(["'])([\\s\\S]*?)\\1`));
           return match ? cleanText(match[2]) : null;
@@ -60,35 +54,72 @@ const DynamicPage = () => {
 
         const isTechFile = foundPath.includes('/technologie/');
         
-        // --- EXTRACTION DES DONNÉES ---
-        
-        // Titre, Desc, Image, VIP
-        const title = exportedData.title || extractString('title', rawCode) || id;
+        const title = exportedData.title || extractString('title', rawCode) || "Recette";
         const description = exportedData.description || extractString('description', rawCode) || "";
         const image = exportedData.image || extractString('image', rawCode) || "";
         
+        // Détection VIP : soit dans l'export, soit dans le texte, soit via l'URL
         const isVip = exportedData.isVip !== undefined 
             ? exportedData.isVip 
-            : (rawCode.includes('isVip: true') || rawCode.includes('vip: true') || location.pathname.includes('/vip/'));
+            : (!!rawCode.match(/(?:isVip|vip):\s*true/) || location.pathname.includes('/vip/'));
 
-        // --- NORMALISATION DES INGRÉDIENTS ---
-        // Le Mode Cuisine a besoin de texte ("Sucre : 50g") et non d'objets ({name: "Sucre"}).
-        let rawIngredients = module.ingredients || [];
-        let ingredients = rawIngredients.map(ing => {
-            if (typeof ing === 'string') return ing;
-            // Transformation de l'objet en texte lisible
-            return `${ing.name || ing.label}${ing.amount ? ' : ' + ing.amount : ''} ${ing.unit || ''}`;
-        });
+        // --- 2. EXTRACTION DES INGRÉDIENTS & ÉTAPES (MODE CUISINE) ---
+        
+        let ingredients = [];
+        let steps = [];
 
-        // --- NORMALISATION DES ÉTAPES ---
-        let rawSteps = module.steps || [];
-        let steps = rawSteps.map(step => {
-            if (typeof step === 'string') return step;
-            // Transformation de l'objet étape en texte
-            return `${step.title ? step.title + ' : ' : ''}${step.text}`;
-        });
+        // Cas A : Données exportées propres (Nouveau format)
+        if (module.ingredients && Array.isArray(module.ingredients)) {
+            // On convertit les objets en chaînes lisibles pour le Mode Cuisine
+            ingredients = module.ingredients.map(ing => {
+                if (typeof ing === 'string') return ing;
+                return `${ing.name} ${ing.amount ? '(' + ing.amount + (ing.unit ? ' ' + ing.unit : '') + ')' : ''}`;
+            });
+        }
+        
+        if (module.steps && Array.isArray(module.steps)) {
+            steps = module.steps.map(step => {
+                if (typeof step === 'string') return step;
+                return step.title ? `${step.title} : ${step.text}` : step.text;
+            });
+        }
 
-        // Mise à jour de l'état local
+        // Cas B : Fallback Regex (Vieux fichiers Hostinger)
+        if (ingredients.length === 0 && !isTechFile) {
+            let ingMatch = rawCode.match(/const ingredients\s*=\s*\[([\s\S]*?)\];/);
+            if (ingMatch) {
+                const objectRegex = /\{([\s\S]*?)\}/g;
+                let match;
+                while ((match = objectRegex.exec(ingMatch[1])) !== null) {
+                    const name = extractString('name', match[1]);
+                    if (name) ingredients.push(name);
+                }
+            } else {
+               // Fallback ultime (<li>)
+               let liMatch; const r = /<li[^>]*>([\s\S]*?)<\/li>/g;
+               while ((liMatch = r.exec(rawCode)) !== null) {
+                 const t = liMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                 if (!t.includes('{') && t.length > 2) ingredients.push(cleanText(t));
+               }
+            }
+        }
+
+        if (steps.length === 0 && !isTechFile) {
+            let stepMatch = rawCode.match(/const steps\s*=\s*\[([\s\S]*?)\];/);
+            if (stepMatch) {
+                const objectRegex = /\{([\s\S]*?)\}/g;
+                let match;
+                while ((match = objectRegex.exec(stepMatch[1])) !== null) {
+                    const txt = extractString('text', match[1]);
+                    if (txt) steps.push(txt);
+                }
+            } else {
+               // Fallback ultime (texte après <h3>)
+               let sMatch; const r = /<h3[^>]*>([^<]+)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
+               while ((sMatch = r.exec(rawCode)) !== null) steps.push(`${cleanText(sMatch[1])} : ${cleanText(sMatch[2].replace(/<[^>]+>/g, '').trim())}`);
+            }
+        }
+
         setExtractedData({ 
             title, description, image, isTech: isTechFile, isVip, ingredients, steps 
         });
@@ -98,27 +129,19 @@ const DynamicPage = () => {
     window.scrollTo(0, 0);
   }, [id, location.pathname]);
 
-  // SEO Google (JSON-LD)
+  // SEO
   const generateStructuredData = () => {
     if (!extractedData || extractedData.isTech) return null;
     return JSON.stringify({
-      "@context": "https://schema.org/", 
-      "@type": "Recipe", 
-      "name": extractedData.title, 
-      "image": [extractedData.image], 
-      "description": extractedData.description, 
-      "author": { "@type": "Person", "name": "Pastry Power" }, 
-      "recipeIngredient": extractedData.ingredients, 
-      "recipeInstructions": extractedData.steps.map((s, i) => ({ "@type": "HowToStep", "position": i + 1, "text": s }))
+      "@context": "https://schema.org/", "@type": "Recipe", "name": extractedData.title, "image": [extractedData.image], "description": extractedData.description, "author": { "@type": "Person", "name": "Pastry Power" }, "recipeIngredient": extractedData.ingredients, "recipeInstructions": extractedData.steps.map((s, i) => ({ "@type": "HowToStep", "position": i + 1, "text": s }))
     });
   };
 
-  // Affichage du Loader pendant le chargement
   if (!RecipeComponent || authLoading) return <div className="h-screen bg-[#121212] flex items-center justify-center"><Loader2 className="animate-spin text-[#D4AF37]" /></div>;
 
   const isLocked = extractedData?.isVip && !isPremium;
 
-  // --- CAS 1 : TECHNOLOGIE (Cours théoriques) ---
+  // --- 1. AFFICHAGE TECHNO (Mode Journal / Long Scroll) ---
   if (extractedData?.isTech) {
       return (
         <div className="min-h-screen bg-[#121212]">
@@ -126,12 +149,15 @@ const DynamicPage = () => {
 
             <div className={`relative w-full ${isLocked ? 'max-h-[180vh] overflow-hidden' : ''}`}>
                 
+                {/* On affiche le composant (Titre + Texte) */}
                 <div ref={recipeContentRef}>
                     <RecipeComponent />
                 </div>
                 
+                {/* Scanner Glossaire sur la partie visible */}
                 <GlossaryScanner targetRef={recipeContentRef} trigger={id} />
 
+                {/* Masque dégradé si bloqué */}
                 {isLocked && (
                     <div className="absolute inset-0 z-50 flex flex-col items-center justify-end pb-32 bg-gradient-to-t from-[#121212] via-[#121212]/95 to-transparent">
                         <div className="text-center p-8 w-full max-w-xl animate-in fade-in slide-in-from-bottom-10 duration-1000">
@@ -162,11 +188,11 @@ const DynamicPage = () => {
       );
   }
 
-  // --- CAS 2 : RECETTES VIP VERROUILLÉES ---
+  // --- 2. AFFICHAGE RECETTE VIP (Blocage Total) ---
   if (isLocked) {
     return (
       <div className="min-h-screen bg-[#121212] flex items-center justify-center p-6 relative overflow-hidden">
-        {/* Fond flouté */}
+        {/* Image de fond floutée */}
         <div className="absolute inset-0 z-0 opacity-20 blur-2xl scale-110">
             <img src={extractedData.image} alt="" className="w-full h-full object-cover" />
         </div>
@@ -195,7 +221,7 @@ const DynamicPage = () => {
     );
   }
 
-  // --- CAS 3 : RECETTES EN ACCÈS LIBRE (Ou VIP débloqué) ---
+  // --- 3. AFFICHAGE RECETTE STANDARD (Libre) ---
   return (
     <div className="min-h-screen bg-[#121212] pt-20">
       <Helmet>
@@ -207,10 +233,9 @@ const DynamicPage = () => {
         <RecipeComponent />
       </div>
 
-      {/* Analyse du texte pour le glossaire */}
       <GlossaryScanner targetRef={recipeContentRef} trigger={id} />
       
-      {/* Bouton Mode Cuisine (Flottant) */}
+      {/* Bouton Mode Cuisine (si étapes détectées) */}
       {extractedData.steps && extractedData.steps.length > 0 && (
         <motion.button
           initial={{ scale: 0 }}
@@ -224,7 +249,6 @@ const DynamicPage = () => {
         </motion.button>
       )}
 
-      {/* Affichage du Mode Cuisine en plein écran */}
       <AnimatePresence>
         {isCookingMode && <CookingMode recipe={extractedData} onClose={() => setIsCookingMode(false)} />}
       </AnimatePresence>

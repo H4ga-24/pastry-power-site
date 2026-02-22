@@ -11,10 +11,11 @@ const CookingMode = ({ recipe, onClose }) => {
   // Fonction de nettoyage sécurisée
   const cleanText = (text) => {
     if (!text) return "";
-    // Sécurité supplémentaire : si on reçoit un objet par erreur, on essaie de l'afficher proprement
     if (typeof text === 'object') {
+        // Si c'est un objet (ex: ingrédient complet), on prend son nom
         return text.name || text.label || JSON.stringify(text);
     }
+    // On force la conversion en String pour éviter le crash
     return String(text).replace(/\\'/g, "'").replace(/\\"/g, '"');
   };
 
@@ -48,6 +49,10 @@ const CookingMode = ({ recipe, onClose }) => {
     );
   };
 
+  // SÉCURITÉ : On s'assure que les listes existent avant de les mapper
+  const safeIngredients = Array.isArray(recipe?.ingredients) ? recipe.ingredients : [];
+  const safeSteps = Array.isArray(recipe?.steps) ? recipe.steps : [];
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: '100%' }}
@@ -58,7 +63,7 @@ const CookingMode = ({ recipe, onClose }) => {
       <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/10 p-4 flex justify-between items-center z-10 shadow-xl">
         <div>
           <h2 className="text-[#D4AF37] font-serif text-xl font-bold truncate max-w-[200px] md:max-w-md">
-            {cleanText(recipe.title)}
+            {cleanText(recipe?.title || "Recette")}
           </h2>
           <p className="text-green-500 text-xs flex items-center gap-1">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -74,62 +79,68 @@ const CookingMode = ({ recipe, onClose }) => {
       </div>
 
       <div className="max-w-3xl mx-auto p-6 pb-32 space-y-12">
-        <section>
-          <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
-            <Coffee className="text-[#D4AF37]" /> Ingrédients
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {recipe.ingredients.map((ing, idx) => (
-              <div 
-                key={idx}
-                onClick={() => toggleIngredient(idx)}
-                className={`p-4 rounded-xl border cursor-pointer transition-all duration-200 flex items-center gap-4 ${
-                  checkedIngredients.includes(idx)
-                    ? 'bg-green-900/20 border-green-500/50 opacity-50'
-                    : 'bg-[#1a1a1a] border-white/10 hover:border-[#D4AF37]'
-                }`}
-              >
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                    checkedIngredients.includes(idx) ? 'border-green-500 bg-green-500 text-black' : 'border-gray-500'
-                }`}>
-                  {checkedIngredients.includes(idx) && <Check size={14} />}
+        
+        {/* INGRÉDIENTS (Seulement si existent) */}
+        {safeIngredients.length > 0 && (
+            <section>
+            <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
+                <Coffee className="text-[#D4AF37]" /> Ingrédients
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {safeIngredients.map((ing, idx) => (
+                <div 
+                    key={idx}
+                    onClick={() => toggleIngredient(idx)}
+                    className={`p-4 rounded-xl border cursor-pointer transition-all duration-200 flex items-center gap-4 ${
+                    checkedIngredients.includes(idx)
+                        ? 'bg-green-900/20 border-green-500/50 opacity-50'
+                        : 'bg-[#1a1a1a] border-white/10 hover:border-[#D4AF37]'
+                    }`}
+                >
+                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                        checkedIngredients.includes(idx) ? 'border-green-500 bg-green-500 text-black' : 'border-gray-500'
+                    }`}>
+                    {checkedIngredients.includes(idx) && <Check size={14} />}
+                    </div>
+                    <span className={`text-lg ${checkedIngredients.includes(idx) ? 'text-gray-400 line-through' : 'text-gray-200'}`}>
+                    <GlossaryText>{cleanText(ing)}</GlossaryText>
+                    </span>
                 </div>
-                <span className={`text-lg ${checkedIngredients.includes(idx) ? 'text-gray-400 line-through' : 'text-gray-200'}`}>
-                  {/* Utilisation de cleanText ici aussi pour sécuriser */}
-                  <GlossaryText>{cleanText(ing)}</GlossaryText>
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
+                ))}
+            </div>
+            </section>
+        )}
 
-        <section>
-          <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
-            <Clock className="text-[#D4AF37]" /> Préparation
-          </h3>
-          <div className="space-y-6">
-            {recipe.steps.map((step, idx) => (
-              <div 
-                key={idx}
-                onClick={() => toggleStep(idx)}
-                className={`p-6 rounded-xl border cursor-pointer transition-all duration-200 flex gap-6 ${
-                  checkedSteps.includes(idx)
-                    ? 'bg-green-900/20 border-green-500/50 opacity-50'
-                    : 'bg-[#1a1a1a] border-white/10 hover:border-[#D4AF37]'
-                }`}
-              >
-                 <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold text-sm ${
-                   checkedSteps.includes(idx) ? 'border-green-500 bg-green-500 text-black' : 'border-[#D4AF37] text-[#D4AF37]'
-                }`}>
-                  {checkedSteps.includes(idx) ? <Check size={18} /> : idx + 1}
+        {/* ÉTAPES (Seulement si existent) */}
+        {safeSteps.length > 0 && (
+            <section>
+            <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
+                <Clock className="text-[#D4AF37]" /> Préparation
+            </h3>
+            <div className="space-y-6">
+                {safeSteps.map((step, idx) => (
+                <div 
+                    key={idx}
+                    onClick={() => toggleStep(idx)}
+                    className={`p-6 rounded-xl border cursor-pointer transition-all duration-200 flex gap-6 ${
+                    checkedSteps.includes(idx)
+                        ? 'bg-green-900/20 border-green-500/50 opacity-50'
+                        : 'bg-[#1a1a1a] border-white/10 hover:border-[#D4AF37]'
+                    }`}
+                >
+                    <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold text-sm ${
+                    checkedSteps.includes(idx) ? 'border-green-500 bg-green-500 text-black' : 'border-[#D4AF37] text-[#D4AF37]'
+                    }`}>
+                    {checkedSteps.includes(idx) ? <Check size={18} /> : idx + 1}
+                    </div>
+                    <p className={`text-xl leading-relaxed ${checkedSteps.includes(idx) ? 'text-gray-500 line-through' : 'text-gray-200'}`}>
+                    <GlossaryText>{cleanText(step)}</GlossaryText>
+                    </p>
                 </div>
-                <p className={`text-xl leading-relaxed ${checkedSteps.includes(idx) ? 'text-gray-500 line-through' : 'text-gray-200'}`}>
-                  <GlossaryText>{cleanText(step)}</GlossaryText>
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+                ))}
+            </div>
+            </section>
+        )}
 
         <div className="text-center pt-10">
           <p className="text-gray-500 italic">"La pâtisserie est une affaire de précision."</p>
