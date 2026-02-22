@@ -11,16 +11,16 @@ const HUBS = {
     sections: [
       { title: "Biscuits", id: "biscuit", image: "https://images.unsplash.com/photo-1691442563474-df78f0cf8f46?q=80&w=1470&auto=format&fit=crop", desc: "Les bases éponges..." },
       { title: "Pâtes", id: "pate", image: "https://plus.unsplash.com/premium_photo-1722693808030-ff33914c4107?q=80&w=1470&auto=format&fit=crop", desc: "Sablée, Feuilletée..." },
-      { title: "Crèmes", id: "creme", image: "https://i.postimg.cc/gjp7FQ9F/Valrhona-com-Lexique-Recette-Mousse.webp", desc: "Pâtissière, Anglaise..." },
+      { title: "Crèmes", id: "creme", image: "https://plus.unsplash.com/premium_photo-1664474573144-4375bd16e13c?q=80&w=688&auto=format&fit=crop", desc: "Pâtissière, Anglaise..." },
       { title: "Glaçages", id: "glacage", image: "https://plus.unsplash.com/premium_photo-1722686589246-f0969c3d72c4?q=80&w=789&auto=format&fit=crop", desc: "Miroir, Rocher..." },
       { title: "Mousses", id: "mousse", image: "https://images.unsplash.com/flagged/photo-1557234985-425e10c9d7f1?q=80&w=764&auto=format&fit=crop", desc: "Légèreté aérienne..." },
-      { title: "Inserts", id: "insert", image: "https://i.postimg.cc/qq54Jppt/1-2373cfc6-fe5a-47b3-9b5e-7ba55b6162d1.png", desc: "Cœurs fruités..." },
+      { title: "Inserts", id: "insert", image: "https://www.femmeactuelle.fr/imgre/fit/~1~fac~2022~01~13~cbd82aad-1bf5-425d-b9b5-b8b62eb8ef92.jpeg/1200x630/focus-point/1189%2C933/patisserie-comment-faire-un-insert-comme-un-chef.jpg", desc: "Cœurs fruités..." },
       { title: "Crémeux", id: "cremeux", image: "https://plus.unsplash.com/premium_photo-1701210418103-4a912af9398f?q=80&w=1470&auto=format&fit=crop", desc: "Onctuosité..." },
       { title: "Petits Fours Secs", id: "petit-four", image: "https://plus.unsplash.com/premium_photo-1726072366210-8e83c3406c4b?q=80&w=687&auto=format&fit=crop", desc: "Sablés..." },
       { title: "Gâteaux de Voyage", id: "voyage", image: "https://images.unsplash.com/photo-1662793295930-15702b7a1f37?q=80&w=735&auto=format&fit=crop", desc: "Cakes, Madeleines..." },
-      { title: "Cakes Salés", id: "cake-sale", image: "https://i.postimg.cc/rFQP3ffy/cake-sale-facon-flammenkuch-le-moulin-1704.png", desc: "Traiteur..." },
+      { title: "Cakes Salés", id: "cake-sale", image: "https://images.unsplash.com/photo-1584796101179-52cfea2e6f52?q=80&w=1374&auto=format&fit=crop", desc: "Traiteur..." },
       { title: "Pâte à Choux", id: "choux", image: "https://images.unsplash.com/photo-1761637604739-790197a32073?q=80&w=811&auto=format&fit=crop", desc: "Éclairs, Choux..." },
-      { title: "Tartes", id: "tarte", image: "https://i.postimg.cc/FK2qG1Dy/tarte-choco-passion04-1200x900.jpg", desc: "Fonds croquants..." },
+      { title: "Tartes", id: "tarte", image: "https://plus.unsplash.com/premium_photo-1664472613567-2176b50ddb28?q=80&w=880&auto=format&fit=crop", desc: "Fonds croquants..." },
       { title: "Entremets", id: "entremets", image: "https://images.unsplash.com/photo-1541779859250-7c67d623e4da?q=60&w=800&auto=format&fit=crop", desc: "Montages..." },
       { title: "Desserts Régionaux", id: "regional", image: "https://images.unsplash.com/photo-1631978931011-a033b99bce1e?q=80&w=687&auto=format&fit=crop", desc: "Traditions..." }
     ]
@@ -44,7 +44,7 @@ const HUBS = {
       { title: "Farines", id: "farine", image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=80&w=687&auto=format&fit=crop", desc: "Blés et gluten." },
       { title: "Sucres", id: "sucre", image: "https://plus.unsplash.com/premium_photo-1744312220263-a93627dc6801?q=80&w=687&auto=format&fit=crop", desc: "Saccharose et sirops." },
       { title: "Corps Gras", id: "gras", image: "https://images.unsplash.com/photo-1652282556241-0ce13285d00f?q=80&w=687&auto=format&fit=crop", desc: "Beurre et huiles." },
-      { title: "Gélifiants", id: "gelifiant", image: "https://i.postimg.cc/fL8dDSps/Gelatine-halal-trempee-jpg.webp", desc: "Gélatine, Pectine..." },
+      { title: "Gélifiants", id: "gelifiant", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Gélatine, Pectine..." },
       { title: "Œufs", id: "oeuf", image: "https://images.unsplash.com/photo-1737099950756-9869b0383ba7?q=80&w=687&auto=format&fit=crop", desc: "Structure et émulsion." },
       { title: "Levures", id: "levure", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop", desc: "Fermentations et poudres." },
       { title: "Chocolat", id: "tech-chocolat", image: "https://plus.unsplash.com/premium_photo-1723568493016-5e5cdc069ff3?q=80&w=702&auto=format&fit=crop", desc: "Cristallisation et tempérage." }
@@ -89,15 +89,11 @@ const SEARCH_MAPPING = {
   'sans-lactose': 'lactose'
 };
 
-// --- 2. LE SCANNER HYBRIDE ---
+// --- 2. LE SCANNER INTELLIGENT ---
 const modules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
+  query: '?raw', 
+  import: 'default', 
   eager: true 
-});
-
-const rawModules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
-  eager: true,
-  query: '?raw',
-  import: 'default'
 });
 
 const cleanText = (text) => {
@@ -105,81 +101,89 @@ const cleanText = (text) => {
   return String(text).replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\/g, "");
 };
 
-const allItems = Object.keys(modules).map((path) => {
-  const module = modules[path];
-  const rawCode = rawModules[path];
+const allItems = Object.entries(modules).map(([path, rawContent]) => {
   const fileName = path.split('/').pop().replace('.jsx', '');
   const lowerPath = path.toLowerCase();
-  
-  // A. ESSAI AVEC LES DONNÉES EXPORTÉES
-  if (module.recipeData) {
-      const data = module.recipeData;
-      return {
-          id: fileName,
-          title: data.title,
-          category: data.category || "AUTRE",
-          image: data.image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
-          description: data.description || "Découvrez cette recette...",
-          isTech: path.includes('/technologie/'),
-          isVip: data.isVip || false
-      };
-  }
+  const lowerContent = rawContent.toLowerCase();
 
-  // B. FALLBACK AVEC REGEX
-  const lowerContent = rawCode.toLowerCase();
-  
-  // ✅ SÉCURITÉ : La même regex robuste
-  const extractString = (key, source) => {
-      const match = source.match(new RegExp(`${key}:\\s*(["'])((?:\\\\.|[^\\\\])*?)\\1`));
-      return match ? cleanText(match[2]) : null;
-  };
+  let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
+  const vipMatch = rawContent.match(/isVip:\s*(true|false)/);
+  if (vipMatch && vipMatch[1] === 'true') isVip = true;
 
-  let title = extractString('title', rawCode);
+  const secureTitleMatch = rawContent.match(/(?:recipeData|recipeMeta)\s*=\s*\{[\s\S]*?title:\s*(?:"([^"]*)"|'([^']*)')/);
+  const catMatch = rawContent.match(/category:\s*(?:"([^"]*)"|'([^']*)')/);
+  const imgMatch = rawContent.match(/image:\s*(?:"([^"]*)"|'([^']*)')/);
+  const descMatch = rawContent.match(/description:\s*(?:"([^"]*)"|'([^']*)')/);
+
+  let title = secureTitleMatch ? (secureTitleMatch[1] || secureTitleMatch[2]) : null;
+  let category = catMatch ? (catMatch[1] || catMatch[2]) : null;
+  let image = imgMatch ? (imgMatch[1] || imgMatch[2]) : null;
+  let description = descMatch ? (descMatch[1] || descMatch[2]) : "";
+
   if (!title) {
-    const h1Match = rawCode.match(/<h1[^>]*>([^<]+)<\/h1>/);
+    const h1Match = rawContent.match(/<h1[^>]*>([^<]+)<\/h1>/);
     title = h1Match ? h1Match[1] : fileName.replace(/^vip-/i, '').replace(/([A-Z])/g, ' $1').trim();
   }
+  if (!image) {
+    const htmlImgMatch = rawContent.match(/<img[^>]+src=["']([^"']+)["']/);
+    if (htmlImgMatch) image = htmlImgMatch[1];
+  }
 
-  if (!title) return null;
-
-  let category = extractString('category', rawCode);
-  let image = extractString('image', rawCode);
-  let description = extractString('description', rawCode);
-  
-  let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
-  const vipMatch = rawCode.match(/(?:isVip|vip):\s*true/);
-  if (vipMatch) isVip = true;
-
-  if (!category) {
-      if (lowerPath.includes('gluten') || title.toLowerCase().includes('gluten')) category = "SANS-GLUTEN";
-      else if (!path.includes('technologie') && (lowerPath.includes('sans-sucre') || lowerPath.includes('ig-bas'))) category = "SANS-SUCRE";
-      else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) category = "VEGAN";
-      else if (lowerPath.includes('lactose')) category = "SANS-LACTOSE";
-      else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche')) {
-          category = "CHOUX";
-      }
-      else if (lowerPath.includes('regional') || lowerPath.includes('kouign') || lowerPath.includes('breton') || lowerPath.includes('basque') || lowerPath.includes('cannele') || lowerPath.includes('clafoutis') || lowerPath.includes('flan')) {
-          category = "REGIONAL";
-      }
-      else if (lowerPath.includes('cake') && (lowerPath.includes('sale') || lowerContent.includes('poivre') || lowerContent.includes('jambon') || lowerContent.includes('olive') || lowerContent.includes('lardon') || lowerContent.includes('thon'))) {
-          category = "CAKE-SALE";
-      }
-      else if (lowerPath.includes('sauce')) category = "SAUCE";
+  // 🔥 TON "FORCEUR DE CATÉGORIE" PARFAIT (Mise à jour avec les recettes manquantes)
+  if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
+      category = "SANS-GLUTEN";
+  }
+  else if (
+    !lowerPath.includes('technologie') && (
+      lowerPath.includes('sans-sucre') || 
+      lowerPath.includes('zero-sucre') || 
+      lowerPath.includes('diabete') || 
+      lowerPath.includes('ig-bas')
+    )
+  ) {
+      category = "SANS-SUCRE";
+  }
+  else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) {
+      category = "VEGAN";
+  }
+  else if (lowerPath.includes('lactose')) {
+      category = "SANS-LACTOSE";
+  }
+  // ✅ J'ai ajouté salambo, chouquette, profiterole et gougere ici :
+  else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche') || lowerPath.includes('salambo') || lowerPath.includes('chouquette') || lowerPath.includes('profiterole') || lowerPath.includes('gougere')) {
+      category = "CHOUX";
+  }
+  // ✅ J'ai ajouté tatin, alsacien, savoie et teurgoule ici :
+  else if (lowerPath.includes('regional') || lowerPath.includes('kouign') || lowerPath.includes('breton') || lowerPath.includes('basque') || lowerPath.includes('cannele') || lowerPath.includes('clafoutis') || lowerPath.includes('flan') || lowerPath.includes('tatin') || lowerPath.includes('alsacien') || lowerPath.includes('savoie') || lowerPath.includes('teurgoule')) {
+      category = "REGIONAL";
+  }
+  else if (lowerPath.includes('cake') && (lowerPath.includes('sale') || lowerContent.includes('poivre') || lowerContent.includes('jambon') || lowerContent.includes('olive') || lowerContent.includes('lardon') || lowerContent.includes('thon'))) {
+      category = "CAKE-SALE";
+  }
+  else if (!category) {
+      if (lowerPath.includes('sauce')) category = "SAUCE";
       else if (lowerPath.includes('chocolat')) category = "CHOCOLATERIE";
       else if (lowerPath.includes('macaron')) category = "MACARON";
       else if (lowerPath.includes('techno')) category = "TECHNOLOGIE";
+      else if (lowerPath.includes('cake')) category = "GATEAU";
       else category = "AUTRE";
   }
 
-  return {
-    id: fileName,
-    title: title.replace(/^vip-/i, '').replace(/^VIP-/i, ''),
-    category: category.toUpperCase(),
-    image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
-    description: description || "Découvrez cette recette...",
-    isTech: path.includes('/technologie/'),
-    isVip: isVip
-  };
+  const cleanTitle = title.replace(/^vip-/i, '').replace(/^VIP-/i, '');
+  const isTechFile = path.includes('/technologie/');
+
+  if (title) {
+    return {
+      id: fileName,
+      title: cleanTitle,
+      category: category ? category.toUpperCase() : "AUTRE",
+      image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
+      description: description || "Découvrez cette recette...",
+      isTech: isTechFile,
+      isVip: isVip
+    };
+  }
+  return null;
 }).filter(Boolean);
 
 
@@ -246,100 +250,24 @@ const PatisseriePage = ({ category: propCategory }) => {
   const techHub = HUBS['technologie'];
   const isTechSection = techHub && techHub.sections ? techHub.sections.some(s => s.id === urlCategory) : false;
 
+  // 🔥 TON FILTRE EXACT ET SANS FAILLE (Je n'ai touché à rien de ton code ici)
   const filteredItems = allItems.filter(item => {
     const itemCat = normalize(item.category);
-    // On se base sur le nom exact de ton fichier (en minuscules) pour ne jamais se tromper
-    const itemId = item.id.toLowerCase();
+    
+    if (isTechSection) return item.isTech && itemCat.includes(normalizedSearch);
+    
+    if (urlCategory === 'cake-sale') return itemCat === 'cake-sale';
+    if (urlCategory === 'choux') return itemCat === 'choux';
+    if (urlCategory === 'regional') return itemCat === 'regional';
+    if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
+    if (urlCategory === 'sans-sucre') return itemCat === 'sans-sucre';
 
-    // 1. BARRIÈRE DE SÉCURITÉ ABSOLUE : TECHNOLOGIE VS PÂTISSERIE
-    if (isTechSection) {
-      if (!item.isTech) return false;
-      return itemCat.includes(normalizedSearch) || itemId.includes(normalizedSearch);
-    }
-    // Si on n'est PAS dans la section technologie, on bloque TOUTES les fiches tech
-    if (item.isTech) return false; 
-
-    // 2. CLASSIFICATION CHIRURGICALE PAR NOM DE FICHIER
-    switch (urlCategory) {
-      case 'choux':
-        return ['choux', 'eclair', 'religieuse', 'parisbrest', 'croquembouche', 'salambo', 'profiterole', 'chouquette', 'beignet', 'gougere', 'churro'].some(w => itemId.includes(w));
-        
-      case 'regional':
-        // On cible "farbreton" et non plus "far" pour éviter les bugs
-        return ['basque', 'breton', 'kouign', 'cannele', 'clafoutis', 'teurgoule', 'tatin', 'alsacien', 'savoie'].some(w => itemId.includes(w));
-        
-      case 'cake-sale':
-        return itemId.includes('cake') && ['anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt', 'sale'].some(w => itemId.includes(w));
-        
-      case 'voyage':
-        // Gâteaux de voyage SAUF les cakes salés
-        return ['cake', 'madeleine', 'paindepice', 'brownie', 'marbre', 'moelleux'].some(w => itemId.includes(w)) && !['anchois', 'artichaut', 'asperge', 'boudin', 'cheddar', 'chevre', 'foie', 'jambon', 'lapin', 'lard', 'poivron', 'poulet', 'ratatouille', 'roquefort', 'saumon', 'thon', 'tomate', 'fromage', 'pdt'].some(w => itemId.includes(w));
-        
-      case 'petit-four':
-        if (itemId.includes('macaron')) return false; // Le macaron a sa propre catégorie
-        return ['sable', 'cookie', 'financier', 'tuile', 'cigarette', 'langue', 'craquant', 'friand', 'speculoos', 'baton', 'galette', 'diamant', 'spitz', 'congolais'].some(w => itemId.includes(w));
-        
-      case 'biscuit':
-        if (['sable', 'cookie', 'macaron'].some(w => itemId.includes(w))) return false;
-        return ['biscuit', 'dacquoise', 'genoise', 'joconde', 'paindegene', 'sponge'].some(w => itemId.includes(w));
-        
-      case 'tarte':
-        return ['tarte', 'flan', 'bourdaloue'].some(w => itemId.includes(w));
-        
-      case 'entremets':
-        return ['entremets', 'bavarois', 'foretnoire', 'sainthonore', 'arlequin', 'millefeuille', 'opera', 'amarretti'].some(w => itemId.includes(w));
-        
-      case 'creme':
-        if (itemId.includes('cremeux')) return false;
-        return ['creme', 'patissiere', 'anglaise', 'diplomate', 'mousseline', 'chiboust', 'frangipane', 'bavaroise', 'chantilly', 'mascarpone'].some(w => itemId.includes(w));
-        
-      case 'cremeux':
-        return itemId.includes('cremeux');
-        
-      case 'mousse':
-        return itemId.includes('mousse');
-        
-      case 'insert':
-        return ['insert', 'compotee', 'blancmanger'].some(w => itemId.includes(w));
-        
-      case 'glacage':
-        return itemId.includes('glacage');
-        
-      case 'pate':
-        // Cible UNIQUEMENT les pâtes de base (évite "pâte de fruit" ou "pâte d'amande")
-        return ['lapate', 'patesucree', 'patesablee', 'patebrisee', 'patefeuilletee', 'feuilletage', 'crumble', 'streusel', 'brioche', 'focaccia', 'pizza', 'craquelin', 'pateababa'].some(w => itemId.includes(w));
-        
-      case 'chocolaterie':
-        return ['bonbon', 'truffe', 'rocher', 'tablette', 'gianduja', 'praline'].some(w => itemId.includes(w));
-        
-      case 'confiserie-diverse':
-        if (itemId.includes('macaron') || itemId.includes('chocolat')) return false;
-        return ['caramel', 'patedefruit', 'pateamande', 'nougat', 'orangette', 'fondant', 'isomalt', 'guimauve'].some(w => itemId.includes(w));
-        
-      case 'sauce':
-        return ['sauce', 'mayonnaise'].some(w => itemId.includes(w));
-        
-      case 'traiteur':
-        return ['traiteur', 'gougere', 'focaccia', 'pain'].some(w => itemId.includes(w));
-        
-      case 'macaron':
-        return itemId.includes('macaron') && !itemId.includes('cachemire');
-
-      case 'sans-gluten':
-        return itemId.includes('gluten') || itemCat.includes('gluten');
-        
-      case 'sans-sucre':
-        return itemId.includes('sanssucre') || itemCat.includes('sans-sucre') || itemCat.includes('ig-bas');
-        
-      case 'vegan':
-        return itemId.includes('vegan') || itemId.includes('vegetal') || itemCat.includes('vegan') || itemCat.includes('vegetal');
-        
-      case 'sans-lactose':
-        return itemId.includes('lactose') || itemCat.includes('lactose');
-
-      default:
-        return itemCat.includes(normalizedSearch);
-    }
+    if (urlCategory === 'vegan') return itemCat.includes('vegan');
+    
+    if (urlCategory === 'confiserie-diverse') return itemCat.includes('confiserie') && !itemCat.includes('macaron');
+    if (urlCategory === 'macaron') return itemCat.includes('macaron');
+    
+    return !item.isTech && itemCat.includes(normalizedSearch);
   });
 
   return (
@@ -356,7 +284,7 @@ const PatisseriePage = ({ category: propCategory }) => {
             {filteredItems.map(item => (
               <Link 
                 key={item.id} 
-                to={`/recipe/${item.id}`}
+                to={item.isVip ? `/vip/${item.id}` : `/recipe/${item.id}`} 
                 className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
               >
                 
