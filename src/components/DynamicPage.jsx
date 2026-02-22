@@ -34,7 +34,6 @@ const DynamicPage = () => {
       // console.log("Fichiers disponibles :", Object.keys(modules));
 
       // 2. Recherche SOUPLE (Insensible à la casse + partiel)
-      // C'est ça qui manquait : on cherche si le chemin CONTIENT l'ID
       for (const path in modules) {
         if (path.toLowerCase().includes(`/${id.toLowerCase()}.jsx`)) {
           foundPath = path;
@@ -51,7 +50,6 @@ const DynamicPage = () => {
       const module = modules[foundPath];
       const Component = module.default;
 
-      // Si le fichier existe mais n'a pas de "export default function..."
       if (!Component) {
           console.error("❌ Le fichier existe mais n'exporte pas de composant (default).", foundPath);
           setNotFound(true);
@@ -66,9 +64,9 @@ const DynamicPage = () => {
       
       const cleanText = (text) => text ? text.replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\(?=\s|\()/g, "").trim() : "";
       
-      // Regex capable de lire dans 'const recipeData = { ... }' même non exporté
+      // ✅ CORRECTION AI STUDIO : Cette nouvelle Regex gère parfaitement les apostrophes échappées (d\'oeufs)
       const extractFromObject = (objName, key) => {
-          const regex = new RegExp(`${objName}\\s*=\\s*{[\\s\\S]*?${key}:\\s*(["'])([\\s\\S]*?)\\1`);
+          const regex = new RegExp(`${objName}\\s*=\\s*{[\\s\\S]*?${key}:\\s*(["'])((?:\\\\.|[^\\\\])*?)\\1`);
           const match = rawCode.match(regex);
           return match ? cleanText(match[2]) : null;
       };
@@ -90,16 +88,14 @@ const DynamicPage = () => {
       
       if (ingBlockMatch) {
           const content = ingBlockMatch[1];
-          // Regex pour attraper { name: "Farine", amount: 100, unit: "g" }
           const itemRegex = /name:\s*(["'])(.*?)\1.*?amount:\s*(\d+(?:\.\d+)?|["'].*?["']).*?unit:\s*(["'])(.*?)\4/g;
           let match;
           while ((match = itemRegex.exec(content)) !== null) {
               const name = match[2];
-              const amount = match[3].replace(/["']/g, ""); // Enlève les guillemets si présents
+              const amount = match[3].replace(/["']/g, ""); 
               const unit = match[5];
               ingredients.push(`${name} (${amount} ${unit})`);
           }
-          // Fallback simple si le regex complexe échoue
           if (ingredients.length === 0) {
              const simpleNameRegex = /name:\s*(["'])(.*?)\1/g;
              while ((match = simpleNameRegex.exec(content)) !== null) ingredients.push(match[2]);
@@ -111,7 +107,6 @@ const DynamicPage = () => {
       const stepBlockMatch = rawCode.match(/const steps\s*=\s*\[([\s\S]*?)\];/);
       if (stepBlockMatch) {
           const content = stepBlockMatch[1];
-          // Cherche text: "..."
           const textRegex = /text:\s*(["'])([\s\S]*?)\1/g;
           let match;
           while ((match = textRegex.exec(content)) !== null) steps.push(cleanText(match[2]));

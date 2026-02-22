@@ -8,28 +8,25 @@ const CookingMode = ({ recipe, onClose }) => {
   const [checkedSteps, setCheckedSteps] = useState([]);
   const [wakeLock, setWakeLock] = useState(null);
 
-  // --- 🟢 FONCTION DE NETTOYAGE RENFORCÉE ---
+  // ✅ CORRECTION AI STUDIO : Nettoyage et rendu
   const cleanText = (text) => {
     if (!text) return "";
-    
-    // Si c'est un objet, on essaie de l'afficher proprement
-    if (typeof text === 'object') {
-        return text.name || text.label || JSON.stringify(text);
+    return text.replace(/\\'/g, "'").replace(/\\"/g, '"');
+  };
+
+  // NOUVELLE FONCTION pour gérer les objets et forcer la correction des apostrophes
+  const renderItem = (item) => {
+    if (!item) return "";
+    let str = "";
+    if (typeof item === 'string') {
+      str = item;
+    } else if (typeof item === 'object') {
+      str = item.name || "Ingrédient";
+      if (item.amount) str += ` - ${item.amount}`;
+      if (item.unit) str += ` ${item.unit}`;
     }
-
-    let str = String(text);
-
-    // 1. On remplace les séquences connues (\' -> ')
-    str = str.replace(/\\'/g, "'").replace(/\\"/g, '"');
-
-    // 2. On supprime les backslashes résiduels (ceux qui restent à la fin des mots comme "d\")
-    // Cette regex dit : "Enlève tout \ qui est à la fin d'un mot"
-    str = str.replace(/\\(?=\s|$)/g, ""); 
-
-    // 3. On enlève les backslashes orphelins bizarres s'il en reste
-    str = str.replace(/\\/g, "");
-
-    return str;
+    // Filet de sécurité ultime contre les slash/backslash
+    return cleanText(str).replace(/d\//g, "d'").replace(/l\//g, "l'").replace(/\\/g, "");
   };
 
   useEffect(() => {
@@ -114,7 +111,8 @@ const CookingMode = ({ recipe, onClose }) => {
                     {checkedIngredients.includes(idx) && <Check size={14} />}
                     </div>
                     <span className={`text-lg ${checkedIngredients.includes(idx) ? 'text-gray-400 line-through' : 'text-gray-200'}`}>
-                    <GlossaryText>{cleanText(ing)}</GlossaryText>
+                    {/* ✅ APPLICATION renderItem */}
+                    <GlossaryText>{renderItem(ing)}</GlossaryText>
                     </span>
                 </div>
                 ))}
@@ -144,7 +142,8 @@ const CookingMode = ({ recipe, onClose }) => {
                     {checkedSteps.includes(idx) ? <Check size={18} /> : idx + 1}
                     </div>
                     <p className={`text-xl leading-relaxed ${checkedSteps.includes(idx) ? 'text-gray-500 line-through' : 'text-gray-200'}`}>
-                    <GlossaryText>{cleanText(step)}</GlossaryText>
+                    {/* ✅ APPLICATION renderItem */}
+                    <GlossaryText>{renderItem(step)}</GlossaryText>
                     </p>
                 </div>
                 ))}

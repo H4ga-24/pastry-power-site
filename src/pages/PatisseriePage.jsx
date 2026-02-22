@@ -244,14 +244,17 @@ const PatisseriePage = ({ category: propCategory }) => {
     
     if (isTechSection) return item.isTech && itemCat.includes(normalizedSearch);
     
-    if (urlCategory === 'cake-sale') return itemCat === 'cake-sale';
-    if (urlCategory === 'choux') return itemCat === 'choux';
-    if (urlCategory === 'regional') return itemCat === 'regional';
+    // CORRECTION : On utilise .includes() au lieu de === pour ignorer les préfixes "PÂTISSERIE • "
+    if (urlCategory === 'cake-sale') return itemCat.includes('cake-sale') || itemCat.includes('cake');
+    if (urlCategory === 'choux') return itemCat.includes('choux') || itemCat.includes('eclair') || itemCat.includes('religieuse');
+    if (urlCategory === 'regional') return itemCat.includes('regional') || itemCat.includes('regionaux');
     if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
-    if (urlCategory === 'sans-sucre') return itemCat === 'sans-sucre';
-    if (urlCategory === 'vegan') return itemCat.includes('vegan');
+    if (urlCategory === 'sans-sucre') return itemCat.includes('sans-sucre') || itemCat.includes('ig-bas');
+    if (urlCategory === 'vegan') return itemCat.includes('vegan') || itemCat.includes('vegetal');
+    if (urlCategory === 'sans-lactose') return itemCat.includes('lactose');
     if (urlCategory === 'macaron') return itemCat.includes('macaron');
     
+    // Fallback standard
     return !item.isTech && itemCat.includes(normalizedSearch);
   });
 
