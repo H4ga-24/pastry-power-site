@@ -52,6 +52,7 @@ const App = () => {
               </ProtectedRoute>
             } 
           />
+          <Route path="/techno/:id" element={<DynamicPage />} />
 
           {/* --- PAGES STATIQUES --- */}
           <Route path="/mentions-legales" element={<LegalPage />} />

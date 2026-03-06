@@ -108,6 +108,10 @@ const allItems = Object.keys(realModules).map((path) => {
   const module = realModules[path];
   const rawContent = rawModules[path] || "";
   const fileName = path.split('/').pop().replace('.jsx', '');
+  
+  // 🔥 LA NOUVELLE LIGNE : On transforme "CakeMarbre" en "cake-marbre"
+  const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+  
   const lowerPath = path.toLowerCase();
   const lowerContent = rawContent.toLowerCase();
 
@@ -120,7 +124,7 @@ const allItems = Object.keys(realModules).map((path) => {
   let image = null;
   let description = "";
 
-  // 🔥 LA MAGIE OPÈRE ICI : On lit le VRAI objet JS (ce qui fait marcher agarAgarImg)
+  // 🔥 LA MAGIE OPÈRE ICI : On lit le VRAI objet JS
   if (module && module.recipeData) {
       title = module.recipeData.title;
       category = module.recipeData.category;
@@ -187,7 +191,7 @@ const allItems = Object.keys(realModules).map((path) => {
   const isTechFile = path.includes('/technologie/');
 
   return {
-    id: fileName,
+    id: formattedId, // 🔥 ICI ON UTILISE L'ID FORMATÉ AVEC LES TIRETS
     title: cleanTitle,
     category: category ? category.toUpperCase() : "AUTRE",
     image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
@@ -260,7 +264,7 @@ const PatisseriePage = ({ category: propCategory }) => {
   const techHub = HUBS['technologie'];
   const isTechSection = techHub && techHub.sections ? techHub.sections.some(s => s.id === urlCategory) : false;
 
-  // 🔥 TON FILTRE EXACT ET SANS FAILLE (Je n'ai touché à rien de ton code ici)
+  // 🔥 TON FILTRE EXACT ET SANS FAILLE
   const filteredItems = allItems.filter(item => {
     const itemCat = normalize(item.category);
     
@@ -294,7 +298,7 @@ const PatisseriePage = ({ category: propCategory }) => {
             {filteredItems.map(item => (
               <Link 
                 key={item.id} 
-                to={item.isVip ? `/vip/${item.id}` : `/recipe/${item.id}`} 
+                to={item.isTech ? `/techno/${item.id}` : (item.isVip ? `/vip/${item.id}` : `/recipe/${item.id}`)} 
                 className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
               >
                 
