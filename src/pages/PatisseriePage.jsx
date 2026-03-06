@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ChefHat, ArrowRight, Lock, Crown } from 'lucide-react';
+import { ChefHat, ArrowRight, Crown } from 'lucide-react';
 
 // --- 1. CONFIGURATION DES HUBS ---
 const HUBS = {
@@ -27,11 +27,11 @@ const HUBS = {
   },
   'alternative': {
     title: "Alternative & Bien-être",
-    description: "La pâtisserie adaptée à tous les régimes : sans gluten, IG bas, végétal...",
+    description: "La pâtisserie adaptée à tous les régimes.",
     image: "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1000",
     sections: [
-      { title: "Sans Gluten", id: "sans-gluten", image: "https://plus.unsplash.com/premium_photo-1700399458190-eb33043ae7b2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Farines de riz, maïs, sarrasin..." },
-      { title: "Sans Sucre / IG Bas", id: "sans-sucre", image: "https://images.unsplash.com/photo-1655169947079-5b2a38815147?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Miel, Agave, Coco, Édulcorants." },
+      { title: "Sans Gluten", id: "sans-gluten", image: "https://plus.unsplash.com/premium_photo-1700399458190-eb33043ae7b2?q=80&w=688&auto=format&fit=crop", desc: "Farines de riz, maïs, sarrasin..." },
+      { title: "Sans Sucre / IG Bas", id: "sans-sucre", image: "https://images.unsplash.com/photo-1655169947079-5b2a38815147?q=80&w=764&auto=format&fit=crop", desc: "Miel, Agave, Coco, Édulcorants." },
       { title: "Végétal / Végan", id: "vegan", image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=1000", desc: "Sans produits animaux." },
       { title: "Sans Lactose", id: "sans-lactose", image: "https://images.unsplash.com/photo-1600788907416-456578634209?q=80&w=1000", desc: "Laits végétaux et huiles." }
     ]
@@ -44,7 +44,7 @@ const HUBS = {
       { title: "Farines", id: "farine", image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=80&w=687&auto=format&fit=crop", desc: "Blés et gluten." },
       { title: "Sucres", id: "sucre", image: "https://plus.unsplash.com/premium_photo-1744312220263-a93627dc6801?q=80&w=687&auto=format&fit=crop", desc: "Saccharose et sirops." },
       { title: "Corps Gras", id: "gras", image: "https://images.unsplash.com/photo-1652282556241-0ce13285d00f?q=80&w=687&auto=format&fit=crop", desc: "Beurre et huiles." },
-      { title: "Gélifiants", id: "gelifiant", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", desc: "Gélatine, Pectine..." },
+      { title: "Gélifiants", id: "gelifiant", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=80&w=687&auto=format&fit=crop", desc: "Gélatine, Pectine..." },
       { title: "Œufs", id: "oeuf", image: "https://images.unsplash.com/photo-1737099950756-9869b0383ba7?q=80&w=687&auto=format&fit=crop", desc: "Structure et émulsion." },
       { title: "Levures", id: "levure", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop", desc: "Fermentations et poudres." },
       { title: "Chocolat", id: "tech-chocolat", image: "https://plus.unsplash.com/premium_photo-1723568493016-5e5cdc069ff3?q=80&w=702&auto=format&fit=crop", desc: "Cristallisation et tempérage." }
@@ -71,149 +71,96 @@ const HUBS = {
   }
 };
 
-const SEARCH_MAPPING = {
-  'chocolaterie': 'chocolat', 
-  'petit-four': 'petit', 
-  'regional': 'regional',
-  'cake-sale': 'cake-sale', 
-  'choux': 'choux', 
-  'macaron': 'macaron', 
-  'confiserie-diverse': 'confiserie',
-  'tech-chocolat': 'chocolat',
-  'oeuf': 'oeuf',
-  'levure': 'levure',
-  'gras': 'corps gras',
-  'sauce': 'sauce',
-  'sans-gluten': 'gluten',
-  'vegan': 'vegan',
-  'sans-lactose': 'lactose'
+// 🔥 CE DICTIONNAIRE FAIT LE LIEN ENTRE L'URL ET TES FICHIERS .JS
+const URL_TO_SUBCATEGORY = {
+  'biscuit': 'Biscuits', 'pate': 'Pâtes', 'creme': 'Crèmes', 'glacage': 'Glaçages', 
+  'mousse': 'Mousses', 'insert': 'Inserts', 'cremeux': 'Crémeux', 'petit-four': 'Petits Fours Secs', 
+  'voyage': 'Gâteaux de Voyage', 'cake-sale': 'Cakes Salés', 'choux': 'Pâte à Choux', 
+  'tarte': 'Tartes', 'entremets': 'Entremets', 'regional': 'Desserts Régionaux', 
+  'sans-gluten': 'Sans Gluten', 'sans-sucre': 'Sans Sucre / IG Bas', 'vegan': 'Végétal / Végan', 
+  'sans-lactose': 'Sans Lactose', 'macaron': 'Macarons', 'confiserie-diverse': 'Autres Confiseries',
+  'traiteur': 'Traiteur', 'sauce': 'Sauces'
 };
+
+const TECH_MAPPING = {
+  'farine': 'farine', 'sucre': 'sucre', 'gras': 'gras', 'gelifiant': 'gelifiant', 
+  'oeuf': 'oeuf', 'levure': 'levure', 'tech-chocolat': 'chocolat'
+};
+
 
 // --- 2. LE SCANNER INTELLIGENT ---
-// 1. On charge les VRAIS modules (pour pouvoir lire les variables d'images importées)
-const realModules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { eager: true });
-// 2. On garde le texte brut pour le fallback
-const rawModules = import.meta.glob(['./recipes/**/*.jsx', './technologie/**/*.jsx'], { 
-  query: '?raw', 
-  import: 'default', 
-  eager: true 
-});
+// On cible STRICTEMENT les .js pour les recettes, et les .jsx pour la techno
+const realModules = import.meta.glob(['./recipes/**/*.js', './technologie/**/*.jsx'], { eager: true });
+// Le fallback brut n'est gardé QUE pour la technologie au cas où
+const rawModules = import.meta.glob(['./technologie/**/*.jsx'], { query: '?raw', import: 'default', eager: true });
 
-const cleanText = (text) => {
-  if (!text) return "";
-  return String(text).replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\\/g, "");
-};
+const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
 const allItems = Object.keys(realModules).map((path) => {
   const module = realModules[path];
-  const rawContent = rawModules[path] || "";
-  const fileName = path.split('/').pop().replace('.jsx', '');
-  
-  // 🔥 LA NOUVELLE LIGNE : On transforme "CakeMarbre" en "cake-marbre"
-  const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-  
-  const lowerPath = path.toLowerCase();
-  const lowerContent = rawContent.toLowerCase();
-
-  let isVip = fileName.startsWith('vip-') || fileName.startsWith('VIP-');
-  const vipMatch = rawContent.match(/isVip:\s*(true|false)/);
-  if (vipMatch && vipMatch[1] === 'true') isVip = true;
-
-  let title = null;
-  let category = null;
-  let image = null;
-  let description = "";
-
-  // 🔥 LA MAGIE OPÈRE ICI : On lit le VRAI objet JS
-  if (module && module.recipeData) {
-      title = module.recipeData.title;
-      category = module.recipeData.category;
-      image = module.recipeData.image; 
-      description = module.recipeData.description;
-      if (module.recipeData.isVip !== undefined) isVip = module.recipeData.isVip;
-  } 
-  // B. FALLBACK AVEC REGEX (si le fichier n'a pas été mis à jour avec recipeData)
-  else {
-      const extractString = (key, source) => {
-          const match = source.match(new RegExp(`${key}:\\s*(["'])((?:\\\\.|[^\\\\])*?)\\1`));
-          return match ? cleanText(match[2]) : null;
-      };
-
-      title = extractString('title', rawContent);
-      if (!title) {
-        const h1Match = rawContent.match(/<h1[^>]*>([^<]+)<\/h1>/);
-        title = h1Match ? h1Match[1] : fileName.replace(/^vip-/i, '').replace(/([A-Z])/g, ' $1').trim();
-      }
-
-      category = extractString('category', rawContent);
-      image = extractString('image', rawContent);
-      if (!image) {
-        const htmlImgMatch = rawContent.match(/<img[^>]+src=["']([^"']+)["']/);
-        if (htmlImgMatch) image = htmlImgMatch[1];
-      }
-      description = extractString('description', rawContent) || "";
-  }
-
-  if (!title) return null;
-
-  // 🔥 TON "FORCEUR DE CATÉGORIE" PARFAIT (Intact)
-  if (lowerPath.includes('gluten') || (title && title.toLowerCase().includes('gluten'))) {
-      category = "SANS-GLUTEN";
-  }
-  else if (!lowerPath.includes('technologie') && (lowerPath.includes('sans-sucre') || lowerPath.includes('zero-sucre') || lowerPath.includes('diabete') || lowerPath.includes('ig-bas'))) {
-      category = "SANS-SUCRE";
-  }
-  else if (lowerPath.includes('vegan') || lowerPath.includes('vegetal')) {
-      category = "VEGAN";
-  }
-  else if (lowerPath.includes('lactose')) {
-      category = "SANS-LACTOSE";
-  }
-  else if (lowerPath.includes('choux') || lowerPath.includes('eclair') || lowerPath.includes('religieuse') || lowerPath.includes('paris-brest') || lowerPath.includes('croquembouche') || lowerPath.includes('salambo') || lowerPath.includes('chouquette') || lowerPath.includes('profiterole') || lowerPath.includes('gougere')) {
-      category = "CHOUX";
-  }
-  else if (lowerPath.includes('regional') || lowerPath.includes('kouign') || lowerPath.includes('breton') || lowerPath.includes('basque') || lowerPath.includes('cannele') || lowerPath.includes('clafoutis') || lowerPath.includes('flan') || lowerPath.includes('tatin') || lowerPath.includes('alsacien') || lowerPath.includes('savoie') || lowerPath.includes('teurgoule')) {
-      category = "REGIONAL";
-  }
-  else if (lowerPath.includes('cake') && (lowerPath.includes('sale') || lowerContent.includes('poivre') || lowerContent.includes('jambon') || lowerContent.includes('olive') || lowerContent.includes('lardon') || lowerContent.includes('thon'))) {
-      category = "CAKE-SALE";
-  }
-  else if (!category) {
-      if (lowerPath.includes('sauce')) category = "SAUCE";
-      else if (lowerPath.includes('chocolat')) category = "CHOCOLATERIE";
-      else if (lowerPath.includes('macaron')) category = "MACARON";
-      else if (lowerPath.includes('techno')) category = "TECHNOLOGIE";
-      else if (lowerPath.includes('cake')) category = "GATEAU";
-      else category = "AUTRE";
-  }
-
-  const cleanTitle = title.replace(/^vip-/i, '').replace(/^VIP-/i, '');
   const isTechFile = path.includes('/technologie/');
+  const fileName = path.split('/').pop().replace(/\.(js|jsx)$/, '');
+  const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
+  // 🍰 CAS 1 : C'EST UNE RECETTE (.js)
+  if (!isTechFile) {
+    const data = module.default || module;
+    if (!data || !data.title) return null; // Sécurité anti-crash
+    
+    return {
+      id: data.id || formattedId,
+      title: data.title,
+      category: data.category || "Pâtisserie",
+      subCategory: Array.isArray(data.subCategory) ? data.subCategory : [data.subCategory].filter(Boolean),
+      image: data.image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
+      description: data.description || "Découvrez cette recette...",
+      isTech: false,
+      isVip: !!data.isVip
+    };
+  }
+
+  // 🔬 CAS 2 : C'EST DE LA TECHNOLOGIE (.jsx)
+  const rawContent = rawModules[path] || "";
+  let title = module.recipeData?.title || null;
+  let category = module.recipeData?.category || null;
+  let image = module.recipeData?.image || null;
+  
+  if (!title) {
+    const titleMatch = rawContent.match(/title:\s*(["'])(.*?)\1/);
+    title = titleMatch ? titleMatch[2] : fileName;
+  }
+  if (!category) {
+    const catMatch = rawContent.match(/category:\s*(["'])(.*?)\1/);
+    category = catMatch ? catMatch[2] : "TECHNOLOGIE";
+  }
+  
   return {
-    id: formattedId, // 🔥 ICI ON UTILISE L'ID FORMATÉ AVEC LES TIRETS
-    title: cleanTitle,
-    category: category ? category.toUpperCase() : "AUTRE",
-    image: image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
-    description: description || "Découvrez cette recette...",
-    isTech: isTechFile,
-    isVip: isVip
+    id: formattedId,
+    title: title,
+    category: category,
+    subCategory: [],
+    image: image || "https://images.unsplash.com/photo-1516100882582-96c3a05fe590?q=80&w=1000",
+    description: "Comprendre les fondamentaux.",
+    isTech: true,
+    isVip: rawContent.includes('isVip: true') || path.includes('vip')
   };
 }).filter(Boolean);
+
 
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
   const params = useParams();
-  const urlParam = params.category || params.subcategory || params.id;
-  const activeCategory = propCategory || urlParam || 'patisserie';
-
-  useEffect(() => { window.scrollTo(0, 0); }, [activeCategory]);
-
-  const activeHub = HUBS[activeCategory];
-  const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
   
-  // A. MODE HUB
-  if (activeHub) {
+  // Ex: si URL = /patisserie/biscuit -> activeHubId = patisserie, activeSectionId = biscuit
+  const activeHubId = propCategory || params.category || 'patisserie';
+  const activeSectionId = params.subcategory || null; 
+
+  useEffect(() => { window.scrollTo(0, 0); }, [activeHubId, activeSectionId]);
+
+  const activeHub = HUBS[activeHubId];
+
+  // A. MODE HUB (On affiche la grille des sous-catégories comme "Biscuits", "Tartes", etc.)
+  if (!activeSectionId && activeHub) {
     return (
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
         <div className="max-w-7xl mx-auto">
@@ -224,7 +171,7 @@ const PatisseriePage = ({ category: propCategory }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeHub.sections.map((sub) => (
-              <Link key={sub.id} to={`/${activeCategory}/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
+              <Link key={sub.id} to={`/${activeHubId}/${sub.id}`} className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500">
                 <div className="aspect-video bg-gray-900 flex items-center justify-center overflow-hidden">
                   {sub.image ? (
                     <img src={sub.image} alt={sub.title} className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
@@ -247,49 +194,38 @@ const PatisseriePage = ({ category: propCategory }) => {
     );
   }
 
-  // B. MODE LISTE
-  const urlCategory = activeCategory || "";
-  let searchTerm;
-  
-  if (urlCategory === 'cake-sale') searchTerm = 'cake-sale';
-  else if (urlCategory === 'choux') searchTerm = 'choux';
-  else if (urlCategory === 'regional') searchTerm = 'regional';
-  else if (urlCategory === 'sans-gluten') searchTerm = 'gluten'; 
-  else if (urlCategory === 'sans-sucre') searchTerm = ''; 
-  else if (urlCategory === 'vegan') searchTerm = 'vegan'; 
-  else if (urlCategory === 'sans-lactose') searchTerm = 'lactose'; 
-  else searchTerm = SEARCH_MAPPING[urlCategory] || urlCategory;
-  
-  const normalizedSearch = normalize(searchTerm);
-  const techHub = HUBS['technologie'];
-  const isTechSection = techHub && techHub.sections ? techHub.sections.some(s => s.id === urlCategory) : false;
+  // B. MODE LISTE (On affiche les Recettes contenues dans la sous-catégorie)
+  const isTechSection = activeHubId === 'technologie';
+  const targetExactSubCategory = URL_TO_SUBCATEGORY[activeSectionId]; // Ex: "Biscuits"
 
-  // 🔥 TON FILTRE EXACT ET SANS FAILLE
   const filteredItems = allItems.filter(item => {
-    const itemCat = normalize(item.category);
-    
-    if (isTechSection) return item.isTech && itemCat.includes(normalizedSearch);
-    
-    if (urlCategory === 'cake-sale') return itemCat === 'cake-sale';
-    if (urlCategory === 'choux') return itemCat === 'choux';
-    if (urlCategory === 'regional') return itemCat === 'regional';
-    if (urlCategory === 'sans-gluten') return itemCat.includes('gluten');
-    if (urlCategory === 'sans-sucre') return itemCat === 'sans-sucre';
+    // Si c'est un cours de Technologie
+    if (isTechSection) {
+      if (!item.isTech) return false;
+      const techKeyword = TECH_MAPPING[activeSectionId] || activeSectionId;
+      return normalize(item.category).includes(normalize(techKeyword));
+    }
 
-    if (urlCategory === 'vegan') return itemCat.includes('vegan');
+    // Si c'est une Recette Pâtisserie/Confiserie
+    if (item.isTech) return false;
     
-    if (urlCategory === 'confiserie-diverse') return itemCat.includes('confiserie') && !itemCat.includes('macaron');
-    if (urlCategory === 'macaron') return itemCat.includes('macaron');
-    
-    return !item.isTech && itemCat.includes(normalizedSearch);
+    // Le scanner vérifie si la recette contient EXACTEMENT le tag "Biscuits" (ou autre)
+    return item.subCategory.includes(targetExactSubCategory);
   });
+
+  // Titre d'affichage de la page
+  const pageTitle = isTechSection 
+      ? activeHub.sections.find(s => s.id === activeSectionId)?.title 
+      : targetExactSubCategory;
 
   return (
     <div className="min-h-screen bg-[#121212] text-white pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <Link to="/patisserie" className="text-gray-500 hover:text-[#D4AF37] text-xs uppercase tracking-widest mb-4 block">← Retour à la bibliothèque</Link>
-          <h1 className="text-5xl font-serif mb-4 capitalize">{activeCategory.replace(/-/g, ' ')}</h1>
+          <Link to={`/${activeHubId}`} className="text-gray-500 hover:text-[#D4AF37] text-xs uppercase tracking-widest mb-4 block">
+            ← Retour aux catégories
+          </Link>
+          <h1 className="text-5xl font-serif mb-4 capitalize">{pageTitle}</h1>
           <p className="text-gray-400">{filteredItems.length} fiche(s) trouvée(s)</p>
         </div>
         
@@ -302,7 +238,6 @@ const PatisseriePage = ({ category: propCategory }) => {
                 className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
               >
                 
-                {/* Badge VIP */}
                 {item.isVip && (
                   <div className="absolute top-4 right-4 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 z-10 shadow-lg shadow-black/40">
                     <Crown size={12} fill="black" /> VIP
@@ -312,7 +247,9 @@ const PatisseriePage = ({ category: propCategory }) => {
                 <div className="h-48 bg-gray-900 rounded-lg mb-6 overflow-hidden">
                   {item.image && <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />}
                 </div>
-                <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">{item.category}</div>
+                <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">
+                  {item.subCategory.join(' • ') || item.category}
+                </div>
                 <h3 className="text-2xl font-serif mb-4 group-hover:text-[#D4AF37] transition-colors">{item.title}</h3>
                 <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">{item.description}</p>
               </Link>
@@ -320,7 +257,9 @@ const PatisseriePage = ({ category: propCategory }) => {
           </div>
         ) : (
           <div className="text-center py-20 bg-[#1a1a1a] rounded-xl border border-white/5">
-            <p className="text-gray-500 text-xl font-serif">Aucune fiche disponible dans cette catégorie pour le moment.</p>
+            <p className="text-gray-500 text-xl font-serif">
+              Aucune recette disponible dans la section "{pageTitle}" pour le moment.
+            </p>
           </div>
         )}
       </div>
