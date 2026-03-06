@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ChefHat, ArrowRight, Crown } from 'lucide-react';
+import { recipes } from '../data/recipes'; // 🔥 ON IMPORTE TES RECETTES DIRECTEMENT ICI
 
 // --- 1. CONFIGURATION DES HUBS ---
 const HUBS = {
@@ -71,7 +72,6 @@ const HUBS = {
   }
 };
 
-// 🔥 CE DICTIONNAIRE FAIT LE LIEN ENTRE L'URL ET TES FICHIERS .JS
 const URL_TO_SUBCATEGORY = {
   'biscuit': 'Biscuits', 'pate': 'Pâtes', 'creme': 'Crèmes', 'glacage': 'Glaçages', 
   'mousse': 'Mousses', 'insert': 'Inserts', 'cremeux': 'Crémeux', 'petit-four': 'Petits Fours Secs', 
@@ -87,40 +87,35 @@ const TECH_MAPPING = {
   'oeuf': 'oeuf', 'levure': 'levure', 'tech-chocolat': 'chocolat'
 };
 
-
 // --- 2. LE SCANNER INTELLIGENT ---
-// On cible STRICTEMENT les .js pour les recettes, et les .jsx pour la techno
-const realModules = import.meta.glob(['./recipes/**/*.js', './technologie/**/*.jsx'], { eager: true });
-// Le fallback brut n'est gardé QUE pour la technologie au cas où
-const rawModules = import.meta.glob(['./technologie/**/*.jsx'], { query: '?raw', import: 'default', eager: true });
+// Pour la Technologie, on garde le scanner car ce sont des .jsx
+const techModules = import.meta.glob(['./technologie/**/*.jsx'], { eager: true });
+const rawTechModules = import.meta.glob(['./technologie/**/*.jsx'], { query: '?raw', import: 'default', eager: true });
 
 const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
-const allItems = Object.keys(realModules).map((path) => {
-  const module = realModules[path];
-  const isTechFile = path.includes('/technologie/');
-  const fileName = path.split('/').pop().replace(/\.(js|jsx)$/, '');
+// 🍰 1. On charge les recettes depuis ton fichier de données direct
+const recipeItems = recipes.map((data) => {
+  if (!data || !data.title) return null;
+  return {
+    id: data.id,
+    title: data.title,
+    category: data.category || "Pâtisserie",
+    subCategory: Array.isArray(data.subCategory) ? data.subCategory : [data.subCategory].filter(Boolean),
+    image: data.image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
+    description: data.description || "Découvrez cette recette...",
+    isTech: false,
+    isVip: !!data.isVip
+  };
+}).filter(Boolean);
+
+// 🔬 2. On charge la technologie (les .jsx)
+const techItems = Object.keys(techModules).map((path) => {
+  const module = techModules[path];
+  const rawContent = rawTechModules[path] || "";
+  const fileName = path.split('/').pop().replace('.jsx', '');
   const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-
-  // 🍰 CAS 1 : C'EST UNE RECETTE (.js)
-  if (!isTechFile) {
-    const data = module.default || module;
-    if (!data || !data.title) return null; // Sécurité anti-crash
-    
-    return {
-      id: data.id || formattedId,
-      title: data.title,
-      category: data.category || "Pâtisserie",
-      subCategory: Array.isArray(data.subCategory) ? data.subCategory : [data.subCategory].filter(Boolean),
-      image: data.image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
-      description: data.description || "Découvrez cette recette...",
-      isTech: false,
-      isVip: !!data.isVip
-    };
-  }
-
-  // 🔬 CAS 2 : C'EST DE LA TECHNOLOGIE (.jsx)
-  const rawContent = rawModules[path] || "";
+  
   let title = module.recipeData?.title || null;
   let category = module.recipeData?.category || null;
   let image = module.recipeData?.image || null;
@@ -146,12 +141,13 @@ const allItems = Object.keys(realModules).map((path) => {
   };
 }).filter(Boolean);
 
+// 🌍 3. On fusionne la base de données !
+const allItems = [...recipeItems, ...techItems];
 
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
   const params = useParams();
   
-  // Ex: si URL = /patisserie/biscuit -> activeHubId = patisserie, activeSectionId = biscuit
   const activeHubId = propCategory || params.category || 'patisserie';
   const activeSectionId = params.subcategory || null; 
 
@@ -159,7 +155,6 @@ const PatisseriePage = ({ category: propCategory }) => {
 
   const activeHub = HUBS[activeHubId];
 
-  // A. MODE HUB (On affiche la grille des sous-catégories comme "Biscuits", "Tartes", etc.)
   if (!activeSectionId && activeHub) {
     return (
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
@@ -194,26 +189,22 @@ const PatisseriePage = ({ category: propCategory }) => {
     );
   }
 
-  // B. MODE LISTE (On affiche les Recettes contenues dans la sous-catégorie)
   const isTechSection = activeHubId === 'technologie';
-  const targetExactSubCategory = URL_TO_SUBCATEGORY[activeSectionId]; // Ex: "Biscuits"
+  const targetExactSubCategory = URL_TO_SUBCATEGORY[activeSectionId];
 
   const filteredItems = allItems.filter(item => {
-    // Si c'est un cours de Technologie
     if (isTechSection) {
       if (!item.isTech) return false;
       const techKeyword = TECH_MAPPING[activeSectionId] || activeSectionId;
       return normalize(item.category).includes(normalize(techKeyword));
     }
 
-    // Si c'est une Recette Pâtisserie/Confiserie
     if (item.isTech) return false;
     
-    // Le scanner vérifie si la recette contient EXACTEMENT le tag "Biscuits" (ou autre)
+    // On vérifie que la recette contient bien la sous-catégorie demandée
     return item.subCategory.includes(targetExactSubCategory);
   });
 
-  // Titre d'affichage de la page
   const pageTitle = isTechSection 
       ? activeHub.sections.find(s => s.id === activeSectionId)?.title 
       : targetExactSubCategory;
