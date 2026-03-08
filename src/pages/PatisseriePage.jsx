@@ -28,7 +28,6 @@ const HUBS = {
   'alternative': {
     title: "Alternative & Bien-être",
     description: "La pâtisserie adaptée à tous les régimes.",
-    image: "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1000",
     sections: [
       { title: "Sans Gluten", id: "sans-gluten", image: "https://plus.unsplash.com/premium_photo-1700399458190-eb33043ae7b2?q=80&w=688&auto=format&fit=crop", desc: "Farines de riz, maïs, sarrasin..." },
       { title: "Sans Sucre / IG Bas", id: "sans-sucre", image: "https://images.unsplash.com/photo-1655169947079-5b2a38815147?q=80&w=764&auto=format&fit=crop", desc: "Miel, Agave, Coco, Édulcorants." },
@@ -39,7 +38,6 @@ const HUBS = {
   'technologie': {
     title: "Technologie",
     description: "La science des ingrédients et des réactions.",
-    image: "https://images.unsplash.com/photo-1516100882582-96c3a05fe590?q=80&w=2000",
     sections: [
       { title: "Farines", id: "farine", image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=80&w=687&auto=format&fit=crop", desc: "Blés et gluten." },
       { title: "Sucres", id: "sucre", image: "https://plus.unsplash.com/premium_photo-1744312220263-a93627dc6801?q=80&w=687&auto=format&fit=crop", desc: "Saccharose et sirops." },
@@ -53,7 +51,6 @@ const HUBS = {
   'confiserie': {
     title: "Confiserie",
     description: "Le travail du sucre et du chocolat.",
-    image: "https://images.unsplash.com/photo-1582034986517-30d163aa1da9?q=80&w=2000",
     sections: [
       { title: "Macarons", id: "macaron", image: "https://images.unsplash.com/photo-1702034519504-b7cf62c36413?q=80&w=880&auto=format&fit=crop", desc: "Coques et ganaches." },
       { title: "Autres Confiseries", id: "confiserie-diverse", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=80&w=687&auto=format&fit=crop", desc: "Caramels, pâtes de fruits." }
@@ -62,12 +59,17 @@ const HUBS = {
   'cuisine': {
     title: "Cuisine",
     description: "L'univers salé et traiteur.",
-    image: "https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=2000",
     sections: [
       { title: "Traiteur", id: "traiteur", image: "https://images.unsplash.com/photo-1740047602722-b4993b79e4b7?q=80&w=687&auto=format&fit=crop", desc: "Pièces cocktails." },
       { title: "Sauces", id: "sauce", image: "https://images.unsplash.com/photo-1563599175592-c58dc214deff?q=80&w=1470&auto=format&fit=crop", desc: "Bases salées." },
       { title: "Cakes Salés", id: "cake-sale", image: "https://images.unsplash.com/photo-1584796101179-52cfea2e6f52?q=80&w=1374&auto=format&fit=crop", desc: "Traiteur..." }
     ]
+  },
+  // 🔥 AJOUT DE LA CHOCOLATERIE POUR RÉGLER LE BUG 
+  'chocolaterie': {
+    title: "Chocolaterie",
+    description: "L'art du tempérage, des ganaches et des moulages.",
+    sections: [] // Pas de sous-catégories, affichage direct !
   }
 };
 
@@ -86,8 +88,7 @@ const TECH_MAPPING = {
   'oeuf': 'oeuf', 'levure': 'levure', 'tech-chocolat': 'chocolat'
 };
 
-// --- 2. LE SCANNER TOUT-TERRAIN (La correction est ici 🔥) ---
-// On scanne TOUS les dossiers possibles (data ET pages) pour être sûr de ne rater aucun fichier
+// --- 2. LE SCANNER TOUT-TERRAIN ---
 const realModules = import.meta.glob([
   '../data/recipes/**/*.js', 
   './recipes/**/*.js', 
@@ -108,11 +109,9 @@ const allItems = Object.keys(realModules).map((path) => {
   const fileName = path.split('/').pop().replace(/\.(js|jsx)$/, '');
   const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
-  // 🍰 CAS 1 : C'EST UNE RECETTE (.js)
   if (!isTechFile) {
     const data = module.default || module;
-    if (!data || !data.title) return null; // Sécurité
-    
+    if (!data || !data.title) return null; 
     return {
       id: data.id || formattedId,
       title: data.title,
@@ -125,7 +124,6 @@ const allItems = Object.keys(realModules).map((path) => {
     };
   }
 
-  // 🔬 CAS 2 : C'EST DE LA TECHNOLOGIE (.jsx)
   const rawContent = rawModules[path] || "";
   let title = module.recipeData?.title || null;
   let category = module.recipeData?.category || null;
@@ -157,7 +155,6 @@ const PatisseriePage = ({ category: propCategory }) => {
   const params = useParams();
   const location = useLocation();
   
-  // 🔥 CORRECTION DE L'URL : On lit la vraie URL pour savoir si on est dans Confiserie, Cuisine, etc.
   const urlCategory = location.pathname.split('/')[1]; 
   const activeHubId = propCategory || params.category || urlCategory || 'patisserie';
   const activeSectionId = params.subcategory || null; 
@@ -166,8 +163,8 @@ const PatisseriePage = ({ category: propCategory }) => {
 
   const activeHub = HUBS[activeHubId];
 
-  // A. MODE HUB
-  if (!activeSectionId && activeHub) {
+  // A. MODE HUB : On l'affiche UNIQUEMENT s'il y a des sections configurées !
+  if (!activeSectionId && activeHub && activeHub.sections && activeHub.sections.length > 0) {
     return (
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
         <div className="max-w-7xl mx-auto">
@@ -201,35 +198,45 @@ const PatisseriePage = ({ category: propCategory }) => {
     );
   }
 
-  // B. MODE LISTE DES RECETTES
+  // B. MODE LISTE DES RECETTES (Directement pour la Chocolaterie ou les Sous-catégories)
   const isTechSection = activeHubId === 'technologie';
   const targetExactSubCategory = URL_TO_SUBCATEGORY[activeSectionId];
 
   const filteredItems = allItems.filter(item => {
-    // 🔥 CORRECTION TECHNOLOGIE : Le scanner regarde maintenant aussi le nom du fichier
+    // 1. Logique Technologie
     if (isTechSection) {
       if (!item.isTech) return false;
       const techKeyword = TECH_MAPPING[activeSectionId] || activeSectionId;
       const search = normalize(techKeyword);
       return normalize(item.category).includes(search) || normalize(item.id).includes(search);
     }
-
     if (item.isTech) return false;
-    
-    // Le scanner vérifie si la recette contient EXACTEMENT le tag
-    return item.subCategory && item.subCategory.includes(targetExactSubCategory);
+
+    // 2. Si on est dans une sous-catégorie précise (Ex: Biscuits)
+    if (targetExactSubCategory) {
+      return item.subCategory && item.subCategory.includes(targetExactSubCategory);
+    }
+
+    // 3. 🔥 Si on est sur une catégorie DIRECTE comme Chocolaterie
+    return normalize(item.category) === normalize(activeHubId);
   });
 
-  const pageTitle = isTechSection 
-      ? activeHub?.sections?.find(s => s.id === activeSectionId)?.title 
-      : targetExactSubCategory;
+  // Gestion intelligente du titre de la page
+  let pageTitle = "";
+  if (isTechSection) {
+      pageTitle = activeHub?.sections?.find(s => s.id === activeSectionId)?.title || activeHubId;
+  } else if (targetExactSubCategory) {
+      pageTitle = targetExactSubCategory;
+  } else {
+      pageTitle = activeHub?.title || activeHubId; // Affichera "Chocolaterie"
+  }
 
   return (
     <div className="min-h-screen bg-[#121212] text-white pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <Link to={`/${activeHubId}`} className="text-gray-500 hover:text-[#D4AF37] text-xs uppercase tracking-widest mb-4 block">
-            ← Retour aux catégories
+          <Link to={isTechSection || targetExactSubCategory ? `/${activeHubId}` : "/"} className="text-gray-500 hover:text-[#D4AF37] text-xs uppercase tracking-widest mb-4 block">
+            ← Retour
           </Link>
           <h1 className="text-5xl font-serif mb-4 capitalize">{pageTitle}</h1>
           <p className="text-gray-400">{filteredItems.length} fiche(s) trouvée(s)</p>
@@ -251,10 +258,16 @@ const PatisseriePage = ({ category: propCategory }) => {
                 )}
 
                 <div className="h-48 bg-gray-900 rounded-lg mb-6 overflow-hidden">
-                  {item.image && <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />}
+                  {item.image ? (
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                       <ChefHat className="text-gray-700" size={48} />
+                    </div>
+                  )}
                 </div>
                 <div className="text-[#D4AF37] text-xs font-bold uppercase mb-2">
-                  {item.subCategory.join(' • ') || item.category}
+                  {item.subCategory && item.subCategory.length > 0 ? item.subCategory.join(' • ') : item.category}
                 </div>
                 <h3 className="text-2xl font-serif mb-4 group-hover:text-[#D4AF37] transition-colors">{item.title}</h3>
                 <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">{item.description}</p>
