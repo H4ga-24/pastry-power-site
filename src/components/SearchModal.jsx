@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Search, ChevronRight, ChefHat, Lock } from 'lucide-react';
 
-// --- LE SCANNER DE RECETTES DIRECT ---
-const modules = import.meta.glob(['../pages/recipes/**/*.js'], { eager: true });
+// --- LE SCANNER DE RECETTES TOUT-TERRAIN ---
+const modules = import.meta.glob([
+  '../data/recipes/**/*.js', 
+  '../pages/recipes/**/*.js'
+], { eager: true });
 
 const allRecipes = Object.entries(modules).map(([path, module]) => {
   const data = module.default || module;

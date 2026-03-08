@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { ChefHat, ArrowRight, Crown } from 'lucide-react';
 
 // --- 1. CONFIGURATION DES HUBS ---
@@ -86,10 +86,19 @@ const TECH_MAPPING = {
   'oeuf': 'oeuf', 'levure': 'levure', 'tech-chocolat': 'chocolat'
 };
 
-// --- 2. LE SCANNER INTELLIGENT DIRECT ---
-// 🔥 ON SCANNE AUTOMATIQUEMENT LES DOSSIERS
-const realModules = import.meta.glob(['./recipes/**/*.js', './technologie/**/*.jsx'], { eager: true });
-const rawModules = import.meta.glob(['./technologie/**/*.jsx'], { query: '?raw', import: 'default', eager: true });
+// --- 2. LE SCANNER TOUT-TERRAIN (La correction est ici 🔥) ---
+// On scanne TOUS les dossiers possibles (data ET pages) pour être sûr de ne rater aucun fichier
+const realModules = import.meta.glob([
+  '../data/recipes/**/*.js', 
+  './recipes/**/*.js', 
+  '../technologie/**/*.jsx', 
+  './technologie/**/*.jsx'
+], { eager: true });
+
+const rawModules = import.meta.glob([
+  '../technologie/**/*.jsx', 
+  './technologie/**/*.jsx'
+], { query: '?raw', import: 'default', eager: true });
 
 const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
@@ -146,14 +155,18 @@ const allItems = Object.keys(realModules).map((path) => {
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
   const params = useParams();
+  const location = useLocation();
   
-  const activeHubId = propCategory || params.category || 'patisserie';
+  // 🔥 CORRECTION DE L'URL : On lit la vraie URL pour savoir si on est dans Confiserie, Cuisine, etc.
+  const urlCategory = location.pathname.split('/')[1]; 
+  const activeHubId = propCategory || params.category || urlCategory || 'patisserie';
   const activeSectionId = params.subcategory || null; 
 
   useEffect(() => { window.scrollTo(0, 0); }, [activeHubId, activeSectionId]);
 
   const activeHub = HUBS[activeHubId];
 
+  // A. MODE HUB
   if (!activeSectionId && activeHub) {
     return (
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
@@ -188,24 +201,27 @@ const PatisseriePage = ({ category: propCategory }) => {
     );
   }
 
+  // B. MODE LISTE DES RECETTES
   const isTechSection = activeHubId === 'technologie';
   const targetExactSubCategory = URL_TO_SUBCATEGORY[activeSectionId];
 
   const filteredItems = allItems.filter(item => {
+    // 🔥 CORRECTION TECHNOLOGIE : Le scanner regarde maintenant aussi le nom du fichier
     if (isTechSection) {
       if (!item.isTech) return false;
       const techKeyword = TECH_MAPPING[activeSectionId] || activeSectionId;
-      return normalize(item.category).includes(normalize(techKeyword));
+      const search = normalize(techKeyword);
+      return normalize(item.category).includes(search) || normalize(item.id).includes(search);
     }
 
     if (item.isTech) return false;
     
     // Le scanner vérifie si la recette contient EXACTEMENT le tag
-    return item.subCategory.includes(targetExactSubCategory);
+    return item.subCategory && item.subCategory.includes(targetExactSubCategory);
   });
 
   const pageTitle = isTechSection 
-      ? activeHub.sections.find(s => s.id === activeSectionId)?.title 
+      ? activeHub?.sections?.find(s => s.id === activeSectionId)?.title 
       : targetExactSubCategory;
 
   return (
