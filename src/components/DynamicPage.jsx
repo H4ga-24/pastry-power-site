@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import RecipeLayout from './RecipeLayout';
 
-// 🔥 1. LE SCANNER AUTOMATIQUE (Remplace l'import { recipes } qui causait le crash)
+// 🔥 1. LE SCANNER AUTOMATIQUE
 const recipeModules = import.meta.glob([
   '../data/recipes/**/*.js', 
   '../pages/recipes/**/*.js'
@@ -15,7 +15,6 @@ const techModules = import.meta.glob([
 
 const DynamicPage = () => {
   const { id, recipeId, path } = useParams(); 
-  // On met en minuscules pour éviter les bugs liés aux majuscules
   const currentId = (id || recipeId || path || "").toLowerCase().trim();
 
   // --- 1. RECHERCHE DE LA RECETTE ---
@@ -25,43 +24,55 @@ const DynamicPage = () => {
     const module = recipeModules[modulePath];
     const data = module.default || module;
     
-    // 🛡️ LE BOUCLIER ANTI-CRASH : Si le fichier est vide, on l'ignore sans crasher !
+    // 🛡️ BOUCLIER ANTI-CRASH
     if (!data) continue; 
 
     const fileId = (data.id || "").toLowerCase().trim();
-    const fileName = modulePath.split('/').pop().replace(/\.(js|jsx)$/, '').toLowerCase();
-    const formattedFileName = fileName.replace(/([a-z])([A-Z])/g, '$1-$2');
+    
+    // On récupère le vrai nom du fichier (ex: PainDeGene)
+    const rawFileName = modulePath.split('/').pop().replace(/\.(js|jsx)$/, '');
+    const fileNameLower = rawFileName.toLowerCase();
+    
+    // On met les tirets AVANT de tout passer en minuscules !
+    const formattedFileName = rawFileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
-    if (fileId === currentId || formattedFileName === currentId || fileName === currentId) {
+    if (fileId === currentId || formattedFileName === currentId || fileNameLower === currentId) {
       foundRecipe = data;
       break;
     }
   }
 
   if (foundRecipe) {
-    // 🛡️ 2ème BOUCLIER : On s'assure que le composant a tout ce qu'il faut
     const safeRecipe = {
       ...foundRecipe,
       id: foundRecipe.id || currentId,
-      // On convertit le tableau subCategory en texte pour éviter de faire planter ton RecipeLayout
       subCategory: Array.isArray(foundRecipe.subCategory) 
         ? foundRecipe.subCategory.join(' • ') 
         : (foundRecipe.subCategory || ""),
+      ingredients: foundRecipe.ingredients || [],
+      steps: foundRecipe.steps || []
     };
     return <RecipeLayout recipe={safeRecipe} />;
   }
 
-  // --- 2. RECHERCHE DE LA TECHNOLOGIE ---
+  // --- 2. RECHERCHE DE LA TECHNOLOGIE (Le bug était ici !) ---
   const techKey = Object.keys(techModules).find(key => {
-    const fileName = key.split('/').pop().replace('.jsx', '').toLowerCase();
-    const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2');
-    return formattedId === currentId || fileName === currentId;
+    // 1. On garde les majuscules d'abord : SaccharosePage
+    const rawFileName = key.split('/').pop().replace('.jsx', ''); 
+    
+    // 2. On teste la version tout attaché : saccharosepage
+    const fileNameLower = rawFileName.toLowerCase(); 
+    
+    // 3. On met le tiret PUIS on met en minuscules : saccharose-page
+    const formattedId = rawFileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); 
+    
+    return formattedId === currentId || fileNameLower === currentId;
   });
 
   if (techKey) {
     const TechComponent = lazy(techModules[techKey]);
     return (
-      <Suspense fallback={<div className="min-h-screen bg-[#121212] flex items-center justify-center text-[#D4AF37] font-serif text-2xl">Chargement...</div>}>
+      <Suspense fallback={<div className="min-h-screen bg-[#121212] flex items-center justify-center text-[#D4AF37] font-serif text-2xl">Chargement du cours...</div>}>
         <TechComponent />
       </Suspense>
     );
