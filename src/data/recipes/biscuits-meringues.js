@@ -1,6 +1,6 @@
 const lesBiscuitsMeringues = {
-  id: "les-biscuits-meringues",
-  title: "Les Biscuits Meringués (Comparatif)",
+  id: "biscuits-meringues",
+  title: "Biscuits Meringués (Succès)",
   category: "Pâtisserie",
   subCategory: ["Biscuits"], // "Bases" dans le fichier, je mappe sur "Biscuits" ou "Pâtes" selon tes catégories valides
   isVip: false,
@@ -8,7 +8,7 @@ const lesBiscuitsMeringues = {
   cookTime: "VARIE",
   difficulty: "MOYEN",
   description: "Un tableau comparatif des grands classiques des biscuits à base de meringue : Succès, Progrès, Japonais, Macaron Cachemire et Dacquoises.",
-  image: "https://www.qooq.com/sites/default/files/styles/main_photo/public/externals/5888.jpg",
+  image: "src/assets/biscuits-meringues.jpg",
   baseServings: 1, // Base unitaire pour le tableau
   
   // Note: Comme c'est un tableau comparatif, je mets une structure générique ici, 

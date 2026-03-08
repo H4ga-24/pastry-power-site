@@ -8,7 +8,7 @@ const biscuitCuillereAmande = {
   cookTime: "12-15 MIN",
   difficulty: "MOYEN",
   description: "Une variante plus riche et parfumée du biscuit cuillère traditionnel, apportant la rondeur et le moelleux de l'amande douce. Parfait pour des entremets fruités ou pralinés.",
-  image: "https://www.mapatisserie.fr/wp-content/uploads/2019/08/recette-biscuit-cuillere-10.jpg",
+  image: "src/assets/biscuit-cuillere-amande.jpg",
   baseServings: 1, // 1 plaque
   
   ingredients: [

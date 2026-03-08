@@ -2,7 +2,7 @@ const brioche = {
   id: "brioche",
   title: "Pâte à Brioche",
   category: "Pâtisserie",
-  subCategory: ["Pâtes"],
+  subCategory: ["Gâteaux de Voyage"],
   isVip: true,
   prepTime: "30 MIN",
   restTime: "12 HEURES",

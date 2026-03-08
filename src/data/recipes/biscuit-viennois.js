@@ -8,7 +8,7 @@ const biscuitViennois = {
   cookTime: "10-12 MIN",
   difficulty: "MOYEN",
   description: "Un biscuit d'une souplesse extrême, très alvéolé et léger. C'est l'alternative parfaite au biscuit roulé classique pour des montages plus aériens et délicats.",
-  image: "https://www.empreintesucree.fr/wp-content/uploads/2018/05/1-biscuit-viennois-recette-patisserie-empreinte-sucree.jpg",
+  image: "src/assets/biscuit-viennois.jpg",
   baseServings: 1, // 1 plaque 40x60
   
   ingredients: [
