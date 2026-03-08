@@ -1,31 +1,64 @@
 import React, { lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
-import { recipes } from '../data/recipes';
 import RecipeLayout from './RecipeLayout';
 
-// On prépare le chemin vers tes pages techno (sans les charger inutilement au démarrage)
-const techModules = import.meta.glob('../technologie/**/*.jsx');
+// 🔥 1. LE SCANNER AUTOMATIQUE (Remplace l'import { recipes } qui causait le crash)
+const recipeModules = import.meta.glob([
+  '../data/recipes/**/*.js', 
+  '../pages/recipes/**/*.js'
+], { eager: true });
+
+const techModules = import.meta.glob([
+  '../technologie/**/*.jsx', 
+  '../pages/technologie/**/*.jsx'
+]);
 
 const DynamicPage = () => {
   const { id, recipeId, path } = useParams(); 
-  const currentId = id || recipeId || path;
+  // On met en minuscules pour éviter les bugs liés aux majuscules
+  const currentId = (id || recipeId || path || "").toLowerCase().trim();
 
-  // 1. On cherche d'abord si c'est une nouvelle recette propre
-  const recipe = recipes.find((r) => r.id === currentId);
+  // --- 1. RECHERCHE DE LA RECETTE ---
+  let foundRecipe = null;
 
-  if (recipe) {
-    return <RecipeLayout recipe={recipe} />;
+  for (const modulePath in recipeModules) {
+    const module = recipeModules[modulePath];
+    const data = module.default || module;
+    
+    // 🛡️ LE BOUCLIER ANTI-CRASH : Si le fichier est vide, on l'ignore sans crasher !
+    if (!data) continue; 
+
+    const fileId = (data.id || "").toLowerCase().trim();
+    const fileName = modulePath.split('/').pop().replace(/\.(js|jsx)$/, '').toLowerCase();
+    const formattedFileName = fileName.replace(/([a-z])([A-Z])/g, '$1-$2');
+
+    if (fileId === currentId || formattedFileName === currentId || fileName === currentId) {
+      foundRecipe = data;
+      break;
+    }
   }
 
-  // 2. Si ce n'est pas une recette, on regarde si c'est une page Technologie
+  if (foundRecipe) {
+    // 🛡️ 2ème BOUCLIER : On s'assure que le composant a tout ce qu'il faut
+    const safeRecipe = {
+      ...foundRecipe,
+      id: foundRecipe.id || currentId,
+      // On convertit le tableau subCategory en texte pour éviter de faire planter ton RecipeLayout
+      subCategory: Array.isArray(foundRecipe.subCategory) 
+        ? foundRecipe.subCategory.join(' • ') 
+        : (foundRecipe.subCategory || ""),
+    };
+    return <RecipeLayout recipe={safeRecipe} />;
+  }
+
+  // --- 2. RECHERCHE DE LA TECHNOLOGIE ---
   const techKey = Object.keys(techModules).find(key => {
-    const fileName = key.split('/').pop().replace('.jsx', '');
-    const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    const fileName = key.split('/').pop().replace('.jsx', '').toLowerCase();
+    const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2');
     return formattedId === currentId || fileName === currentId;
   });
 
   if (techKey) {
-    // On charge le composant React uniquement quand l'utilisateur clique dessus
     const TechComponent = lazy(techModules[techKey]);
     return (
       <Suspense fallback={<div className="min-h-screen bg-[#121212] flex items-center justify-center text-[#D4AF37] font-serif text-2xl">Chargement...</div>}>
@@ -34,11 +67,11 @@ const DynamicPage = () => {
     );
   }
 
-  // 3. Si on ne trouve vraiment rien
+  // --- 3. RIEN TROUVÉ (ERREUR 404) ---
   return (
     <div className="min-h-screen bg-[#121212] flex flex-col items-center justify-center text-white">
       <h1 className="text-4xl font-serif mb-4 text-[#D4AF37]">Oups !</h1>
-      <p className="text-gray-400">Cette page n'existe pas ou a été déplacée.</p>
+      <p className="text-gray-400">La page "{currentId}" est introuvable.</p>
     </div>
   );
 };
