@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Search, ChevronRight, ChefHat, Lock } from 'lucide-react';
-import { recipes } from '../data/recipes'; // 🔥 ON IMPORTE LES DONNÉES !
 
-// On prépare la liste une seule fois au chargement
-const allRecipes = recipes.map((data) => {
+// --- LE SCANNER DE RECETTES DIRECT ---
+const modules = import.meta.glob(['../pages/recipes/**/*.js'], { eager: true });
+
+const allRecipes = Object.entries(modules).map(([path, module]) => {
+  const data = module.default || module;
   if (!data || !data.title) return null;
+  
   return {
     id: data.id,
     title: data.title,

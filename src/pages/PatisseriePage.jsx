@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ChefHat, ArrowRight, Crown } from 'lucide-react';
-import { recipes } from '../data/recipes'; // 🔥 ON IMPORTE TES RECETTES DIRECTEMENT ICI
 
 // --- 1. CONFIGURATION DES HUBS ---
 const HUBS = {
@@ -87,35 +86,38 @@ const TECH_MAPPING = {
   'oeuf': 'oeuf', 'levure': 'levure', 'tech-chocolat': 'chocolat'
 };
 
-// --- 2. LE SCANNER INTELLIGENT ---
-// Pour la Technologie, on garde le scanner car ce sont des .jsx
-const techModules = import.meta.glob(['./technologie/**/*.jsx'], { eager: true });
-const rawTechModules = import.meta.glob(['./technologie/**/*.jsx'], { query: '?raw', import: 'default', eager: true });
+// --- 2. LE SCANNER INTELLIGENT DIRECT ---
+// 🔥 ON SCANNE AUTOMATIQUEMENT LES DOSSIERS
+const realModules = import.meta.glob(['./recipes/**/*.js', './technologie/**/*.jsx'], { eager: true });
+const rawModules = import.meta.glob(['./technologie/**/*.jsx'], { query: '?raw', import: 'default', eager: true });
 
 const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
-// 🍰 1. On charge les recettes depuis ton fichier de données direct
-const recipeItems = recipes.map((data) => {
-  if (!data || !data.title) return null;
-  return {
-    id: data.id,
-    title: data.title,
-    category: data.category || "Pâtisserie",
-    subCategory: Array.isArray(data.subCategory) ? data.subCategory : [data.subCategory].filter(Boolean),
-    image: data.image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
-    description: data.description || "Découvrez cette recette...",
-    isTech: false,
-    isVip: !!data.isVip
-  };
-}).filter(Boolean);
-
-// 🔬 2. On charge la technologie (les .jsx)
-const techItems = Object.keys(techModules).map((path) => {
-  const module = techModules[path];
-  const rawContent = rawTechModules[path] || "";
-  const fileName = path.split('/').pop().replace('.jsx', '');
+const allItems = Object.keys(realModules).map((path) => {
+  const module = realModules[path];
+  const isTechFile = path.includes('/technologie/');
+  const fileName = path.split('/').pop().replace(/\.(js|jsx)$/, '');
   const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-  
+
+  // 🍰 CAS 1 : C'EST UNE RECETTE (.js)
+  if (!isTechFile) {
+    const data = module.default || module;
+    if (!data || !data.title) return null; // Sécurité
+    
+    return {
+      id: data.id || formattedId,
+      title: data.title,
+      category: data.category || "Pâtisserie",
+      subCategory: Array.isArray(data.subCategory) ? data.subCategory : [data.subCategory].filter(Boolean),
+      image: data.image || "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000",
+      description: data.description || "Découvrez cette recette...",
+      isTech: false,
+      isVip: !!data.isVip
+    };
+  }
+
+  // 🔬 CAS 2 : C'EST DE LA TECHNOLOGIE (.jsx)
+  const rawContent = rawModules[path] || "";
   let title = module.recipeData?.title || null;
   let category = module.recipeData?.category || null;
   let image = module.recipeData?.image || null;
@@ -140,9 +142,6 @@ const techItems = Object.keys(techModules).map((path) => {
     isVip: rawContent.includes('isVip: true') || path.includes('vip')
   };
 }).filter(Boolean);
-
-// 🌍 3. On fusionne la base de données !
-const allItems = [...recipeItems, ...techItems];
 
 // --- 3. LE COMPOSANT D'AFFICHAGE ---
 const PatisseriePage = ({ category: propCategory }) => {
@@ -201,7 +200,7 @@ const PatisseriePage = ({ category: propCategory }) => {
 
     if (item.isTech) return false;
     
-    // On vérifie que la recette contient bien la sous-catégorie demandée
+    // Le scanner vérifie si la recette contient EXACTEMENT le tag
     return item.subCategory.includes(targetExactSubCategory);
   });
 
