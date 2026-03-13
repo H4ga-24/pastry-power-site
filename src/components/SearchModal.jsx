@@ -4,12 +4,12 @@ import { X, Search, ChevronRight, ChefHat, Lock } from 'lucide-react';
 
 // --- LE SCANNER DE RECETTES TOUT-TERRAIN ---
 const modules = import.meta.glob([
-  '../data/recipes/**/*.js', 
-  '../pages/recipes/**/*.js'
+  '../data/recipes/**/*.{js,jsx}', 
+  '../pages/recipes/**/*.{js,jsx}'
 ], { eager: true });
 
 const allRecipes = Object.entries(modules).map(([path, module]) => {
-  const data = module.default || module;
+  const data = module.recipeData || module.default || module;
   if (!data || !data.title) return null;
   
   return {

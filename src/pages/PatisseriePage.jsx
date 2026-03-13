@@ -60,16 +60,15 @@ const HUBS = {
     title: "Cuisine",
     description: "L'univers salé et traiteur.",
     sections: [
-      { title: "Traiteur", id: "traiteur", image: "https://images.unsplash.com/photo-1740047602722-b4993b79e4b7?q=80&w=687&auto=format&fit=crop", desc: "Pièces cocktails." },
+      { title: "Traiteur", id: "traiteur", image: "/images/cake-sale.jpg", desc: "Pièces cocktails." },
       { title: "Sauces", id: "sauce", image: "https://images.unsplash.com/photo-1563599175592-c58dc214deff?q=80&w=1470&auto=format&fit=crop", desc: "Bases salées." },
-      { title: "Cakes Salés", id: "cake-sale", image: "/images/cake-sale.jpg", desc: "Traiteur..." }
+      { title: "Cakes Salés", id: "cake-sale", image: "https://images.unsplash.com/photo-1584796101179-52cfea2e6f52?q=80&w=1374&auto=format&fit=crop", desc: "Traiteur..." }
     ]
   },
-  // 🔥 AJOUT DE LA CHOCOLATERIE POUR RÉGLER LE BUG 
   'chocolaterie': {
     title: "Chocolaterie",
     description: "L'art du tempérage, des ganaches et des moulages.",
-    sections: [] // Pas de sous-catégories, affichage direct !
+    sections: [] 
   }
 };
 
@@ -90,8 +89,8 @@ const TECH_MAPPING = {
 
 // --- 2. LE SCANNER TOUT-TERRAIN ---
 const realModules = import.meta.glob([
-  '../data/recipes/**/*.js', 
-  './recipes/**/*.js', 
+  '../data/recipes/**/*.{js,jsx}', 
+  './recipes/**/*.{js,jsx}', 
   '../technologie/**/*.jsx', 
   './technologie/**/*.jsx'
 ], { eager: true });
@@ -110,7 +109,7 @@ const allItems = Object.keys(realModules).map((path) => {
   const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
   if (!isTechFile) {
-    const data = module.default || module;
+    const data = module.recipeData || module.default || module;
     if (!data || !data.title) return null; 
     return {
       id: data.id || formattedId,
@@ -163,7 +162,7 @@ const PatisseriePage = ({ category: propCategory }) => {
 
   const activeHub = HUBS[activeHubId];
 
-  // A. MODE HUB : On l'affiche UNIQUEMENT s'il y a des sections configurées !
+  // A. MODE HUB : On l'affiche UNIQUEMENT s'il y a des sections
   if (!activeSectionId && activeHub && activeHub.sections && activeHub.sections.length > 0) {
     return (
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
@@ -198,12 +197,11 @@ const PatisseriePage = ({ category: propCategory }) => {
     );
   }
 
-  // B. MODE LISTE DES RECETTES (Directement pour la Chocolaterie ou les Sous-catégories)
+  // B. MODE LISTE DES RECETTES
   const isTechSection = activeHubId === 'technologie';
   const targetExactSubCategory = URL_TO_SUBCATEGORY[activeSectionId];
 
   const filteredItems = allItems.filter(item => {
-    // 1. Logique Technologie
     if (isTechSection) {
       if (!item.isTech) return false;
       const techKeyword = TECH_MAPPING[activeSectionId] || activeSectionId;
@@ -212,23 +210,21 @@ const PatisseriePage = ({ category: propCategory }) => {
     }
     if (item.isTech) return false;
 
-    // 2. Si on est dans une sous-catégorie précise (Ex: Biscuits)
     if (targetExactSubCategory) {
       return item.subCategory && item.subCategory.includes(targetExactSubCategory);
     }
 
-    // 3. 🔥 Si on est sur une catégorie DIRECTE comme Chocolaterie
+    // Chocolaterie s'affiche directement ici
     return normalize(item.category) === normalize(activeHubId);
   });
 
-  // Gestion intelligente du titre de la page
   let pageTitle = "";
   if (isTechSection) {
       pageTitle = activeHub?.sections?.find(s => s.id === activeSectionId)?.title || activeHubId;
   } else if (targetExactSubCategory) {
       pageTitle = targetExactSubCategory;
   } else {
-      pageTitle = activeHub?.title || activeHubId; // Affichera "Chocolaterie"
+      pageTitle = activeHub?.title || activeHubId;
   }
 
   return (

@@ -8,7 +8,7 @@ const batonMarechaux = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Un classique de la biscuiterie française. Une meringue française serrée aux amandes et noisettes, dressée en bâtonnets, croquante à l'extérieur et moelleuse à cœur.",
-  image: "https://empreintesucree.fr/wp-content/uploads/2018/03/1-batons-marechal-recette-patisserie-empreinte-sucree-1.jpg",
+  image: "/images/baton-marechaux.jpg", // Image d'illustration
   baseServings: 20,
   
   ingredients: [
