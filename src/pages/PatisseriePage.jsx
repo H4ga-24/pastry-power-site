@@ -282,4 +282,4 @@ const PatisseriePage = ({ category: propCategory }) => {
   );
 };
 
-export default PatisseriePage;
+export default PatisseriePage; 
