@@ -8,7 +8,7 @@ const lesBiscuitsMeringues = {
   cookTime: "VARIE",
   difficulty: "MOYEN",
   description: "Un tableau comparatif des grands classiques des biscuits à base de meringue : Succès, Progrès, Japonais, Macaron Cachemire et Dacquoises.",
-  image: "src/assets/biscuits-meringues.jpg",
+  image: "/images/biscuits-meringues.jpg",
   baseServings: 1, // Base unitaire pour le tableau
   
   // Note: Comme c'est un tableau comparatif, je mets une structure générique ici, 

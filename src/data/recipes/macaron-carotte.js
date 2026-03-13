@@ -8,7 +8,7 @@ const macaronCarotte = {
   cookTime: "14 MIN",
   difficulty: "DIFFICILE",
   description: "Une création originale mariant la douceur naturelle de la carotte à l'onctuosité du chocolat blanc. Une couleur vibrante pour un goût surprenant.",
-  image: "src/assets/macaron-carotte.jpg",
+  image: "/images/macaron-carotte.jpg",
   baseServings: 70, // coques
   
   ingredients: [
