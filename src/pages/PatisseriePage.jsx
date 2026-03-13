@@ -60,9 +60,9 @@ const HUBS = {
     title: "Cuisine",
     description: "L'univers salé et traiteur.",
     sections: [
-      { title: "Traiteur", id: "traiteur", image: "/images/cake-sale.jpg", desc: "Pièces cocktails." },
+      { title: "Traiteur", id: "traiteur", image: "https://images.unsplash.com/photo-1740047602722-b4993b79e4b7?q=80&w=687&auto=format&fit=crop", desc: "Pièces cocktails." },
       { title: "Sauces", id: "sauce", image: "https://images.unsplash.com/photo-1563599175592-c58dc214deff?q=80&w=1470&auto=format&fit=crop", desc: "Bases salées." },
-      { title: "Cakes Salés", id: "cake-sale", image: "https://images.unsplash.com/photo-1584796101179-52cfea2e6f52?q=80&w=1374&auto=format&fit=crop", desc: "Traiteur..." }
+      { title: "Cakes Salés", id: "cake-sale", image: "/images/cake-sale.jpg", desc: "Cakes Salés..." }
     ]
   },
   'chocolaterie': {
