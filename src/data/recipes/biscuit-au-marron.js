@@ -8,7 +8,7 @@ const biscuitAuMarron = {
   cookTime: "30 MIN",
   difficulty: "FACILE",
   description: "Un gâteau de voyage au goût automnal profond. Sa texture est exceptionnellement moelleuse grâce à l'utilisation de pâte de marrons.",
-  image: "/images/biscuit-au-marron.jpg", // J'ai ajouté une image par défaut au cas où
+  image: "/images/biscuit-aux-marron.jpg", // J'ai ajouté une image par défaut au cas où
   baseServings: 6,
   
   ingredients: [
