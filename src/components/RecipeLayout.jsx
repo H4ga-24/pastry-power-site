@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote } from 'lucide-react';
+import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote, Play } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import CookingMode from './CookingMode'; // 🔥 IMPORT DU MODE CUISINE
 
 const RecipeLayout = ({ recipe }) => {
   const [servings, setServings] = useState(recipe.baseServings || 1);
+  const [showCookingMode, setShowCookingMode] = useState(false); // 🔥 ÉTAT DU BOUTON
 
   const updateServings = (change) => {
     const newServings = servings + change;
@@ -38,13 +40,24 @@ const RecipeLayout = ({ recipe }) => {
               <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block animate-fade-in">
                 {recipe.category} • {Array.isArray(recipe.subCategory) ? recipe.subCategory.join(" / ") : recipe.subCategory}
               </span>
-              <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-tight">{recipe.title}</h1>
-              <div className="flex flex-wrap items-center gap-8 text-sm tracking-widest font-medium text-white/90">
+              <h1 className="text-4xl md:text-7xl font-serif text-white mb-6 leading-tight">{recipe.title}</h1>
+              
+              <div className="flex flex-wrap items-center gap-8 text-sm tracking-widest font-medium text-white/90 mb-8">
                 <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.prepTime} PREP</span></div>
                 {recipe.cookTime && <div className="flex items-center gap-3"><ChefHat className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.cookTime} CUISSON</span></div>}
                 {recipe.restTime && <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.restTime} REPOS</span></div>}
                 <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.difficulty}</span></div>
               </div>
+
+              {/* 🔥 LE FAMEUX BOUTON MODE CUISINE */}
+              <button 
+                onClick={() => setShowCookingMode(true)}
+                className="bg-[#D4AF37] text-black px-8 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all hover:scale-105 flex items-center gap-3 shadow-lg shadow-black/50"
+              >
+                <Play className="w-5 h-5" fill="currentColor" />
+                Mode Cuisine
+              </button>
+
             </div>
           </div>
         </div>
@@ -71,7 +84,7 @@ const RecipeLayout = ({ recipe }) => {
 
                 <h3 className="text-xl font-serif text-white mb-6">Ingrédients</h3>
                 <ul className="space-y-4">
-                  {recipe.ingredients.map((ing, i) => (
+                  {recipe.ingredients && recipe.ingredients.map((ing, i) => (
                     <li key={i} className="flex flex-col text-sm pb-2 border-b border-white/5 last:border-0">
                       <div className="flex justify-between items-center">
                         <span className="text-gray-300 font-light">{ing.name}</span>
@@ -89,7 +102,7 @@ const RecipeLayout = ({ recipe }) => {
             {/* COLONNE DROITE : ÉTAPES & TABS */}
             <div className="md:col-span-8">
               <div className="space-y-12 mb-16">
-                {recipe.steps.map((step, i) => (
+                {recipe.steps && recipe.steps.map((step, i) => (
                   <div key={i} className="flex gap-6 group">
                     <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] font-serif font-bold text-xl flex-shrink-0 group-hover:border-[#D4AF37] transition-colors">{i+1}</div>
                     <div>
@@ -163,6 +176,11 @@ const RecipeLayout = ({ recipe }) => {
           </div>
         </div>
       </div>
+
+      {/* 🔥 AFFICHAGE DU COMPOSANT SI LE BOUTON EST CLIQUÉ */}
+      {showCookingMode && (
+        <CookingMode recipe={recipe} onClose={() => setShowCookingMode(false)} />
+      )}
     </>
   );
 };

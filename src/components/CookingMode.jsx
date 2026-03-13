@@ -1,20 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import { X, Check, Coffee, Clock } from 'lucide-react';
+import { X, Check, Coffee, Clock, Play, Pause, RotateCcw, Timer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import GlossaryText from './GlossaryText';
+
+// 🔥 L'OUTIL QUI TRADUIT TON TEXTE EN SECONDES
+const parseCookTime = (timeStr) => {
+  if (!timeStr) return 0;
+  const str = timeStr.toLowerCase().trim();
+  let minutes = 0;
+  
+  if (str.includes('h')) {
+    const parts = str.split('h');
+    minutes += (parseInt(parts[0]) || 0) * 60;
+    const mins = parts[1].replace(/[^0-9]/g, '');
+    if (mins) minutes += parseInt(mins);
+  } else if (str.includes('min')) {
+    minutes += parseInt(str.replace(/[^0-9]/g, '')) || 0;
+  }
+  return minutes * 60;
+};
+
+// 🔥 L'OUTIL POUR AFFICHER JOLIEMENT LE TEMPS
+const formatTime = (totalSeconds) => {
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
+  
+  if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+};
 
 const CookingMode = ({ recipe, onClose }) => {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
   const [checkedSteps, setCheckedSteps] = useState([]);
   const [wakeLock, setWakeLock] = useState(null);
 
-  // ✅ CORRECTION AI STUDIO : Nettoyage et rendu
+  // --- LOGIQUE DU MINUTEUR ---
+  const initialTime = parseCookTime(recipe?.cookTime);
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+
+  useEffect(() => {
+    let interval;
+    if (isTimerRunning && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0 && isTimerRunning) {
+      setIsTimerRunning(false);
+    }
+    return () => clearInterval(interval);
+  }, [isTimerRunning, timeLeft]);
+
+  const toggleTimer = () => setIsTimerRunning(!isTimerRunning);
+  const resetTimer = () => {
+    setIsTimerRunning(false);
+    setTimeLeft(initialTime);
+  };
+  // ---------------------------
+
   const cleanText = (text) => {
     if (!text) return "";
     return text.replace(/\\'/g, "'").replace(/\\"/g, '"');
   };
 
-  // NOUVELLE FONCTION pour gérer les objets et forcer la correction des apostrophes
   const renderItem = (item) => {
     if (!item) return "";
     let str = "";
@@ -25,7 +74,6 @@ const CookingMode = ({ recipe, onClose }) => {
       if (item.amount) str += ` - ${item.amount}`;
       if (item.unit) str += ` ${item.unit}`;
     }
-    // Filet de sécurité ultime contre les slash/backslash
     return cleanText(str).replace(/d\//g, "d'").replace(/l\//g, "l'").replace(/\\/g, "");
   };
 
@@ -35,7 +83,6 @@ const CookingMode = ({ recipe, onClose }) => {
         try {
           const lock = await navigator.wakeLock.request('screen');
           setWakeLock(lock);
-          console.log('Mode Cuisine : Écran maintenu allumé');
         } catch (err) {
           console.error('Impossible de verrouiller l\'écran:', err);
         }
@@ -69,25 +116,45 @@ const CookingMode = ({ recipe, onClose }) => {
       exit={{ opacity: 0, y: '100%' }}
       className="fixed inset-0 bg-[#0a0a0a] z-[100] overflow-y-auto"
     >
-      <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/10 p-4 flex justify-between items-center z-10 shadow-xl">
-        <div>
-          <h2 className="text-[#D4AF37] font-serif text-xl font-bold truncate max-w-[200px] md:max-w-md">
+      {/* 🌟 LE HEADER FIXE AVEC LE MINUTEUR INTÉGRÉ 🌟 */}
+      <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/10 p-4 flex justify-between items-center z-20 shadow-xl">
+        <div className="flex-1">
+          <h2 className="text-[#D4AF37] font-serif text-xl font-bold truncate max-w-[150px] md:max-w-md">
             {cleanText(recipe?.title || "Recette")}
           </h2>
           <p className="text-green-500 text-xs flex items-center gap-1">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            Mode Cuisine Actif (Écran allumé)
+            Mode Cuisine
           </p>
         </div>
+
+        {/* LE MINUTEUR COMPACT AU CENTRE (Uniquement s'il y a un temps de cuisson) */}
+        {initialTime > 0 && (
+          <div className="flex items-center gap-2 bg-[#1a1a1a] px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 mx-2">
+            <Timer className={`w-4 h-4 md:w-5 md:h-5 ${isTimerRunning ? 'text-[#D4AF37] animate-pulse' : 'text-gray-400'}`} />
+            <span className={`font-mono text-lg md:text-xl w-[4.5ch] text-center ${timeLeft === 0 ? 'text-red-500' : 'text-white'}`}>
+              {formatTime(timeLeft)}
+            </span>
+            <div className="flex gap-1 ml-1 border-l border-white/10 pl-2">
+              <button onClick={toggleTimer} className="p-1 hover:bg-white/10 rounded-full text-[#D4AF37] transition-colors">
+                {isTimerRunning ? <Pause size={18} /> : <Play size={18} />}
+              </button>
+              <button onClick={resetTimer} className="p-1 hover:bg-white/10 rounded-full text-gray-400 transition-colors">
+                <RotateCcw size={18} />
+              </button>
+            </div>
+          </div>
+        )}
+
         <button 
           onClick={onClose}
-          className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition-colors"
+          className="bg-white/10 p-2 md:p-3 rounded-full hover:bg-white/20 transition-colors flex-shrink-0"
         >
-          <X className="text-white" size={24} />
+          <X className="text-white" size={20} />
         </button>
       </div>
 
-      <div className="max-w-3xl mx-auto p-6 pb-32 space-y-12">
+      <div className="max-w-3xl mx-auto p-6 pb-32 space-y-12 mt-4">
         
         {safeIngredients.length > 0 && (
             <section>
@@ -111,7 +178,6 @@ const CookingMode = ({ recipe, onClose }) => {
                     {checkedIngredients.includes(idx) && <Check size={14} />}
                     </div>
                     <span className={`text-lg ${checkedIngredients.includes(idx) ? 'text-gray-400 line-through' : 'text-gray-200'}`}>
-                    {/* ✅ APPLICATION renderItem */}
                     <GlossaryText>{renderItem(ing)}</GlossaryText>
                     </span>
                 </div>
@@ -142,7 +208,6 @@ const CookingMode = ({ recipe, onClose }) => {
                     {checkedSteps.includes(idx) ? <Check size={18} /> : idx + 1}
                     </div>
                     <p className={`text-xl leading-relaxed ${checkedSteps.includes(idx) ? 'text-gray-500 line-through' : 'text-gray-200'}`}>
-                    {/* ✅ APPLICATION renderItem */}
                     <GlossaryText>{renderItem(step)}</GlossaryText>
                     </p>
                 </div>
