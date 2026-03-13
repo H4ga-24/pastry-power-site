@@ -2,7 +2,7 @@ const orangesConfitesOrangettes = {
   id: "oranges-confites-orangettes",
   title: "Oranges Confites & Orangettes",
   category: "Confiserie",
-  subCategory: ["Confiseries diverses"],
+  subCategory: ["Autres Confiseries"],
   isVip: false,
   prepTime: "8 Jours + 24H (Séchage)",
   cookTime: "30 MIN / Jour",

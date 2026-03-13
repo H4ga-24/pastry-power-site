@@ -2,7 +2,7 @@ const noisettesCaramelChocolat = {
   id: "noisettes-caramel-chocolat",
   title: "Noisettes Caramel & Chocolat (Clusters)",
   category: "Chocolaterie",
-  subCategory: ["Confiseries diverses"],
+  subCategory: ["Autres Confiseries"],
   isVip: false,
   prepTime: "1H 30",
   cookTime: "30 MIN",

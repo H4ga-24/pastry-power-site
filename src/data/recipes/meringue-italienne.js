@@ -1,8 +1,8 @@
 const meringueItalienne = {
   id: "meringue-italienne",
   title: "Meringue Italienne",
-  category: "Pâtisserie",
-  subCategory: ["Mousses"], // Ou "Bases" ou "Meringues"
+  category: "Confiserie",
+  subCategory: ["Autres Confiseries"], // Ou "Bases" ou "Meringues"
   isVip: false,
   prepTime: "20 MIN",
   cookTime: "10 MIN",

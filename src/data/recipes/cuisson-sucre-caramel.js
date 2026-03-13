@@ -1,8 +1,8 @@
 const cuissonSucreCaramel = {
   id: "cuisson-sucre-caramel",
   title: "Cuisson Sucre Caramel (Glaçage)",
-  category: "Pâtisserie",
-  subCategory: ["Glaçages"], // Ou Confiserie Diverse, mais Glaçage est pertinent pour les choux
+  category: "Confiserie",
+  subCategory: ["Autres Confiseries"], // Ou Confiserie Diverse, mais Glaçage est pertinent pour les choux
   isVip: true,
   prepTime: "5 MIN",
   cookTime: "15 MIN",
