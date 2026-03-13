@@ -2,7 +2,7 @@ const pralineSec = {
   id: "praline-sec",
   title: "Le praliné à sec",
   category: "Confiserie",
-  subCategory: ["confiseries diverses"], // Adapté
+  subCategory: ["Autres Confiseries"], // Adapté
   isVip: false,
   prepTime: "20 MIN",
   cookTime: "20 MIN",

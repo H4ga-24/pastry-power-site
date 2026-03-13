@@ -1,55 +1,55 @@
-const bonbonPecanPie = {
+﻿const bonbonPecanPie = {
   id: "bonbon-pecan-pie",
-  title: "Bonbon Chocolat Pécan Pie",
-  category: "CHOCOLATERIE",
+  title: "Bonbon Chocolat PÃ©can Pie",
+  category: "Chocolaterie",
   subCategory: [],
   isVip: true,
   prepTime: "2H",
   cookTime: "45 MIN",
-  difficulty: "AVANCÉ",
-  description: "Un bi-couche gourmand : caramel vanille onctueux et praliné pécan croustillant, enrobé de chocolat noir.",
+  difficulty: "AVANCÃ‰",
+  description: "Un bi-couche gourmand : caramel vanille onctueux et pralinÃ© pÃ©can croustillant, enrobÃ© de chocolat noir.",
   image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/06e08202c0ddee0236bec58bc395cb43.png",
   baseServings: 1, 
   
   ingredients: [
     { name: "Sucre semoule", amount: 800, unit: "g" },
     { name: "Sirop de glucose DE60", amount: 800, unit: "g" },
-    { name: "Crème liquide 35%", amount: 1200, unit: "g" },
-    { name: "Gousses de vanille", amount: 5, unit: "pièces" },
+    { name: "CrÃ¨me liquide 35%", amount: 1200, unit: "g" },
+    { name: "Gousses de vanille", amount: 5, unit: "piÃ¨ces" },
     { name: "Sorbitol poudre", amount: 80, unit: "g" },
     { name: "Beurre de cacao", amount: 150, unit: "g" },
     { name: "Beurre doux", amount: 300, unit: "g" },
     { name: "Fleur de sel", amount: 8, unit: "g" },
-    { name: "Noix de pécan torréfiées", amount: 1500, unit: "g" },
+    { name: "Noix de pÃ©can torrÃ©fiÃ©es", amount: 1500, unit: "g" },
     { name: "Sucre caramel", amount: 1000, unit: "g" },
     { name: "Couverture Lait 40%", amount: 600, unit: "g" },
-    { name: "Brisures de sablé", amount: 300, unit: "g" },
+    { name: "Brisures de sablÃ©", amount: 300, unit: "g" },
     { name: "Couverture Noire 64%", amount: 2500, unit: "g" }
   ],
 
   steps: [
     { 
       title: "Le Caramel Vanille", 
-      text: "Infuser vanille dans crème. Cuire sucre et glucose à 185°C. Décuire avec crème chaude, sorbitol, sel. Recuire à 106°C. Ajouter beurres à 40°C. Couler en cadre (4mm)." 
+      text: "Infuser vanille dans crÃ¨me. Cuire sucre et glucose Ã  185Â°C. DÃ©cuire avec crÃ¨me chaude, sorbitol, sel. Recuire Ã  106Â°C. Ajouter beurres Ã  40Â°C. Couler en cadre (4mm)." 
     },
     { 
-      title: "Le Praliné Pécan", 
-      text: "Réaliser le praliné. Mélanger avec couverture lait et beurre de cacao fondus (26°C). Ajouter sablé. Couler sur le caramel (6mm)." 
+      title: "Le PralinÃ© PÃ©can", 
+      text: "RÃ©aliser le pralinÃ©. MÃ©langer avec couverture lait et beurre de cacao fondus (26Â°C). Ajouter sablÃ©. Couler sur le caramel (6mm)." 
     },
     { 
       title: "Finition", 
-      text: "Cristalliser 24h. Chablonner, détailler. Enrober noir avec décor pécan." 
+      text: "Cristalliser 24h. Chablonner, dÃ©tailler. Enrober noir avec dÃ©cor pÃ©can." 
     }
   ],
 
   advices: [
-    "Ne descendez pas la cuisson du caramel sous 105°C pour garantir la tenue à la découpe."
+    "Ne descendez pas la cuisson du caramel sous 105Â°C pour garantir la tenue Ã  la dÃ©coupe."
   ],
-  chefQuote: "Torréfiez bien les pécans pour qu'elles existent face au caramel.",
+  chefQuote: "TorrÃ©fiez bien les pÃ©cans pour qu'elles existent face au caramel.",
   equipment: [
     "Cadre 34x34cm",
     "Guitare",
-    "Thermomètre"
+    "ThermomÃ¨tre"
   ]
 };
 

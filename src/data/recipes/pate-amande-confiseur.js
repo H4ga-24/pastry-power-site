@@ -2,7 +2,7 @@ const pateAmandeConfiseur = {
   id: "pate-amande-confiseur",
   title: "Pâte d'amande confiseur",
   category: "Confiserie",
-  subCategory: ["Pâtes de Fruits & Pâtes d'Amande"],
+  subCategory: ["Autres Confiseries"],
   isVip: false,
   prepTime: "20 MIN",
   cookTime: "15 MIN",
