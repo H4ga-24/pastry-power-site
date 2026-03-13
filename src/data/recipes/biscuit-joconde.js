@@ -8,7 +8,7 @@ const biscuitJoconde = {
   cookTime: "8-10 MIN",
   difficulty: "MOYEN",
   description: "Le biscuit star de l'entremets Opéra ! Riche en amandes, il est souple, fin et absorbe parfaitement les sirops de punchage sans se désagréger.",
-  image: "https://empreintesucree.fr/wp-content/uploads/2018/05/1-biscuit-joconde-recette-patisserie-empreinte-sucree.jpg", // Image d'illustration
+  image: "/images/biscuit-joconde.jpg", // Image d'illustration
   baseServings: 1, // 1 plaque 40x60cm
   
   ingredients: [

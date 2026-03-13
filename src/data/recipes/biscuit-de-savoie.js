@@ -8,7 +8,7 @@ const biscuitDeSavoie = {
   cookTime: "30-40 MIN",
   difficulty: "FACILE",
   description: "Gâteau régional ultra-léger et aérien, sans aucune matière grasse ajoutée. Sa croûte est légèrement croustillante et son cœur d'un moelleux incomparable.",
-  image: "https://www.undejeunerdesoleil.com/wp-content/uploads/2019/02/Biscuit_de_Savoie_recette.jpg",
+  image: "/images/biscuit-de-savoie.jpg", // Image d'illustration
   baseServings: 6,
   
   ingredients: [

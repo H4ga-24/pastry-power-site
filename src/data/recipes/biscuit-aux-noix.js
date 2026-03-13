@@ -8,7 +8,7 @@ const biscuitAuxNoix = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Un biscuit riche et savoureux, monté sur une base de meringue française. Idéal comme base pour un entremets d'automne ou au café.",
-  image: "https://s3-eu-west-1.amazonaws.com/images-ca-1-0-1-eu/recipe_photos/original/126/biscuit-aux-noix-2.jpg",
+  image: "/images/biscuit-aux-noix.jpg",
   baseServings: 1, // Pour 1 plaque
   
   ingredients: [
