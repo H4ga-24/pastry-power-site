@@ -1,13 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote, Play } from 'lucide-react';
+import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote, Play, Pause, RotateCcw, Timer } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import CookingMode from './CookingMode'; // 🔥 IMPORT DU MODE CUISINE
+import CookingMode from './CookingMode';
+
+// --- LOGIQUE DU MINUTEUR : TRADUCTION DU TEXTE EN SECONDES ---
+const parseCookTime = (timeStr) => {
+  if (!timeStr) return 0;
+  const str = timeStr.toLowerCase().trim();
+  let minutes = 0;
+  
+  if (str.includes('h')) {
+    const parts = str.split('h');
+    minutes += (parseInt(parts[0]) || 0) * 60;
+    const mins = parts[1].replace(/[^0-9]/g, '');
+    if (mins) minutes += parseInt(mins);
+  } else if (str.includes('min')) {
+    minutes += parseInt(str.replace(/[^0-9]/g, '')) || 0;
+  }
+  return minutes * 60;
+};
+
+// --- LOGIQUE DU MINUTEUR : FORMATAGE DU TEMPS ---
+const formatTime = (totalSeconds) => {
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
+  
+  if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+};
 
 const RecipeLayout = ({ recipe }) => {
-  const [servings, setServings] = useState(recipe.baseServings || 1);
-  const [showCookingMode, setShowCookingMode] = useState(false); // 🔥 ÉTAT DU BOUTON
+  const [servings, setServings] = useState(recipe?.baseServings || 1);
+  const [showCookingMode, setShowCookingMode] = useState(false);
+
+  // --- GESTION DU MINUTEUR ---
+  const initialTime = parseCookTime(recipe?.cookTime);
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+
+  useEffect(() => {
+    setTimeLeft(parseCookTime(recipe?.cookTime));
+    setIsTimerRunning(false);
+  }, [recipe?.cookTime]);
+
+  useEffect(() => {
+    let interval;
+    if (isTimerRunning && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0 && isTimerRunning) {
+      setIsTimerRunning(false);
+    }
+    return () => clearInterval(interval);
+  }, [isTimerRunning, timeLeft]);
+
+  const toggleTimer = () => setIsTimerRunning(!isTimerRunning);
+  const resetTimer = () => {
+    setIsTimerRunning(false);
+    setTimeLeft(initialTime);
+  };
+  // -------------------------
 
   const updateServings = (change) => {
     const newServings = servings + change;
@@ -19,6 +75,8 @@ const RecipeLayout = ({ recipe }) => {
     const scaled = (amount * servings) / base;
     return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
+
+  if (!recipe) return <div className="min-h-screen bg-[#121212] flex items-center justify-center text-white">Chargement...</div>;
 
   return (
     <>
@@ -48,16 +106,6 @@ const RecipeLayout = ({ recipe }) => {
                 {recipe.restTime && <div className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.restTime} REPOS</span></div>}
                 <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.difficulty}</span></div>
               </div>
-
-              {/* 🔥 LE FAMEUX BOUTON MODE CUISINE */}
-              <button 
-                onClick={() => setShowCookingMode(true)}
-                className="bg-[#D4AF37] text-black px-8 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all hover:scale-105 flex items-center gap-3 shadow-lg shadow-black/50"
-              >
-                <Play className="w-5 h-5" fill="currentColor" />
-                Mode Cuisine
-              </button>
-
             </div>
           </div>
         </div>
@@ -101,6 +149,44 @@ const RecipeLayout = ({ recipe }) => {
 
             {/* COLONNE DROITE : ÉTAPES & TABS */}
             <div className="md:col-span-8">
+              
+              {/* 🔥 LE WIDGET MINUTEUR (Ne s'affiche que s'il y a de la cuisson) */}
+              {initialTime > 0 && (
+                <div className={`mb-12 p-6 rounded-xl border flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300 ${isTimerRunning ? 'bg-[#D4AF37]/10 border-[#D4AF37]/50 shadow-[0_0_15px_rgba(212,175,55,0.2)]' : 'bg-[#1a1a1a] border-white/10'}`}>
+                  <div className="flex items-center gap-4">
+                    <div className={`p-3 rounded-full ${isTimerRunning ? 'bg-[#D4AF37] text-black animate-pulse' : 'bg-gray-800 text-[#D4AF37]'}`}>
+                      <Timer className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-serif text-lg">Cuisson</h4>
+                      <p className="text-gray-400 text-sm">Précision recommandée</p>
+                    </div>
+                  </div>
+                  
+                  <div className={`font-mono text-5xl tracking-widest font-light ${timeLeft === 0 ? 'text-red-500' : 'text-[#D4AF37]'}`}>
+                    {formatTime(timeLeft)}
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={toggleTimer}
+                      className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors text-white"
+                      title={isTimerRunning ? "Mettre en pause" : "Démarrer"}
+                    >
+                      {isTimerRunning ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                    </button>
+                    <button 
+                      onClick={resetTimer}
+                      className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors text-white"
+                      title="Réinitialiser"
+                    >
+                      <RotateCcw className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* LES ÉTAPES */}
               <div className="space-y-12 mb-16">
                 {recipe.steps && recipe.steps.map((step, i) => (
                   <div key={i} className="flex gap-6 group">
@@ -113,7 +199,7 @@ const RecipeLayout = ({ recipe }) => {
                 ))}
               </div>
 
-              {/* TABS */}
+              {/* TABS (Conseils, Chef, Ustensiles) */}
               <div>
                 <Tabs defaultValue="conseils" className="w-full">
                   <TabsList className="grid w-full grid-cols-3 bg-[#1a1a1a] p-1 h-auto rounded-none border border-white/5">
@@ -158,7 +244,7 @@ const RecipeLayout = ({ recipe }) => {
                           <div className="space-y-4">
                             <h4 className="text-lg font-serif text-white">Matériel recommandé</h4>
                             <ul className="grid grid-cols-2 gap-2 text-gray-400">
-                              {recipe.equipment.map((item, idx) => (
+                              {recipe.equipment?.map((item, idx) => (
                                 <li key={idx} className="flex items-center gap-2">
                                   <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>{item}
                                 </li>
@@ -177,9 +263,18 @@ const RecipeLayout = ({ recipe }) => {
         </div>
       </div>
 
-      {/* 🔥 AFFICHAGE DU COMPOSANT SI LE BOUTON EST CLIQUÉ */}
+      {/* 🔥 BOUTON FLOTTANT MODE CUISINE (En bas à droite, fixé à l'écran) */}
+      <button 
+        onClick={() => setShowCookingMode(true)}
+        className="fixed bottom-8 right-8 z-40 bg-[#D4AF37] text-black px-6 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all hover:scale-105 flex items-center gap-3 shadow-[0_10px_40px_rgba(212,175,55,0.4)]"
+      >
+        <Play className="w-5 h-5" fill="currentColor" />
+        Mode Cuisine
+      </button>
+
+      {/* AFFICHAGE DU COMPOSANT SI LE BOUTON EST CLIQUÉ */}
       {showCookingMode && (
-        <CookingMode recipe={recipe} onClose={() => setShowCookingMode(false)} />
+        <CookingMode recipe={recipe} servings={servings} onClose={() => setShowCookingMode(false)} />
       )}
     </>
   );

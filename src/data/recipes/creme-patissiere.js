@@ -1,6 +1,6 @@
 const cremePatissiere = {
   id: "creme-patissiere",
-  title: "Crème Pâtissière Vanille",
+  title: "Crème Pâtissière",
   category: "Pâtisserie",
   subCategory: ["Crèmes"],
   isVip: false,
@@ -8,7 +8,7 @@ const cremePatissiere = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "La mère de toutes les crèmes. Indispensable pour garnir choux, éclairs, religieuses et fonds de tarte.",
-  image: "https://images.radio-canada.ca/v1/alimentation/recette/16x9/creme-patissiere-vanille.jpg",
+  image: "/images/creme-patissiere.jpg", // J'ai ajouté une image par défaut au cas où
   baseServings: 1, // Environ 700g
   
   ingredients: [

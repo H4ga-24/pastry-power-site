@@ -2,47 +2,47 @@
   id: "gianduja-noisette",
   title: "Gianduja Noisette",
   category: "Confiserie",
-  subCategory: ["Autres Confiseries"], // CatÃ©gorie ajoutÃ©e selon tes rÃ¨gles
+  subCategory: ["Autres Confiseries"], // Catégorie ajoutée selon tes règles
   isVip: true,
   prepTime: "25 MIN",
   cookTime: "15 MIN",
   difficulty: "MOYEN",
-  description: "Le grand classique de la confiserie italienne. Une pÃ¢te onctueuse de noisettes et de chocolat, fondante Ã  souhait.",
+  description: "Le grand classique de la confiserie italienne. Une pâte onctueuse de noisettes et de chocolat, fondante à  souhait.",
   image: "https://encoreungateau.com/wp-content/uploads/2015/10/gianduja-recette-500x375.jpg",
   baseServings: 500, // g
   
   ingredients: [
-    { name: "Noisettes du PiÃ©mont (IGP)", amount: 200, unit: "g" },
+    { name: "Noisettes du Piémont (IGP)", amount: 200, unit: "g" },
     { name: "Sucre glace", amount: 200, unit: "g" },
     { name: "Chocolat couverture lait 40%", amount: 100, unit: "g" },
-    { name: "Sel fin", amount: 1, unit: "pincÃ©e" }
+    { name: "Sel fin", amount: 1, unit: "pincée" }
   ],
 
   steps: [
     { 
-      title: "TorrÃ©faction", 
-      text: "TorrÃ©fier les noisettes au four Ã  150Â°C pendant 15 minutes. Les laisser refroidir. (La peau peut Ãªtre laissÃ©e pour plus de goÃ»t ou enlevÃ©e pour plus de finesse)." 
+      title: "Torréfaction", 
+      text: "Torréfier les noisettes au four à  150Â°C pendant 15 minutes. Les laisser refroidir. (La peau peut àªtre laissée pour plus de goà»t ou enlevée pour plus de finesse)." 
     },
     { 
       title: "Broyage", 
       text: "Mixer les noisettes froides avec le sucre glace et le sel dans un robot coupe puissant. On obtient d'abord une poudre." 
     },
     { 
-      title: "PÃ¢te", 
-      text: "Continuer de mixer jusqu'Ã  ce que l'huile des fruits ressorte et forme une pÃ¢te liquide et lisse (pralinÃ©). Attention Ã  ne pas surchauffer le robot." 
+      title: "Pâte", 
+      text: "Continuer de mixer jusqu'à  ce que l'huile des fruits ressorte et forme une pâte liquide et lisse (praliné). Attention à  ne pas surchauffer le robot." 
     },
     { 
-      title: "MÃ©lange", 
-      text: "Fondre le chocolat au lait Ã  45Â°C. Verser la pÃ¢te de noisette dessus. MÃ©langer intimement." 
+      title: "Mélange", 
+      text: "Fondre le chocolat au lait à  45Â°C. Verser la pâte de noisette dessus. Mélanger intimement." 
     },
     { 
       title: "Cristallisation", 
-      text: "Couler dans un cadre ou un moule. Laisser cristalliser Ã  16Â°C pendant 24h avant de dÃ©tailler." 
+      text: "Couler dans un cadre ou un moule. Laisser cristalliser à  16Â°C pendant 24h avant de détailler." 
     }
   ],
 
-  advices: ["Utilisez des noisettes de qualitÃ© (PiÃ©mont), c'est 80% du goÃ»t."],
-  chefQuote: "Le gianduja craint la chaleur, travaillez dans une piÃ¨ce fraÃ®che.",
+  advices: ["Utilisez des noisettes de qualité (Piémont), c'est 80% du goà»t."],
+  chefQuote: "Le gianduja craint la chaleur, travaillez dans une pièce fraà®che.",
   equipment: ["Robot coupe (lame S)", "Four", "Cadre inox"]
 };
 

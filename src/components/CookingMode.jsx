@@ -3,7 +3,7 @@ import { X, Check, Coffee, Clock, Play, Pause, RotateCcw, Timer } from 'lucide-r
 import { motion } from 'framer-motion';
 import GlossaryText from './GlossaryText';
 
-// 🔥 L'OUTIL QUI TRADUIT TON TEXTE EN SECONDES
+// L'OUTIL QUI TRADUIT TON TEXTE EN SECONDES
 const parseCookTime = (timeStr) => {
   if (!timeStr) return 0;
   const str = timeStr.toLowerCase().trim();
@@ -20,7 +20,7 @@ const parseCookTime = (timeStr) => {
   return minutes * 60;
 };
 
-// 🔥 L'OUTIL POUR AFFICHER JOLIEMENT LE TEMPS
+// L'OUTIL POUR AFFICHER JOLIEMENT LE TEMPS
 const formatTime = (totalSeconds) => {
   const h = Math.floor(totalSeconds / 3600);
   const m = Math.floor((totalSeconds % 3600) / 60);
@@ -30,12 +30,13 @@ const formatTime = (totalSeconds) => {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 };
 
-const CookingMode = ({ recipe, onClose }) => {
+// 🔥 ON AJOUTE "servings" DANS LES PARAMÈTRES RÉCUPÉRÉS
+const CookingMode = ({ recipe, servings = 1, onClose }) => {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
   const [checkedSteps, setCheckedSteps] = useState([]);
   const [wakeLock, setWakeLock] = useState(null);
 
-  // --- LOGIQUE DU MINUTEUR ---
+  // LOGIQUE DU MINUTEUR
   const initialTime = parseCookTime(recipe?.cookTime);
   const [timeLeft, setTimeLeft] = useState(initialTime);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -57,11 +58,17 @@ const CookingMode = ({ recipe, onClose }) => {
     setIsTimerRunning(false);
     setTimeLeft(initialTime);
   };
-  // ---------------------------
 
   const cleanText = (text) => {
     if (!text) return "";
     return text.replace(/\\'/g, "'").replace(/\\"/g, '"');
+  };
+
+  // 🔥 LA FONCTION POUR MULTIPLIER LES INGRÉDIENTS (La même que dans RecipeLayout)
+  const scaleIngredient = (amount, base) => {
+    if (!amount || isNaN(amount)) return amount;
+    const scaled = (amount * servings) / base;
+    return Number.isInteger(scaled) ? scaled : scaled.toFixed(1).replace('.0', '');
   };
 
   const renderItem = (item) => {
@@ -70,9 +77,18 @@ const CookingMode = ({ recipe, onClose }) => {
     if (typeof item === 'string') {
       str = item;
     } else if (typeof item === 'object') {
-      str = item.name || "Ingrédient";
-      if (item.amount) str += ` - ${item.amount}`;
-      if (item.unit) str += ` ${item.unit}`;
+      if (item.text) {
+        // C'est une étape
+        str = item.title ? `${item.title} : ${item.text}` : item.text;
+      } else {
+        // 🔥 C'est un ingrédient : ON APPLIQUE LE MULTIPLICATEUR ICI
+        str = item.name || "Élément";
+        if (item.amount) {
+          const scaledAmount = scaleIngredient(item.amount, recipe?.baseServings || 1);
+          str += ` - ${scaledAmount}`;
+        }
+        if (item.unit) str += ` ${item.unit}`;
+      }
     }
     return cleanText(str).replace(/d\//g, "d'").replace(/l\//g, "l'").replace(/\\/g, "");
   };
@@ -116,35 +132,17 @@ const CookingMode = ({ recipe, onClose }) => {
       exit={{ opacity: 0, y: '100%' }}
       className="fixed inset-0 bg-[#0a0a0a] z-[100] overflow-y-auto"
     >
-      {/* 🌟 LE HEADER FIXE AVEC LE MINUTEUR INTÉGRÉ 🌟 */}
+      {/* HEADER SIMPLE */}
       <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/10 p-4 flex justify-between items-center z-20 shadow-xl">
         <div className="flex-1">
-          <h2 className="text-[#D4AF37] font-serif text-xl font-bold truncate max-w-[150px] md:max-w-md">
+          <h2 className="text-[#D4AF37] font-serif text-xl font-bold truncate max-w-[250px] md:max-w-md">
             {cleanText(recipe?.title || "Recette")}
           </h2>
           <p className="text-green-500 text-xs flex items-center gap-1">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            Mode Cuisine
+            Mode Cuisine Actif • {servings} portion(s)
           </p>
         </div>
-
-        {/* LE MINUTEUR COMPACT AU CENTRE (Uniquement s'il y a un temps de cuisson) */}
-        {initialTime > 0 && (
-          <div className="flex items-center gap-2 bg-[#1a1a1a] px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 mx-2">
-            <Timer className={`w-4 h-4 md:w-5 md:h-5 ${isTimerRunning ? 'text-[#D4AF37] animate-pulse' : 'text-gray-400'}`} />
-            <span className={`font-mono text-lg md:text-xl w-[4.5ch] text-center ${timeLeft === 0 ? 'text-red-500' : 'text-white'}`}>
-              {formatTime(timeLeft)}
-            </span>
-            <div className="flex gap-1 ml-1 border-l border-white/10 pl-2">
-              <button onClick={toggleTimer} className="p-1 hover:bg-white/10 rounded-full text-[#D4AF37] transition-colors">
-                {isTimerRunning ? <Pause size={18} /> : <Play size={18} />}
-              </button>
-              <button onClick={resetTimer} className="p-1 hover:bg-white/10 rounded-full text-gray-400 transition-colors">
-                <RotateCcw size={18} />
-              </button>
-            </div>
-          </div>
-        )}
 
         <button 
           onClick={onClose}
@@ -156,6 +154,7 @@ const CookingMode = ({ recipe, onClose }) => {
 
       <div className="max-w-3xl mx-auto p-6 pb-32 space-y-12 mt-4">
         
+        {/* SECTION INGRÉDIENTS */}
         {safeIngredients.length > 0 && (
             <section>
             <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">
@@ -186,6 +185,43 @@ const CookingMode = ({ recipe, onClose }) => {
             </section>
         )}
 
+        {/* WIDGET MINUTEUR */}
+        {initialTime > 0 && (
+          <div className={`p-6 rounded-xl border flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300 ${isTimerRunning ? 'bg-[#D4AF37]/10 border-[#D4AF37]/50 shadow-[0_0_15px_rgba(212,175,55,0.2)]' : 'bg-[#1a1a1a] border-white/10'}`}>
+            <div className="flex items-center gap-4">
+              <div className={`p-3 rounded-full ${isTimerRunning ? 'bg-[#D4AF37] text-black animate-pulse' : 'bg-gray-800 text-[#D4AF37]'}`}>
+                <Timer className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="text-white font-serif text-xl">Chronomètre de Cuisson</h4>
+                <p className="text-gray-400 text-sm">Précision recommandée</p>
+              </div>
+            </div>
+            
+            <div className={`font-mono text-5xl tracking-widest font-light ${timeLeft === 0 ? 'text-red-500' : 'text-[#D4AF37]'}`}>
+              {formatTime(timeLeft)}
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={toggleTimer}
+                className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors text-white"
+                title={isTimerRunning ? "Mettre en pause" : "Démarrer"}
+              >
+                {isTimerRunning ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+              </button>
+              <button 
+                onClick={resetTimer}
+                className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors text-white"
+                title="Réinitialiser"
+              >
+                <RotateCcw className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* SECTION ÉTAPES */}
         {safeSteps.length > 0 && (
             <section>
             <h3 className="text-2xl text-white font-serif mb-6 flex items-center gap-3">

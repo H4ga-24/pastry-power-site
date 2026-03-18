@@ -8,7 +8,7 @@ const appareilCremePriseSucree = {
   cookTime: "35 MIN",
   difficulty: "TRÈS FACILE",
   description: "Aussi appelée 'migaine', c'est l'appareil indispensable pour les tartes aux fruits (alsacienne, normande) ou les clafoutis fondants.",
-  image: "https://rockthebretzel.com/wp-content/uploads/2014/11/Tarte-alsacienne-3-1-450x375.jpg",
+  image: "/images/appareil-creme-prise-sucree.jpg", // J'ai ajouté une image par défaut au cas où
   baseServings: 450, // mL
   
   ingredients: [

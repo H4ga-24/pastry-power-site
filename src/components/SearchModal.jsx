@@ -39,10 +39,10 @@ const SearchModal = ({ isOpen, onClose }) => {
     
     const lowerQuery = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     
+    // 🔥 CORRECTION ICI : ON NE CHERCHE PLUS DANS LA CATÉGORIE, SEULEMENT DANS LE TITRE
     const filtered = allRecipes.filter(item => {
       const lowerTitle = item.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      const lowerCat = item.category.toLowerCase();
-      return lowerTitle.includes(lowerQuery) || lowerCat.includes(lowerQuery);
+      return lowerTitle.includes(lowerQuery);
     }).slice(0, 5); 
 
     setResults(filtered);
