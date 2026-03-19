@@ -8,7 +8,7 @@ export const recipeData = {
   title: "Fécules & Amidons", // ex: "La Farine"
   category: "Technologie - Farines",
   description: "Fiche technique détaillée.",
-  image: "https://www.valpibio.com/wp-content/uploads/2019/12/farine-riz-single@2x.jpg", // Image par défaut
+  image: "/images/fecules-amidons.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
   isVip: true

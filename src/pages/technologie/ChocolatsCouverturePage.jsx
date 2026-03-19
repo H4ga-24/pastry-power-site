@@ -10,7 +10,8 @@ export const recipeData = {
   description: "Fiche technique détaillée.",
   image: "https://i0.wp.com/lapistacheraie.wordpress.com/wp-content/uploads/2015/06/choco5.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
-  difficulty: "Théorie"
+  difficulty: "Théorie",
+  isVip: true
 };
 // 👆 FIN DU BLOC 👆
 const ChocolatsCouverturePage = () => {

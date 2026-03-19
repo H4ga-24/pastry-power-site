@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { Clock, ChefHat, Info, AlertCircle, Minus, Plus, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Clock, ChefHat, Info, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
 
-const CremeuxFruits = () => {
-  const recipeData = {
-    title: "Les Crémeux aux Fruits",
-    category: "PÂTISSERIE • CRÉMEUX",
-    prepTime: "25 MIN",
-    cookTime: "10 MIN",
-    difficulty: "MOYEN",
-    description: "Un tableau complet de proportions pour réaliser des crémeux onctueux avec une large variété de fruits et légumes. La technique reste identique, seuls les dosages s'adaptent à l'acidité et à la teneur en eau de chaque fruit.",
-    image: "https://lapetitecolin.fr/wp-content/uploads/2023/05/IMG_20230311_092339-1024x768.jpg"
+// 🔥 CARTE D'IDENTITÉ POUR LE SCANNER
+export const recipeData = {
+  id: "les-cremeux-aux-fruits",
+  title: "Les Crémeux aux Fruits",
+  category: "Pâtisserie",
+  subCategory: ["Crémeux"],
+  isVip: true,
+  prepTime: "25 MIN",
+  cookTime: "10 MIN",
+  difficulty: "MOYEN",
+  description: "Un tableau complet de proportions pour réaliser des crémeux onctueux avec une large variété de fruits et légumes.",
+  image: "https://lapetitecolin.fr/wp-content/uploads/2023/05/IMG_20230311_092339-1024x768.jpg"
+};
+
+function CremeuxFruits() {
+  const [multiplier, setMultiplier] = useState(1);
+
+  // Fonction de calcul sécurisée placée en haut
+  const calculateAmount = (val) => {
+    return Math.round(val * multiplier);
   };
 
   const tableData = [
@@ -29,7 +41,7 @@ const CremeuxFruits = () => {
     { name: "Figue", puree: 1000, jaunes: 150, oeufs: 200, sucre: 160, gelatine: 9, beurre: 320 },
     { name: "Fraise", puree: 1000, jaunes: 180, oeufs: 230, sucre: 200, gelatine: 12, beurre: 380 },
     { name: "Framboise", puree: 1000, jaunes: 190, oeufs: 240, sucre: 240, gelatine: 12, beurre: 400 },
-    { name: "Fruit de la passion", puree: 1000, jaunes: 220, oeufs: 280, sucre: 320, gelatine: 14, beurre: 500 },
+    { name: "Passion", puree: 1000, jaunes: 220, oeufs: 280, sucre: 320, gelatine: 14, beurre: 500 },
     { name: "Goyave", puree: 1000, jaunes: 160, oeufs: 210, sucre: 190, gelatine: 11, beurre: 350 },
     { name: "Grenade", puree: 1000, jaunes: 170, oeufs: 220, sucre: 220, gelatine: 12, beurre: 380 },
     { name: "Groseille", puree: 1000, jaunes: 180, oeufs: 230, sucre: 260, gelatine: 12, beurre: 400 },
@@ -48,139 +60,114 @@ const CremeuxFruits = () => {
     { name: "Pomme", puree: 1000, jaunes: 160, oeufs: 210, sucre: 180, gelatine: 10, beurre: 360 },
   ];
 
+  const steps = [
+    { title: "Préparation & Cuisson", text: "Chauffer la purée de fruit dans une casserole. Dans un cul-de-poule, mélanger les œufs, les jaunes et le sucre sans blanchir. Verser une partie de la purée chaude sur le mélange d'œufs, reverser le tout dans la casserole et cuire à la nappe (83°C/85°C) en remuant constamment, comme une crème anglaise." },
+    { title: "Collage & Refroidissement", text: "Hors du feu, ajouter la gélatine préalablement hydratée et essorée. Chinoiser la préparation dans un récipient haut. Laisser refroidir à température ambiante jusqu'à atteindre environ 35°C / 40°C." },
+    { title: "Émulsion", text: "Ajouter le beurre froid coupé en dés. Mixer à l'aide d'un mixeur plongeant en restant bien au fond pour ne pas incorporer d'air, jusqu'à obtenir une texture lisse, brillante et parfaitement homogène." },
+    { title: "Stockage", text: "Couler immédiatement dans vos inserts, cadres ou moules, ou filmer au contact et réserver au réfrigérateur pour une utilisation ultérieure (pochage après cristallisation)." }
+  ];
+
   return (
-    <>
-      <Helmet>
-        <title>{recipeData.title} - Maison Dorée</title>
-        <meta name="description" content={recipeData.description} />
-      </Helmet>
+    <div className="min-h-screen bg-[#121212] text-white pt-32 pb-20 font-sans">
+      <Helmet><title>{recipeData.title} - Pastry Power</title></Helmet>
       
-      <div className="min-h-screen bg-[#121212] text-white font-sans pt-20">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <Link to="/patisserie">
+          <Button variant="ghost" className="text-[#D4AF37] mb-8 pl-0 hover:bg-transparent hover:text-white">
+            <ArrowLeft className="w-4 h-4 mr-2" /> Retour
+          </Button>
+        </Link>
         
-        {/* Hero Section */}
-        <div className="relative h-[60vh] w-full overflow-hidden">
-          <div className="absolute inset-0 bg-black/50 z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent z-10"></div>
+        {/* HERO SECTION */}
+        <div className="relative h-[40vh] rounded-sm overflow-hidden mb-12 shadow-2xl">
+          <div className="absolute inset-0 bg-black/40 z-10" />
           <img src={recipeData.image} alt={recipeData.title} className="w-full h-full object-cover" />
-          
-          <div className="absolute bottom-0 left-0 w-full z-20 pb-16">
-            <div className="container mx-auto px-4 max-w-6xl">
-              <Link to="/patisserie/bases/cremeux" className="inline-flex items-center text-gray-300 hover:text-[#D4AF37] transition-colors mb-6 text-sm tracking-widest uppercase">
-                <ArrowLeft className="w-4 h-4 mr-2" /> Retour aux crémeux
-              </Link>
-              <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block">{recipeData.category}</span>
-              <h1 className="text-4xl md:text-6xl font-serif text-white mb-8 max-w-4xl leading-tight">{recipeData.title}</h1>
-              <div className="flex flex-wrap items-center gap-8 text-xs tracking-widest font-medium text-white/80">
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#D4AF37]" /><span>{recipeData.prepTime} PRÉPARATION</span></div>
-                <div className="flex items-center gap-2"><ChefHat className="w-4 h-4 text-[#D4AF37]" /><span>{recipeData.cookTime} CUISSON</span></div>
-                <div className="border border-[#D4AF37] text-[#D4AF37] px-3 py-1 rounded-full text-[10px]">{recipeData.difficulty}</div>
-              </div>
+          <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20">
+            <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-3 block">Technique Professionnelle</span>
+            <h1 className="text-4xl md:text-6xl font-serif uppercase tracking-tighter mb-4">{recipeData.title}</h1>
+            <div className="flex gap-6 text-[10px] tracking-[0.2em] font-bold text-[#D4AF37]">
+              <span className="flex items-center gap-2 uppercase"><Clock size={14}/> {recipeData.prepTime}</span>
+              <span className="flex items-center gap-2 uppercase"><ChefHat size={14}/> {recipeData.difficulty}</span>
             </div>
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="container mx-auto px-4 max-w-6xl pb-24">
-          
-          {/* Introduction */}
-          <div className="flex gap-4 mb-16 max-w-4xl ml-auto">
-            <span className="text-[#D4AF37] text-6xl font-serif leading-none">“</span>
-            <p className="text-gray-300 font-light text-lg italic leading-relaxed pt-4">{recipeData.description}</p>
-          </div>
+        <div className="grid gap-12">
+          {/* TABLEAU DE DOSAGE */}
+          <div className="bg-[#1a1a1a] p-8 border border-white/5 rounded-sm">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+              <div>
+                <h2 className="text-2xl font-serif italic mb-1">Calculateur de dosages</h2>
+                <p className="text-gray-400 text-sm">Base calculée pour 1000g de purée. Valeurs en grammes.</p>
+              </div>
+              <div className="flex items-center gap-4 bg-black/40 px-4 py-2 rounded-full border border-[#D4AF37]/20">
+                <button onClick={() => setMultiplier(m => Math.max(0.1, m - 0.1))} className="text-[#D4AF37] hover:scale-110 transition-transform"><Minus size={16}/></button>
+                <span className="font-serif text-xl min-w-[50px] text-center">x{multiplier.toFixed(1)}</span>
+                <button onClick={() => setMultiplier(m => m + 0.1)} className="text-[#D4AF37] hover:scale-110 transition-transform"><Plus size={16}/></button>
+              </div>
+            </div>
 
-          {/* Table Section */}
-          <div className="mb-20">
-            <div className="bg-[#1a1a1a] border border-white/10 rounded-lg overflow-hidden">
-              <div className="p-6 border-b border-white/10 flex justify-between items-center bg-[#222]">
-                <h3 className="text-xl font-serif text-[#D4AF37]">Tableau des Proportions</h3>
-                <div className="flex items-center gap-2 text-gray-400 text-sm">
-                  <Info className="w-4 h-4" />
-                  <span>Tous les poids sont en grammes (g)</span>
-                </div>
-              </div>
-              
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-[#1a1a1a] text-xs uppercase tracking-wider text-gray-400 border-b border-white/5">
-                      <th className="p-4 font-medium text-white">Fruit / Légume</th>
-                      <th className="p-4 font-medium text-center">Purée</th>
-                      <th className="p-4 font-medium text-center">Jaunes</th>
-                      <th className="p-4 font-medium text-center">Œufs</th>
-                      <th className="p-4 font-medium text-center">Sucre</th>
-                      <th className="p-4 font-medium text-center">Gélatine</th>
-                      <th className="p-4 font-medium text-center">Beurre</th>
+            <div className="overflow-x-auto rounded-lg border border-white/5">
+              <table className="w-full text-left text-sm">
+                <thead className="bg-[#222] text-[#D4AF37] uppercase text-[10px] tracking-widest">
+                  <tr>
+                    <th className="p-5 sticky left-0 bg-[#222] z-20">Fruit</th>
+                    <th className="p-5 text-center">Purée</th>
+                    <th className="p-5 text-center">Jaunes</th>
+                    <th className="p-5 text-center">Œufs Entiers</th>
+                    <th className="p-5 text-center">Sucre</th>
+                    <th className="p-5 text-center">Gélatine</th>
+                    <th className="p-5 text-center">Beurre</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {tableData.map((f, i) => (
+                    <tr key={i} className="hover:bg-white/5 transition-colors group">
+                      <td className="p-4 font-bold sticky left-0 bg-[#1a1a1a] group-hover:bg-[#252525] border-r border-white/5 uppercase tracking-tighter text-[13px]">{f.name}</td>
+                      <td className="p-4 text-center text-[#D4AF37] font-semibold">{calculateAmount(f.puree)}g</td>
+                      <td className="p-4 text-center text-gray-400">{calculateAmount(f.jaunes)}g</td>
+                      <td className="p-4 text-center text-gray-400">{calculateAmount(f.oeufs)}g</td>
+                      <td className="p-4 text-center text-gray-400">{calculateAmount(f.sucre)}g</td>
+                      <td className="p-4 text-center text-gray-400">{calculateAmount(f.gelatine)}g</td>
+                      <td className="p-4 text-center text-[#D4AF37] font-semibold">{calculateAmount(f.beurre)}g</td>
                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5 text-sm text-gray-300">
-                    {tableData.map((row, index) => (
-                      <tr key={index} className="hover:bg-white/5 transition-colors">
-                        <td className="p-4 font-medium text-white border-r border-white/5">{row.name}</td>
-                        <td className="p-4 text-center text-[#D4AF37] font-medium">{row.puree}</td>
-                        <td className="p-4 text-center">{row.jaunes}</td>
-                        <td className="p-4 text-center">{row.oeufs}</td>
-                        <td className="p-4 text-center">{row.sucre}</td>
-                        <td className="p-4 text-center">{row.gelatine}</td>
-                        <td className="p-4 text-center text-[#D4AF37] font-medium">{row.beurre}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-8 p-5 bg-[#D4AF37]/5 border-l-2 border-[#D4AF37] rounded-sm text-gray-400 text-sm flex items-start gap-4 italic">
+              <AlertCircle className="w-5 h-5 text-[#D4AF37] flex-shrink-0" />
+              <p>La technique reste identique pour chaque recette, seuls les dosages s'adaptent à l'acidité et à la teneur en eau de chaque fruit.</p>
             </div>
           </div>
 
-          {/* Instructions */}
-          <div className="max-w-4xl mx-auto">
-             <h2 className="text-3xl font-serif text-white mb-10 border-b border-white/10 pb-4">Procédé de réalisation</h2>
-             <div className="space-y-12">
-                <div className="flex gap-6 group">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-serif text-lg group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-300">1</div>
-                  </div>
-                  <div>
-                    <h3 className="text-[#D4AF37] font-serif text-xl mb-3">Préparation & Cuisson</h3>
-                    <p className="text-gray-400 font-light leading-relaxed mb-2">Chauffer la purée de fruit dans une casserole.</p>
-                    <p className="text-gray-400 font-light leading-relaxed">Dans un cul-de-poule, mélanger les œufs, les jaunes et le sucre sans blanchir. Verser une partie de la purée chaude sur le mélange d'œufs, reverser le tout dans la casserole et cuire à la nappe (83°C/85°C) en remuant constamment, comme une crème anglaise.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-6 group">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-serif text-lg group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-300">2</div>
-                  </div>
-                  <div>
-                    <h3 className="text-[#D4AF37] font-serif text-xl mb-3">Collage & Refroidissement</h3>
-                    <p className="text-gray-400 font-light leading-relaxed">Hors du feu, ajouter la gélatine préalablement hydratée et essorée. Chinoiser la préparation dans un récipient haut. Laisser refroidir à température ambiante jusqu'à atteindre environ 35°C / 40°C.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-6 group">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-serif text-lg group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-300">3</div>
-                  </div>
-                  <div>
-                    <h3 className="text-[#D4AF37] font-serif text-xl mb-3">Emulsion</h3>
-                    <p className="text-gray-400 font-light leading-relaxed">Ajouter le beurre froid coupé en dés. Mixer à l'aide d'un mixeur plongeant en restant bien au fond pour ne pas incorporer d'air, jusqu'à obtenir une texture lisse, brillante et parfaitement homogène.</p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-6 group">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-serif text-lg group-hover:bg-[#D4AF37] group-hover:text-black transition-colors duration-300">4</div>
-                  </div>
-                  <div>
-                    <h3 className="text-[#D4AF37] font-serif text-xl mb-3">Stockage</h3>
-                    <p className="text-gray-400 font-light leading-relaxed">Couler immédiatement dans vos inserts, cadres ou moules, ou filmer au contact et réserver au réfrigérateur pour une utilisation ultérieure (pochage après cristallisation).</p>
-                  </div>
-                </div>
+          {/* MÉTHODE */}
+          <div className="max-w-4xl mx-auto w-full">
+             <h2 className="text-3xl font-serif text-white mb-10 text-center uppercase tracking-widest">Procédé de réalisation</h2>
+             <div className="grid md:grid-cols-2 gap-8">
+               {steps.map((s, i) => (
+                 <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, y: 20 }} 
+                    whileInView={{ opacity: 1, y: 0 }} 
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }} 
+                    className="flex gap-4 p-6 bg-[#1a1a1a] border border-white/5 rounded-sm"
+                  >
+                   <span className="text-4xl font-serif text-[#D4AF37]/20 flex-shrink-0">{i+1}</span>
+                   <div>
+                     <h4 className="font-serif text-[#D4AF37] text-lg mb-2 tracking-wide uppercase">{s.title}</h4>
+                     <p className="text-gray-400 text-sm leading-relaxed">{s.text}</p>
+                   </div>
+                 </motion.div>
+               ))}
              </div>
           </div>
-
         </div>
       </div>
-    </>
+    </div>
   );
-};
+}
 
 export default CremeuxFruits;

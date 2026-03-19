@@ -10,7 +10,8 @@ export const recipeData = {
   description: "Fiche technique détaillée.",
   image: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Compressed_fresh_yeast_-_1.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
-  difficulty: "Théorie"
+  difficulty: "Théorie",
+  isVip: true
 };
 // 👆 FIN DU BLOC 👆
 const LevureBoulangerePage = () => {
