@@ -39,8 +39,7 @@ const App = () => {
           {/* --- RECETTE STANDARD (Gratuite) --- */}
           <Route path="/recipe/:id" element={<DynamicPage />} />
 
-          {/* 👇 NOUVEAU : Route Spéciale Technologie VIP (Freemium) 👇 */}
-          {/* On la met AVANT la route générique pour qu'elle ne soit pas bloquée par ProtectedRoute */}
+          {/* 👇 LA ROUTE FREEMIUM EST RESTAURÉE ICI 👇 */}
           <Route path="/vip/technologie/:id" element={<DynamicPage />} />
 
           {/* --- RECETTE VIP (Totalement bloquée par le cadenas) --- */}

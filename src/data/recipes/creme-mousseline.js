@@ -3,7 +3,7 @@ const cremeMousseline = {
   title: "Crème Mousseline",
   category: "Pâtisserie",
   subCategory: ["Crèmes"],
-  isVip: false,
+  isVip: true,
   prepTime: "25 MIN",
   restTime: "1 HEURE",
   cookTime: "10 MIN",

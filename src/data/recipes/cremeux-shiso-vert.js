@@ -3,7 +3,7 @@ const cremeuxShisoVert = {
   title: "Crémeux Shiso Vert",
   category: "Pâtisserie",
   subCategory: ["Crémeux"],
-  isVip: false,
+  isVip: true,
   prepTime: "25 MIN",
   cookTime: "10 MIN",
   difficulty: "MOYEN",

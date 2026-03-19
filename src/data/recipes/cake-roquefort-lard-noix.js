@@ -3,7 +3,7 @@ const cakeRoquefortLardNoix = {
   title: "Cake Roquefort, Lard & Noix",
   category: "Pâtisserie",
   subCategory: ["Cakes Salés"],
-  isVip: false,
+  isVip: true,
   prepTime: "20 MIN",
   cookTime: "60 MIN",
   difficulty: "MOYEN",

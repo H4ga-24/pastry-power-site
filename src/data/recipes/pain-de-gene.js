@@ -3,7 +3,7 @@ const painDeGene = {
   title: "Pain de gène",
   category: "Pâtisserie",
   subCategory: ["Biscuits"], // Reste en Biscuits (c'est un biscuit amande)
-  isVip: false,
+  isVip: true,
   prepTime: "30 MIN",
   cookTime: "40 MIN",
   difficulty: "MOYEN",

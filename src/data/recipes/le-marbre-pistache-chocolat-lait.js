@@ -3,7 +3,7 @@ const leMarbrePistacheChocolatLait = {
   title: "Le Marbré Pistache Chocolat Lait",
   category: "Pâtisserie",
   subCategory: ["Entremets"],
-  isVip: false, // Non spécifié, false par défaut
+  isVip: true, // Non spécifié, false par défaut
   prepTime: "5H 00",
   cookTime: "40 MIN",
   difficulty: "EXPERT",

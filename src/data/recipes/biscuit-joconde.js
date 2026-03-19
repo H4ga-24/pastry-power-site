@@ -3,7 +3,7 @@ const biscuitJoconde = {
   title: "Biscuit Joconde",
   category: "Pâtisserie",
   subCategory: ["Biscuits"],
-  isVip: false,
+  isVip: true,
   prepTime: "20 MIN",
   cookTime: "8-10 MIN",
   difficulty: "MOYEN",

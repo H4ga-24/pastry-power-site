@@ -3,7 +3,7 @@ const entremetsDeuxChocolats = {
   title: "Entremets Deux Chocolats",
   category: "Pâtisserie",
   subCategory: ["Entremets"],
-  isVip: false,
+  isVip: true,
   prepTime: "2H 30",
   cookTime: "30 MIN",
   difficulty: "MOYEN",

@@ -3,7 +3,7 @@ const cakeSaumonFume = {
   title: "Cake Saumon Fumé & Harengs",
   category: "Pâtisserie",
   subCategory: ["Cakes Salés"],
-  isVip: false,
+  isVip: true,
   prepTime: "15 MIN",
   cookTime: "55 MIN",
   difficulty: "FACILE",

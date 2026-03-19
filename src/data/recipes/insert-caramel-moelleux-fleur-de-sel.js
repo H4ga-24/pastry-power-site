@@ -3,7 +3,7 @@ const insertCaramelMoelleuxFleurDeSel = {
   title: "Insert Caramel Moelleux Fleur de Sel",
   category: "Pâtisserie",
   subCategory: ["Inserts"],
-  isVip: false,
+  isVip: true,
   prepTime: "20 MIN",
   cookTime: "15 MIN",
   difficulty: "MOYEN",

@@ -3,7 +3,7 @@ const insertPralineFeuilletine = {
   title: "Insert Praliné Feuilletine",
   category: "Pâtisserie",
   subCategory: ["Inserts"],
-  isVip: false,
+  isVip: true,
   prepTime: "15 MIN",
   cookTime: "5 MIN",
   difficulty: "TRÈS FACILE",

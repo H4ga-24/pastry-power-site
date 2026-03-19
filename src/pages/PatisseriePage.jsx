@@ -243,7 +243,7 @@ const PatisseriePage = ({ category: propCategory }) => {
             {filteredItems.map(item => (
               <Link 
                 key={item.id} 
-                to={item.isTech ? `/techno/${item.id}` : (item.isVip ? `/vip/${item.id}` : `/recipe/${item.id}`)} 
+                to={item.isVip ? (item.isTech ? `/vip/technologie/${item.id}` : `/vip/${item.id}`) : (item.isTech ? `/techno/${item.id}` : `/recipe/${item.id}`)} 
                 className="bg-[#1a1a1a] rounded-xl border border-white/10 p-8 hover:border-[#D4AF37] transition-all group relative"
               >
                 
@@ -282,4 +282,4 @@ const PatisseriePage = ({ category: propCategory }) => {
   );
 };
 
-export default PatisseriePage; 
+export default PatisseriePage;

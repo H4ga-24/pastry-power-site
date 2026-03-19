@@ -3,7 +3,7 @@ const parisBrest = {
   title: "Paris-Brest",
   category: "Pâtisserie",
   subCategory: ["Pâte à Choux"],
-  isVip: false,
+  isVip: true,
   prepTime: "1H 30",
   cookTime: "40 MIN",
   difficulty: "MOYEN",

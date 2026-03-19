@@ -3,7 +3,7 @@ const kouignAmann = {
   title: "Le Kouign-Amann (Bretagne)",
   category: "Pâtisserie",
   subCategory: ["Desserts Régionaux"], // Catégorie appropriée
-  isVip: false,
+  isVip: true,
   prepTime: "45 MIN",
   cookTime: "30 MIN",
   difficulty: "DIFFICILE", // Difficile car technique de tourage

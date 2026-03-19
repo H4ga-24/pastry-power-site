@@ -3,7 +3,7 @@ const cakeSaintJacques = {
   title: "Cake Saint-Jacques & Poireaux",
   category: "Pâtisserie",
   subCategory: ["Cakes Salés"],
-  isVip: false,
+  isVip: true,
   prepTime: "25 MIN",
   cookTime: "1H 10",
   difficulty: "MOYEN",

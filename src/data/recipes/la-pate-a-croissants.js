@@ -3,7 +3,7 @@ const laPateACroissants = {
   title: "La pâte à croissants",
   category: "Pâtisserie",
   subCategory: ["Pâtes"],
-  isVip: false,
+  isVip: true,
   prepTime: "1H + Repos",
   cookTime: "15 MIN",
   difficulty: "DIFFICILE",

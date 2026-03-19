@@ -3,7 +3,7 @@ const lesBiscuitsMeringues = {
   title: "Biscuits Meringués (Succès)",
   category: "Pâtisserie",
   subCategory: ["Biscuits"], // "Bases" dans le fichier, je mappe sur "Biscuits" ou "Pâtes" selon tes catégories valides
-  isVip: false,
+  isVip: true,
   prepTime: "30 MIN",
   cookTime: "VARIE",
   difficulty: "MOYEN",

@@ -3,7 +3,7 @@ const cakeChevreCourgette = {
   title: "Cake Chèvre & Courgette",
   category: "Pâtisserie",
   subCategory: ["Cakes Salés"],
-  isVip: false,
+  isVip: true,
   prepTime: "15 MIN",
   cookTime: "45 MIN",
   difficulty: "FACILE",

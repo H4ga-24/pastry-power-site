@@ -3,7 +3,7 @@ const cakeAspergesGirolles = {
   title: "Cake Asperges & Girolles",
   category: "Pâtisserie",
   subCategory: ["Cakes Salés"],
-  isVip: false,
+  isVip: true,
   prepTime: "25 MIN",
   cookTime: "45 MIN",
   difficulty: "MOYEN",

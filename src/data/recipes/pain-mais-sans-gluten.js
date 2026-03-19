@@ -3,7 +3,7 @@ const painMaisSansGluten = {
   title: "Pain au Maïs (Sans Gluten)",
   category: "Pâtisserie",
   subCategory: ["Cakes Salés"],
-  isVip: false,
+  isVip: true,
   prepTime: "20 MIN",
   cookTime: "35 MIN",
   difficulty: "FACILE",

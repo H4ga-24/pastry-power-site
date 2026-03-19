@@ -3,7 +3,7 @@ const cremeChiboust = {
   title: "Crème Chiboust",
   category: "Pâtisserie",
   subCategory: ["Crèmes"],
-  isVip: false,
+  isVip: true,
   prepTime: "30 MIN",
   cookTime: "15 MIN",
   difficulty: "DIFFICILE",

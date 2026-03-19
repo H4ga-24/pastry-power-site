@@ -3,7 +3,7 @@ const feuilletageSuperieur = {
   title: "Feuilletage supérieur",
   category: "Pâtisserie",
   subCategory: ["Pâtes"],
-  isVip: false,
+  isVip: true,
   prepTime: "4H",
   cookTime: "N/A",
   difficulty: "DIFFICILE",

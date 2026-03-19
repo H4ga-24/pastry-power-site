@@ -3,7 +3,7 @@ const saintHonore = {
   title: "Saint-Honoré",
   category: "Pâtisserie",
   subCategory: ["Entremets"], // Mis à jour comme dans le commentaire de ton code
-  isVip: false,
+  isVip: true,
   prepTime: "2H",
   cookTime: "40 MIN",
   difficulty: "AVANCÉ",
