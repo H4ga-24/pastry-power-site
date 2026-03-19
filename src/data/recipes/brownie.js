@@ -8,7 +8,7 @@ const brownie = {
   cookTime: "20-25 MIN",
   difficulty: "FACILE",
   description: "Un gâteau de voyage d'origine américaine, ultra dense et riche. Une fine croûte craquante sur le dessus et un cœur fondant intensément chocolaté.",
-  image: "https://www.meilleurduchef.com/images/recettes/brownie-chocolat-pecan/brownie-chocolat-pecan-1200x800.jpg",
+  image: "/images/brownie.jpg",
   baseServings: 8, // 1 cadre de 20x20cm
   
   ingredients: [
