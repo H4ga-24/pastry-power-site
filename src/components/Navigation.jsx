@@ -63,7 +63,7 @@ const Navigation = () => {
         { title: 'Œufs', path: '/technologie/oeuf' },
         { title: 'Gélifiants', path: '/technologie/gelifiant' },
         { title: 'Poudres Levantes', path: '/technologie/levure' },
-        { title: 'Chocolat (Tech)', path: '/technologie/tech-chocolat' }
+        { title: 'Chocolat', path: '/technologie/tech-chocolat' }
       ]
     },
     { 
