@@ -8,7 +8,7 @@ export const recipeData = {
   title: "Saccharose", // ex: "La Farine"
   category: "Technologie - Sucres",
   description: "Fiche technique détaillée.",
-  image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=800", // Image par défaut
+  image: "/images/saccharose.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie"
 };

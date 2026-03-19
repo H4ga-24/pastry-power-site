@@ -8,7 +8,7 @@ const eclatAuxEpices = {
   cookTime: "40 MIN",
   difficulty: "AVANCÉ",
   description: "Une création chaleureuse alliant la douceur de la poire à la force du pain d'épices, enrobée d'une mousse chocolat lait subtilement épicée.",
-  image: "https://i.imgur.com/hCaQ2m2.png",
+  image: "/images/eclat-aux-epices.jpg", // Image d'illustration
   baseServings: 15,
   
   ingredients: [

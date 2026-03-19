@@ -6,10 +6,10 @@ const brioche = {
   isVip: true,
   prepTime: "30 MIN",
   restTime: "12 HEURES",
-  cookTime: "25-30 MIN",
+  cookTime: "26 MIN",
   difficulty: "EXPERT",
   description: "La pure tradition boulangère française. Une mie filante, beurrée et légère, qui demande du temps, du froid et un pétrissage maîtrisé.",
-  image: "/images/recettes/brioche.jpg",
+  image: "/images/brioche.jpg",
   baseServings: 2, // 2 brioches
   
   ingredients: [
