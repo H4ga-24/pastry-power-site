@@ -8,7 +8,7 @@ const chouquette = {
   cookTime: "25 MIN",
   difficulty: "FACILE",
   description: "Le petit plaisir du goûter. Un chou léger, doré et généreusement recouvert de grains de sucre croquants.",
-  image: "https://www.latelierderoxane.com/blog/wp-content/uploads/img_7084-787x590.jpg",
+  image: "/images/chouquette.jpg", // Image d'illustration
   baseServings: 30, // 30 chouquettes
   
   ingredients: [

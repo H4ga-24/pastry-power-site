@@ -10,7 +10,8 @@ export const recipeData = {
   description: "Fiche technique détaillée.",
   image: "https://www.lanutrition.fr/sites/default/files/ressources/oeufs_fond_blanc.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
-  difficulty: "Théorie"
+  difficulty: "Théorie",
+  isVip: true
 };
 // 👆 FIN DU BLOC 👆
 const JauneOeufPage = () => {
