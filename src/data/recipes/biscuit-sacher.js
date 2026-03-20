@@ -5,7 +5,7 @@ const biscuitSacher = {
   subCategory: ["Biscuits"],
   isVip: true, // Recette premium et riche
   prepTime: "25 MIN",
-  cookTime: "15-20 MIN",
+  cookTime: "17 MIN",
   difficulty: "MOYEN",
   description: "D'origine autrichienne, ce biscuit au chocolat dense et ultra-fondant est enrichi de pâte d'amande. Il offre une mache exceptionnelle pour les entremets très chocolatés.",
   image: "/images/biscuit-sacher.jpg",

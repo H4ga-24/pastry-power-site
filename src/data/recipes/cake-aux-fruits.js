@@ -8,7 +8,7 @@ const cakeAuxFruits = {
   cookTime: "1H 10",
   difficulty: "MOYEN",
   description: "Le cake anglais traditionnel riche en fruits confits et raisins macérés.",
-  image: "https://patissland.fr/cdn/shop/articles/recette-traditionnelle-du-cake-aux-fruits-patissland.webp",
+  image: "/images/cake-aux-fruits.jpg",
   baseServings: 10, 
   
   ingredients: [

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../AuthContext';
-import { Crown, Check, ArrowRight, Star } from 'lucide-react';
+import { Crown, Check, ArrowRight, Star, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const VipPage = () => {
@@ -16,18 +16,27 @@ const VipPage = () => {
   return (
     <div className="min-h-screen bg-[#121212] text-white py-20 px-4">
       
-      <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
+      {/* --- EN-TÊTE --- */}
+      <div className="max-w-4xl mx-auto text-center mb-16 space-y-8">
         <h1 className="text-4xl md:text-6xl font-serif">
           Devenez <span className="text-[#D4AF37]">Membre VIP</span>
         </h1>
         <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Accédez à l'intégralité des recettes techniques et au support direct avec le chef.
+          Accédez à l'intégralité des recettes techniques et débloquez nos outils professionnels exclusifs.
         </p>
+        
+        {/* LE GRAND MESSAGE NOUVEAUTÉ */}
+        <div className="inline-flex items-center gap-4 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl py-4 px-6 md:px-10 mt-4 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
+          <Sparkles className="text-[#D4AF37] w-6 h-6 flex-shrink-0 animate-pulse" />
+          <p className="text-[#D4AF37] text-lg md:text-xl font-serif font-bold tracking-wide text-left">
+            Le catalogue s'agrandit : De nouvelles fiches et recettes inédites ajoutées chaque mois !
+          </p>
+        </div>
       </div>
 
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         
-        {/* MENSUEL */}
+        {/* --- MENSUEL --- */}
         <div className="bg-[#1a1a1a] border border-white/10 p-8 rounded-xl flex flex-col hover:border-[#D4AF37]/50 transition-colors">
           <div className="mb-6">
             <h3 className="text-xl font-bold text-gray-300 mb-2">Mensuel</h3>
@@ -39,9 +48,9 @@ const VipPage = () => {
           </div>
 
           <ul className="space-y-4 mb-8 flex-grow">
-            <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Accès illimité</li>
-            <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Support prioritaire</li>
-            <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Nouveautés mensuelles</li>
+            <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Accès illimité aux contenus VIP</li>
+            <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Nouveautés ajoutées chaque mois</li>
+            <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Outils et calculateurs de dosages</li>
           </ul>
 
           <a href={getLink(STRIPE_MONTHLY)} target="_blank" rel="noopener noreferrer">
@@ -51,7 +60,7 @@ const VipPage = () => {
           </a>
         </div>
 
-        {/* ANNUEL */}
+        {/* --- ANNUEL --- */}
         <div className="bg-[#1a1a1a] border-2 border-[#D4AF37] p-8 rounded-xl flex flex-col relative overflow-hidden shadow-[0_0_30px_rgba(212,175,55,0.15)] transform md:-translate-y-4">
           <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-bold px-8 py-1 rotate-45 translate-x-8 translate-y-4 uppercase tracking-widest shadow-md">
             -15% Économisé
