@@ -1,56 +1,46 @@
 const macaronFruitsDesBois = {
   id: "macaron-fruits-des-bois",
-  title: "Macaron aux Fruits des Bois",
+  title: "Macaron Fruits des Bois",
   category: "Confiserie",
   subCategory: ["Macarons"],
   isVip: false,
   prepTime: "2H 00",
   cookTime: "14 MIN",
   difficulty: "DIFFICILE",
-  description: "Une explosion de saveurs fruitées avec une confiture maison aux fruits des bois nichée dans une coque violette intense.",
-  image: "https://plus.unsplash.com/premium_photo-1703690569954-9cd782cd927e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  baseServings: 70, // coques
+  description: "Une explosion fruitée : une confiture maison intense (framboises, mûres, myrtilles) protégée par une coque violette.",
+  image: "https://plus.unsplash.com/...",
+  baseServings: 70,
   
   ingredients: [
-    { name: "Tant pour tant amandes", amount: 500, unit: "g", note: "Coques" },
-    { name: "Sucre glace", amount: 200, unit: "g", note: "Coques" },
-    { name: "Blancs d'œufs", amount: 200, unit: "g", note: "Coques" },
-    { name: "Sucre semoule", amount: 50, unit: "g", note: "Coques" },
-    { name: "Crème de tartre", amount: 1, unit: "g", note: "Coques" },
-    { name: "Colorant Jaune", amount: 35, unit: "gouttes", note: "Coques" },
-    { name: "Colorant Rouge", amount: 65, unit: "gouttes", note: "Coques" },
-    { name: "Colorant Bleu", amount: 25, unit: "gouttes", note: "Coques" },
-    { name: "Colorant Noir", amount: 15, unit: "gouttes", note: "Coques" },
-    { name: "Pulpe de fruits des bois", amount: 50, unit: "g", note: "Garniture" },
-    { name: "Groseilles", amount: 50, unit: "g", note: "Garniture" },
-    { name: "Fraises des bois", amount: 125, unit: "g", note: "Garniture" },
-    { name: "Myrtilles", amount: 125, unit: "g", note: "Garniture" },
-    { name: "Framboises", amount: 100, unit: "g", note: "Garniture" },
-    { name: "Mûres", amount: 100, unit: "g", note: "Garniture" },
-    { name: "Sucre semoule", amount: 150, unit: "g", note: "Garniture" },
-    { name: "Pectine jaune", amount: 10, unit: "g", note: "Garniture" },
-    { name: "Sucre semoule (pour pectine)", amount: 30, unit: "g", note: "Garniture" },
-    { name: "Acide tartrique", amount: 5, unit: "gouttes", note: "Garniture" }
+    { name: "Tant pour tant", amount: 500, unit: "g", note: "Coques" },
+    { name: "Mélange colorants", amount: 1, unit: "dose", note: "Coques (Bleu + Rouge pour le violet)" },
+    { name: "Fruits des bois mélangés", amount: 500, unit: "g", note: "Garniture (frais ou surgelés)" },
+    { name: "Sucre semoule", amount: 180, unit: "g", note: "Garniture" },
+    { name: "Pectine NH ou Jaune", amount: 10, unit: "g", note: "Garniture (pour gélifier)" },
+    { name: "Jus de citron", amount: 1, unit: "c.à.s", note: "Garniture (active la pectine)" }
   ],
 
   steps: [
     { 
       title: "Coques Violettes", 
-      text: "Broyer et tamiser le tant pour tant et le sucre glace. Monter les blancs avec la crème de tartre et 10% du sucre. Ajouter le mélange de colorants. Serrer avec le reste du sucre. Incorporer les poudres. Macaronner. Dresser. Cuire à 150°C (4-5 min fermé, 12-14 min ouvert)." 
+      text: "Réalisez vos coques selon la méthode habituelle en ajoutant le colorant violet dans les blancs montés. Cuisez 14 min à 150°C." 
     },
     { 
-      title: "Confiture Fruits des Bois", 
-      text: "Dans une casserole, chauffer les pulpes et les fruits entiers avec le sucre (150g). À 40°C, ajouter le mélange sucre(30g)+pectine en pluie. Porter à ébullition. Cuire jusqu'à 103°C (ou consistance confiture). Ajouter l'acide tartrique en fin de cuisson. Refroidir." 
+      title: "Cuisson du fourrage fruit", 
+      text: "Mixez grossièrement les fruits. Chauffez-les dans une casserole avec la majeure partie du sucre. À 40°C, ajoutez le reste du sucre mélangé à la pectine (cela évite les grumeaux). Portez à ébullition pendant 2 minutes." 
+    },
+    { 
+      title: "Gélification", 
+      text: "Ajoutez le jus de citron en fin de cuisson, mélangez bien et versez dans un plat plat pour refroidir rapidement. La préparation va figer en refroidissant." 
     },
     { 
       title: "Montage", 
-      text: "Garnir les coques avec la confiture refroidie (qui aura gélifié). Réserver 24h au frais." 
+      text: "Une fois le confit de fruits bien froid, fouettez-le légèrement pour le détendre, mettez-le en poche et garnissez vos macarons." 
     }
   ],
-
-  advices: ["La pectine jaune est idéale pour les pâtes de fruits et confitures fermes, elle donne une bonne tenue au macaron."],
-  chefQuote: "L'acide tartrique active la pectine, vous pouvez le remplacer par du jus de citron.",
-  equipment: ["Robot coupe", "Casserole", "Poche à douille"]
+  advices: ["La pectine est cruciale ici : sans elle, le jus des fruits va détremper vos macarons en une heure."],
+  chefQuote: "Vous pouvez varier les plaisirs en utilisant uniquement de la framboise ou du cassis pour un goût plus typé.",
+  equipment: ["Casserole", "Mixeur", "Poche à douille"]
 };
 
 export default macaronFruitsDesBois;

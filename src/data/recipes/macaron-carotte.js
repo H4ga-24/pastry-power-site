@@ -1,51 +1,51 @@
 const macaronCarotte = {
   id: "macaron-carotte",
-  title: "Macaron Carotte",
+  title: "Macaron Carotte & Cannelle",
   category: "Confiserie",
   subCategory: ["Macarons"],
   isVip: true,
   prepTime: "2H 00",
   cookTime: "14 MIN",
   difficulty: "DIFFICILE",
-  description: "Une création originale mariant la douceur naturelle de la carotte à l'onctuosité du chocolat blanc. Une couleur vibrante pour un goût surprenant.",
+  description: "Une création audacieuse inspirée du Carrot Cake : une coque orange vibrante et une ganache onctueuse au jus de carotte réduit et cannelle.",
   image: "/images/macaron-carotte.jpg",
-  baseServings: 70, // coques
+  baseServings: 70,
   
   ingredients: [
-    { name: "Tant pour tant amandes", amount: 500, unit: "g", note: "Coques (50% amande/50% sucre glace)" },
+    { name: "Tant pour tant", amount: 500, unit: "g", note: "Coques" },
     { name: "Sucre glace", amount: 200, unit: "g", note: "Coques" },
     { name: "Blancs d'œufs", amount: 200, unit: "g", note: "Coques" },
     { name: "Sucre semoule", amount: 50, unit: "g", note: "Coques" },
-    { name: "Crème de tartre", amount: 1, unit: "g", note: "Coques" },
-    { name: "Colorant Orange", amount: 2, unit: "g", note: "Coques" },
-    { name: "Poudre de carotte", amount: 5, unit: "g", note: "Coques (facultatif)" },
-    { name: "Jus de carotte frais", amount: 200, unit: "g", note: "Garniture" },
-    { name: "Chocolat blanc couverture", amount: 350, unit: "g", note: "Garniture" },
+    { name: "Colorant Orange", amount: 2, unit: "g", note: "Coques (poudre ou gel)" },
+    { name: "Jus de carotte frais", amount: 200, unit: "g", note: "Garniture (à réduire)" },
+    { name: "Chocolat blanc", amount: 350, unit: "g", note: "Garniture (couverture type Ivoire)" },
     { name: "Crème liquide 35%", amount: 80, unit: "g", note: "Garniture" },
     { name: "Beurre", amount: 40, unit: "g", note: "Garniture" },
     { name: "Miel d'acacia", amount: 20, unit: "g", note: "Garniture" },
-    { name: "Zeste d'orange", amount: 0.5, unit: "pièce", note: "Garniture" },
     { name: "Cannelle", amount: 1, unit: "pincée", note: "Garniture" }
   ],
 
   steps: [
     { 
-      title: "Coques", 
-      text: "Au robot-coupe, broyer finement le tant pour tant amandes avec le sucre glace. Tamiser. Monter les blancs avec la crème de tartre et 10% du sucre. Ajouter le colorant quand ça mousse. Serrer avec le reste du sucre (meringue ferme). Incorporer les poudres à la maryse (macaronner). Dresser sur plaque. Laisser croûter 30 min. Cuire 12-14 min à 150°C." 
+      title: "Coques Orange", 
+      text: "Mixez et tamisez le tant pour tant et le sucre glace. Montez les blancs en ajoutant le colorant orange. Serrez avec le sucre semoule. Incorporez les poudres à la maryse. Dressez et laissez reposer (croûter) 30 min à l'air libre avant de cuire 14 min à 150°C." 
     },
     { 
-      title: "Garniture (Ganache Carotte)", 
-      text: "Réduire le jus de carotte de moitié à feu doux (obtenir 100g de concentré). Chauffer la crème avec le miel et les zestes. Verser sur le chocolat blanc fondu avec le jus réduit. Emulsionner. Ajouter le beurre et la cannelle. Mixer. Laisser cristalliser au frais 4h." 
+      title: "Réduction du jus de carotte", 
+      text: "Faites chauffer le jus de carotte dans une casserole à feu doux. Laissez-le réduire de moitié jusqu'à obtenir environ 100g de liquide très concentré et sirupeux. C'est le secret du goût !" 
     },
     { 
-      title: "Montage", 
-      text: "Garnir une coque généreusement avec la ganache carotte. Refermer avec une deuxième coque. Réserver au frais 24h avant dégustation." 
+      title: "Ganache Carotte", 
+      text: "Faites chauffer la crème avec le miel. Versez sur le chocolat blanc fondu. Ajoutez la réduction de jus de carotte, la cannelle et le beurre. Mixez au mixeur plongeant pour lisser la ganache. Laissez durcir au froid 4h minimum." 
+    },
+    { 
+      title: "Finition", 
+      text: "Garnissez les coques refroidies et laissez maturer 24h au frais." 
     }
   ],
-
-  advices: ["La réduction du jus est essentielle pour concentrer le goût sans mouiller la ganache."],
-  chefQuote: "Un mariage surprenant qui rappelle le Carrot Cake.",
-  equipment: ["Robot coupe", "Poche à douille", "Tapis de cuisson"]
+  advices: ["La réduction du jus est obligatoire : si vous mettez le jus tel quel, la ganache sera trop liquide et détrempera le macaron."],
+  chefQuote: "Le mariage carotte-cannelle-chocolat blanc est surprenant, il rappelle la douceur du Carrot Cake américain.",
+  equipment: ["Robot coupe", "Casserole", "Mixeur plongeant"]
 };
 
 export default macaronCarotte;
