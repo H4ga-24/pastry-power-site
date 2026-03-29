@@ -61,9 +61,20 @@ const UserMenu = () => {
 
           <div className="mb-6 text-center">
             {isPremium ? (
-              <div className="bg-[#D4AF37]/20 text-[#D4AF37] p-3 rounded border border-[#D4AF37] flex items-center justify-center gap-2">
-                <Crown className="w-5 h-5" />
-                <span className="font-bold uppercase tracking-wider">Membre VIP</span>
+              <div className="space-y-3">
+                <div className="bg-[#D4AF37]/20 text-[#D4AF37] p-3 rounded border border-[#D4AF37] flex items-center justify-center gap-2">
+                  <Crown className="w-5 h-5" />
+                  <span className="font-bold uppercase tracking-wider">Membre VIP</span>
+                </div>
+                {/* NOUVEAU BOUTON DE GESTION STRIPE */}
+                <a 
+                  href="https://billing.stripe.com/p/login/fZu7sMbNP1E33dj6Yn2B200" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block w-full text-center py-2 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-bold uppercase tracking-widest hover:bg-[#D4AF37]/10 transition-colors rounded"
+                >
+                  Gérer mon abonnement
+                </a>
               </div>
             ) : (
               <div className="space-y-3">
