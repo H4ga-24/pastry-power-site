@@ -5,7 +5,7 @@ const biscuitDeSavoie = {
   subCategory: ["Biscuits", "Gâteaux de Voyage", "Desserts Régionaux"], // 🔥 La nouveauté est ici !
   isVip: false,
   prepTime: "20 MIN",
-  cookTime: "30-40 MIN",
+  cookTime: "35 MIN",
   difficulty: "FACILE",
   description: "Gâteau régional ultra-léger et aérien, sans aucune matière grasse ajoutée. Sa croûte est légèrement croustillante et son cœur d'un moelleux incomparable.",
   image: "/images/biscuit-de-savoie.jpg", // Image d'illustration
