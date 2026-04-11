@@ -15,11 +15,26 @@ const root = resolve(__dirname, '..');
 const recipesDir = join(root, 'src/data/recipes');
 const techDir = join(root, 'src/pages/technologie');
 
-// --- Helpers d'extraction par regex ---
+// 1. CORRECTION DES ACCENTS : Lecture directe et propre en UTF-8
+function readFileSafe(filePath) {
+  return readFileSync(filePath, 'utf8');
+}
 
+// 2. CORRECTION DES APOSTROPHES : Extraction robuste (gère les ", les ', et les ` multi-lignes)
 function extractString(content, field) {
-  const match = content.match(new RegExp(`${field}:\\s*["'\`](.*?)["'\`]`));
-  return match ? match[1] : null;
+  // Essai avec guillemets doubles : description: "texte avec l'apostrophe"
+  const doubleMatch = content.match(new RegExp(field + ':\\s*"((?:[^"\\\\]|\\\\.)*)"'));
+  if (doubleMatch) return doubleMatch[1].replace(/\\"/g, '"');
+
+  // Essai avec guillemets simples : description: 'texte'
+  const singleMatch = content.match(new RegExp(field + ":\\s*'((?:[^'\\\\]|\\\\.)*)'"));
+  if (singleMatch) return singleMatch[1].replace(/\\'/g, "'");
+
+  // Essai avec template literals : description: `texte multi-lignes`
+  const templateMatch = content.match(new RegExp(field + "\\s*`([\\s\\S]*?)`"));
+  if (templateMatch) return templateMatch[1];
+
+  return null;
 }
 
 function extractBool(content, field) {
@@ -42,7 +57,7 @@ if (existsSync(recipesDir)) {
   const files = readdirSync(recipesDir).filter(f => f.endsWith('.js') || f.endsWith('.jsx'));
 
   for (const file of files) {
-    const content = readFileSync(join(recipesDir, file), 'utf-8');
+    const content = readFileSafe(join(recipesDir, file));
     const fileName = file.replace(/\.(js|jsx)$/, '');
     const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
@@ -76,7 +91,7 @@ if (existsSync(techDir)) {
   const files = readdirSync(techDir).filter(f => f.endsWith('.jsx'));
 
   for (const file of files) {
-    const content = readFileSync(join(techDir, file), 'utf-8');
+    const content = readFileSafe(join(techDir, file));
     const fileName = file.replace(/\.jsx$/, '');
     const formattedId = fileName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
@@ -109,5 +124,5 @@ const output = `// ⚠️  FICHIER AUTO-GÉNÉRÉ — ne pas modifier manuelleme
 export const catalog = ${JSON.stringify(allItems, null, 2)};
 `;
 
-writeFileSync(join(root, 'src/data/catalog.js'), output, 'utf-8');
+writeFileSync(join(root, 'src/data/catalog.js'), '\ufeff' + output, 'utf8');
 console.log(`✅ catalog.js généré : ${recipes.length} recettes + ${techItems.length} pages technologie`);

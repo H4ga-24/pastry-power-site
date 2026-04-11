@@ -7,7 +7,7 @@
   prepTime: "2H + 24H (Cristallisation)",
   cookTime: "30 MIN",
   difficulty: "EXPERT",
-  description: "L'alliance audacieuse de l'exotisme et du terroir. Une griottine alcoolisée entière nichée au cÅ“ur d'une ganache caramel-passion, sous une coque de chocolat noir croquante.",
+  description: "L'alliance audacieuse de l'exotisme et du terroir. Une griottine alcoolisée entière nichée au coeur d'une ganache caramel-passion, sous une coque de chocolat noir croquante.",
   image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3505a02f07aaef90c26876afdf520f07.jpg",
   baseServings: 1, 
   

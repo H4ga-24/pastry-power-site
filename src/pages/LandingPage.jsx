@@ -7,32 +7,32 @@ const LandingPage = () => {
   const categories = [
     { 
       title: "Pâtisserie", 
-      image: "https://images.unsplash.com/photo-1606188074044-fcd750f6996a?q=80&w=764&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1606188074044-fcd750f6996a?q=80&w=764&auto=format&fit=crop&fm=webp",
       link: "/patisserie"
     },
     { 
       title: "Technologie", 
-      image: "https://images.unsplash.com/photo-1603900702646-701378265860?q=80&w=687&auto=format&fit=crop", 
+      image: "https://images.unsplash.com/photo-1603900702646-701378265860?q=80&w=687&auto=format&fit=crop&fm=webp", 
       link: "/technologie" 
     },
     { 
       title: "Confiserie", 
-      image: "https://images.unsplash.com/photo-1768676124314-b19c46ba7cd8?q=80&w=1472&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1768676124314-b19c46ba7cd8?q=80&w=1472&auto=format&fit=crop&fm=webp",
       link: "/confiserie"
     },
     { 
       title: "Chocolaterie", 
-      image: "https://plus.unsplash.com/premium_photo-1667031518595-9cb4b0d504ef?q=80&w=687&auto=format&fit=crop",
+      image: "https://plus.unsplash.com/premium_photo-1667031518595-9cb4b0d504ef?q=80&w=687&auto=format&fit=crop&fm=webp",
       link: "/chocolaterie"
     },
     { 
       title: "Cuisine", 
-      image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=687&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=687&auto=format&fit=crop&fm=webp",
       link: "/cuisine"
     },
     { 
       title: "Alternative", 
-      image: "https://images.unsplash.com/photo-1606101204907-19e00aa49db2?q=80&w=687&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1606101204907-19e00aa49db2?q=80&w=687&auto=format&fit=crop&fm=webp",
       link: "/alternative"
     }
   ];
@@ -145,7 +145,7 @@ const LandingPage = () => {
             {/* 2. CARTE BOULANGERIE */}
             <div className="bg-[#121212] border border-white/10 rounded-xl overflow-hidden flex flex-col">
                <div className="h-32 lg:h-48 relative overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1636906227201-f3ec32645129?q=80&w=687&auto=format&fit=crop" alt="Carnet Boulangerie" className="w-full h-full object-cover opacity-70" />
+                  <img src="https://images.unsplash.com/photo-1636906227201-f3ec32645129?q=80&w=687&auto=format&fit=crop&fm=webp" alt="Carnet Boulangerie" className="w-full h-full object-cover opacity-70" />
                </div>
                <div className="p-5 lg:p-8 flex flex-col flex-grow">
                  <h3 className="text-xl font-serif text-white mb-2">Secrets de Boulangerie</h3>
