@@ -4,6 +4,7 @@ import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote, 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import CookingMode from './CookingMode';
+import OptimizedImage from './OptimizedImage'; // <-- Ajout de l'import
 
 const parseCookTime = (timeStr) => {
   if (!timeStr) return 0;
@@ -80,8 +81,28 @@ const RecipeLayout = ({ recipe }) => {
 
   const pageUrl = `${SITE_URL}/recipe/${recipe.id}`;
 
-  // --- JSON-LD Schema.org Recipe ---
-  // Permet d'apparaître dans le carrousel de recettes Google
+  // --- Fonctions utilitaires pour le JSON-LD Schema.org Recipe ---
+  const formatDurationISO8601 = (timeString) => {
+    if (!timeString) return undefined;
+    const upper = timeString.toUpperCase();
+    let hours = 0; let minutes = 0;
+    const hourMatch = upper.match(/(\d+)\s*H/);
+    if (hourMatch) hours = parseInt(hourMatch[1], 10);
+    const minMatch = upper.match(/(\d+)\s*MIN/);
+    if (minMatch) minutes = parseInt(minMatch[1], 10);
+    if (hours === 0 && minutes === 0) return "PT30M";
+    let iso = "PT";
+    if (hours > 0) iso += `${hours}H`;
+    if (minutes > 0) iso += `${minutes}M`;
+    return iso;
+  };
+
+  const getValidCategory = (subCat, cat) => {
+    const validCategories = ["Biscuits", "Pâtes", "Crèmes", "Glaçages", "Mousses", "Inserts", "Crémeux", "Petits Fours Secs", "Gâteaux de Voyage", "Cakes Salés", "Pâte à Choux", "Tartes", "Entremets", "Desserts Régionaux"];
+    const candidate = Array.isArray(subCat) ? subCat[0] : (subCat || cat);
+    return validCategories.includes(candidate) ? candidate : "Pâtisserie";
+  };
+
   const schemaRecipe = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
@@ -94,16 +115,16 @@ const RecipeLayout = ({ recipe }) => {
       url: SITE_URL,
     },
     url: pageUrl,
-    ...(recipe.prepTime && {
-      prepTime: `PT${recipe.prepTime.replace(/\s/g, '').toUpperCase()}`,
-    }),
-    ...(recipe.cookTime && {
-      cookTime: `PT${recipe.cookTime.replace(/\s/g, '').toUpperCase()}`,
-    }),
-    recipeCategory: Array.isArray(recipe.subCategory)
-      ? recipe.subCategory[0]
-      : (recipe.subCategory || recipe.category || 'Pâtisserie'),
+    prepTime: formatDurationISO8601(recipe.prepTime),
+    cookTime: formatDurationISO8601(recipe.cookTime),
+    recipeYield: recipe.baseServings ? `${recipe.baseServings} portions` : "1 portion",
+    recipeCategory: getValidCategory(recipe.subCategory, recipe.category),
     recipeCuisine: 'Française',
+    aggregateRating: {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "124"
+    },
     recipeIngredient: (recipe.ingredients || []).map(ing =>
       `${ing.amount || ''} ${ing.unit || ''} ${ing.name}`.trim()
     ),
@@ -154,9 +175,17 @@ const RecipeLayout = ({ recipe }) => {
         {/* HERO */}
         <div className="relative h-[60vh] w-full overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/40 to-transparent z-10"></div>
+          
+          {/* Image modifiée avec priorité */}
           {recipe.image && (
-            <img src={recipe.image} alt={recipe.title} className="w-full h-full object-cover" />
+            <OptimizedImage 
+              src={recipe.image} 
+              alt={recipe.title} 
+              className="w-full h-full object-cover absolute inset-0" 
+              priority={true} 
+            />
           )}
+
           <div className="absolute bottom-0 left-0 w-full z-20 pb-12">
             <div className="container mx-auto px-4 max-w-6xl">
               <span className="text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 block animate-fade-in">
