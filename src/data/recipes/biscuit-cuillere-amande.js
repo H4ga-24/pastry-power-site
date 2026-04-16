@@ -5,7 +5,7 @@ const biscuitCuillereAmande = {
   subCategory: ["Biscuits"],
   isVip: false,
   prepTime: "20 MIN",
-  cookTime: "12-15 MIN",
+  cookTime: "14 MIN",
   difficulty: "MOYEN",
   description: "Une variante plus riche et parfumée du biscuit cuillère traditionnel, apportant la rondeur et le moelleux de l'amande douce. Parfait pour des entremets fruités ou pralinés.",
   image: "/images/biscuit-cuillere-amande.jpg",
