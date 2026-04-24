@@ -7,6 +7,7 @@ const amarretti = {
   prepTime: "4H + Repos",
   cookTime: "30 MIN",
   difficulty: "AVANCÉ",
+  baseServings: 6,
   description: "Une création exclusive où la douceur du biscuit noisette rencontre l'acidité parfumée d'une compotée de griottes et l'onctuosité d'une mousse légère au lait d'amande.",
   image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3c901d5843ce9d7c979b087d04c101de.png",
   
@@ -68,7 +69,6 @@ const amarretti = {
     }
   ],
 
-  // Données des onglets (Tabs)
   advices: "Le glaçage doit être utilisé entre 30 et 32°C sur un entremets sorti directement du congélateur. S'il est trop chaud, il coule trop vite (transparence). S'il est trop froid, il fige en faisant des vagues.",
   chefQuote: "L'Amarretti joue sur le contraste entre la rondeur sucrée de l'amande et le pep's acidulé de la griotte. C'est un dessert qui demande de la précision sur le sucre.",
   equipment: [

@@ -10,7 +10,7 @@ const biscuitAmandes = {
   description: "Un biscuit d'une grande onctuosité grâce à la pâte d'amande. Sa texture souple en fait une base idéale pour le montage de vos entremets et cadres.",
   image: "https://www.tendances-food.fr/wp-content/uploads/2022/07/biscuit-aux-amandes.png",
   baseServings: 1, // 1 dose
-  
+
   ingredients: [
     { name: "Jaunes d'oeufs", amount: 220, unit: "g" },
     { name: "Sucre semoule", amount: 150, unit: "g" },
@@ -26,6 +26,20 @@ const biscuitAmandes = {
     { title: "Mélange", text: "Incorporer l'appareil jaunes/sucre à la masse d'amande détendue à l'aide d'une maryse. Ajouter ensuite les blancs montés délicatement." },
     { title: "Finition de la pâte", text: "Incorporer en pluie le mélange farine et fécule préalablement tamisé. Mélanger doucement pour garder un maximum d'air." },
     { title: "Cuisson", text: "Étaler régulièrement sur une plaque recouverte de papier sulfurisé. Cuire à 180°C pendant environ 10 minutes. Le biscuit doit rester souple et clair." }
+  ],
+
+  advices: [
+    "La pâte d'amande doit être détendue progressivement avec les blancs pour éviter les grumeaux. Ne jamais l'incorporer d'un seul coup.",
+    "Ne montez pas les blancs trop fermes : une meringue trop serrée se mélange mal et fait retomber l'appareil, ce qui produit un biscuit dense.",
+    "Ce biscuit sèche vite : filmez-le dès la sortie du four si vous ne l'utilisez pas immédiatement, pour conserver son moelleux."
+  ],
+  chefQuote: "La clé de ce biscuit, c'est la pâte d'amande bien détendue. Prenez le temps de lisser la masse avant d'incorporer le reste — c'est ça qui donne cette texture à la fois riche et souple.",
+  equipment: [
+    "Robot pâtissier (feuille)",
+    "Maryse",
+    "Plaque de cuisson",
+    "Papier sulfurisé",
+    "Tamis"
   ]
 };
 
