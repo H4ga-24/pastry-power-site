@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Crown } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const LandingPage = () => {
   const categories = [
@@ -44,6 +45,10 @@ const LandingPage = () => {
 
   return (
     <div className="bg-[#121212] min-h-screen text-white font-sans">
+      <Helmet>
+        <title>Pastry Power | L'Art de la Pâtisserie et de la Technologie</title>
+        <meta name="description" content="Apprenez la pâtisserie française avec des recettes détaillées, des cours de technologie et un accès exclusif VIP." />
+      </Helmet>
       
       {/* --- HERO SECTION --- */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -126,7 +131,6 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-8 items-stretch">
             
-            {/* 1. CARTE PÂTISSERIE */}
             <div className="bg-[#121212] border border-white/10 rounded-xl overflow-hidden flex flex-col">
                <div className="h-32 lg:h-48 relative overflow-hidden">
                   <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=800" alt="Carnet Pâtisserie" className="w-full h-full object-cover opacity-70" />
@@ -142,7 +146,6 @@ const LandingPage = () => {
                </div>
             </div>
 
-            {/* 2. CARTE BOULANGERIE */}
             <div className="bg-[#121212] border border-white/10 rounded-xl overflow-hidden flex flex-col">
                <div className="h-32 lg:h-48 relative overflow-hidden">
                   <img src="https://images.unsplash.com/photo-1636906227201-f3ec32645129?q=80&w=687&auto=format&fit=crop&fm=webp" alt="Carnet Boulangerie" className="w-full h-full object-cover opacity-70" />
@@ -158,7 +161,6 @@ const LandingPage = () => {
                </div>
             </div>
 
-            {/* 3. CARTE VIP (PRIX CORRIGÉ) */}
             <div className="bg-gradient-to-br from-[#D4AF37]/20 to-[#000] border border-[#D4AF37]/40 rounded-xl overflow-hidden flex flex-col relative shadow-lg">
                <div className="absolute top-3 right-3 bg-[#D4AF37] text-black text-[9px] font-bold px-2 py-0.5 rounded-full uppercase z-20">
                  Populaire
@@ -166,16 +168,11 @@ const LandingPage = () => {
                <div className="p-6 lg:p-8 flex flex-col flex-grow items-center text-center">
                  <Crown size={32} className="text-[#D4AF37] mb-3" />
                  <h3 className="text-2xl font-serif text-white mb-1">Club <span className="text-[#D4AF37]">VIP</span></h3>
-                 
-                 {/* PRIX OFFICIEL 4.90€ */}
                  <div className="flex items-baseline gap-1 mb-4">
                     <span className="text-3xl font-bold text-white">4.90€</span>
                     <span className="text-gray-400 text-xs">/ mois</span>
                  </div>
-                 
                  <p className="text-gray-300 text-[11px] mb-6 leading-relaxed">Accès illimité aux recettes signatures et support direct.</p>
-                 
-                 {/* REDIRECTION VERS L'INSCRIPTION VIP */}
                  <Link to="/vip" className="w-full mt-auto">
                       <button className="w-full bg-[#D4AF37] text-black hover:bg-white font-bold py-4 text-xs tracking-widest shadow-xl transition-all rounded-sm uppercase">
                           S'abonner
@@ -185,6 +182,27 @@ const LandingPage = () => {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* --- SECTION SEO AJOUTÉE (Indispensable pour AdSense) --- */}
+      <section className="py-20 px-6 max-w-4xl mx-auto border-t border-white/5">
+        <h2 className="text-2xl font-serif text-[#D4AF37] mb-6 text-center italic">L'Excellence de la Pâtisserie Française</h2>
+        <div className="grid md:grid-cols-2 gap-10 text-gray-400 leading-relaxed text-sm text-justify">
+          <p>
+            Bienvenue sur <strong>Pastry Power</strong>, votre plateforme dédiée à la maîtrise des arts sucrés. 
+            Que vous soyez en préparation d'un diplôme professionnel ou un amateur passionné, nous mettons à votre 
+            disposition un catalogue exhaustif de recettes pas à pas. De la précision du tempérage du chocolat 
+            à la légèreté d'un entremets moderne, chaque fiche technique est conçue pour vous transmettre 
+            le savoir-faire des plus grands laboratoires.
+          </p>
+          <p>
+            Notre approche unique combine pratique et théorie avec une section entière dédiée à la 
+            <strong> Technologie de la Pâtisserie</strong>. Comprendre le rôle des ingrédients, les réactions 
+            chimiques à la cuisson et les techniques de conservation est essentiel pour progresser. 
+            Rejoignez notre programme VIP pour accéder à des contenus exclusifs et perfectionner vos 
+            créations avec des méthodes rigoureuses et professionnelles.
+          </p>
         </div>
       </section>
 

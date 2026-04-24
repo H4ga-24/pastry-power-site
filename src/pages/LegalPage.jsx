@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const LegalPage = () => {
   // Remonte en haut de page au chargement
@@ -6,6 +7,11 @@ const LegalPage = () => {
 
   return (
     <div className="min-h-screen bg-[#121212] text-gray-300 pt-32 pb-20 px-6 font-sans">
+      <Helmet>
+        <title>Mentions Légales | Pastry Power</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
+
       <div className="max-w-3xl mx-auto space-y-12">
         
         {/* TITRE */}
@@ -20,6 +26,7 @@ const LegalPage = () => {
           <p className="leading-relaxed">
             Le site <strong>Pastry Power</strong> est édité par :<br/><br/>
             <strong>Entrepreneur Individuel :</strong> Alexandre PERREAU<br/>
+            <strong>Responsable de la publication :</strong> Alexandre PERREAU<br/>
             <strong>Statut :</strong> Micro-Entrepreneur<br/>
             <strong>Siège social :</strong> 76000 Rouen (adresse diponible à la demande)<br/>
             <strong>Contact :</strong> <a href="mailto:pastrypower76@gmail.com" className="text-[#D4AF37] hover:underline">pastrypower76@gmail.com</a><br/>
@@ -59,7 +66,7 @@ const LegalPage = () => {
         </section>
 
         {/* 4. CONDITIONS DE VENTE (CGV) */}
-        <section className="space-y-4">
+        <section className="space-y-4 border-b border-white/10 pb-8">
           <h2 className="text-xl text-[#D4AF37] font-bold uppercase">4. Vente de Produits & Services</h2>
           <p className="leading-relaxed">
             <strong>Produits Numériques (E-books) :</strong><br/>
@@ -72,6 +79,26 @@ const LegalPage = () => {
           <p className="leading-relaxed">
             <strong>Droit de Rétractation :</strong><br/>
             Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne peut être exercé pour les contenus numériques non fournis sur un support matériel (E-books, accès VIP) dont l'exécution a commencé après accord préalable exprès du consommateur et renoncement exprès à son droit de rétractation.
+          </p>
+        </section>
+
+        {/* 5. PROTECTION DES DONNÉES (RGPD) */}
+        <section className="space-y-4 border-b border-white/10 pb-8">
+          <h2 className="text-xl text-[#D4AF37] font-bold uppercase">5. Protection des données (RGPD)</h2>
+          <p className="leading-relaxed">
+            Les informations recueillies via les formulaires ou la création de compte VIP sont enregistrées dans un fichier informatisé par Alexandre PERREAU. Elles sont destinées uniquement à la gestion de votre compte. Conformément à la loi « informatique et libertés » et au RGPD, vous pouvez exercer votre droit d'accès aux données vous concernant et les faire rectifier ou supprimer en contactant : <a href="mailto:pastrypower76@gmail.com" className="text-[#D4AF37] hover:underline">pastrypower76@gmail.com</a>.
+          </p>
+        </section>
+
+        {/* 6. COOKIES ET PUBLICITÉS */}
+        <section className="space-y-4">
+          <h2 className="text-xl text-[#D4AF37] font-bold uppercase">6. Cookies et Publicités (Google AdSense)</h2>
+          <p className="leading-relaxed text-sm mb-2">
+            Ce site utilise Google AdSense, un service de publicité fourni par Google Inc. (« Google »).
+            En tant que prestataire tiers, Google utilise des cookies pour diffuser des annonces sur ce site. L'utilisation de cookies publicitaires par Google permet à l'entreprise et à ses partenaires de diffuser des annonces auprès de nos utilisateurs en fonction de leur visite sur notre site et/ou sur d'autres sites Web.
+          </p>
+          <p className="leading-relaxed text-sm">
+            Les utilisateurs peuvent choisir de désactiver la publicité personnalisée en consultant la page <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">Paramètres des annonces de Google</a>. Alternativement, vous pouvez désactiver l'utilisation de cookies par un fournisseur tiers relatifs à la publicité personnalisée en consultant le site <a href="https://www.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">www.aboutads.info</a>.
           </p>
         </section>
 

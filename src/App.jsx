@@ -1,12 +1,11 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import DynamicPage from './components/DynamicPage';
 import FloatingBackButton from './components/FloatingBackButton';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
 import AdBanner from './components/AdBanner';
 import { useAuth } from './AuthContext';
@@ -20,6 +19,12 @@ import VipPage from './pages/VipPage';
 
 const App = () => {
   const { isPremium } = useAuth();
+  const location = useLocation();
+
+  // Liste des pages où Google interdit d'afficher des publicités
+  const noAdsRoutes = ['/login', '/mentions-legales', '/a-propos', '/vip'];
+  // On affiche la pub uniquement si l'utilisateur n'est pas premium ET qu'il n'est pas sur une page interdite
+  const showAd = !isPremium && !noAdsRoutes.includes(location.pathname);
 
   return (
     <div className="flex flex-col min-h-screen bg-[#121212]">
@@ -34,18 +39,17 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/vip"   element={<VipPage />} />
 
-          {/* --- RECETTES --- */}
+          {/* --- RECETTES ---
+              IMPORTANT : toutes les recettes (libres ET vip) passent par DynamicPage.
+              La protection freemium est gérée DANS DynamicPage / RecipeLayout
+              via le flag isVip du catalog.js — pas au niveau du routeur.
+              Cela permet à Google de crawler le contenu et valider AdSense.
+          */}
           <Route path="/recipe/:id"          element={<DynamicPage />} />
           <Route path="/vip/technologie/:id" element={<DynamicPage />} />
           <Route path="/techno/:id"          element={<DynamicPage />} />
-          <Route
-            path="/vip/:id"
-            element={
-              <ProtectedRoute>
-                <DynamicPage />
-              </ProtectedRoute>
-            }
-          />
+          {/* ⚠️  L'ancienne route /vip/:id avec <ProtectedRoute> a été supprimée
+              car elle affichait une page vide aux crawlers → refus AdSense */}
 
           {/* --- PAGES STATIQUES --- */}
           <Route path="/mentions-legales" element={<LegalPage />} />
@@ -74,8 +78,8 @@ const App = () => {
         </Routes>
       </main>
 
-      {/* Publicité visible uniquement pour les non-VIP */}
-      {!isPremium && (
+      {/* Publicité globale */}
+      {showAd && (
         <div className="w-full max-w-4xl mx-auto my-8 px-4">
           <AdBanner />
         </div>
