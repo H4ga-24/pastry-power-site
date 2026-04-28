@@ -35,15 +35,15 @@ const HUBS = {
     sections: [
       { title: "Sans Gluten",       id: "sans-gluten",  image: "https://plus.unsplash.com/premium_photo-1700399458190-eb33043ae7b2?q=60&w=600&auto=format&fit=crop", desc: "Farines de riz, maïs, sarrasin..." },
       { title: "Sans Sucre / IG Bas",id: "sans-sucre",  image: "https://images.unsplash.com/photo-1655169947079-5b2a38815147?q=60&w=600&auto=format&fit=crop",       desc: "Miel, Agave, Coco, Édulcorants." },
-      { title: "Végétal / Végan",   id: "vegan",        image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=60&w=600",                           desc: "Sans produits animaux." },
-      { title: "Sans Lactose",      id: "sans-lactose", image: "https://images.unsplash.com/photo-1600788907416-456578634209?q=60&w=600",                           desc: "Laits végétaux et huiles." },
+      { title: "Végétal / Végan",   id: "vegan",        image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=60&w=600",                            desc: "Sans produits animaux." },
+      { title: "Sans Lactose",      id: "sans-lactose", image: "https://images.unsplash.com/photo-1600788907416-456578634209?q=60&w=600",                            desc: "Laits végétaux et huiles." },
     ],
   },
   'technologie': {
     title: "Technologie",
     description: "La science des ingrédients et des réactions.",
     sections: [
-      { title: "Farines",   id: "farine",    image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=60&w=600&auto=format&fit=crop",                       desc: "Blés et gluten." },
+      { title: "Farines",   id: "farine",    image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=60&w=600&auto=format&fit=crop",                        desc: "Blés et gluten." },
       { title: "Sucres",    id: "sucre",     image: "https://plus.unsplash.com/premium_photo-1744312220263-a93627dc6801?q=60&w=600&auto=format&fit=crop",             desc: "Saccharose et sirops." },
       { title: "Corps Gras",id: "gras",      image: "https://images.unsplash.com/photo-1652282556241-0ce13285d00f?q=60&w=600&auto=format&fit=crop",                   desc: "Beurre et huiles." },
       { title: "Gélifiants",id: "gelifiant", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=60&w=600&auto=format&fit=crop",            desc: "Gélatine, Pectine..." },
@@ -56,7 +56,7 @@ const HUBS = {
     title: "Confiserie",
     description: "Le travail du sucre et du chocolat.",
     sections: [
-      { title: "Macarons",           id: "macaron",            image: "https://images.unsplash.com/photo-1702034519504-b7cf62c36413?q=60&w=600&auto=format&fit=crop",     desc: "Coques et ganaches." },
+      { title: "Macarons",           id: "macaron",            image: "https://images.unsplash.com/photo-1702034519504-b7cf62c36413?q=60&w=600&auto=format&fit=crop",      desc: "Coques et ganaches." },
       { title: "Autres Confiseries", id: "confiserie-diverse", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=60&w=600&auto=format&fit=crop", desc: "Caramels, pâtes de fruits." },
     ],
   },
@@ -207,8 +207,8 @@ const PatisseriePage = ({ category: propCategory }) => {
 
   // B. MODE LISTE DES RECETTES
 
+  // Correction cruciale pour le SEO AdSense et le Paywall
   const getItemUrl = (item) => {
-    if (item.isVip) return item.isTech ? `/vip/technologie/${item.id}` : `/vip/${item.id}`;
     return item.isTech ? `/techno/${item.id}` : `/recipe/${item.id}`;
   };
 
