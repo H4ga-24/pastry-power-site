@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async'; // Utilise react-helmet-async si c'est ce que tu as dans App.jsx
+import { Helmet } from 'react-helmet';
 import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote, Play, Pause, RotateCcw, Timer, Lock } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import CookingMode from './CookingMode';
 import OptimizedImage from './OptimizedImage';
-import AdBanner from './AdBanner'; 
-import { useAuth } from '../AuthContext'; 
+import AdBanner from './AdBanner';
+import { useAuth } from '../AuthContext';
+import { catalog } from '../data/catalog'; // <-- On importe ton catalogue pour que ce soit infaillible
 
 const parseCookTime = (timeStr) => {
   if (!timeStr) return 0;
@@ -41,6 +42,14 @@ const RecipeLayout = ({ recipe }) => {
   const initialTime = parseCookTime(recipe?.cookTime);
   const [timeLeft, setTimeLeft] = useState(initialTime);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+
+  // --- LOGIQUE FREEMIUM INFAILLIBLE ---
+  // On va chercher la vraie info 'isVip' directement à la source (le catalogue)
+  const catalogEntry = catalog.find(item => item.id.toLowerCase() === recipe?.id?.toLowerCase());
+  const isVipRecipe = catalogEntry ? catalogEntry.isVip : false;
+  
+  // La recette est verrouillée UNIQUEMENT si elle est VIP ET que l'utilisateur n'est pas Premium
+  const isLocked = isVipRecipe && !isPremium;
 
   useEffect(() => {
     setTimeLeft(parseCookTime(recipe?.cookTime));
@@ -83,11 +92,6 @@ const RecipeLayout = ({ recipe }) => {
   );
 
   const pageUrl = `${SITE_URL}/recipe/${recipe.id}`;
-
-  // --- LOGIQUE DE PROTECTION CORRIGÉE ---
-  // On regarde le 'isVip' ou 'isPremium' de la recette (pour couvrir tous les cas de ton catalogue)
-  const recipeRequiresVip = recipe.isVip || recipe.isPremium;
-  const isLocked = recipeRequiresVip && !isPremium;
 
   const formatDurationISO8601 = (timeString) => {
     if (!timeString) return undefined;
@@ -210,9 +214,10 @@ const RecipeLayout = ({ recipe }) => {
         <div className="container mx-auto px-4 max-w-6xl pb-24 mt-16">
           <div className="grid md:grid-cols-12 gap-12">
 
-            {/* INGRÉDIENTS (Toujours visibles pour Google) */}
+            {/* INGRÉDIENTS */}
             <div className="md:col-span-4 space-y-8">
               <div className="bg-[#1a1a1a] p-8 rounded-sm border border-white/5 sticky top-24">
+
                 <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
                   <div className="flex items-center gap-2 text-[#D4AF37]">
                     <Users className="w-5 h-5" />
@@ -244,6 +249,7 @@ const RecipeLayout = ({ recipe }) => {
 
             {/* ÉTAPES */}
             <div className="md:col-span-8">
+
               {initialTime > 0 && (
                 <div className={`mb-12 p-6 rounded-xl border flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300 ${isTimerRunning ? 'bg-[#D4AF37]/10 border-[#D4AF37]/50 shadow-[0_0_15px_rgba(212,175,55,0.2)]' : 'bg-[#1a1a1a] border-white/10'}`}>
                   <div className="flex items-center gap-4">
@@ -271,7 +277,7 @@ const RecipeLayout = ({ recipe }) => {
                 </div>
               )}
 
-              {/* LOGIQUE FREEMIUM SUR LES ÉTAPES */}
+              {/* --- LA NOUVELLE LOGIQUE QUI PROTÈGE VRAIMENT --- */}
               <div className="space-y-12 mb-16">
                 {!isLocked ? (
                   recipe.steps && recipe.steps.map((step, i) => (
@@ -284,19 +290,17 @@ const RecipeLayout = ({ recipe }) => {
                     </div>
                   ))
                 ) : (
-                  /* MUR PAYANT SI LA RECETTE EST VIP ET L'USER NON VIP */
-                  <div className="bg-gradient-to-br from-[#D4AF37]/20 to-black p-12 rounded-xl border border-[#D4AF37]/30 text-center">
+                  /* LE MUR PAYANT POUR CEUX QUI N'ONT PAS PAYÉ */
+                  <div className="bg-gradient-to-br from-[#D4AF37]/20 to-black p-12 rounded-xl border border-[#D4AF37]/30 text-center shadow-lg">
                     <Lock className="w-12 h-12 text-[#D4AF37] mx-auto mb-6" />
                     <h3 className="text-2xl font-serif text-white mb-4">Étapes réservées aux membres VIP</h3>
                     <p className="text-gray-400 mb-8 max-w-md mx-auto">
-                      Cette recette fait partie de la collection signature. Rejoignez le Club pour accéder aux instructions détaillées.
+                      Cette recette fait partie de la collection Masterclass. Rejoignez le Club pour accéder aux instructions détaillées et astuces de chef.
                     </p>
-                    <Link to="/vip" className="inline-block bg-[#D4AF37] text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all">
+                    <a href="/vip" className="inline-block bg-[#D4AF37] text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all shadow-md">
                       Devenir VIP
-                    </Link>
-                    
-                    {/* Injection de la pub AdSense dans le mur */}
-                    <div className="mt-8 border-t border-white/10 pt-8">
+                    </a>
+                    <div className="mt-8 border-t border-white/5 pt-8">
                       <AdBanner />
                     </div>
                   </div>
