@@ -6,7 +6,7 @@
   isVip: true,
   prepTime: "24H + 2H",
   cookTime: "30 MIN",
-  difficulty: "AVANCà‰",
+  difficulty: "AVANCE",
   description: "Alliance bicolore : pâte d'amande pistache et praliné pistache, enrobés de noir.",
   image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6602fa78c747e52c6aa45139ecfde50b.png",
   baseServings: 1, 

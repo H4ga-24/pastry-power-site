@@ -5,7 +5,7 @@ const biscuitCuillere = {
   subCategory: ["Biscuits"],
   isVip: false,
   prepTime: "15 MIN",
-  cookTime: "10-12 MIN",
+  cookTime: "11 MIN",
   difficulty: "FACILE",
   description: "Le grand classique de la pâtisserie française, indispensable pour les charlottes et tiramisus. Sa texture est légère, moelleuse à cœur et perles de sucre croquantes en surface.",
   image: "/images/biscuit-cuillere.jpg", // Image d'illustration si manquante

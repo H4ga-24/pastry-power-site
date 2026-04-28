@@ -5,7 +5,7 @@ const biscuitViennois = {
   subCategory: ["Biscuits"],
   isVip: false,
   prepTime: "20 MIN",
-  cookTime: "10-12 MIN",
+  cookTime: "11 MIN",
   difficulty: "MOYEN",
   description: "Un biscuit d'une souplesse extrême, très alvéolé et léger. C'est l'alternative parfaite au biscuit roulé classique pour des montages plus aériens et délicats.",
   image: "/images/biscuit-viennois.jpg",

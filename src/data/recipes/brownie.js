@@ -5,7 +5,7 @@ const brownie = {
   subCategory: ["Gâteaux de Voyage"],
   isVip: false,
   prepTime: "15 MIN",
-  cookTime: "20-25 MIN",
+  cookTime: "22 MIN",
   difficulty: "FACILE",
   description: "Un gâteau de voyage d'origine américaine, ultra dense et riche. Une fine croûte craquante sur le dessus et un cœur fondant intensément chocolaté.",
   image: "/images/brownie.jpg",

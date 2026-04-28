@@ -5,7 +5,7 @@ const biscuitRoule = {
   subCategory: ["Biscuits"],
   isVip: false,
   prepTime: "15 MIN",
-  cookTime: "10-12 MIN",
+  cookTime: "11 MIN",
   difficulty: "FACILE",
   description: "Le biscuit souple par excellence. Sa technique d'incorporation lui permet d'être roulé à chaud ou à froid sans jamais se casser. Indispensable pour les bûches de Noël !",
   image: "/images/biscuit-roule.jpg",

@@ -5,7 +5,7 @@ const biscuitJoconde = {
   subCategory: ["Biscuits"],
   isVip: true,
   prepTime: "20 MIN",
-  cookTime: "8-10 MIN",
+  cookTime: "9 MIN",
   difficulty: "MOYEN",
   description: "Le biscuit star de l'entremets Opéra ! Riche en amandes, il est souple, fin et absorbe parfaitement les sirops de punchage sans se désagréger.",
   image: "/images/biscuit-joconde.jpg", // Image d'illustration

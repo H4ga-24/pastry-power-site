@@ -5,7 +5,7 @@ const leKouglofAlsacien = {
   subCategory: ["Desserts Régionaux"], // Catégorie adaptée
   isVip: false,
   prepTime: "40 MIN + repos",
-  cookTime: "45-50 MIN",
+  cookTime: "47 MIN",
   difficulty: "MOYEN", // "Moyenne" dans le fichier
   description: "Le symbole gourmand de l'Alsace. Une brioche haute, aérée et parfumée, reconnaissable entre mille par sa forme cannelée et ses amandes entières incrustées.",
   image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/0de5337a547ec8337189e88cf1292af1.jpg",
