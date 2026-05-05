@@ -9,7 +9,7 @@ const LegalPage = () => {
     <div className="min-h-screen bg-[#121212] text-gray-300 pt-32 pb-20 px-6 font-sans">
       <Helmet>
         <title>Mentions Légales | Pastry Power</title>
-        <meta name="robots" content="noindex" />
+        <meta name="description" content="Mentions légales du site Pastry Power : éditeur, hébergement, propriété intellectuelle, conditions de vente et politique de confidentialité RGPD." />
       </Helmet>
 
       <div className="max-w-3xl mx-auto space-y-12">

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /vip/
+Disallow: /login
+
+Sitemap: https://pastrypower.fr/sitemap.xml
