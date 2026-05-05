@@ -2049,7 +2049,7 @@ export const catalog = [
   {
     "id": "la-pate-a-pain",
     "title": "La pâte à pain",
-    "category": "patisserie",
+    "category": "Pâtisserie",
     "subCategory": [
       "Pâtes"
     ],
@@ -2426,7 +2426,7 @@ export const catalog = [
   {
     "id": "mayonnaise-maison",
     "title": "Mayonnaise Maison",
-    "category": "cuisine",
+    "category": "Cuisine",
     "subCategory": [
       "Sauces"
     ],
@@ -3909,7 +3909,7 @@ export const catalog = [
   {
     "id": "isomalt-fondant-page",
     "title": "Isomalt & Fondant Pâtissier",
-    "category": "Technologie - sucres",
+    "category": "Technologie - Sucres",
     "subCategory": [],
     "image": "https://cdn8.futura-sciences.com/a1920/images/glossaire/Celine/pectine%20%C2%A0MaxCab%2C%20Adobe%20Stock.jpeg",
     "description": "Comprendre les fondamentaux.",
