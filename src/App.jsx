@@ -16,13 +16,16 @@ import NotFoundPage from './pages/NotFoundPage';
 import LegalPage from './pages/LegalPage';
 import AboutPage from './pages/AboutPage';
 import VipPage from './pages/VipPage';
+import CommunautePage from './pages/CommunautePage';
+import NouveauPostPage from './pages/NouveauPostPage';
+import ForumPostPage from './pages/ForumPostPage';
 
 const App = () => {
   const { isPremium } = useAuth();
   const location = useLocation();
 
   // Liste des pages où Google interdit d'afficher des publicités
-  const noAdsRoutes = ['/login', '/mentions-legales', '/a-propos', '/vip'];
+  const noAdsRoutes = ['/login', '/mentions-legales', '/a-propos', '/vip', '/communaute'];
   // On affiche la pub uniquement si l'utilisateur n'est pas premium ET qu'il n'est pas sur une page interdite
   const showAd = !isPremium && !noAdsRoutes.includes(location.pathname);
 
@@ -72,6 +75,11 @@ const App = () => {
 
           <Route path="/alternative"              element={<PatisseriePage category="alternative" />} />
           <Route path="/alternative/:subcategory" element={<PatisseriePage />} />
+
+          {/* --- COMMUNAUTÉ --- */}
+          <Route path="/communaute" element={<CommunautePage />} />
+          <Route path="/communaute/nouveau" element={<NouveauPostPage />} />
+          <Route path="/communaute/:postId" element={<ForumPostPage />} />
 
           {/* --- 404 --- */}
           <Route path="*" element={<NotFoundPage />} />

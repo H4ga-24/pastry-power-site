@@ -8,6 +8,7 @@ import OptimizedImage from './OptimizedImage';
 import AdBanner from './AdBanner';
 import { useAuth } from '../AuthContext';
 import { catalog } from '../data/catalog'; // <-- On importe ton catalogue pour que ce soit infaillible
+import RecipeFeedback from './RecipeFeedback';
 
 const parseCookTime = (timeStr) => {
   if (!timeStr) return 0;
@@ -364,6 +365,10 @@ const RecipeLayout = ({ recipe }) => {
                   </div>
                 </Tabs>
               </div>
+
+              {!isLocked && (
+                <RecipeFeedback recipeId={recipe.id} />
+              )}
 
             </div>
           </div>

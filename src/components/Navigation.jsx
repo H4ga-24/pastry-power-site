@@ -87,15 +87,16 @@ const Navigation = () => {
         { title: 'Sauces', path: '/cuisine/sauce' }
       ]
     },
-    { 
-      title: 'Alternative', 
-      path: '/alternative', 
+    {
+      title: 'Alternative',
+      path: '/alternative',
       submenu: [
         { title: 'Sans Gluten', path: '/alternative/sans-gluten' },
         { title: 'Sans Sucre', path: '/alternative/sans-sucre' },
         { title: 'Végétal', path: '/alternative/vegetal' }
-      ] 
-    }
+      ]
+    },
+    { title: 'Communauté', path: '/communaute', submenu: [] }
   ];
 
   return (
