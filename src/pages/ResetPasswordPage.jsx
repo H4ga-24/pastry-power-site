@@ -14,12 +14,21 @@ const ResetPasswordPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
-      if (event === 'PASSWORD_RECOVERY') {
-        setMessage('');
-      }
-    });
-    return () => subscription.unsubscribe();
+    const hashParams = new URLSearchParams(window.location.hash.substring(1));
+    const accessToken = hashParams.get('access_token');
+    const refreshToken = hashParams.get('refresh_token');
+    const type = hashParams.get('type');
+
+    if (type === 'recovery' && accessToken) {
+      supabase.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      }).then(({ error }) => {
+        if (error) setMessage('Lien invalide ou expiré. Refaites une demande.');
+      });
+    } else {
+      setMessage('Lien invalide ou expiré. Refaites une demande.');
+    }
   }, []);
 
   const handleReset = async (e) => {
