@@ -19,6 +19,7 @@ import VipPage from './pages/VipPage';
 import CommunautePage from './pages/CommunautePage';
 import NouveauPostPage from './pages/NouveauPostPage';
 import ForumPostPage from './pages/ForumPostPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 const App = () => {
   const { isPremium } = useAuth();
@@ -39,8 +40,9 @@ const App = () => {
         <Routes>
           {/* --- ACCUEIL --- */}
           <Route path="/"      element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/vip"   element={<VipPage />} />
+          <Route path="/login"           element={<Login />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/vip"            element={<VipPage />} />
 
           {/* --- RECETTES ---
               IMPORTANT : toutes les recettes (libres ET vip) passent par DynamicPage.

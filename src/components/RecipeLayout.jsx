@@ -9,6 +9,7 @@ import AdBanner from './AdBanner';
 import { useAuth } from '../AuthContext';
 import { catalog } from '../data/catalog'; // <-- On importe ton catalogue pour que ce soit infaillible
 import RecipeFeedback from './RecipeFeedback';
+import { supabase } from '../supabase';
 
 const parseCookTime = (timeStr) => {
   if (!timeStr) return 0;
@@ -51,6 +52,24 @@ const RecipeLayout = ({ recipe }) => {
   
   // La recette est verrouillée UNIQUEMENT si elle est VIP ET que l'utilisateur n'est pas Premium
   const isLocked = isVipRecipe && !isPremium;
+
+  const [realRating, setRealRating] = useState(null);
+  const [realCount, setRealCount] = useState(0);
+
+  useEffect(() => {
+    async function loadRating() {
+      const { data } = await supabase
+        .from('recipe_ratings')
+        .select('score')
+        .eq('recipe_id', recipe?.id);
+      if (data && data.length >= 1) {
+        const avg = data.reduce((s, r) => s + r.score, 0) / data.length;
+        setRealRating(Math.round(avg * 10) / 10);
+        setRealCount(data.length);
+      }
+    }
+    if (recipe?.id) loadRating();
+  }, [recipe?.id]);
 
   useEffect(() => {
     setTimeLeft(parseCookTime(recipe?.cookTime));
@@ -132,11 +151,13 @@ const RecipeLayout = ({ recipe }) => {
     recipeYield: recipe.baseServings ? `${recipe.baseServings} portions` : "1 portion",
     recipeCategory: getValidCategory(recipe.subCategory, recipe.category),
     recipeCuisine: 'Française',
-    aggregateRating: {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "124"
-    },
+    ...(realRating && realCount >= 1 ? {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        "ratingValue": String(realRating),
+        "ratingCount": String(realCount)
+      }
+    } : {}),
     recipeIngredient: (recipe.ingredients || []).map(ing =>
       `${ing.amount || ''} ${ing.unit || ''} ${ing.name}`.trim()
     ),

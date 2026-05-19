@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [mode, setMode] = useState('login'); // 'login' | 'forgot' | 'forgot-sent'
   
   const navigate = useNavigate();
 
@@ -61,63 +62,146 @@ const Login = () => {
     setLoading(false);
   };
 
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    if (!email.trim()) {
+      setMessage("Entre ton adresse email d'abord.");
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'https://pastrypower.fr/reset-password',
+    });
+    if (error) setMessage(error.message);
+    else setMode('forgot-sent');
+    setLoading(false);
+  };
+
   return (
     <div className="min-h-screen bg-[#121212] flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-[#1a1a1a] border border-white/5 p-8 rounded-sm shadow-2xl">
         <div className="text-center mb-8">
           <Crown className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-3xl font-serif text-white uppercase tracking-tighter">Pastry Power</h1>
-          <p className="text-gray-500 text-sm mt-2 font-light">Rejoignez l'élite de la pâtisserie</p>
+          <p className="text-gray-500 text-sm mt-2 font-light">
+            {mode === 'forgot' ? 'Réinitialisation du mot de passe' : "Rejoignez l'élite de la pâtisserie"}
+          </p>
         </div>
 
-        <form className="space-y-6">
-          <div className="space-y-2">
-            <label className="text-xs text-[#D4AF37] uppercase tracking-widest font-bold">Email</label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-3 w-4 h-4 text-gray-500" />
-              <input 
-                type="email" 
-                placeholder="chef@pastry.com"
-                className="w-full bg-[#121212] border border-white/10 rounded-none p-3 pl-10 text-white focus:border-[#D4AF37] outline-none transition-all"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+        {/* Mode : email envoyé */}
+        {mode === 'forgot-sent' ? (
+          <div className="text-center space-y-4">
+            <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 p-6 rounded-sm">
+              <Mail className="w-8 h-8 text-[#D4AF37] mx-auto mb-3" />
+              <p className="text-white text-sm leading-relaxed">
+                Un email de réinitialisation a été envoyé à <span className="text-[#D4AF37]">{email}</span>.
+              </p>
+              <p className="text-gray-500 text-xs mt-2">Vérifie aussi tes spams.</p>
             </div>
+            <button
+              onClick={() => { setMode('login'); setMessage(''); }}
+              className="text-xs text-gray-500 hover:text-[#D4AF37] transition-colors underline"
+            >
+              Retour à la connexion
+            </button>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-xs text-[#D4AF37] uppercase tracking-widest font-bold">Mot de passe</label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 w-4 h-4 text-gray-500" />
-              <input 
-                type="password" 
-                placeholder="••••••••"
-                className="w-full bg-[#121212] border border-white/10 rounded-none p-3 pl-10 text-white focus:border-[#D4AF37] outline-none transition-all"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+        ) : mode === 'forgot' ? (
+          /* Mode : formulaire mot de passe oublié */
+          <form className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-xs text-[#D4AF37] uppercase tracking-widest font-bold">Email</label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-3 w-4 h-4 text-gray-500" />
+                <input
+                  type="email"
+                  placeholder="chef@pastry.com"
+                  className="w-full bg-[#121212] border border-white/10 rounded-none p-3 pl-10 text-white focus:border-[#D4AF37] outline-none transition-all"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
 
-          {message && <p className="text-xs text-center text-[#D4AF37] bg-[#D4AF37]/10 p-2">{message}</p>}
+            {message && <p className="text-xs text-center text-[#D4AF37] bg-[#D4AF37]/10 p-2">{message}</p>}
 
-          <div className="grid grid-cols-2 gap-4">
-            <Button 
-              onClick={handleLogin}
+            <Button
+              onClick={handleForgotPassword}
               disabled={loading}
-              className="bg-white/5 text-white hover:bg-white/10 border border-white/10 rounded-none h-12"
+              className="w-full bg-[#D4AF37] text-black hover:bg-[#B8962E] rounded-none h-12 font-bold"
             >
-              {loading ? <Loader2 className="animate-spin" /> : "Se connecter"}
+              {loading ? <Loader2 className="animate-spin" /> : "Envoyer le lien de réinitialisation"}
             </Button>
-            <Button 
-              onClick={handleSignUp}
-              disabled={loading}
-              className="bg-[#D4AF37] text-black hover:bg-[#B8962E] rounded-none h-12 font-bold"
+
+            <button
+              type="button"
+              onClick={() => { setMode('login'); setMessage(''); }}
+              className="w-full text-xs text-gray-500 hover:text-[#D4AF37] transition-colors underline"
             >
-              S'inscrire
-            </Button>
-          </div>
-        </form>
+              Retour à la connexion
+            </button>
+          </form>
+
+        ) : (
+          /* Mode : login normal */
+          <form className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-xs text-[#D4AF37] uppercase tracking-widest font-bold">Email</label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-3 w-4 h-4 text-gray-500" />
+                <input
+                  type="email"
+                  placeholder="chef@pastry.com"
+                  className="w-full bg-[#121212] border border-white/10 rounded-none p-3 pl-10 text-white focus:border-[#D4AF37] outline-none transition-all"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs text-[#D4AF37] uppercase tracking-widest font-bold">Mot de passe</label>
+                <button
+                  type="button"
+                  onClick={() => { setMode('forgot'); setMessage(''); }}
+                  className="text-xs text-gray-500 hover:text-[#D4AF37] transition-colors underline"
+                >
+                  Mot de passe oublié ?
+                </button>
+              </div>
+              <div className="relative">
+                <Lock className="absolute left-3 top-3 w-4 h-4 text-gray-500" />
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  className="w-full bg-[#121212] border border-white/10 rounded-none p-3 pl-10 text-white focus:border-[#D4AF37] outline-none transition-all"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {message && <p className="text-xs text-center text-[#D4AF37] bg-[#D4AF37]/10 p-2">{message}</p>}
+
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                onClick={handleLogin}
+                disabled={loading}
+                className="bg-white/5 text-white hover:bg-white/10 border border-white/10 rounded-none h-12"
+              >
+                {loading ? <Loader2 className="animate-spin" /> : "Se connecter"}
+              </Button>
+              <Button
+                onClick={handleSignUp}
+                disabled={loading}
+                className="bg-[#D4AF37] text-black hover:bg-[#B8962E] rounded-none h-12 font-bold"
+              >
+                S'inscrire
+              </Button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );
