@@ -69,7 +69,9 @@ const Login = () => {
       return;
     }
     setLoading(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'https://pastrypower.fr/reset-password',
+    });
     if (error) setMessage(error.message);
     else setMode('forgot-sent');
     setLoading(false);
