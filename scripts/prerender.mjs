@@ -89,7 +89,82 @@ function buildBodyHTML(recipe) {
 </article>`
 }
 
-// --- Main loop ---
+// --- Category mapping (URL slug → catalog category label) ---
+const CATEGORIES = [
+  { slug: 'patisserie',   label: 'Pâtisserie',   key: 'Pâtisserie' },
+  { slug: 'confiserie',   label: 'Confiserie',   key: 'Confiserie' },
+  { slug: 'chocolaterie', label: 'Chocolaterie', key: 'Chocolaterie' },
+  { slug: 'cuisine',      label: 'Cuisine',      key: 'Cuisine' },
+  { slug: 'alternative',  label: 'Alternative',  key: 'Alternative' },
+]
+
+// --- Generate Homepage ---
+;(function generateHomepage() {
+  const title = 'Pastry Power — Recettes de Pâtisserie Professionnelles'
+  const desc = 'Découvrez des centaines de recettes de pâtisserie, confiserie, chocolaterie et cuisine. Fiches techniques détaillées, conseils de chef et savoir-faire professionnel.'
+  const canonical = SITE
+
+  const categoryLinks = CATEGORIES
+    .map(c => `<li><a href="/${c.slug}">${esc(c.label)}</a></li>`)
+    .join('\n      ')
+
+  const bodyHTML = `<main>
+  <h1>Pastry Power — Recettes de Pâtisserie &amp; Cuisine</h1>
+  <p>${esc(desc)}</p>
+  <nav aria-label="Catégories"><ul>
+      ${categoryLinks}
+    </ul></nav>
+</main>`
+
+  const page = template
+    .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
+    .replace('</head>', [
+      `  <meta name="description" content="${esc(desc)}">`,
+      `  <link rel="canonical" href="${canonical}">`,
+      '</head>',
+    ].join('\n'))
+    .replace('<div id="root"></div>', `<div id="root">${bodyHTML}</div>`)
+
+  writeFileSync(join(DIST, 'index.html'), page, 'utf-8')
+  console.log('  ✓ Homepage / générée')
+})()
+
+// --- Generate Category Pages ---
+for (const cat of CATEGORIES) {
+  const recipes = catalog.filter(e => !e.isTech && e.category === cat.key)
+
+  const recipesHTML = recipes
+    .map(r => `<li><a href="/recipe/${r.id}">${esc(r.title)}</a>${r.description ? ` — ${esc(r.description.slice(0, 120))}` : ''}</li>`)
+    .join('\n      ')
+
+  const bodyHTML = `<main>
+  <h1>${esc(cat.label)} — Recettes Pastry Power</h1>
+  <p>Retrouvez toutes nos recettes de ${esc(cat.label.toLowerCase())} : fiches techniques détaillées et conseils professionnels.</p>
+  <ul>
+      ${recipesHTML || '<li>Aucune recette disponible pour le moment.</li>'}
+  </ul>
+</main>`
+
+  const title = `${cat.label} | Pastry Power`
+  const desc = `Toutes nos recettes de ${cat.label.toLowerCase()} : ${recipes.length} fiche${recipes.length !== 1 ? 's' : ''} technique${recipes.length !== 1 ? 's' : ''} avec ingrédients, étapes détaillées et conseils de chef.`
+  const canonical = `${SITE}/${cat.slug}`
+
+  const page = template
+    .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
+    .replace('</head>', [
+      `  <meta name="description" content="${esc(desc)}">`,
+      `  <link rel="canonical" href="${canonical}">`,
+      '</head>',
+    ].join('\n'))
+    .replace('<div id="root"></div>', `<div id="root">${bodyHTML}</div>`)
+
+  const outDir = join(DIST, cat.slug)
+  mkdirSync(outDir, { recursive: true })
+  writeFileSync(join(outDir, 'index.html'), page, 'utf-8')
+  console.log(`  ✓ Catégorie /${cat.slug} générée (${recipes.length} recettes)`)
+}
+
+// --- Main loop (recipe pages) ---
 let done = 0
 let skipped = 0
 let errors = 0

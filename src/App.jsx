@@ -20,6 +20,8 @@ import CommunautePage from './pages/CommunautePage';
 import NouveauPostPage from './pages/NouveauPostPage';
 import ForumPostPage from './pages/ForumPostPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import ContactPage from './pages/ContactPage';
+import PrivacyPage from './pages/PrivacyPage';
 
 const App = () => {
   const { isPremium } = useAuth();
@@ -57,8 +59,10 @@ const App = () => {
               car elle affichait une page vide aux crawlers → refus AdSense */}
 
           {/* --- PAGES STATIQUES --- */}
-          <Route path="/mentions-legales" element={<LegalPage />} />
-          <Route path="/a-propos"         element={<AboutPage />} />
+          <Route path="/mentions-legales"          element={<LegalPage />} />
+          <Route path="/a-propos"                  element={<AboutPage />} />
+          <Route path="/contact"                   element={<ContactPage />} />
+          <Route path="/politique-confidentialite" element={<PrivacyPage />} />
 
           {/* --- CATÉGORIES --- */}
           <Route path="/patisserie"              element={<PatisseriePage category="patisserie" />} />

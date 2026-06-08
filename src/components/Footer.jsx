@@ -32,6 +32,8 @@ const Footer = () => {
               <li><Link to="/technologie" className="hover:text-[#D4AF37] transition-colors">Technologie Culinaire</Link></li>
               <li><Link to="/a-propos" className="hover:text-[#D4AF37] transition-colors">Qui suis-je ?</Link></li>
               <li><Link to="/mentions-legales" className="hover:text-[#D4AF37] transition-colors">Mentions Légales</Link></li>
+              <li><Link to="/politique-confidentialite" className="hover:text-[#D4AF37] transition-colors">Politique de Confidentialité</Link></li>
+              <li><Link to="/contact" className="hover:text-[#D4AF37] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
