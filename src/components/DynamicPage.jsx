@@ -90,15 +90,14 @@ const DynamicPage = () => {
 
   // --- Rendu TECHNOLOGIE ---
   const TechComponent = mod.default;
-  const isFreemiumRoute = location.pathname.includes('/vip/technologie');
   const isAuthorized = user && isPremium;
-  const showPaywall = isFreemiumRoute && !isAuthorized;
+  const showPaywall = entry.isVip && !isAuthorized;
 
   if (showPaywall) {
     return (
       <div className="relative bg-[#121212]">
         <Helmet>
-          <title>{entry.title || "Technologie"} | Pastry Power</title>
+          <title>{entry.title || 'Technologie'} | Pastry Power</title>
         </Helmet>
         <div className="h-[180vh] overflow-hidden relative select-none">
           <TechComponent />
@@ -131,7 +130,7 @@ const DynamicPage = () => {
   return (
     <>
       <Helmet>
-        <title>{entry.title || "Technologie"} | Pastry Power</title>
+        <title>{entry.title || 'Technologie'} | Pastry Power</title>
       </Helmet>
       <TechComponent />
     </>

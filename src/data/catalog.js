@@ -9,7 +9,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3c901d5843ce9d7c979b087d04c101de.png",
+    "image": "/images/recipes/amarretti.png",
     "description": "Une création exclusive où la douceur du biscuit noisette rencontre l'acidité parfumée d'une compotée de griottes et l'onctuosité d'une mousse légère au lait d'amande.",
     "isVip": true,
     "isTech": false,
@@ -48,7 +48,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/f31e1f663893ced8b953a4ddb60456e7.png",
+    "image": "/images/recipes/arlequin.png",
     "description": "Un entremets haut en couleur : l'alliance acidulée de la passion et de la framboise rencontre la douceur de la pistache dans un jeu de textures moelleuses et fondantes.",
     "isVip": true,
     "isTech": false,
@@ -74,7 +74,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://www.ticino.ch/pictures/infoturistica/verybig4/tortelli-4.jpg",
+    "image": "/images/recipes/beignets-choux.png",
     "description": "Aussi appelés 'Pets de nonne', ces petites boules de pâte à choux frites soufflent à la cuisson pour devenir incroyablement légères et aériennes.",
     "isVip": false,
     "isTech": false,
@@ -87,7 +87,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2022/07/biscuit-aux-amandes.png",
+    "image": "/images/recipes/biscuit-amandes.png",
     "description": "Un biscuit d'une grande onctuosité grâce à la pâte d'amande. Sa texture souple en fait une base idéale pour le montage de vos entremets et cadres.",
     "isVip": false,
     "isTech": false,
@@ -128,7 +128,7 @@ export const catalog = [
       "Biscuits",
       "Sans Gluten"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2022/07/biscuit-chocolat-sans-farine.jpg",
+    "image": "/images/recipes/biscuit-chocolat-sans-farine.png",
     "description": "Un biscuit intense en chocolat, dense et fondant. L'absence de farine le rend incroyablement moelleux et adapté aux intolérants au gluten.",
     "isVip": false,
     "isTech": false,
@@ -245,7 +245,7 @@ export const catalog = [
     "title": "Bonbon Florentin & Ganache Amère",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/cbef407c92ab7561d5406e122492664a.png",
+    "image": "/images/recipes/bonbon-florentin.png",
     "description": "L'élégance d'un classique revisité. Un disque de nougatine croustillante aux amandes, oranges et miel, surmonté d'une ganache noire intense et peu sucrée.",
     "isVip": true,
     "isTech": false,
@@ -256,7 +256,7 @@ export const catalog = [
     "title": "Bonbon Moulé Caramel Mangue",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/8c854e72d9bd134985b3024ad0d26079.png",
+    "image": "/images/recipes/bonbon-moule-caramel-mangue.png",
     "description": "Une coque fine en chocolat au lait renfermant un cÅ“ur coulant de caramel exotique à  la mangue. L'alliance parfaite entre la douceur lactée et le fruité acidulé.",
     "isVip": false,
     "isTech": false,
@@ -267,7 +267,7 @@ export const catalog = [
     "title": "Bonbon Chocolat Passion Griottine",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3505a02f07aaef90c26876afdf520f07.jpg",
+    "image": "/images/recipes/bonbon-passion-griottine.png",
     "description": "L'alliance audacieuse de l'exotisme et du terroir. Une griottine alcoolisée entière nichée au cÅ“ur d'une ganache caramel-passion, sous une coque de chocolat noir croquante.",
     "isVip": true,
     "isTech": false,
@@ -278,7 +278,7 @@ export const catalog = [
     "title": "Bonbon Chocolat Pécan Pie",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/06e08202c0ddee0236bec58bc395cb43.png",
+    "image": "/images/recipes/bonbon-pecan-pie.png",
     "description": "Un bi-couche gourmand : caramel vanille onctueux et praliné pécan croustillant, enrobé de chocolat noir.",
     "isVip": true,
     "isTech": false,
@@ -289,7 +289,7 @@ export const catalog = [
     "title": "Bonbon Praliné Noisette & Coriandre",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/bdd35f5690a50bab6276f23e8db8927f.png",
+    "image": "/images/recipes/bonbon-praline-noisette-coriandre.png",
     "description": "Un praliné à  l'ancienne aux noisettes entières, subtilement parfumé à  la coriandre.",
     "isVip": true,
     "isTech": false,
@@ -300,7 +300,7 @@ export const catalog = [
     "title": "Bonbon Praliné Pistache & Pâte d'Amande",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6602fa78c747e52c6aa45139ecfde50b.png",
+    "image": "/images/recipes/bonbon-praline-pistache.png",
     "description": "Alliance bicolore : pâte d'amande pistache et praliné pistache, enrobés de noir.",
     "isVip": true,
     "isTech": false,
@@ -311,7 +311,7 @@ export const catalog = [
     "title": "Bonbon Tropique (Fraise & Pamplemousse)",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/984357cb94617ab514d713ee79520a0b.png",
+    "image": "/images/recipes/bonbon-tropique.png",
     "description": "L'acidité vibrante du pamplemousse et la douceur de la fraise en deux textures : pâte de fruit fondante et ganache soyeuse.",
     "isVip": true,
     "isTech": false,
@@ -324,7 +324,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "https://www.meilleurduchef.com/mdc/photo/recette/brioche-nanterre/brioche-nanterre-1200.jpg",
+    "image": "/images/recipes/brioche-nanterre.png",
     "description": "La brioche classique rectangulaire composée de boules accolées. Une mie filante, riche en beurre et fondante.",
     "isVip": true,
     "isTech": false,
@@ -363,7 +363,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.torchonsetserviettes.fr/wp-content/uploads/2020/11/cake5-scaled.jpg",
+    "image": "/images/recipes/cake-anchois-tomate.png",
     "description": "Un cake salé aux saveurs provençales, idéal pour l'apéritif ou un pique-nique.",
     "isVip": false,
     "isTech": false,
@@ -376,7 +376,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://yummix.fr/wp-content/uploads/2022/03/cake-artichauts-olives-romarin.jpg",
+    "image": "/images/recipes/cake-artichaut-olive.png",
     "description": "Une recette raffinée mettant en valeur le cœur d'artichaut citronné.",
     "isVip": false,
     "isTech": false,
@@ -389,7 +389,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://static.750g.com/images/1200-630/3acc5362272b9e86cea229db61b7222b/cake-aux-asperges-et-au-colin.png",
+    "image": "/images/recipes/cake-asperges-girolles.png",
     "description": "Un cake forestier et printanier très parfumé grâce à la poêlée de champignons.",
     "isVip": true,
     "isTech": false,
@@ -415,7 +415,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.delicimo.fr/wp-content/uploads/2017/06/IMG_1830.jpg",
+    "image": "/images/recipes/cake-boudin-noir.png",
     "description": "L'alliance classique et sucrée-salée du boudin noir et de la pomme dans un cake moelleux.",
     "isVip": false,
     "isTech": false,
@@ -428,7 +428,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://fourneauxetfourchettes.fr/wp-content/uploads/2020/12/32C3B9E8-FC30-43BC-B346-CFFA6A6A92CB-scaled.jpeg",
+    "image": "/images/recipes/cake-carotte.png",
     "description": "Un cake lumineux et parfumé où la douceur de la carotte est relevée par le cumin.",
     "isVip": false,
     "isTech": false,
@@ -441,7 +441,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/cake-champignons/cake-champignons-1200.jpg",
+    "image": "/images/recipes/cake-champignons.png",
     "description": "Un cake forestier très simple, relevé par une persillade.",
     "isVip": false,
     "isTech": false,
@@ -454,7 +454,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.femmeactuelle.fr/imgre/fit/~1~fac~2018~07~30~b5ecf743-2674-48fb-b9fb-d7087a682fe6.jpeg/1200x900/focusPoint/50%2C50/cake-au-cheddar-au-jambon-a-la-biere-et-a-la-moutarde.jpg",
+    "image": "/images/recipes/cake-cheddar-jambon.png",
     "description": "Un cake aux accents anglo-saxons (ou du Nord !) où la bière apporte légèreté et caractère à la pâte.",
     "isVip": false,
     "isTech": false,
@@ -467,7 +467,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://odelices.ouest-france.fr/images/recettes/cake-courgettes-chevre.jpg",
+    "image": "/images/recipes/cake-chevre-courgette.png",
     "description": "Le grand classique de l'été. La courgette apporte une humidité qui garde ce cake frais très longtemps.",
     "isVip": true,
     "isTech": false,
@@ -480,7 +480,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://img.cuisineaz.com/660x660/2018/10/01/i143099-cake-chevre-noix-et-raisins.jpeg",
+    "image": "/images/recipes/cake-chevre-noix-raisins.png",
     "description": "Un cake automnal très gourmand. Le croquant des noix et la douceur des raisins s'accordent parfaitement avec le fromage de chèvre.",
     "isVip": false,
     "isTech": false,
@@ -493,7 +493,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://img.cuisineaz.com/1024x768/2015/04/15/i91265-cake-aux-pignons-de-pin-fromage-et-pesto.webp",
+    "image": "/images/recipes/cake-foie-volaille.png",
     "description": "Un cake de caractère, façon terrine chaude. Les foies de volaille déglacés au Porto apportent une richesse incroyable.",
     "isVip": false,
     "isTech": false,
@@ -506,7 +506,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.academiedugout.fr/media/11995/cake-olive-2.jpg",
+    "image": "/images/recipes/cake-jambon-olive.png",
     "description": "LA recette universelle du cake salé. Simple, efficace et appréciée de tous, petits et grands.",
     "isVip": false,
     "isTech": false,
@@ -519,7 +519,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.pleinevie.fr/wp-content/uploads/pleinevie/2019/01/recette-cake-aux-pruneaux-magret-canard-cresson.jpg",
+    "image": "/images/recipes/cake-lapin-pruneaux.png",
     "description": "Un cake raffiné utilisant des restes de lapin cuit. L'association lapin-pruneaux est un classique de la gastronomie française.",
     "isVip": false,
     "isTech": false,
@@ -532,7 +532,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://storage.canalblog.com/57/50/692736/80741540_o.jpg",
+    "image": "/images/recipes/cake-lard-banane.png",
     "description": "Un cake exotique et surprenant qui joue sur les contrastes : le fumé du lard, la douceur de la banane et le croquant de la cacahuète.",
     "isVip": false,
     "isTech": false,
@@ -545,7 +545,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.fashioncooking.fr/wp-content/uploads/2010/06/Cakepruneaux3.jpg",
+    "image": "/images/recipes/cake-lardons-pruneaux.png",
     "description": "Le mariage rustique du fumé et du fruit sec. Une valeur sûre pour les pique-niques.",
     "isVip": false,
     "isTech": false,
@@ -558,7 +558,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "https://recettes.precuttech.com/wp-content/uploads/2025/04/Cake-marbre-ultra-moelleux-img1.jpg",
+    "image": "/images/recipes/cake-marbre.png",
     "description": "Un classique intemporel alliant vanille et cacao pour le goûter.",
     "isVip": false,
     "isTech": false,
@@ -571,7 +571,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://assets.afcdn.com/story/20220329/2166842_w1200h630c1cx600cy400cxt0cyt0cxb1200cyb800.jpg",
+    "image": "/images/recipes/cake-oceane.png",
     "description": "Un cake aux saveurs marines, garni d'un cocktail de fruits de mer pour un apéritif original.",
     "isVip": false,
     "isTech": false,
@@ -584,7 +584,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://static.comment-economiser.fr/images/photos_astuces/cake-courgette-pdt-6609.jpg",
+    "image": "/images/recipes/cake-pdt-courgette.png",
     "description": "Un cake très riche et fondant, cuit au bain-marie pour une texture proche du flan ou de la terrine de légumes.",
     "isVip": false,
     "isTech": false,
@@ -597,7 +597,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.cookomix.com/wp-content/uploads/mediapress/members/1/379/cake-proivrons-feta-olives-noires-thermomix-800x600.jpg",
+    "image": "/images/recipes/cake-poivrons-feta.png",
     "description": "Les saveurs de la Grèce dans un cake. Le trio poivron-feta-olive fonctionne à merveille pour un cake d'été.",
     "isVip": false,
     "isTech": false,
@@ -610,7 +610,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://img.cuisineaz.com/660x660/2013/12/20/i64546-photo-de-cake-au-poulet-courgettes-et-estragon.jpeg",
+    "image": "/images/recipes/cake-poulet-estragon.png",
     "description": "Un cake complet qui fait office de plat principal avec une salade. L'estragon apporte sa note anisée caractéristique.",
     "isVip": false,
     "isTech": false,
@@ -623,7 +623,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://img.cuisineaz.com/1024x1024/2015/03/11/i113715-cake-a-la-ratatouille.jpg",
+    "image": "/images/recipes/cake-ratatouille.png",
     "description": "Un cake ensoleillé qui sent bon la Provence. Les légumes rôtis apportent une texture fondante incroyable.",
     "isVip": false,
     "isTech": false,
@@ -636,7 +636,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://lespapillesdekaren.com/wp-content/uploads/2025/04/wp_a5af49_cake-au-roquefort-et-aux-noix.JPG",
+    "image": "/images/recipes/cake-roquefort-lard-noix.png",
     "description": "Un cake de caractère, puissant et rustique. L'huile de noix dans la pâte renforce le goût du fruit sec.",
     "isVip": true,
     "isTech": false,
@@ -649,7 +649,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://i.f1g.fr/media/cms/1200x630_crop/2022/02/07/1717f8a6b852a6ce9896fa6eab703c86568c1b14665b66ae22cf31417f709e4b.jpg",
+    "image": "/images/recipes/cake-saint-jacques.png",
     "description": "Un cake de fête très raffiné. La douceur du poireau et la saveur délicate de la Saint-Jacques relevée par le curry.",
     "isVip": true,
     "isTech": false,
@@ -662,7 +662,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://i0.wp.com/unepausehealthyf.com/wp-content/uploads/2021/04/cake-sale%CC%81-saumon-fume%CC%81-scaled.jpeg",
+    "image": "/images/recipes/cake-saumon-ciboulette.png",
     "description": "Simple, frais et efficace. Le saumon fumé suffit à parfumer tout le cake.",
     "isVip": false,
     "isTech": false,
@@ -675,7 +675,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.clickmiam.fr/images/recettes/cake-saumon-fume.webp",
+    "image": "/images/recipes/cake-saumon-fume.png",
     "description": "Une version nordique du cake au poisson, avec du raifort pour le piquant et de l'aneth pour la fraîcheur.",
     "isVip": true,
     "isTech": false,
@@ -688,7 +688,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://lespapillesdekaren.com/wp-content/uploads/2025/04/wp_57dab1_cake-au-saumon-et-a-l-oseille.JPG",
+    "image": "/images/recipes/cake-saumon-oseille.png",
     "description": "Un classique de la cuisine française revisité en cake. L'acidité de l'oseille balance parfaitement le gras du saumon.",
     "isVip": false,
     "isTech": false,
@@ -701,7 +701,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://img.over-blog-kiwi.com/0/65/19/23/20190719/ob_d7ac80_cake-thon-poivron-olive.jpg",
+    "image": "/images/recipes/cake-thon-poivron.png",
     "description": "Le cake \"fond de placard\" par excellence, coloré et savoureux, parfait pour un pique-nique improvisé.",
     "isVip": false,
     "isTech": false,
@@ -714,7 +714,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://cuisinedaubery.com/wp-content/uploads/2024/03/cake-italien_ALTERN09.jpg",
+    "image": "/images/recipes/cake-tomate-mozza.png",
     "description": "Les saveurs de l'Italie dans un cake moelleux. La mozzarella apporte un côté filant irrésistible.",
     "isVip": false,
     "isTech": false,
@@ -727,7 +727,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://www.ramenelapopotte.com/sites/default/files/cake_courgette_3_fromages_coupe_zoom.jpg",
+    "image": "/images/recipes/cake-trois-fromages.png",
     "description": "Pour les amateurs de fromage ! Un cake riche et puissant avec du caractère.",
     "isVip": false,
     "isTech": false,
@@ -740,7 +740,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://assets.afcdn.com/recipe/20230621/143653_w1024h1024c1cx960cy540cxt0cyt0cxb1920cyb1080.jpg",
+    "image": "/images/recipes/canneles-de-bordeaux.png",
     "description": "Le fameux petit gâteau bordelais, à la croûte caramélisée et craquante, et au cœur tendre parfumé au rhum et à la vanille.",
     "isVip": true,
     "isTech": false,
@@ -753,7 +753,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2023/05/caramel-beurre-sale-14-religieuses-cap-patissier-1176x1300.jpg",
+    "image": "/images/recipes/caramel-beurre-sale-religieuses.png",
     "description": "Un caramel coulant mais qui se tient, idéal pour insérer au cœur d'une religieuse, d'un chou ou d'un macaron. L'équilibre parfait sucré-salé.",
     "isVip": false,
     "isTech": false,
@@ -779,7 +779,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480/img/recipe/ras/Assets/7d0a6d533f4d3e9d29b33c1a24aed322/Derivates/e2d49242fce10af2266dd38cb72860b5dbfccc55.jpg",
+    "image": "/images/recipes/choux-creme.png",
     "description": "Le chou moderne, recouvert d'un craquelin croustillant et garni d'une crème légère (Diplomate ou Chantilly Mascarpone).",
     "isVip": false,
     "isTech": false,
@@ -805,7 +805,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://www.hervecuisine.com/wp-content/uploads/2020/05/recette-clafoutis-facile.jpg",
+    "image": "/images/recipes/clafoutis.png",
     "description": "Le dessert rustique par excellence. Les puristes gardent les noyaux pour plus de goût !",
     "isVip": false,
     "isTech": false,
@@ -818,7 +818,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://www.tresorsdesregions.com/3585-medium_default/craquant-breton-150g.jpg",
+    "image": "/images/recipes/craquant-breton.png",
     "description": "Une spécialité bretonne légère, très fine et extrêmement croustillante, aux éclats de noisettes. Idéal pour utiliser des blancs d'œufs.",
     "isVip": false,
     "isTech": false,
@@ -831,7 +831,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2022/12/IMG_20221212_081945-975x1300.jpg",
+    "image": "/images/recipes/craquelin-pate-choux.png",
     "description": "Le secret des choux modernes bien ronds et croustillants. Une fine couche de pâte sucrée qui se pose sur le chou avant cuisson.",
     "isVip": false,
     "isTech": false,
@@ -844,7 +844,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/E3B8F710-97E6-4EC2-9620-704C6389BB4A/Derivates/B58E50E2-EA68-4972-8E6C-E9DE1BD6BF52.jpg",
+    "image": "/images/recipes/creme-amande.png",
     "description": "La base de la galette des rois et des tartes amandine (Bourdaloue). Un mélange riche et fondant.",
     "isVip": false,
     "isTech": false,
@@ -857,7 +857,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://mapatisserie.fr/wp-content/uploads/2025/05/recette-creme-anglaise-10.jpg",
+    "image": "/images/recipes/creme-anglaise.png",
     "description": "Une sauce onctueuse à la vanille, base des îles flottantes, des glaces et accompagnement idéal des fondants au chocolat.",
     "isVip": false,
     "isTech": false,
@@ -870,7 +870,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.maspatule.com/blog/wp-content/uploads/2022/10/BLOG-IMG_MISE_EN_AVT-mousse-bavaroise-chocolat.jpg",
+    "image": "/images/recipes/creme-bavaroise-cacao.png",
     "description": "Une bavaroise intense en goût chocolaté grâce à l'utilisation de cacao en poudre amer. Moins grasse qu'une mousse au chocolat classique.",
     "isVip": false,
     "isTech": false,
@@ -883,7 +883,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.lesfoodies.com/_recipeimage/283930/bavarois-framboise-chocolat-blanc-2.jpg",
+    "image": "/images/recipes/creme-bavaroise-chocolat-blanc.png",
     "description": "Une version douce et crémeuse, idéale en association avec des fruits rouges acidulés (framboises, groseilles).",
     "isVip": false,
     "isTech": false,
@@ -896,7 +896,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.cuisineactuelle.fr/imgre/fit/~1~cac~2018~09~25~0faa870e-5bb1-4b9f-aa8f-43751673f202.jpeg/400x400/quality/80/crop-from/center/creme-au-chocolat-et-a-la-cannelle.jpeg",
+    "image": "/images/recipes/creme-bavaroise-chocolat-cannelle.png",
     "description": "Un mélange chaleureux et épicé, où la force du chocolat noir rencontre la douceur de la cannelle infusée.",
     "isVip": true,
     "isTech": false,
@@ -909,7 +909,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://img.cuisineaz.com/1024x1024/2017/02/02/i119550-bavarois-aux-noisettes.jpeg",
+    "image": "/images/recipes/creme-bavaroise-noisette.png",
     "description": "Une bavaroise gourmande enrichie au praliné noisette, parfaite pour les desserts d'automne ou les entremets chocolat-noisette.",
     "isVip": true,
     "isTech": false,
@@ -935,7 +935,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/bavaroise-vanille/bavaroise-vanille-1200.jpg",
+    "image": "/images/recipes/creme-bavaroise.png",
     "description": "Un grand classique des entremets. Une crème anglaise collée à la gélatine à laquelle on incorpore de la crème fouettée mousseuse. Légère et aérienne.",
     "isVip": false,
     "isTech": false,
@@ -948,7 +948,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/07/creme-au-beurre-meringue-italienne.jpg",
+    "image": "/images/recipes/creme-beurre-meringue-italienne.png",
     "description": "La reine des crèmes au beurre : légère, aérienne et parfaitement stable. Idéale pour garnir macarons, choux et entremets.",
     "isVip": true,
     "isTech": false,
@@ -961,7 +961,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/09/IMG_20210927_113242-1300x975.jpg",
+    "image": "/images/recipes/creme-beurre-oeufs.png",
     "description": "Une version riche et onctueuse de la crème au beurre, réalisée sur une base de pâte à bombe (sirop versé sur jaunes d'œufs).",
     "isVip": false,
     "isTech": false,
@@ -974,7 +974,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://encoreungateau.com/wp-content/uploads/2024/02/creme-brulee-cafe-recette-480x270.jpg",
+    "image": "/images/recipes/creme-brulee-dulcey-cafe.png",
     "description": "Une variante gourmande mariant la douceur biscuitée du chocolat blond Dulcey à l'amertume subtile du café.",
     "isVip": true,
     "isTech": false,
@@ -987,7 +987,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/07/creme-caramel-1300x583.jpg",
+    "image": "/images/recipes/creme-brulee.png",
     "description": "Le grand classique indémodable : une crème vanille onctueuse cachée sous une fine couche de caramel croquant.",
     "isVip": false,
     "isTech": false,
@@ -1000,7 +1000,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/41/fotolia_60132005_subscription_monthly_xxl.jpg",
+    "image": "/images/recipes/creme-caramel.png",
     "description": "Un dessert d'enfance indémodable : une crème prise au four nappée d'un caramel liquide maison.",
     "isVip": false,
     "isTech": false,
@@ -1013,7 +1013,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://blog.cerfdellier.com/wp-content/uploads/2021/06/comment-faire-une-chantilly-maison.jpg",
+    "image": "/images/recipes/creme-chantilly.png",
     "description": "Le classique aérien et sucré, indispensable pour accompagner les glaces, tartes ou simplement des fraises.",
     "isVip": false,
     "isTech": false,
@@ -1026,7 +1026,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://img.cuisineaz.com/660x660/2022/06/16/i184280-69-creme-chiboust.jpeg",
+    "image": "/images/recipes/creme-chiboust.png",
     "description": "La crème traditionnelle du Saint-Honoré : une crème pâtissière collée à la gélatine et allégée à chaud avec une meringue italienne.",
     "isVip": true,
     "isTech": false,
@@ -1039,7 +1039,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/09/piplomate.png",
+    "image": "/images/recipes/creme-diplomate.png",
     "description": "Une crème pâtissière collée à la gélatine et allégée avec de la crème fouettée. C'est la base de nombreux entremets comme le Fraisier ou la tarte aux fruits.",
     "isVip": false,
     "isTech": false,
@@ -1052,7 +1052,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/creme-frangipane/creme-frangipane-1200.jpg",
+    "image": "/images/recipes/creme-frangipane.png",
     "description": "L'incontournable garniture de la galette des rois : un mélange savoureux de crème d'amande et de crème pâtissière.",
     "isVip": false,
     "isTech": false,
@@ -1065,7 +1065,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://assets.afcdn.com/recipe/20160916/10796_w1024h1024c1cx1500cy1000.webp",
+    "image": "/images/recipes/creme-marrons.png",
     "description": "Une mousse onctueuse aux marrons (type Mont-Blanc), réalisée sur une base de pâte à bombe pour une texture aérienne et riche.",
     "isVip": true,
     "isTech": false,
@@ -1078,7 +1078,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://cuisinedaubery.com/wp-content/uploads/2023/11/creme-mascarpone-pab_ALTERN07.jpg",
+    "image": "/images/recipes/creme-mascarpone.png",
     "description": "Une crème riche, ferme et veloutée. Parfaite pour le tiramisu, ou comme base de chantilly mascarpone pour garnir des cupcakes ou lisser un gâteau.",
     "isVip": false,
     "isTech": false,
@@ -1091,7 +1091,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/07/creme-mousseline-1300x632.jpg",
+    "image": "/images/recipes/creme-mousseline.png",
     "description": "Une crème pâtissière foisonnée avec du beurre pour plus de légèreté et de tenue. Incontournable pour le Fraisier et le Paris-Brest.",
     "isVip": true,
     "isTech": false,
@@ -1104,7 +1104,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.cuisinetemeraire.fr/wp-content/uploads/2012/10/Pate-Nougat.jpg",
+    "image": "/images/recipes/creme-nougat.png",
     "description": "Une crème riche et parfumée aux éclats d'amandes, de pistaches et de miel, idéale pour garnir des choux ou des macarons.",
     "isVip": true,
     "isTech": false,
@@ -1117,7 +1117,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.mycake.fr/wp-content/uploads/2019/02/rs_CurdOrange_4x3.jpg",
+    "image": "/images/recipes/creme-orange.png",
     "description": "Aussi appelée 'Orange Curd', cette crème onctueuse est riche en saveurs d'agrumes. Idéale pour les tartes meringuées ou en insert.",
     "isVip": false,
     "isTech": false,
@@ -1130,7 +1130,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "https://www.cuisineactuelle.fr/imgre/fit/~1~cac~2018~09~25~ce09e092-b3d7-486a-a8b6-b8543b5533c1.jpeg/650x365/quality/80/crop-from/center/creme-patissiere-au-citron.jpeg",
+    "image": "/images/recipes/creme-patissiere-citron.png",
     "description": "Une version acidulée et fraîche de la classique crème pâtissière. Parfaite pour garnir des choux, des éclairs ou un fond de tarte.",
     "isVip": false,
     "isTech": false,
@@ -1156,7 +1156,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://www.casseroleetchocolat.fr/wp-content/uploads/2018/11/cremeux-chocolat-1.jpeg",
+    "image": "/images/recipes/cremeux-au-chocolat.png",
     "description": "La référence pour les amateurs de cacao. Une texture soyeuse et fondante, plus dense qu'une mousse mais plus légère qu'une ganache.",
     "isVip": false,
     "isTech": false,
@@ -1169,7 +1169,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://i.pinimg.com/originals/e4/51/41/e45141b6fdcd365220cc07c25e98ad47.jpg",
+    "image": "/images/recipes/cremeux-cafe.png",
     "description": "Un crémeux intense aux notes torréfiées, réalisé par infusion de grains de café pour une saveur pure et sans amertume.",
     "isVip": false,
     "isTech": false,
@@ -1182,7 +1182,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://www.aureliencohen.fr/wp-content/uploads/2020/02/Entremets-vanille-caramel-speculoos-2-683x1024.jpg",
+    "image": "/images/recipes/cremeux-caramel.png",
     "description": "La gourmandise à l'état pur. Un caramel cuit à sec, déglacé à la crème et enrichi de jaunes d'œufs pour une texture fondante.",
     "isVip": false,
     "isTech": false,
@@ -1364,7 +1364,7 @@ export const catalog = [
     "subCategory": [
       "Sans Gluten"
     ],
-    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=1470&auto=format&fit=crop",
+    "image": "/images/recipes/crepes-sans-gluten.png",
     "description": "Des crêpes fines, dorées et incroyablement légères. Le mélange riz-maïzena remplace la farine de blé à la perfection sans changer le goût.",
     "isVip": false,
     "isTech": false,
@@ -1377,7 +1377,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://laviechantilly.fr/wp-content/uploads/2025/09/2025-09-09-11-51-25_.jpg",
+    "image": "/images/recipes/croquembouche.png",
     "description": "La pièce montée traditionnelle des grands événements. Une pyramide majestueuse de choux garnis, cimentée au caramel croquant.",
     "isVip": true,
     "isTech": false,
@@ -1390,7 +1390,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://assets.afcdn.com/recipe/20160404/56530_w1024h768c1cx1128cy2275cxt0cyt0cxb2151cyb3000.jpg",
+    "image": "/images/recipes/crumble-amande.png",
     "description": "Le crumble aux amandes est un véritable atout pour sublimer une grande variété de préparations pâtissières. Grâce à sa texture sablée, à la fois légère et croustillante, il apporte un contraste exquis.",
     "isVip": false,
     "isTech": false,
@@ -1403,7 +1403,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/caramel-a-croquembouche/caramel-a-croquembouche-1200.jpg",
+    "image": "/images/recipes/cuisson-sucre-caramel.png",
     "description": "Le caramel 'grand cassé' utilisé pour coller les choux des pièces montées et les glacer pour obtenir ce craquant vitrifié caractéristique.",
     "isVip": true,
     "isTech": false,
@@ -1416,7 +1416,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://assets.afcdn.com/recipe/20170321/3841_w1024h1024c1cx1773cy2660.jpg",
+    "image": "/images/recipes/dacquoise-amande.png",
     "description": "Un biscuit meringué aux amandes, croustillant à l'extérieur et moelleux à l'intérieur. La base de nombreux entremets.",
     "isVip": false,
     "isTech": false,
@@ -1429,7 +1429,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://static.750g.com/images/640-440/b1feec3f4b5e06242eb9a57c5cd092d2/tuilesdentelles.jpg",
+    "image": "/images/recipes/dentelle-amande-orange.png",
     "description": "Des biscuits d'une finesse extrême, au bon goût d'orange et de caramel. Très fragiles et élégants.",
     "isVip": false,
     "isTech": false,
@@ -1442,7 +1442,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/eclair-chocolat/eclair-chocolat-1200.jpg",
+    "image": "/images/recipes/eclair.png",
     "description": "Le grand classique de la pâtisserie. Un chou allongé cuit à la perfection, garni d'une crème pâtissière onctueuse et glacé au fondant.",
     "isVip": false,
     "isTech": false,
@@ -1468,7 +1468,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://www.maspatule.com/blog/wp-content/uploads/2023/05/IMG_4440-03-1440x811.jpeg",
+    "image": "/images/recipes/entremets-bavarois-vanille.png",
     "description": "Un classique indémodable du CAP Pâtissier. Une mousse bavaroise onctueuse à la vanille qui cache un cœur fondant de crémeux chocolat, le tout entouré d'une cartouchière de biscuit à la cuillère moelleux.",
     "isVip": false,
     "isTech": false,
@@ -1481,7 +1481,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://images.unsplash.com/photo-1713274782299-0b97a3e435f3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "image": "/images/recipes/entremets-deux-chocolats.png",
     "description": "L'alliance parfaite de deux chocolats. Un insert fondant au chocolat noir caché dans une mousse bavaroise au chocolat au lait, sur une dacquoise moelleuse. Un grand classique.",
     "isVip": true,
     "isTech": false,
@@ -1494,7 +1494,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzBx-BwKMJdhTxVfvjV5LtJ5KzWldxaojlYjnxfeEGUQomBIG2MjS-jFP4vz-3yjt8pmzqbfj7c29087TAhqirL6RAo5T13k3F_X3hlKHtBZf4zMiG3TmttCRx0EWZLSkqrNUH47dC3cDX/s1600/IMG_0007.jpg",
+    "image": "/images/recipes/entremets-framboise-rhubarbe.png",
     "description": "L'acidité vive de la rhubarbe rencontre la douceur parfumée de la framboise. Un jeu de textures entre le moelleux de la dacquoise, le fondant de la compotée et la légèreté d'une mousse aux fruits sur base de meringue italienne.",
     "isVip": false,
     "isTech": false,
@@ -1507,7 +1507,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://cdn.stoneline.de/thumbnail/e9/a5/e5/1727689765/gateau-opera_1920x1920.jpeg?ts=1727689805",
+    "image": "/images/recipes/entremets-opera.png",
     "description": "Le summum du raffinement parisien. Des couches successives de biscuit Joconde imbibé au café, de ganache chocolat et de crème au beurre café, le tout recouvert d'un glaçage intense.",
     "isVip": true,
     "isTech": false,
@@ -1520,7 +1520,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://www.cuisineaddict.com/img/advcms/matrices/media/1096.jpg",
+    "image": "/images/recipes/entremets-poire-epices-noisette.png",
     "description": "Un hymne à l'automne et à l'hiver. La fraîcheur de la poire confite rencontre la chaleur des épices et la gourmandise du chocolat au lait, le tout soutenu par le croquant de la noisette.",
     "isVip": true,
     "isTech": false,
@@ -1533,7 +1533,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/far-breton/far-breton-1200.jpg",
+    "image": "/images/recipes/far-breton.png",
     "description": "Un classique de la Bretagne, dense et crémeux, garni de pruneaux.",
     "isVip": false,
     "isTech": false,
@@ -1546,7 +1546,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/feuilletage-superieur-1300x862.png",
+    "image": "/images/recipes/feuilletage-superieur.png",
     "description": "Un feuilletage d'exception, riche et friable, idéal pour les mille-feuilles et les tartes fines.",
     "isVip": true,
     "isTech": false,
@@ -1559,7 +1559,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://www.miels-et-saveurs.fr/wp-content/uploads/financiers-au-miel.jpg",
+    "image": "/images/recipes/financier-au-miel.png",
     "description": "Des financiers moelleux où le sucre est remplacé partiellement par du miel pour une saveur unique.",
     "isVip": false,
     "isTech": false,
@@ -1572,7 +1572,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480/img/recipe/ras/Assets/63D3854D-D39C-4999-9DC0-AFF9583DB3F7/Derivates/BF9507B3-F2C0-4262-8346-649A5F980789.jpg",
+    "image": "/images/recipes/focaccia.png",
     "description": "Une spécialité italienne moelleuse et parfumée à l'huile d'olive, aux herbes et à la fleur de sel. Idéale à l'apéritif ou en accompagnement.",
     "isVip": false,
     "isTech": false,
@@ -1585,7 +1585,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/1630facada9f0e9bd1ed39781dd85155.jpg",
+    "image": "/images/recipes/gateau-basque.png",
     "description": "Le gâteau basque est un mets sucré traditionnel, composé d'une pâte sablée croustillante fourrée soit de crème pâtissière (souvent parfumée au rhum/vanille), soit de confiture de cerises noires.",
     "isVip": false,
     "isTech": false,
@@ -1598,7 +1598,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2022/07/ge%CC%81noise-chocolat.png",
+    "image": "/images/recipes/genoise-au-chocolat.png",
     "description": "Cette recette permet de réaliser une demi-feuille. Un biscuit moelleux au chocolat idéal pour les montages d'entremets.",
     "isVip": false,
     "isTech": false,
@@ -1611,7 +1611,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/genoise-chocolat/genoise-chocolat-1200.jpg",
+    "image": "/images/recipes/genoise-chocolat-mdc.png",
     "description": "La génoise au chocolat est un classique de la pâtisserie française. C'est un biscuit moelleux et aéré, idéal pour confectionner des gâteaux fourrés ou des forêts noires.",
     "isVip": false,
     "isTech": false,
@@ -1624,7 +1624,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://img.cuisineaz.com/1024x1024/2016/04/28/i58827-genoise.webp",
+    "image": "/images/recipes/genoise.png",
     "description": "La base classique par excellence pour de nombreux entremets et gâteaux garnis.",
     "isVip": false,
     "isTech": false,
@@ -1637,7 +1637,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://empreintesucree.fr/wp-content/uploads/2017/01/1-gianduja-maison-recette-patisserie-empreinte-sucree.jpg",
+    "image": "/images/recipes/gianduja-amande.png",
     "description": "Une alternative douce au classique gianduja noisette. Le fondant de l'amande associé au chocolat au lait pour des intérieurs de bonbons ou des tartinables d'exception.",
     "isVip": false,
     "isTech": false,
@@ -1650,7 +1650,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://encoreungateau.com/wp-content/uploads/2015/10/gianduja-recette-500x375.jpg",
+    "image": "/images/recipes/gianduja-noisette.png",
     "description": "Le grand classique de la confiserie italienne. Une pâte onctueuse de noisettes et de chocolat, fondante à  souhait.",
     "isVip": true,
     "isTech": false,
@@ -1663,7 +1663,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-eqIfKBoUlQoiQklMz7y88kWMFXvLOPpjjIjHEia4PWPkpDSKx8YS4_UruOGnr5Lkj4XjQIrJ6-8rr5Pn98nMRWY8BF3PINvneIxiIC4VpoObmHSLdOKirG7TonP_bqNUWm3pd9VORkKv/s1600/MNFW5mHDSXOycUJiuTP4rg_thumb_6287.jpg",
+    "image": "/images/recipes/glacage-caramel.png",
     "description": "Un glaçage miroir à la belle couleur ambrée et au goût intense de caramel, sans ajout de colorant.",
     "isVip": true,
     "isTech": false,
@@ -1676,7 +1676,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://www.alicedelice.com/79952-product_main/glacage-miroir-pret-a-lemploi-coloris-marron.jpg",
+    "image": "/images/recipes/glacage-chataigne.png",
     "description": "Un glaçage original et gourmand à la teinte marron douce, idéal pour les entremets d'automne, le Mont-Blanc ou les bûches de Noël.",
     "isVip": true,
     "isTech": false,
@@ -1702,7 +1702,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://res.cloudinary.com/valrhona/image/upload/c_limit,f_auto,fl_progressive,q_auto,w_800/prod/var/site/storage/images/2/3/2/3/163232-1-fre-WO/Valrhona.com-Lexique-Recette-Gla%C3%A7age.jpg",
+    "image": "/images/recipes/glacage-chocolat-noir.png",
     "description": "Un glaçage miroir classique au chocolat de couverture, offrant un goût chocolaté plus fin que la version cacao.",
     "isVip": false,
     "isTech": false,
@@ -1715,7 +1715,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://cuisinedaubery.com/wp-content/uploads/2024/04/glacage-mangue_ALTERN09.jpg",
+    "image": "/images/recipes/glacage-exotique.png",
     "description": "Un glaçage miroir lumineux et fruité à base de purée de mangue ou passion, idéal pour les entremets aux saveurs tropicales.",
     "isVip": true,
     "isTech": false,
@@ -1728,7 +1728,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://tout-gourmand.fr/media/cache/voir_recette/media/images/recettes/42077-tout-gourmand-entremet-chocolat-blanc-et-fruits-rouges.webp",
+    "image": "/images/recipes/glacage-fruits-rouges.png",
     "description": "Un glaçage rouge intense et brillant, parfait pour un entremets à la framboise ou à la fraise, réalisé avec une touche de purée de fruits.",
     "isVip": false,
     "isTech": false,
@@ -1741,7 +1741,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://mapatisserie.fr/wp-content/uploads/2016/07/IMG_20160812_224809.jpg",
+    "image": "/images/recipes/glacage-lactee.png",
     "description": "Un glaçage miroir au chocolat au lait, doux et brillant, idéal pour les entremets praliné, noisette ou fruits exotiques.",
     "isVip": false,
     "isTech": false,
@@ -1754,7 +1754,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://encoreungateau.com/wp-content/uploads/2022/12/recette-nappage-neutre-maison.jpg",
+    "image": "/images/recipes/glacage-neutre.png",
     "description": "Un nappage transparent essentiel pour protéger les fruits de l'oxydation, faire briller les tartes ou détendre d'autres glaçages.",
     "isVip": false,
     "isTech": false,
@@ -1767,7 +1767,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://mapatisserie.fr/wp-content/uploads/2016/05/IMG_20160425_073459.jpg",
+    "image": "/images/recipes/glacage-noir.png",
     "description": "Le classique glaçage miroir noir intense, réalisé à base de cacao en poudre pour une couleur ébène profonde et brillante.",
     "isVip": false,
     "isTech": false,
@@ -1780,7 +1780,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/glacage-pate-glacer/glacage-pate-glacer-640.jpg",
+    "image": "/images/recipes/glacage-noisette.png",
     "description": "Un glaçage gourmand avec morceaux (type Rocher), à base de chocolat au lait et d'éclats de noisettes torréfiées. Parfait pour les cakes de voyage.",
     "isVip": false,
     "isTech": false,
@@ -1793,7 +1793,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://www.saveursfrance.com/wp-content/uploads/2025/11/hassan8524_closeup_zoomed-in_amateur_photo_from_pinterest_style_316e9e48-ab0f-45b8-91d4-335f307516bf-1.webp",
+    "image": "/images/recipes/gougere.png",
     "description": "Une pâte à choux salée, enrichie de Comté affiné et parfumée à la muscade. Un classique bourguignon parfait pour l'apéritif.",
     "isVip": false,
     "isTech": false,
@@ -1806,7 +1806,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://patisserieconte.com/wp-content/uploads/patisserie-individuelle-noix.jpg",
+    "image": "/images/recipes/insert-appareil-noix.png",
     "description": "Une garniture riche et parfumée aux noix torréfiées, parfaite pour les tartes d'automne ou les entremets rustiques.",
     "isVip": true,
     "isTech": false,
@@ -1819,7 +1819,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8nbIGhx5NgFwrx0hIxxW6LQGymQReaupTnCF5LBRm-UqRQ_YfT0aqqSOIFC2bBU_nJ18VC94niWMlryyLkZUCmIZIUj8xgVQeAIZTY-LbI8_F1oO2SsLbQVK0q7v0ao3zP8rflhPOOWGB/s1600/buchecoco90.jpg",
+    "image": "/images/recipes/insert-blanc-manger.png",
     "description": "Une préparation délicate et lactée à l'amande ou au coco, offrant une texture soyeuse et un goût subtil.",
     "isVip": false,
     "isTech": false,
@@ -1832,7 +1832,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://www.lesrecettesdevanessa.fr/wp-content/uploads/2023/05/Entremet-Chocolat-Exotique_recettes-de-vanessa.jpg",
+    "image": "/images/recipes/insert-caramel-exotique.png",
     "description": "Un caramel fruité original où la crème est remplacée par une purée de fruits exotiques pour une explosion de saveurs.",
     "isVip": false,
     "isTech": false,
@@ -1845,7 +1845,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://www.scrapcooking.fr/modules/prestablog/views/img/grid-for-1-7/up-img/533.jpg",
+    "image": "/images/recipes/insert-caramel-fleur-de-sel.png",
     "description": "Un cœur coulant et onctueux au bon goût de caramel, relevé par la fleur de sel pour un équilibre parfait.",
     "isVip": false,
     "isTech": false,
@@ -1858,7 +1858,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://thefrenchpatissier.com/wp-content/uploads/2019/12/coupe-buche-noisette-vue-cote-1.jpg",
+    "image": "/images/recipes/insert-caramel-moelleux-fleur-de-sel.png",
     "description": "Une texture de caramel 'toffee' tendre et moelleux, qui ne durcit pas au froid, parfait pour les bûches.",
     "isVip": true,
     "isTech": false,
@@ -1871,7 +1871,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/entremet-paques/entremet-paques-640.jpg",
+    "image": "/images/recipes/insert-compotee-abricot-passion.png",
     "description": "Un insert riche en fruits avec des morceaux d'abricots fondants, réveillés par le peps du fruit de la passion.",
     "isVip": true,
     "isTech": false,
@@ -1884,7 +1884,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://quandnadcuisine.fr/wp-content/uploads/2021/01/buche-chocolat-insert-creme-brulee1-1-500x500.jpg",
+    "image": "/images/recipes/insert-creme-brulee.png",
     "description": "La texture crémeuse et vanillée de la crème brûlée, adaptée en insert congelable pour vos entremets.",
     "isVip": false,
     "isTech": false,
@@ -1897,7 +1897,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjB3SLcdHg_smuwc3zbuyTP8_g8CGxi5XTxSQEH36E7JkZSazvhYvA49bPRI1008aZgTFm9dIRinQ2A72ZarD1aeYgemYUTqYYKQbhW8_8V1_eHEsCrIvpoF1pQye_ABUoxK2rZci8wKQ5Z/s2048/CAKE+VANILLE+INSERT+CHOC+2.jpeg",
+    "image": "/images/recipes/insert-ganache.png",
     "description": "Un insert riche et fondant au chocolat, apportant une intensité cacao au cœur de votre dessert.",
     "isVip": false,
     "isTech": false,
@@ -1910,7 +1910,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://www.cuisineactuelle.fr/imgre/fit/~1~cac~2018~09~25~fbb3df99-166b-46b7-b9e9-1b936bcc6fcf.jpeg/400x400/quality/80/crop-from/center/bavarois-leger-aux-fruits-rouges.jpeg",
+    "image": "/images/recipes/insert-gelifie-aux-fruits.png",
     "description": "Un insert pur fruit, frais et acidulé, idéal pour apporter de la légèreté à un entremets mousseux.",
     "isVip": false,
     "isTech": false,
@@ -1923,7 +1923,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://sweetlycakes.com/wp-content/uploads/2022/12/croustillantpraline-9.jpg",
+    "image": "/images/recipes/insert-praline-feuilletine.png",
     "description": "Le fameux croustillant praliné, un classique indémodable pour apporter de la mâche à vos gâteaux.",
     "isVip": true,
     "isTech": false,
@@ -1936,7 +1936,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/entremets-tablette-praline-noisette-caramel/entremets-tablette-praline-noisette-caramel-1200.jpg",
+    "image": "/images/recipes/insert-praline-fruits-secs.png",
     "description": "Une couche gourmande de praliné riche en fruits secs torréfiés, pour un insert croquant et savoureux.",
     "isVip": false,
     "isTech": false,
@@ -1949,7 +1949,7 @@ export const catalog = [
     "subCategory": [
       "Inserts"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2023/05/IMG_20230511_095646-1-1249x1300.jpg",
+    "image": "/images/recipes/insert-riz-souffle-caramelise.png",
     "description": "Un insert croustillant apportant une texture légère et croquante, idéal pour contraster avec des mousses onctueuses.",
     "isVip": false,
     "isTech": false,
@@ -1962,7 +1962,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/8eb2478d08f155364300cb7c90791297.jpg",
+    "image": "/images/recipes/kouign-amann.png",
     "description": "Littéralement 'Gâteau au beurre'. Une pâte à pain feuilletée généreusement garnie de beurre demi-sel et de sucre, créant une croûte caramélisée irrésistible.",
     "isVip": true,
     "isTech": false,
@@ -1975,7 +1975,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://images.unsplash.com/photo-1606807286281-3aa6a8e7d7a9",
+    "image": "/images/recipes/la-decouverte.png",
     "description": "Une aventure gustative audacieuse. La chaleur du caramel au beurre salé rencontre la subtilité épicée du cumin, sur un fond croustillant praliné-sésame. Un équilibre parfait entre douceur et caractère.",
     "isVip": false,
     "isTech": false,
@@ -1988,7 +1988,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/08/pate-a-brioche-1.jpg",
+    "image": "/images/recipes/la-pate-a-brioche.png",
     "description": "La brioche est une viennoiserie à pâte levée et fermentée, riche en beurre et en oeufs. Sa réussite dépend d'un pétrissage intensif et d'une longue fermentation.",
     "isVip": false,
     "isTech": false,
@@ -2001,7 +2001,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux"
     ],
-    "image": "https://gourmantissimes.com/wp-content/uploads/2013/07/2013-07-06-IMG-4465.jpg",
+    "image": "/images/recipes/la-pate-a-choux.png",
     "description": "La recette mère indispensable. Une pâte précuite sur le feu (desséchée) puis hydratée aux œufs, qui gonfle grâce à la vapeur emprisonnée lors de la cuisson.",
     "isVip": false,
     "isTech": false,
@@ -2014,7 +2014,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/07/crepe-1-1300x975.jpg",
+    "image": "/images/recipes/la-pate-a-crepes.png",
     "description": "Un grand classique de la cuisine française. Cette recette garantit des crêpes fines, légères, parfumées et moelleuses.",
     "isVip": false,
     "isTech": false,
@@ -2027,7 +2027,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/08/croissants.png",
+    "image": "/images/recipes/la-pate-a-croissants.png",
     "description": "La Pâte Levée Feuilletée (PLF) est la base de la viennoiserie. Elle combine la technique de la pâte levée (brioche) et celle du feuilletage (tourage) pour obtenir des croissants légers, croustillants et alvéolés.",
     "isVip": true,
     "isTech": false,
@@ -2040,7 +2040,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/08/pate-a-foncer.jpg",
+    "image": "/images/recipes/la-pate-a-foncer.png",
     "description": "La pâte à foncer est une pâte intermédiaire entre la pâte brisée et la pâte sucrée. Elle est idéale pour les tartes aux fruits juteux, les flans pâtissiers ou les quiches salées grâce à sa bonne tenue.",
     "isVip": false,
     "isTech": false,
@@ -2053,7 +2053,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.francine.com/wp-content/uploads/2018/09/009_pate-a-pain.jpg",
+    "image": "/images/recipes/la-pate-a-pain.png",
     "description": "La recette de base pour réaliser du pain blanc maison, type baguette de tradition, avec une croûte croustillante et une mie alvéolée.",
     "isVip": false,
     "isTech": false,
@@ -2066,7 +2066,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://odelices.ouest-france.fr/images/recettes/2015/pate_a_pizza.jpg",
+    "image": "/images/recipes/la-pate-a-pizza.png",
     "description": "La base incontournable de la cuisine italienne. Une pâte fine, croustillante à l'extérieur et moelleuse à l'intérieur, avec une belle corniche.",
     "isVip": false,
     "isTech": false,
@@ -2079,7 +2079,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/08/pate-brisee.jpg",
+    "image": "/images/recipes/la-pate-brisee.png",
     "description": "La plus simple et la plus neutre des pâtes à tarte. Composée simplement de farine, de beurre et d'eau, elle est friable et croustillante, parfaite pour les tartes salées ou rustiques.",
     "isVip": false,
     "isTech": false,
@@ -2092,7 +2092,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/50e093126b2f472de47af55426b80bcc.jpg",
+    "image": "/images/recipes/la-pate-sablee.png",
     "description": "La pâte sablée est friable et fondante. Elle est plus fragile que la pâte sucrée mais offre une texture incomparable.",
     "isVip": false,
     "isTech": false,
@@ -2105,7 +2105,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/07/pate-sucree.jpg",
+    "image": "/images/recipes/la-pate-sucree.png",
     "description": "Une pâte friable et fondante, plus riche en sucre que la pâte sablée, idéale pour les tartes aux fruits, au chocolat ou au citron.",
     "isVip": false,
     "isTech": false,
@@ -2118,7 +2118,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/30be3f25abc534e5a963ef9e583d5c0f.jpg",
+    "image": "/images/recipes/la-teurgoule.png",
     "description": "Le célèbre riz au lait normand à la cannelle, cuit très lentement au four dans une terrine en grès. Les grains de riz fondent littéralement dans le lait pour créer une texture crémeuse sous une croûte dorée.",
     "isVip": false,
     "isTech": false,
@@ -2131,7 +2131,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://assets.afcdn.com/recipe/20130924/63477_w1024h576c1cx1868cy1296.jpg",
+    "image": "/images/recipes/langue-de-chat.png",
     "description": "Le biscuit idéal pour utiliser des restes de blancs d'œufs. Fin, croquant et délicat.",
     "isVip": false,
     "isTech": false,
@@ -2144,7 +2144,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://images.unsplash.com/photo-1564327767378-abddd68f287d",
+    "image": "/images/recipes/le-carthagene.png",
     "description": "Entremet élégant associant la douceur tropicale de la mangue au peps vivifiant du gingembre, avec un crémeux caramel onctueux et un biscuit financier doré au beurre noisette.",
     "isVip": false,
     "isTech": false,
@@ -2157,7 +2157,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/0739838a3f34c2628a4cc80a5c54445f.png",
+    "image": "/images/recipes/le-desir-baileys.png",
     "description": "L'élégance à l'état pur. Une mousse légère et parfumée au Bailey's associée à un biscuit 'Safari' intense en cacao, le tout enveloppé d'un velours noir mystérieux. Un dessert sophistiqué pour les amateurs de liqueurs crémeuses.",
     "isVip": true,
     "isTech": false,
@@ -2170,7 +2170,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6b04d01df81eaf60028ec8382d3aa4d2.png",
+    "image": "/images/recipes/le-desir-kalamansi.png",
     "description": "Une explosion de fraîcheur exotique. L'acidité vibrante du Kalamansi rencontre la douceur d'une mousse au chocolat au lait, le tout reposant sur un biscuit 'Safari' intense. Une finition velours chocolat pour une élégance parfaite.",
     "isVip": true,
     "isTech": false,
@@ -2183,7 +2183,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/10/kouglof-.jpg",
+    "image": "/images/recipes/le-kougelhopf.png",
     "description": "Le kougelhopf est une brioche à pâte levée, spécialité alsacienne, cuite dans un moule en terre cuite émaillée spécifique qui lui donne sa forme haute, cannelée et creusée en son milieu.",
     "isVip": false,
     "isTech": false,
@@ -2196,7 +2196,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/0de5337a547ec8337189e88cf1292af1.jpg",
+    "image": "/images/recipes/le-kouglof-alsacien.png",
     "description": "Le symbole gourmand de l'Alsace. Une brioche haute, aérée et parfumée, reconnaissable entre mille par sa forme cannelée et ses amandes entières incrustées.",
     "isVip": false,
     "isTech": false,
@@ -2209,7 +2209,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://images.unsplash.com/photo-1489516917245-377a51e7b292",
+    "image": "/images/recipes/le-marbre-pistache-chocolat-lait.png",
     "description": "Une création visuelle et gustative saisissante. L'alliance douce et réconfortante du chocolat au lait rencontre la finesse de la pistache dans un jeu de textures aériennes, le tout reposant sur un croustillant praliné addictif.",
     "isVip": true,
     "isTech": false,
@@ -2222,7 +2222,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFfugVfq3PiU-gPp-EPHP6RQdHEKHL0lIhONdDru6Dglb3daESvB_qp7r4DR2oemI27FsyDzQRV0P4J2KLxPQbbg1nb2rqV-q5Bfni_TtWLwgEJZEohDuBNAWM_Nyo54RpVwVk7y7yfHg3/s400/biarritz.JPG",
+    "image": "/images/recipes/les-biarritz.png",
     "description": "De délicats biscuits plats aux amandes et citron, dont le dessous est nappé de chocolat noir.",
     "isVip": false,
     "isTech": false,
@@ -2235,7 +2235,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://assets.afcdn.com/recipe/20131121/12662_w1024h1024c1cx300cy200.webp",
+    "image": "/images/recipes/les-cigarettes.png",
     "description": "Des biscuits fins et croustillants, roulés à la sortie du four pour former des tubes élégants.",
     "isVip": false,
     "isTech": false,
@@ -2248,7 +2248,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://mallaurydalmasso.com/wp-content/uploads/2025/01/Recette-congolais-recette-rochers-coco.jpg",
+    "image": "/images/recipes/les-congolais.png",
     "description": "Des rochers à la noix de coco, croustillants à l'extérieur et moelleux à l'intérieur. Un classique indémodable.",
     "isVip": false,
     "isTech": false,
@@ -2261,7 +2261,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://wallpapers.com/images/featured/2440x1440-cookies-background-3l6u9ghwo2oltjgv.jpg",
+    "image": "/images/recipes/les-cookies.png",
     "description": "Des cookies à l'américaine, croustillants sur les bords et moelleux à cœur, généreux en pépites de chocolat.",
     "isVip": false,
     "isTech": false,
@@ -2274,7 +2274,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://www.delscookingtwist.com/wp-content/uploads/2018/12/Chocolate-Florentines.jpg",
+    "image": "/images/recipes/les-florentin.png",
     "description": "Des disques croustillants aux amandes, fruits confits et caramel, dont une face est enduite de chocolat.",
     "isVip": false,
     "isTech": false,
@@ -2287,7 +2287,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://static.750g.com/images/1200-630/43b0a2eabaed41fe32489244054bce9f/palets-de-dames.png",
+    "image": "/images/recipes/les-palais-des-dames.png",
     "description": "Des biscuits moelleux originaires du Nord, garnis d'un glaçage royal et parfois de fruits confits.",
     "isVip": false,
     "isTech": false,
@@ -2300,7 +2300,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/08/Pancake.jpg",
+    "image": "/images/recipes/les-pancakes.png",
     "description": "Le pancake est une crêpe d'aspect et de saveur très différents à la crêpe européenne (diamètre plus faible, plus épaisse). L'épaisseur provient de la consistance de la pâte et de l'usage d'un agent levant.",
     "isVip": false,
     "isTech": false,
@@ -2313,7 +2313,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://assets.afcdn.com/recipe/20190704/94701_w1024h768c1cx1500cy998cxt0cyt0cxb3000cyb1996.jpg",
+    "image": "/images/recipes/les-sables-au-beurre.png",
     "description": "Le biscuit classique par excellence, fondant et friable, au bon goût de beurre frais.",
     "isVip": false,
     "isTech": false,
@@ -2326,7 +2326,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://cache.marieclaire.fr/data/photo/w1000_ci/5f/mousses-au-chocolat-et-aux-framboises.jpg",
+    "image": "/images/recipes/les-mousses-chocolat-fruits.png",
     "description": "Tableau de dosage professionnel pour ganaches montées fruitées au chocolat au lait.",
     "isVip": true,
     "isTech": false,
@@ -2352,7 +2352,7 @@ export const catalog = [
     "subCategory": [
       "Macarons"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/84cdb85e2de66b4be54b6127281c2272.png",
+    "image": "/images/recipes/macaron-chocolat.png",
     "description": "L'alliance parfaite d'une coque croquante au cacao et d'une ganache intense au chocolat noir 70%. Une recette détaillée pas à pas pour la réussir à coup sûr.",
     "isVip": false,
     "isTech": false,
@@ -2365,7 +2365,7 @@ export const catalog = [
     "subCategory": [
       "Macarons"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/d19ff6df5fa5adf008867b48b0007ff0.jpg",
+    "image": "/images/recipes/macaron-citron-vert.png",
     "description": "La fraîcheur acidulée du citron vert capturée dans une crème onctueuse, nichée entre deux coques tendres et croquantes.",
     "isVip": false,
     "isTech": false,
@@ -2378,7 +2378,7 @@ export const catalog = [
     "subCategory": [
       "Macarons"
     ],
-    "image": "https://plus.unsplash.com/premium_photo-1703690569954-9cd782cd927e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "image": "/images/recipes/macaron-fruits-des-bois.png",
     "description": "Une explosion fruitée : une confiture maison intense (framboises, mûres, myrtilles) protégée par une coque violette.",
     "isVip": false,
     "isTech": false,
@@ -2404,7 +2404,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://www.giallozafferano.fr/images/203-20386/madeleine_1200x800.jpg",
+    "image": "/images/recipes/madeleine.png",
     "description": "Le petit gâteau traditionnel lorrain, moelleux et bossu, parfait pour le goûter.",
     "isVip": false,
     "isTech": false,
@@ -2417,7 +2417,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/c4616ba865f4c6654f6d93f0b0353868.jpg",
+    "image": "/images/recipes/madeleines-de-commercy.png",
     "description": "Le célèbre petit gâteau moelleux en forme de coquillage, reconnaissable à sa bosse dorée et son parfum de citron.",
     "isVip": false,
     "isTech": false,
@@ -2430,7 +2430,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/4bab0dd2583c8929df512f3d8fce6e78.jpg",
+    "image": "/images/recipes/mayonnaise-maison.png",
     "description": "Le grand classique indispensable. Une émulsion froide stable qui sert de base à de nombreuses autres sauces (Cocktail, Tartare, Andalouse...).",
     "isVip": false,
     "isTech": false,
@@ -2443,7 +2443,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/meringue-francaise/meringue-francaise-etape-13-480.jpg",
+    "image": "/images/recipes/meringue-francaise.png",
     "description": "La technique la plus simple pour réaliser des meringues sèches, croustillantes et légères.",
     "isVip": false,
     "isTech": false,
@@ -2456,7 +2456,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://sweet-salty-lkc.com/wp-content/uploads/2025/05/Meringue-Italienne-Facile-Recette-Inratable-et-Gourmande-5-e1749396585282.jpg",
+    "image": "/images/recipes/meringue-italienne.png",
     "description": "Une meringue cuite par un sirop de sucre bouillant, idéale pour les macarons, les tartes meringuées et les mousses.",
     "isVip": false,
     "isTech": false,
@@ -2469,7 +2469,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://mapatisserie.fr/wp-content/uploads/2018/03/recette-meringue-suisse-20180319_190147-01.jpeg",
+    "image": "/images/recipes/meringue-suisse.png",
     "description": "Une meringue dense et croquante, chauffée au bain-marie avant d'être montée. Idéale pour les décors de bûches (champignons, etc.).",
     "isVip": false,
     "isTech": false,
@@ -2482,7 +2482,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://img.cuisineaz.com/660x660/2022/09/30/i188300-sans-titre-2022-09-30t115159-287.png",
+    "image": "/images/recipes/mille-feuille-classique.png",
     "description": "Le summum de la texture : un feuilletage caramélisé croustillant qui contraste avec l'onctuosité d'une crème pâtissière vanille, le tout couronné par le mythique glaçage marbré.",
     "isVip": false,
     "isTech": false,
@@ -2495,7 +2495,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "https://assets.afcdn.com/recipe/20221003/135677_w1024h1024c1cx1160cy690cxt0cyt0cxb2120cyb1414.jpg",
+    "image": "/images/recipes/moelleux-chocolat.png",
     "description": "Un cœur tendre, une croûte fine, le plaisir intense du chocolat.",
     "isVip": false,
     "isTech": false,
@@ -2742,7 +2742,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "/images/recettes/mousse-fruits-rouges.jpg",
+    "image": "/images/mousse-fruits-rouges.jpg",
     "description": "Une mousse aérienne et fruitée sur base de meringue italienne (pour la tenue et la légèreté) et de purée de fruits.",
     "isVip": true,
     "isTech": false,
@@ -3054,7 +3054,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "https://empreintesucree.fr/wp-content/uploads/2022/02/1-muffins-chocolat-noisettes-recette-empreinte-sucree.jpg",
+    "image": "/images/recipes/muffins-chocolat-noisette.png",
     "description": "Le goûter parfait : moelleux, croquant et riche en chocolat.",
     "isVip": false,
     "isTech": false,
@@ -3067,7 +3067,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "https://assets.afcdn.com/recipe/20160426/2659_w1024h1024c1cx1527cy2295.jpg",
+    "image": "/images/recipes/muffins-vanille.png",
     "description": "La base parfaite : des muffins simples, aérés et délicatement parfumés.",
     "isVip": false,
     "isTech": false,
@@ -3080,7 +3080,7 @@ export const catalog = [
     "subCategory": [
       "Confiseries diverses"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/5b021fbe8cb4f5ec938c0d64d1d04553.png",
+    "image": "/images/recipes/muscadine-au-cognac.png",
     "description": "Une spécialité traditionnelle en forme de bûchette. Une ganache onctueuse au praliné et au Cognac, enrobée d'une fine couche de chocolat et roulée dans le sucre glace. Un classique indémodable.",
     "isVip": false,
     "isTech": false,
@@ -3093,7 +3093,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/1df5539c0b26e3a4dcff5ceadc8d6a2a.png",
+    "image": "/images/recipes/noisettes-caramel-chocolat.png",
     "description": "Une gourmandise rustique et addictive. Des noisettes entières torréfiées à cœur, caramélisées au sucre cuit et à la vanille, assemblées en petits rochers (clusters) puis enrobées de chocolat lait.",
     "isVip": false,
     "isTech": false,
@@ -3106,7 +3106,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/7e694ad1cc3c3fc50e9cfc869a0609db.png",
+    "image": "/images/recipes/oranges-confites-orangettes.png",
     "description": "L'art du confisage traditionnel. Des écorces d'oranges gorgées de sirop pendant 8 jours pour une texture tendre et translucide, enrobées d'une fine couche de chocolat noir croquant.",
     "isVip": false,
     "isTech": false,
@@ -3119,7 +3119,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/pain-de-gene-tendances-food-1300x1300.jpg",
+    "image": "/images/recipes/pain-de-gene.png",
     "description": "Le Pain de Gênes est un biscuit d'origine Italienne, au goût très subtil et qui sert de base à certains gâteaux et dessert à l'assiette. Prévoir deux doses pour votre carnet de recettes du cap pâtissier.",
     "isVip": true,
     "isTech": false,
@@ -3132,7 +3132,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2021/07/pain-de-mie.jpg",
+    "image": "/images/recipes/pain-de-mie.png",
     "description": "Un pain à la mie blanche, serrée et moelleuse, enrichi en lait, sucre et matière grasse. Parfait pour les toasts, croque-monsieur et canapés.",
     "isVip": false,
     "isTech": false,
@@ -3145,7 +3145,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://assets.magimix.com/files/rec_27840/photo_pain-thon-photo.jpg",
+    "image": "/images/recipes/pain-de-thon.png",
     "description": "Un cake salé classique, moelleux et économique, idéal pour les apéritifs ou les entrées.",
     "isVip": false,
     "isTech": false,
@@ -3158,7 +3158,7 @@ export const catalog = [
     "subCategory": [
       "Cakes Salés"
     ],
-    "image": "https://images.unsplash.com/photo-1603279126476-93ce8278312c?q=80&w=1470&auto=format&fit=crop",
+    "image": "/images/recipes/pain-mais-sans-gluten.png",
     "description": "Un pain doré à la mie serrée mais moelleuse, réalisé sans farine de blé pour les intolérants au gluten.",
     "isVip": true,
     "isTech": false,
@@ -3171,7 +3171,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2022/11/palets-bretons.jpg",
+    "image": "/images/recipes/palet-breton.png",
     "description": "Le palet breton est un biscuit sablé emblématique, riche en beurre demi-sel et friable à souhait. Une base parfaite aussi pour des entremets.",
     "isVip": false,
     "isTech": false,
@@ -3184,7 +3184,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://www.sunny-delices.fr/wp-content/uploads/2021/02/paris-brest-sans-gluten-individuel.jpg",
+    "image": "/images/recipes/paris-brest.png",
     "description": "Créé en 1910 pour la course cycliste, ce gâteau en forme de roue associe pâte à choux croustillante, amandes effilées et une généreuse crème mousseline au praliné.",
     "isVip": true,
     "isTech": false,
@@ -3197,7 +3197,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.undejeunerdesoleil.com/wp-content/uploads/2016/04/Baba_rhum_recette.jpg",
+    "image": "/images/recipes/pate-a-baba.png",
     "description": "Le baba est un gâteau à pâte levée, riche en beurre et en œufs, qui a la particularité d'être séché après cuisson pour être ensuite imbibé d'un sirop alcoolisé (souvent au rhum).",
     "isVip": false,
     "isTech": false,
@@ -3210,7 +3210,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://axelle.me/wp-content/uploads/2022/12/20221220_134842-1140x855.jpg",
+    "image": "/images/recipes/pate-amande-confiseur.png",
     "description": "La véritable recette de la pâte d'amande confiseur cuite, bien supérieure à la pâte d'amande crue en termes de texture et de conservation.",
     "isVip": false,
     "isTech": false,
@@ -3223,7 +3223,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2024/07/pate-a-tartiner-noisette.jpg",
+    "image": "/images/recipes/pate-tartiner-amande-noisette.png",
     "description": "Une pâte à tartiner maison onctueuse, riche en fruits secs torréfiés, sans huile de palme et bien meilleure que celle du commerce.",
     "isVip": false,
     "isTech": false,
@@ -3236,7 +3236,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2024/07/Pate-a-tartiner-framboise-pistache.jpg",
+    "image": "/images/recipes/pate-tartiner-pistache-framboise.png",
     "description": "L'association vibrante de la pistache verte et de l'acidité de la framboise croustillante. Une gourmandise de luxe.",
     "isVip": false,
     "isTech": false,
@@ -3262,7 +3262,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://img.over-blog.com/500x375/3/18/00/24/patiss-25/cafe-gourmand-2.JPG",
+    "image": "/images/recipes/petit-four-pate-amande.png",
     "description": "Des petits fours traditionnels à base de pâte d'amande riche, dressés à la poche pour des formes élégantes.",
     "isVip": false,
     "isTech": false,
@@ -3273,7 +3273,7 @@ export const catalog = [
     "title": "Praliné Croustillant Noisette Intense",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/b5d042ecdd3b83e40ed2c330fce9affc.jpg",
+    "image": "/images/recipes/praline-croustillant-noisette-intense.png",
     "description": "Un bonbon texturé à la puissance aromatique intense. Un praliné noisette croustillant enrichi de Royaltine, surmonté d'une noisette entière torréfiée pour un relief gourmand sous une fine couche de chocolat lait.",
     "isVip": false,
     "isTech": false,
@@ -3286,7 +3286,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://perleensucre.com/wp-content/uploads/2019/11/pate-de-praline.jpg",
+    "image": "/images/recipes/praline-sec.png",
     "description": "La technique traditionnelle du praliné où le caramel est réalisé séparément des fruits secs pour un goût de caramel plus prononcé et une texture intense.",
     "isVip": false,
     "isTech": false,
@@ -3299,7 +3299,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://images.squarespace-cdn.com/content/v1/5c39ee350dbda39a391afb4b/1591280610667-XE0I1IMUO4CTAUXTBZ7D/Profiteroles_Blog-3.jpg",
+    "image": "/images/recipes/profiteroles.png",
     "description": "Le dessert de bistrot par excellence : des choux frais garnis de glace vanille minute, nappés d'une sauce chocolat chaude et intense.",
     "isVip": false,
     "isTech": false,
@@ -3312,7 +3312,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "https://www.elle-et-vire.com/uploads/cache/1920x1200/uploads/recip/recipe/3479/6242cdbfd58bc_pazapah-1.jpg",
+    "image": "/images/recipes/quatre-quart-pommes.png",
     "description": "Le gâteau familial par excellence, moelleux et généreux en fruits.",
     "isVip": false,
     "isTech": false,
@@ -3325,7 +3325,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://www.tendances-food.fr/wp-content/uploads/2022/05/pistache-abricot.jpg",
+    "image": "/images/recipes/rectangle-financier-pistache-abricot.png",
     "description": "L'élégance d'un format 'Finger' allongé. La douceur biscuitée du chocolat blond Dulcey enveloppe l'acidité franche de l'abricot, le tout reposant sur un socle intense de pistache.",
     "isVip": false,
     "isTech": false,
@@ -3338,7 +3338,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://www.paul-reygrobellet.fr/WORDPRESS/wp-content/uploads/2019/04/patissier-religieuse-tradition-reygrobellet.jpg",
+    "image": "/images/recipes/religieuse.png",
     "description": "L'élégance à la française. Deux choux superposés garnis de crème pâtissière, glacés au fondant et décorés d'une collerette de crème au beurre.",
     "isVip": false,
     "isTech": false,
@@ -3351,7 +3351,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://www.labellevie.com/media/recipes/images/186.jpg",
+    "image": "/images/recipes/rocher-amande-coco.png",
     "description": "Des bouchées rustiques aux amandes effilées ou à la noix de coco, liées par des blancs d'œufs.",
     "isVip": false,
     "isTech": false,
@@ -3362,7 +3362,7 @@ export const catalog = [
     "title": "Rocher Croustillant (Praliné Feuilletine)",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/2595a1f7694eed76382db1c61c0cdf5e.jpg",
+    "image": "/images/recipes/rocher-croustillant.png",
     "description": "Une gourmandise absolue. Un praliné maison rustique riche en noisettes, rendu croustillant par l'ajout généreux de feuilletine, puis enrobé d'un glaçage rocher aux amandes hachées.",
     "isVip": false,
     "isTech": false,
@@ -3373,7 +3373,7 @@ export const catalog = [
     "title": "Rochers Pralinés",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6d079e1bc36c8005876ca938736c33c0.png",
+    "image": "/images/recipes/rochers-pralines-maison.png",
     "description": "Le summum de la gourmandise chocolatée. Un cœur de praliné maison fondant aux amandes et noisettes, enrobé d'une couverture craquante aux éclats d'amandes torréfiés.",
     "isVip": false,
     "isTech": false,
@@ -3386,7 +3386,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://ateliersdeludo.fr/wp-content/uploads/2021/04/sables-diamant-1.jpg",
+    "image": "/images/recipes/sable-diamants.png",
     "description": "Des sablés au beurre riches et fondants, roulés dans le sucre cristal pour un pourtour scintillant comme des diamants.",
     "isVip": false,
     "isTech": false,
@@ -3399,7 +3399,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://empreintesucree.fr/wp-content/uploads/2021/10/2-sables-viennois-spritz-recette-empreinte-sucree.jpg",
+    "image": "/images/recipes/sable-spitz.png",
     "description": "Des sablés viennois (Spritz) fondants et friables, souvent trempés dans le chocolat, idéals pour le goûter.",
     "isVip": false,
     "isTech": false,
@@ -3412,7 +3412,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "https://www.patisserie-et-gourmandise.com/wp-content/uploads/2018/03/saint-honore-2.jpg",
+    "image": "/images/recipes/saint-honore.png",
     "description": "Le patron des boulangers. Une base de feuilletage, une couronne de choux caramélisés et une crème Chiboust (ou Chantilly) dressée à la douille spécifique.",
     "isVip": true,
     "isTech": false,
@@ -3425,7 +3425,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "https://www.jullien-patisserie.fr/images/products_images/34/vO1Fr-FMzDo.jpeg",
+    "image": "/images/recipes/salambo.png",
     "description": "Aussi appelé 'Gland', ce chou de forme oblongue est garni d'une crème pâtissière parfumée au Kirsch et glacé d'un fondant vert pâle, avec une extrémité au chocolat.",
     "isVip": false,
     "isTech": false,
@@ -3438,7 +3438,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/ce6c82585435ec8d26ba4329761a5ee3.jpg",
+    "image": "/images/recipes/sauce-au-poivre.png",
     "description": "Un grand classique de bistrot. Une sauce onctueuse et relevée, parfaite pour napper une entrecôte, un filet de bœuf ou un magret de canard.",
     "isVip": false,
     "isTech": false,
@@ -3451,7 +3451,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/631b2c6de02f3e285561f898efaa6c96.jpg",
+    "image": "/images/recipes/sauce-chien.png",
     "description": "L'incontournable de la cuisine créole. Une sauce verte, fraîche et parfumée aux herbes, idéale pour accompagner les poissons grillés, les crustacés ou le poulet boucané.",
     "isVip": false,
     "isTech": false,
@@ -3464,7 +3464,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/f9a7f35f28f0b226c9c48be83f28e751.jpg",
+    "image": "/images/recipes/sauce-curry-coco.png",
     "description": "Une sauce d'inspiration indienne, onctueuse et parfumée. Très rapide à réaliser, elle transforme un simple blanc de poulet ou des crevettes en un plat exotique.",
     "isVip": false,
     "isTech": false,
@@ -3477,7 +3477,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/173d8a186fceaa9eb1c081e757a2d213.jpg",
+    "image": "/images/recipes/sauce-moutarde-ancienne.png",
     "description": "Une sauce de caractère, à la fois crémeuse et relevée. L'équilibre entre la douceur de la crème et l'acidité du vinaigre et de la moutarde en fait le compagnon idéal des viandes blanches.",
     "isVip": false,
     "isTech": false,
@@ -3490,7 +3490,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/7a4553917837540ebc6acbee58944c6e.jpg",
+    "image": "/images/recipes/sauce-samourai.png",
     "description": "L'incontournable des friteries belges. Une sauce mayonnaise épicée, onctueuse et légèrement sucrée pour contrebalancer le feu du piment.",
     "isVip": false,
     "isTech": false,
@@ -3503,7 +3503,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/7f8d7e6c0ed7ce8b391f5fe6ab897b30.jpg",
+    "image": "/images/recipes/sauce-satay.png",
     "description": "La célèbre sauce asiatique riche et gourmande au beurre de cacahuète, parfaite en trempette pour des brochettes de poulet ou des rouleaux de printemps.",
     "isVip": false,
     "isTech": false,
@@ -3516,7 +3516,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "https://images.unsplash.com/photo-1608949621308-c54d112c808a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "image": "/images/recipes/sauce-tomate-maison.png",
     "description": "La base absolue de la cuisine méditerranéenne, idéale pour pâtes et pizzas.",
     "isVip": false,
     "isTech": false,
@@ -3529,7 +3529,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://adc-dev-images-recipes.s3.eu-west-1.amazonaws.com/rep_fotolia_4983_speculoos_biscuit.jpg",
+    "image": "/images/recipes/speculoos.png",
     "description": "Le célèbre biscuit belge aux épices, cassonade et cannelle, délicieux avec le café.",
     "isVip": false,
     "isTech": false,
@@ -3542,7 +3542,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "https://cuisine.nessma.tv/uploads/7/2020-03/ddacbec3991374b258f32e57bcac03ae.png",
+    "image": "/images/recipes/sponge-cake.png",
     "description": "Le gâteau éponge anglo-saxon, très aéré et parfait pour le cake design.",
     "isVip": false,
     "isTech": false,
@@ -3555,7 +3555,7 @@ export const catalog = [
     "subCategory": [
       "Pâtes"
     ],
-    "image": "https://www.myparisiankitchen.com/wp-content/uploads/2018/11/pate-a-streusel_MPK_01-500x374.jpg",
+    "image": "/images/recipes/streusel-amande.png",
     "description": "Le streusel est un mélange de beurre, farine fine et/ou chapelure et sucre que l'on parsème sur certaines pâtisseries avant de les passer au four.",
     "isVip": false,
     "isTech": false,
@@ -3566,7 +3566,7 @@ export const catalog = [
     "title": "Tablette fourré fraise",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/86ac6c00469a996ab61449d88227b045.png",
+    "image": "/images/recipes/tablette-fourre-fraise.png",
     "description": "Une tablette au cœur tendre : une ganache fraise onctueuse et fruitée, enrobée d'une fine couche de chocolat au lait craquante pour une douceur régressive.",
     "isVip": false,
     "isTech": false,
@@ -3577,7 +3577,7 @@ export const catalog = [
     "title": "Tablette fourrée framboise",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/f61c275f373852b21c27e5cf272ba26b.jpg",
+    "image": "/images/recipes/tablette-fourre-framboise.png",
     "description": "Une tablette de chocolat noir intense qui renferme un cœur coulant et fruité à la framboise. Le contraste chocolat noir et framboise est un classique indémodable.",
     "isVip": false,
     "isTech": false,
@@ -3588,7 +3588,7 @@ export const catalog = [
     "title": "Tablette fourrée pistache",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6ac9773ded84387d8e7634f08574e034.jpg",
+    "image": "/images/recipes/tablette-fourre-pistache.png",
     "description": "Une tablette ultra-gourmande enrobée de chocolat blanc, révélant un cœur coulant au praliné pistache et du riz soufflé croustillant.",
     "isVip": false,
     "isTech": false,
@@ -3601,7 +3601,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://ateliersdeludo.fr/wp-content/uploads/2023/06/Tarte-Abricot-Pistache.jpg",
+    "image": "/images/recipes/tarte-abricot-pistache.png",
     "description": "L'association de la pistache douce et de l'abricot acidulé est un grand classique des tartes estivales de boutique.",
     "isVip": false,
     "isTech": false,
@@ -3614,7 +3614,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/bad3001aad2812d6d1a17d2dd4ed0f6f.jpg",
+    "image": "/images/recipes/tarte-alsacienne-aux-pommes.png",
     "description": "La fameuse tarte aux pommes de grand-mère, composée d'un fond de pâte brisée, de gros quartiers de pommes fondants et d'une migaine (flan) généreuse à la crème.",
     "isVip": false,
     "isTech": false,
@@ -3627,7 +3627,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://empreintesucree.fr/wp-content/uploads/2020/05/1-tarte-chocolat-recette-empreinte-sucree-1.jpg",
+    "image": "/images/recipes/tarte-au-chocolat.png",
     "description": "Le summum de la gourmandise : une pâte sablée cacaotée ultra-croustillante garnie d'une ganache noire intense, fondante et brillante.",
     "isVip": false,
     "isTech": false,
@@ -3640,7 +3640,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "/images/tarte-fine-aux-pommes.jpg",
+    "image": "/images/recipes/tarte-aux-pommes.png",
     "description": "La tarte fine de boulangerie par excellence : une pâte feuilletée croustillante, une fine couche de compote et des lamelles de pommes caramélisées au four.",
     "isVip": false,
     "isTech": false,
@@ -3653,7 +3653,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/0fb7f65352bad271f01f7ef59f4fea8d.jpg",
+    "image": "/images/recipes/tarte-aux-pralines.png",
     "description": "La grande spécialité lyonnaise : un fond de tarte sablé croustillant garni d'un appareil rouge rubis fondant et ultra gourmand (Tant pour Tant crème et pralines concassées).",
     "isVip": false,
     "isTech": false,
@@ -3679,7 +3679,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/tarte-chocolat-de-paques/tarte-chocolat-de-paques-1200.jpg",
+    "image": "/images/recipes/tarte-cacao-noisette-riz-souffle.png",
     "description": "Une tarte qui joue sur les textures : une pâte cacaotée, une couche de praliné croustillant au riz soufflé et une ganache chocolat noir onctueuse.",
     "isVip": false,
     "isTech": false,
@@ -3692,7 +3692,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://cleliafoodphoto.fr/wp-content/uploads/2020/12/tarte-caramel-choclat.png",
+    "image": "/images/recipes/tarte-chocolat-caramel.png",
     "description": "Un duo indémodable : un fond de tarte croquant, garni d'un caramel mou au beurre salé et surmonté d'une ganache montée ultra-légère au chocolat au lait.",
     "isVip": false,
     "isTech": false,
@@ -3705,7 +3705,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://ateliersdeludo.fr/wp-content/uploads/2022/08/Tarte-Framboise-Cyril-Lignac.jpg",
+    "image": "/images/recipes/tarte-framboise.png",
     "description": "La tarte aux framboises façon boutique : un fond de pâte sucrée, une crème d'amande moelleuse, une fine couche de pâtissière et des framboises fraîches garnies de confit.",
     "isVip": false,
     "isTech": false,
@@ -3718,7 +3718,7 @@ export const catalog = [
     "subCategory": [
       "Desserts Régionaux"
     ],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/1a5ca5539663852108e731c91b138d9b.jpg",
+    "image": "/images/recipes/tarte-tatin.png",
     "description": "Recette traditionnelle de la Tarte Tatin : la célèbre tarte renversée aux pommes caramélisées du Centre-Val de Loire.",
     "isVip": false,
     "isTech": false,
@@ -3731,7 +3731,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://tout-gourmand.fr/media/cache/voir_recette/media/images/recettes/26444-tout-gourmand-tartelettes-au-citron-meringuee.webp",
+    "image": "/images/recipes/tartelette-citron-meringuee.png",
     "description": "Un grand classique : l'équilibre parfait entre l'acidité vive du crémeux citron et la douceur nuageuse de la meringue italienne.",
     "isVip": false,
     "isTech": false,
@@ -3744,7 +3744,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "https://www.aureliencohen.fr/wp-content/uploads/2020/02/Tartelettes-orange-sanguine-poivre-de-timut-2-683x1024.jpg",
+    "image": "/images/recipes/tartelette-orange.png",
     "description": "Une alternative douce et parfumée à la tarte au citron. L'orange curd, onctueux et riche en zestes, est couronné de suprêmes d'orange frais.",
     "isVip": false,
     "isTech": false,
@@ -3755,7 +3755,7 @@ export const catalog = [
     "title": "Truffe Chardon au Caramel",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3cb65d12941c94016dfe5729457af895.png",
+    "image": "/images/recipes/truffe-chardon-caramel.png",
     "description": "Un bonbon mythique à l'aspect piquant. Une ganache fondante au caramel et à la fleur de sel, enrobée d'une couverture noire texturée grâce au passage sur une grille à chardon.",
     "isVip": false,
     "isTech": false,
@@ -3766,7 +3766,7 @@ export const catalog = [
     "title": "Truffes Chocolat & Whisky",
     "category": "Chocolaterie",
     "subCategory": [],
-    "image": "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/79c549535c907e074738d632777d0154.png",
+    "image": "/images/recipes/truffes-chocolat-whisky.png",
     "description": "La truffe de tradition : une ganache noire corsée au whisky tourbé, roulée dans un cacao pur pour une amertume élégante.",
     "isVip": false,
     "isTech": false,
@@ -3779,7 +3779,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/tuiles-amandes/tuiles-amandes-etape-18-480.jpg",
+    "image": "/images/recipes/tuile.png",
     "description": "Le petit four sec par excellence : fin, croquant, généreux en amandes et courbé délicatement dès la sortie du four.",
     "isVip": false,
     "isTech": false,
