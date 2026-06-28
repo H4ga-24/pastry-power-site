@@ -8,7 +8,7 @@ const cakeCheddarJambon = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Un cake aux accents anglo-saxons (ou du Nord !) où la bière apporte légèreté et caractère à la pâte.",
-  image: "https://www.femmeactuelle.fr/imgre/fit/~1~fac~2018~07~30~b5ecf743-2674-48fb-b9fb-d7087a682fe6.jpeg/1200x900/focusPoint/50%2C50/cake-au-cheddar-au-jambon-a-la-biere-et-a-la-moutarde.jpg",
+  image: "/images/recipes/cake-cheddar-jambon.png",
   baseServings: 8, 
   
   ingredients: [

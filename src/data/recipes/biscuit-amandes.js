@@ -8,7 +8,7 @@ const biscuitAmandes = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Un biscuit d'une grande onctuosité grâce à la pâte d'amande. Sa texture souple en fait une base idéale pour le montage de vos entremets et cadres.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2022/07/biscuit-aux-amandes.png",
+  image: "/images/recipes/biscuit-amandes.png",
   baseServings: 1, // 1 dose
 
   ingredients: [

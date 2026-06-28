@@ -8,7 +8,7 @@ const lesCookies = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Des cookies à l'américaine, croustillants sur les bords et moelleux à cœur, généreux en pépites de chocolat.",
-  image: "https://wallpapers.com/images/featured/2440x1440-cookies-background-3l6u9ghwo2oltjgv.jpg",
+  image: "/images/recipes/les-cookies.png",
   baseServings: 15,
   
   ingredients: [

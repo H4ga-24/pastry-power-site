@@ -8,7 +8,7 @@ const biscuitChocolatSansFarine = {
   cookTime: "20 MIN",
   difficulty: "FACILE",
   description: "Un biscuit intense en chocolat, dense et fondant. L'absence de farine le rend incroyablement moelleux et adapté aux intolérants au gluten.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2022/07/biscuit-chocolat-sans-farine.jpg",
+  image: "/images/recipes/biscuit-chocolat-sans-farine.png",
   baseServings: 6,
   
   ingredients: [

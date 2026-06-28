@@ -8,7 +8,7 @@ const profiteroles = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "Le dessert de bistrot par excellence : des choux frais garnis de glace vanille minute, nappés d'une sauce chocolat chaude et intense.",
-  image: "https://images.squarespace-cdn.com/content/v1/5c39ee350dbda39a391afb4b/1591280610667-XE0I1IMUO4CTAUXTBZ7D/Profiteroles_Blog-3.jpg",
+  image: "/images/recipes/profiteroles.png",
   baseServings: 4, // personnes
   
   ingredients: [

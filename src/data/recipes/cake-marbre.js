@@ -8,7 +8,7 @@ const cakeMarbre = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Un classique intemporel alliant vanille et cacao pour le goûter.",
-  image: "https://recettes.precuttech.com/wp-content/uploads/2025/04/Cake-marbre-ultra-moelleux-img1.jpg",
+  image: "/images/recipes/cake-marbre.png",
   baseServings: 8,
   
   ingredients: [

@@ -8,7 +8,7 @@ const cakeLardonsPruneaux = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Le mariage rustique du fumé et du fruit sec. Une valeur sûre pour les pique-niques.",
-  image: "https://www.fashioncooking.fr/wp-content/uploads/2010/06/Cakepruneaux3.jpg",
+  image: "/images/recipes/cake-lardons-pruneaux.png",
   baseServings: 8, 
   
   ingredients: [

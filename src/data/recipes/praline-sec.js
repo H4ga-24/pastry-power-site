@@ -8,7 +8,7 @@ const pralineSec = {
   cookTime: "20 MIN",
   difficulty: "MOYEN",
   description: "La technique traditionnelle du praliné où le caramel est réalisé séparément des fruits secs pour un goût de caramel plus prononcé et une texture intense.",
-  image: "https://perleensucre.com/wp-content/uploads/2019/11/pate-de-praline.jpg",
+  image: "/images/recipes/praline-sec.png",
   baseServings: 600, // g
   
   ingredients: [

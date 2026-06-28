@@ -8,7 +8,7 @@ const cremeAnglaise = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une sauce onctueuse à la vanille, base des îles flottantes, des glaces et accompagnement idéal des fondants au chocolat.",
-  image: "https://mapatisserie.fr/wp-content/uploads/2025/05/recette-creme-anglaise-10.jpg",
+  image: "/images/recipes/creme-anglaise.png",
   baseServings: 4, // 500ml
   
   ingredients: [

@@ -8,7 +8,7 @@ const laPateAFoncer = {
   cookTime: "25 MIN",
   difficulty: "FACILE",
   description: "La pâte à foncer est une pâte intermédiaire entre la pâte brisée et la pâte sucrée. Elle est idéale pour les tartes aux fruits juteux, les flans pâtissiers ou les quiches salées grâce à sa bonne tenue.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/08/pate-a-foncer.jpg",
+  image: "/images/recipes/la-pate-a-foncer.png",
   baseServings: 1, // "1 Tarte de 24cm"
   
   ingredients: [

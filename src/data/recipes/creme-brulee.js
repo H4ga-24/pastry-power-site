@@ -8,7 +8,7 @@ const cremeBrulee = {
   cookTime: "1 HEURE",
   difficulty: "FACILE",
   description: "Le grand classique indémodable : une crème vanille onctueuse cachée sous une fine couche de caramel croquant.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/07/creme-caramel-1300x583.jpg",
+  image: "/images/recipes/creme-brulee.png",
   baseServings: 4, // 4 ramequins
   
   ingredients: [

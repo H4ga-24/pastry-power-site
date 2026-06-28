@@ -8,7 +8,7 @@ const rochersPralinesMaison = {
   cookTime: "20 MIN",
   difficulty: "INTERMÉDIAIRE",
   description: "Le summum de la gourmandise chocolatée. Un cœur de praliné maison fondant aux amandes et noisettes, enrobé d'une couverture craquante aux éclats d'amandes torréfiés.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6d079e1bc36c8005876ca938736c33c0.png",
+  image: "/images/recipes/rochers-pralines-maison.png",
   baseServings: 200, // pièces
   
   ingredients: [

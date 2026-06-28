@@ -8,7 +8,7 @@ const milleFeuilleClassique = {
   cookTime: "40 MIN",
   difficulty: "AVANCÉ",
   description: "Le summum de la texture : un feuilletage caramélisé croustillant qui contraste avec l'onctuosité d'une crème pâtissière vanille, le tout couronné par le mythique glaçage marbré.",
-  image: "https://img.cuisineaz.com/660x660/2022/09/30/i188300-sans-titre-2022-09-30t115159-287.png",
+  image: "/images/recipes/mille-feuille-classique.png",
   baseServings: 1, // "1 Mille-feuille (4 à 6 personnes)"
   
   ingredients: [

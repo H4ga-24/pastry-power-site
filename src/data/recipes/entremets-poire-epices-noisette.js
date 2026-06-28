@@ -8,7 +8,7 @@ const entremetsPoireEpicesNoisette = {
   cookTime: "1H 00",
   difficulty: "AVANCÉ",
   description: "Un hymne à l'automne et à l'hiver. La fraîcheur de la poire confite rencontre la chaleur des épices et la gourmandise du chocolat au lait, le tout soutenu par le croquant de la noisette.",
-  image: "https://www.cuisineaddict.com/img/advcms/matrices/media/1096.jpg",
+  image: "/images/recipes/entremets-poire-epices-noisette.png",
   baseServings: 4, // "4 Entremets de Ø 22 cm"
   
   ingredients: [

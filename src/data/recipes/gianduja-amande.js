@@ -8,7 +8,7 @@
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Une alternative douce au classique gianduja noisette. Le fondant de l'amande associé au chocolat au lait pour des intérieurs de bonbons ou des tartinables d'exception.",
-  image: "https://empreintesucree.fr/wp-content/uploads/2017/01/1-gianduja-maison-recette-patisserie-empreinte-sucree.jpg",
+  image: "/images/recipes/gianduja-amande.png",
   baseServings: 500, // g
   
   ingredients: [

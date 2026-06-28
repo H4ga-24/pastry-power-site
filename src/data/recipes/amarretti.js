@@ -9,7 +9,7 @@ const amarretti = {
   difficulty: "AVANCÉ",
   baseServings: 6,
   description: "Une création exclusive où la douceur du biscuit noisette rencontre l'acidité parfumée d'une compotée de griottes et l'onctuosité d'une mousse légère au lait d'amande.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3c901d5843ce9d7c979b087d04c101de.png",
+  image: "/images/recipes/amarretti.png",
   
   ingredients: [
     // Biscuit Noisette

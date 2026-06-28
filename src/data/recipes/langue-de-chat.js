@@ -8,7 +8,7 @@ const langueDeChat = {
   cookTime: "10 MIN",
   difficulty: "TRÈS FACILE",
   description: "Le biscuit idéal pour utiliser des restes de blancs d'œufs. Fin, croquant et délicat.",
-  image: "https://assets.afcdn.com/recipe/20130924/63477_w1024h576c1cx1868cy1296.jpg",
+  image: "/images/recipes/langue-de-chat.png",
   baseServings: 30, // biscuits
   
   ingredients: [

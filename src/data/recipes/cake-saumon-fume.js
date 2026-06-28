@@ -8,7 +8,7 @@ const cakeSaumonFume = {
   cookTime: "55 MIN",
   difficulty: "FACILE",
   description: "Une version nordique du cake au poisson, avec du raifort pour le piquant et de l'aneth pour la fraîcheur.",
-  image: "https://www.clickmiam.fr/images/recettes/cake-saumon-fume.webp",
+  image: "/images/recipes/cake-saumon-fume.png",
   baseServings: 8, 
   
   ingredients: [

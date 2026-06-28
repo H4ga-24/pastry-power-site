@@ -8,7 +8,7 @@ const entremetsBavaroisVanille = {
   cookTime: "30 MIN",
   difficulty: "MOYEN",
   description: "Un classique indémodable du CAP Pâtissier. Une mousse bavaroise onctueuse à la vanille qui cache un cœur fondant de crémeux chocolat, le tout entouré d'une cartouchière de biscuit à la cuillère moelleux.",
-  image: "https://www.maspatule.com/blog/wp-content/uploads/2023/05/IMG_4440-03-1440x811.jpeg",
+  image: "/images/recipes/entremets-bavarois-vanille.png",
   baseServings: 1, // 1 Entremets de 20 cm
   
   ingredients: [

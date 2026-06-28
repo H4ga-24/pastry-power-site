@@ -8,7 +8,7 @@ const cakeAspergesGirolles = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Un cake forestier et printanier très parfumé grâce à la poêlée de champignons.",
-  image: "https://static.750g.com/images/1200-630/3acc5362272b9e86cea229db61b7222b/cake-aux-asperges-et-au-colin.png",
+  image: "/images/recipes/cake-asperges-girolles.png",
   baseServings: 8, 
   
   ingredients: [

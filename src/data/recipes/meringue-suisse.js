@@ -8,7 +8,7 @@ const meringueSuisse = {
   cookTime: "2H",
   difficulty: "MOYEN",
   description: "Une meringue dense et croquante, chauffée au bain-marie avant d'être montée. Idéale pour les décors de bûches (champignons, etc.).",
-  image: "https://mapatisserie.fr/wp-content/uploads/2018/03/recette-meringue-suisse-20180319_190147-01.jpeg",
+  image: "/images/recipes/meringue-suisse.png",
   baseServings: 1, // bol
   
   ingredients: [

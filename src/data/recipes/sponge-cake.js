@@ -8,7 +8,7 @@ const spongeCake = {
   cookTime: "30 MIN",
   difficulty: "MOYEN",
   description: "Le gâteau éponge anglo-saxon, très aéré et parfait pour le cake design.",
-  image: "https://cuisine.nessma.tv/uploads/7/2020-03/ddacbec3991374b258f32e57bcac03ae.png",
+  image: "/images/recipes/sponge-cake.png",
   baseServings: 1, // gâteau
   
   ingredients: [

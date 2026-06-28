@@ -8,7 +8,7 @@ const chouxCreme = {
   cookTime: "30 MIN",
   difficulty: "MOYEN",
   description: "Le chou moderne, recouvert d'un craquelin croustillant et garni d'une crème légère (Diplomate ou Chantilly Mascarpone).",
-  image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480/img/recipe/ras/Assets/7d0a6d533f4d3e9d29b33c1a24aed322/Derivates/e2d49242fce10af2266dd38cb72860b5dbfccc55.jpg",
+  image: "/images/recipes/choux-creme.png",
   baseServings: 8, 
   
   ingredients: [

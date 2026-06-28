@@ -8,7 +8,7 @@ const tarteAuxPommes = {
   cookTime: "40 MIN",
   difficulty: "FACILE",
   description: "La tarte fine de boulangerie par excellence : une pâte feuilletée croustillante, une fine couche de compote et des lamelles de pommes caramélisées au four.",
-  image: "/images/tarte-fine-aux-pommes.jpg", // Note: fallback image added as the one in the snippet wasn't parsed properly
+  image: "/images/recipes/tarte-aux-pommes.png", // Note: fallback image added as the one in the snippet wasn't parsed properly
   baseServings: 6, // 1 tarte 24cm
   
   ingredients: [

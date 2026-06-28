@@ -8,7 +8,7 @@ const moelleuxChocolat = {
   cookTime: "25 MIN",
   difficulty: "FACILE",
   description: "Un cœur tendre, une croûte fine, le plaisir intense du chocolat.",
-  image: "https://assets.afcdn.com/recipe/20221003/135677_w1024h1024c1cx1160cy690cxt0cyt0cxb2120cyb1414.jpg",
+  image: "/images/recipes/moelleux-chocolat.png",
   baseServings: 6,
   
   ingredients: [

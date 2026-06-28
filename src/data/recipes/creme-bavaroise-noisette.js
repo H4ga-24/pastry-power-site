@@ -9,7 +9,7 @@ const cremeBavaroiseNoisette = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une bavaroise gourmande enrichie au praliné noisette, parfaite pour les desserts d'automne ou les entremets chocolat-noisette.",
-  image: "https://img.cuisineaz.com/1024x1024/2017/02/02/i119550-bavarois-aux-noisettes.jpeg",
+  image: "/images/recipes/creme-bavaroise-noisette.png",
   baseServings: 1, 
   
   ingredients: [

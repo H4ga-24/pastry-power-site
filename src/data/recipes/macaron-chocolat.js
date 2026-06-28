@@ -8,7 +8,7 @@ const macaronChocolat = {
   cookTime: "14 MIN",
   difficulty: "DIFFICILE",
   description: "L'alliance parfaite d'une coque croquante au cacao et d'une ganache intense au chocolat noir 70%. Une recette détaillée pas à pas pour la réussir à coup sûr.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/84cdb85e2de66b4be54b6127281c2272.png",
+  image: "/images/recipes/macaron-chocolat.png",
   baseServings: 70, // coques
   
   ingredients: [

@@ -8,7 +8,7 @@ const tuile = {
   cookTime: "8 MIN",
   difficulty: "MOYEN",
   description: "Le petit four sec par excellence : fin, croquant, généreux en amandes et courbé délicatement dès la sortie du four.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/tuiles-amandes/tuiles-amandes-etape-18-480.jpg",
+  image: "/images/recipes/tuile.png",
   baseServings: 20, // pièces
   
   ingredients: [

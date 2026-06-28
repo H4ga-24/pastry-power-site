@@ -9,7 +9,7 @@ const cremeMousseline = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une crème pâtissière foisonnée avec du beurre pour plus de légèreté et de tenue. Incontournable pour le Fraisier et le Paris-Brest.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/07/creme-mousseline-1300x632.jpg",
+  image: "/images/recipes/creme-mousseline.png",
   baseServings: 1, // Environ 600g
   
   ingredients: [

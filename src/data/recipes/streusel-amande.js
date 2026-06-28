@@ -8,7 +8,7 @@ const streuselAmande = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Le streusel est un mélange de beurre, farine fine et/ou chapelure et sucre que l'on parsème sur certaines pâtisseries avant de les passer au four.",
-  image: "https://www.myparisiankitchen.com/wp-content/uploads/2018/11/pate-a-streusel_MPK_01-500x374.jpg",
+  image: "/images/recipes/streusel-amande.png",
   baseServings: 10,
   
   ingredients: [

@@ -8,7 +8,7 @@ const madeleinesDeCommercy = {
   cookTime: "8 à 10 MIN",
   difficulty: "MOYEN",
   description: "Le célèbre petit gâteau moelleux en forme de coquillage, reconnaissable à sa bosse dorée et son parfum de citron.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/c4616ba865f4c6654f6d93f0b0353868.jpg",
+  image: "/images/recipes/madeleines-de-commercy.png",
   baseServings: 20, // environ
   
   ingredients: [

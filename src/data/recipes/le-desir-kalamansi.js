@@ -8,7 +8,7 @@ const leDesirKalamansi = {
   cookTime: "15 MIN",
   difficulty: "AVANCÉ",
   description: "Une explosion de fraîcheur exotique. L'acidité vibrante du Kalamansi rencontre la douceur d'une mousse au chocolat au lait, le tout reposant sur un biscuit 'Safari' intense. Une finition velours chocolat pour une élégance parfaite.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6b04d01df81eaf60028ec8382d3aa4d2.png",
+  image: "/images/recipes/le-desir-kalamansi.png",
   baseServings: 12, // "1 cadre de 37 x 28,5 cm"
   
   ingredients: [

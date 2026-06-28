@@ -8,7 +8,7 @@ const glacageLactee = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Un glaçage miroir au chocolat au lait, doux et brillant, idéal pour les entremets praliné, noisette ou fruits exotiques.",
-  image: "https://mapatisserie.fr/wp-content/uploads/2016/07/IMG_20160812_224809.jpg",
+  image: "/images/recipes/glacage-lactee.png",
   baseServings: 800, // g
   
   ingredients: [

@@ -8,7 +8,7 @@ const farBreton = {
   cookTime: "1H",
   difficulty: "FACILE",
   description: "Un classique de la Bretagne, dense et crémeux, garni de pruneaux.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/far-breton/far-breton-1200.jpg",
+  image: "/images/recipes/far-breton.png",
   baseServings: 8,
   
   ingredients: [

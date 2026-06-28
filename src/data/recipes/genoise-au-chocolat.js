@@ -8,7 +8,7 @@ const genoiseAuChocolat = {
   cookTime: "25 MIN",
   difficulty: "FACILE",
   description: "Cette recette permet de réaliser une demi-feuille. Un biscuit moelleux au chocolat idéal pour les montages d'entremets.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2022/07/ge%CC%81noise-chocolat.png",
+  image: "/images/recipes/genoise-au-chocolat.png",
   baseServings: 1, // Demi-feuille
   
   ingredients: [

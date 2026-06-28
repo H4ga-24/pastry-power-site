@@ -8,7 +8,7 @@ const cakeTomateMozza = {
   cookTime: "55 MIN",
   difficulty: "FACILE",
   description: "Les saveurs de l'Italie dans un cake moelleux. La mozzarella apporte un côté filant irrésistible.",
-  image: "https://cuisinedaubery.com/wp-content/uploads/2024/03/cake-italien_ALTERN09.jpg",
+  image: "/images/recipes/cake-tomate-mozza.png",
   baseServings: 8, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const insertCremeBrulee = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "La texture crémeuse et vanillée de la crème brûlée, adaptée en insert congelable pour vos entremets.",
-  image: "https://quandnadcuisine.fr/wp-content/uploads/2021/01/buche-chocolat-insert-creme-brulee1-1-500x500.jpg",
+  image: "/images/recipes/insert-creme-brulee.png",
   baseServings: 6,
   
   ingredients: [

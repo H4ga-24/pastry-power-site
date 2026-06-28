@@ -8,7 +8,7 @@ const craquantBreton = {
   cookTime: "12 MIN",
   difficulty: "FACILE",
   description: "Une spécialité bretonne légère, très fine et extrêmement croustillante, aux éclats de noisettes. Idéal pour utiliser des blancs d'œufs.",
-  image: "https://www.tresorsdesregions.com/3585-medium_default/craquant-breton-150g.jpg",
+  image: "/images/recipes/craquant-breton.png",
   baseServings: 30, // Environ 30 petits tas
   
   ingredients: [

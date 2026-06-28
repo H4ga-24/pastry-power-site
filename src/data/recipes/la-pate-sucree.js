@@ -8,7 +8,7 @@ const laPateSucree = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "Une pâte friable et fondante, plus riche en sucre que la pâte sablée, idéale pour les tartes aux fruits, au chocolat ou au citron.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/07/pate-sucree.jpg",
+  image: "/images/recipes/la-pate-sucree.png",
   baseServings: 1, // "1 Tarte"
   
   ingredients: [

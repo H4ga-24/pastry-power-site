@@ -8,7 +8,7 @@ const glacageChocolatNoir = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Un glaçage miroir classique au chocolat de couverture, offrant un goût chocolaté plus fin que la version cacao.",
-  image: "https://res.cloudinary.com/valrhona/image/upload/c_limit,f_auto,fl_progressive,q_auto,w_800/prod/var/site/storage/images/2/3/2/3/163232-1-fre-WO/Valrhona.com-Lexique-Recette-Gla%C3%A7age.jpg",
+  image: "/images/recipes/glacage-chocolat-noir.png",
   baseServings: 600, // g
   
   ingredients: [

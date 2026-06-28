@@ -8,7 +8,7 @@ const insertAppareilNoix = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Une garniture riche et parfumée aux noix torréfiées, parfaite pour les tartes d'automne ou les entremets rustiques.",
-  image: "https://patisserieconte.com/wp-content/uploads/patisserie-individuelle-noix.jpg",
+  image: "/images/recipes/insert-appareil-noix.png",
   baseServings: 6,
   
   ingredients: [

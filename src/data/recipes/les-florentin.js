@@ -8,7 +8,7 @@ const lesFlorentin = {
   cookTime: "12 MIN",
   difficulty: "MOYEN",
   description: "Des disques croustillants aux amandes, fruits confits et caramel, dont une face est enduite de chocolat.",
-  image: "https://www.delscookingtwist.com/wp-content/uploads/2018/12/Chocolate-Florentines.jpg",
+  image: "/images/recipes/les-florentin.png",
   baseServings: 12,
   
   ingredients: [

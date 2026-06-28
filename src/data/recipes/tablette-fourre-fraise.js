@@ -8,7 +8,7 @@ const tabletteFourreFraise = {
   cookTime: "15 MIN",
   difficulty: "INTERMÉDIAIRE",
   description: "Une tablette au cœur tendre : une ganache fraise onctueuse et fruitée, enrobée d'une fine couche de chocolat au lait craquante pour une douceur régressive.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/86ac6c00469a996ab61449d88227b045.png",
+  image: "/images/recipes/tablette-fourre-fraise.png",
   baseServings: 3, // Tablettes
   
   ingredients: [

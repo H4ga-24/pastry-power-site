@@ -8,7 +8,7 @@ const sauceTomateMaison = {
   cookTime: "30 MIN", // Estimé (20min mijotage + finition)
   difficulty: "FACILE",
   description: "La base absolue de la cuisine méditerranéenne, idéale pour pâtes et pizzas.",
-  image: "https://images.unsplash.com/photo-1608949621308-c54d112c808a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  image: "/images/recipes/sauce-tomate-maison.png",
   baseServings: 4,
   
   ingredients: [

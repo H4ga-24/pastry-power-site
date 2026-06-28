@@ -8,7 +8,7 @@ const cakeRoquefortLardNoix = {
   cookTime: "60 MIN",
   difficulty: "MOYEN",
   description: "Un cake de caractère, puissant et rustique. L'huile de noix dans la pâte renforce le goût du fruit sec.",
-  image: "https://lespapillesdekaren.com/wp-content/uploads/2025/04/wp_a5af49_cake-au-roquefort-et-aux-noix.JPG",
+  image: "/images/recipes/cake-roquefort-lard-noix.png",
   baseServings: 8, 
   
   ingredients: [

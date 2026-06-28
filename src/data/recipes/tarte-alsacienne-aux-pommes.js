@@ -8,7 +8,7 @@ const tarteAlsacienneAuxPommes = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "La fameuse tarte aux pommes de grand-mère, composée d'un fond de pâte brisée, de gros quartiers de pommes fondants et d'une migaine (flan) généreuse à la crème.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/bad3001aad2812d6d1a17d2dd4ed0f6f.jpg",
+  image: "/images/recipes/tarte-alsacienne-aux-pommes.png",
   baseServings: 6, // 1 tarte 24cm
   
   ingredients: [

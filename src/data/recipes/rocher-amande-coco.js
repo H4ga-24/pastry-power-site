@@ -8,7 +8,7 @@ const rocherAmandeCoco = {
   cookTime: "15 MIN",
   difficulty: "TRÈS FACILE",
   description: "Des bouchées rustiques aux amandes effilées ou à la noix de coco, liées par des blancs d'œufs.",
-  image: "https://www.labellevie.com/media/recipes/images/186.jpg",
+  image: "/images/recipes/rocher-amande-coco.png",
   baseServings: 20, // pièces
   
   ingredients: [

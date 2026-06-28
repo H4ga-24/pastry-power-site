@@ -8,7 +8,7 @@ const cremeFrangipane = {
   cookTime: "25 MIN", // Cuisson dans la galette
   difficulty: "FACILE",
   description: "L'incontournable garniture de la galette des rois : un mélange savoureux de crème d'amande et de crème pâtissière.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/creme-frangipane/creme-frangipane-1200.jpg",
+  image: "/images/recipes/creme-frangipane.png",
   baseServings: 1, // Environ 600g
   
   ingredients: [

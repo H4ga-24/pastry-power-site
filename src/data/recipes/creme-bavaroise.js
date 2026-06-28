@@ -9,7 +9,7 @@ const cremeBavaroise = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un grand classique des entremets. Une crème anglaise collée à la gélatine à laquelle on incorpore de la crème fouettée mousseuse. Légère et aérienne.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/bavaroise-vanille/bavaroise-vanille-1200.jpg",
+  image: "/images/recipes/creme-bavaroise.png",
   baseServings: 1, // Environ 600g
   
   ingredients: [

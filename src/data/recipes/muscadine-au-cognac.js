@@ -8,7 +8,7 @@ const muscadineAuCognac = {
   cookTime: "15 MIN",
   difficulty: "AVANCÉ",
   description: "Une spécialité traditionnelle en forme de bûchette. Une ganache onctueuse au praliné et au Cognac, enrobée d'une fine couche de chocolat et roulée dans le sucre glace. Un classique indémodable.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/5b021fbe8cb4f5ec938c0d64d1d04553.png",
+  image: "/images/recipes/muscadine-au-cognac.png",
   baseServings: 240, // "240-300 pièces"
   
   ingredients: [

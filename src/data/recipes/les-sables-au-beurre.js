@@ -8,7 +8,7 @@ const lesSablesAuBeurre = {
   cookTime: "12 MIN",
   difficulty: "FACILE",
   description: "Le biscuit classique par excellence, fondant et friable, au bon goût de beurre frais.",
-  image: "https://assets.afcdn.com/recipe/20190704/94701_w1024h768c1cx1500cy998cxt0cyt0cxb3000cyb1996.jpg",
+  image: "/images/recipes/les-sables-au-beurre.png",
   baseServings: 30,
   
   ingredients: [

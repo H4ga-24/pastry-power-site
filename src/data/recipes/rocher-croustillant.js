@@ -8,7 +8,7 @@ const rocherCroustillant = {
   cookTime: "15 MIN",
   difficulty: "INTERMÉDIAIRE",
   description: "Une gourmandise absolue. Un praliné maison rustique riche en noisettes, rendu croustillant par l'ajout généreux de feuilletine, puis enrobé d'un glaçage rocher aux amandes hachées.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/2595a1f7694eed76382db1c61c0cdf5e.jpg",
+  image: "/images/recipes/rocher-croustillant.png",
   baseServings: 640, // pièces (recette pro)
   
   ingredients: [

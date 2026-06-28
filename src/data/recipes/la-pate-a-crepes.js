@@ -8,7 +8,7 @@ const laPateACrepes = {
   cookTime: "20 MIN",
   difficulty: "FACILE",
   description: "Un grand classique de la cuisine française. Cette recette garantit des crêpes fines, légères, parfumées et moelleuses.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/07/crepe-1-1300x975.jpg",
+  image: "/images/recipes/la-pate-a-crepes.png",
   baseServings: 15, // "15 Crêpes"
   
   ingredients: [

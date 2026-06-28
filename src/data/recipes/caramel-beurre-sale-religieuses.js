@@ -8,7 +8,7 @@ const caramelBeurreSaleReligieuses = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Un caramel coulant mais qui se tient, idéal pour insérer au cœur d'une religieuse, d'un chou ou d'un macaron. L'équilibre parfait sucré-salé.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2023/05/caramel-beurre-sale-14-religieuses-cap-patissier-1176x1300.jpg",
+  image: "/images/recipes/caramel-beurre-sale-religieuses.png",
   baseServings: 20, // Pour 20 religieuses
   
   ingredients: [

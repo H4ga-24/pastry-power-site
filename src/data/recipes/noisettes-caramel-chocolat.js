@@ -8,7 +8,7 @@ const noisettesCaramelChocolat = {
   cookTime: "30 MIN",
   difficulty: "INTERMÉDIAIRE",
   description: "Une gourmandise rustique et addictive. Des noisettes entières torréfiées à cœur, caramélisées au sucre cuit et à la vanille, assemblées en petits rochers (clusters) puis enrobées de chocolat lait.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/1df5539c0b26e3a4dcff5ceadc8d6a2a.png",
+  image: "/images/recipes/noisettes-caramel-chocolat.png",
   baseServings: 1000, // pièces
   
   ingredients: [

@@ -8,7 +8,7 @@ const madeleine = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Le petit gâteau traditionnel lorrain, moelleux et bossu, parfait pour le goûter.",
-  image: "https://www.giallozafferano.fr/images/203-20386/madeleine_1200x800.jpg",
+  image: "/images/recipes/madeleine.png",
   baseServings: 24,
   
   ingredients: [

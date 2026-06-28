@@ -8,7 +8,7 @@ const parisBrest = {
   cookTime: "40 MIN",
   difficulty: "MOYEN",
   description: "Créé en 1910 pour la course cycliste, ce gâteau en forme de roue associe pâte à choux croustillante, amandes effilées et une généreuse crème mousseline au praliné.",
-  image: "https://www.sunny-delices.fr/wp-content/uploads/2021/02/paris-brest-sans-gluten-individuel.jpg",
+  image: "/images/recipes/paris-brest.png",
   baseServings: 6,
   
   ingredients: [

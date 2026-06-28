@@ -8,7 +8,7 @@ const entremetsFramboiseRhubarbe = {
   cookTime: "40 MIN",
   difficulty: "AVANCÉ",
   description: "L'acidité vive de la rhubarbe rencontre la douceur parfumée de la framboise. Un jeu de textures entre le moelleux de la dacquoise, le fondant de la compotée et la légèreté d'une mousse aux fruits sur base de meringue italienne.",
-  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzBx-BwKMJdhTxVfvjV5LtJ5KzWldxaojlYjnxfeEGUQomBIG2MjS-jFP4vz-3yjt8pmzqbfj7c29087TAhqirL6RAo5T13k3F_X3hlKHtBZf4zMiG3TmttCRx0EWZLSkqrNUH47dC3cDX/s1600/IMG_0007.jpg",
+  image: "/images/recipes/entremets-framboise-rhubarbe.png",
   baseServings: 2, // "2 Entremets de Ø 18 cm"
   
   ingredients: [

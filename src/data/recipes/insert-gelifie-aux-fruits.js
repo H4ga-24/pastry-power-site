@@ -8,7 +8,7 @@ const insertGelifieAuxFruits = {
   cookTime: "5 MIN",
   difficulty: "FACILE",
   description: "Un insert pur fruit, frais et acidulé, idéal pour apporter de la légèreté à un entremets mousseux.",
-  image: "https://www.cuisineactuelle.fr/imgre/fit/~1~cac~2018~09~25~fbb3df99-166b-46b7-b9e9-1b936bcc6fcf.jpeg/400x400/quality/80/crop-from/center/bavarois-leger-aux-fruits-rouges.jpeg",
+  image: "/images/recipes/insert-gelifie-aux-fruits.png",
   baseServings: 6,
   
   ingredients: [

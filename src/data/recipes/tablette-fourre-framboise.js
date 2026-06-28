@@ -8,7 +8,7 @@ const tabletteFourreFramboise = {
   cookTime: "15 MIN",
   difficulty: "INTERMÉDIAIRE",
   description: "Une tablette de chocolat noir intense qui renferme un cœur coulant et fruité à la framboise. Le contraste chocolat noir et framboise est un classique indémodable.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/f61c275f373852b21c27e5cf272ba26b.jpg",
+  image: "/images/recipes/tablette-fourre-framboise.png",
   baseServings: 3, // Tablettes
   
   ingredients: [

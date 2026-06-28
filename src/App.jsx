@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+import CookieBanner from './components/CookieBanner';
 import Navigation from './components/Navigation';
 import DynamicPage from './components/DynamicPage';
 import FloatingBackButton from './components/FloatingBackButton';
@@ -35,6 +36,7 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#121212]">
       <ScrollToTop />
+      <CookieBanner />
       <Navigation />
       <FloatingBackButton />
 

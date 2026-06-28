@@ -8,7 +8,7 @@ const laPateAChoux = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "La recette mère indispensable. Une pâte précuite sur le feu (desséchée) puis hydratée aux œufs, qui gonfle grâce à la vapeur emprisonnée lors de la cuisson.",
-  image: "https://gourmantissimes.com/wp-content/uploads/2013/07/2013-07-06-IMG-4465.jpg",
+  image: "/images/recipes/la-pate-a-choux.png",
   baseServings: 500, // g
   
   ingredients: [

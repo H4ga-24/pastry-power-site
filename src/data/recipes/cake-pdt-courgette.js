@@ -8,7 +8,7 @@ const cakePdtCourgette = {
   cookTime: "1H 30",
   difficulty: "MOYEN",
   description: "Un cake très riche et fondant, cuit au bain-marie pour une texture proche du flan ou de la terrine de légumes.",
-  image: "https://static.comment-economiser.fr/images/photos_astuces/cake-courgette-pdt-6609.jpg",
+  image: "/images/recipes/cake-pdt-courgette.png",
   baseServings: 8, 
   
   ingredients: [

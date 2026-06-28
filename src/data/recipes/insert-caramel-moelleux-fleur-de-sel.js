@@ -8,7 +8,7 @@ const insertCaramelMoelleuxFleurDeSel = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Une texture de caramel 'toffee' tendre et moelleux, qui ne durcit pas au froid, parfait pour les bûches.",
-  image: "https://thefrenchpatissier.com/wp-content/uploads/2019/12/coupe-buche-noisette-vue-cote-1.jpg",
+  image: "/images/recipes/insert-caramel-moelleux-fleur-de-sel.png",
   baseServings: 6,
   
   ingredients: [

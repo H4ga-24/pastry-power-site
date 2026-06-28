@@ -8,7 +8,7 @@ const glacageChataigne = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Un glaçage original et gourmand à la teinte marron douce, idéal pour les entremets d'automne, le Mont-Blanc ou les bûches de Noël.",
-  image: "https://www.alicedelice.com/79952-product_main/glacage-miroir-pret-a-lemploi-coloris-marron.jpg",
+  image: "/images/recipes/glacage-chataigne.png",
   baseServings: 600, // g
   
   ingredients: [

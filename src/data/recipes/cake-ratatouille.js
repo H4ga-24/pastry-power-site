@@ -8,7 +8,7 @@ const cakeRatatouille = {
   cookTime: "1H 15",
   difficulty: "MOYEN",
   description: "Un cake ensoleillé qui sent bon la Provence. Les légumes rôtis apportent une texture fondante incroyable.",
-  image: "https://img.cuisineaz.com/1024x1024/2015/03/11/i113715-cake-a-la-ratatouille.jpg",
+  image: "/images/recipes/cake-ratatouille.png",
   baseServings: 8, 
   
   ingredients: [

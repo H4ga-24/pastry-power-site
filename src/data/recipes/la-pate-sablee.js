@@ -8,7 +8,7 @@ const laPateSablee = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "La pâte sablée est friable et fondante. Elle est plus fragile que la pâte sucrée mais offre une texture incomparable.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/50e093126b2f472de47af55426b80bcc.jpg",
+  image: "/images/recipes/la-pate-sablee.png",
   baseServings: 10,
   
   ingredients: [

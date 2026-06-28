@@ -8,7 +8,7 @@ const eclair = {
   cookTime: "35 MIN",
   difficulty: "MOYEN",
   description: "Le grand classique de la pâtisserie. Un chou allongé cuit à la perfection, garni d'une crème pâtissière onctueuse et glacé au fondant.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/eclair-chocolat/eclair-chocolat-1200.jpg",
+  image: "/images/recipes/eclair.png",
   baseServings: 8,
   
   ingredients: [

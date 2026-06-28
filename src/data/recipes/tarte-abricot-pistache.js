@@ -8,7 +8,7 @@ const tarteAbricotPistache = {
   cookTime: "40 MIN",
   difficulty: "MOYEN",
   description: "L'association de la pistache douce et de l'abricot acidulé est un grand classique des tartes estivales de boutique.",
-  image: "https://ateliersdeludo.fr/wp-content/uploads/2023/06/Tarte-Abricot-Pistache.jpg",
+  image: "/images/recipes/tarte-abricot-pistache.png",
   baseServings: 6, // 1 tarte 22-24cm
   
   ingredients: [

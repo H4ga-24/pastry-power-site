@@ -8,7 +8,7 @@ const cremeChiboust = {
   cookTime: "15 MIN",
   difficulty: "DIFFICILE",
   description: "La crème traditionnelle du Saint-Honoré : une crème pâtissière collée à la gélatine et allégée à chaud avec une meringue italienne.",
-  image: "https://img.cuisineaz.com/660x660/2022/06/16/i184280-69-creme-chiboust.jpeg",
+  image: "/images/recipes/creme-chiboust.png",
   baseServings: 1, // Environ 800g
   
   ingredients: [

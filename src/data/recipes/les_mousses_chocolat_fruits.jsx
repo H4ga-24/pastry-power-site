@@ -16,7 +16,7 @@ export const recipeData = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Tableau de dosage professionnel pour ganaches montées fruitées au chocolat au lait.",
-  image: "https://cache.marieclaire.fr/data/photo/w1000_ci/5f/mousses-au-chocolat-et-aux-framboises.jpg",
+  image: "/images/recipes/les-mousses-chocolat-fruits.png",
 };
 
 function LesMoussesChocolatFruits() {

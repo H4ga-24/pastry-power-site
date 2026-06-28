@@ -8,7 +8,7 @@ const meringueFrancaise = {
   cookTime: "1H30",
   difficulty: "FACILE",
   description: "La technique la plus simple pour réaliser des meringues sèches, croustillantes et légères.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/meringue-francaise/meringue-francaise-etape-13-480.jpg",
+  image: "/images/recipes/meringue-francaise.png",
   baseServings: 10, // meringues
   
   ingredients: [

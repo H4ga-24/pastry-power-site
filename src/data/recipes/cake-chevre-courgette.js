@@ -8,7 +8,7 @@ const cakeChevreCourgette = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Le grand classique de l'été. La courgette apporte une humidité qui garde ce cake frais très longtemps.",
-  image: "https://odelices.ouest-france.fr/images/recettes/cake-courgettes-chevre.jpg",
+  image: "/images/recipes/cake-chevre-courgette.png",
   baseServings: 8, 
   
   ingredients: [

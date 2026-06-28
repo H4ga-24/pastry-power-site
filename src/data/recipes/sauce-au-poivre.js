@@ -8,7 +8,7 @@ const sauceAuPoivre = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Un grand classique de bistrot. Une sauce onctueuse et relevée, parfaite pour napper une entrecôte, un filet de bœuf ou un magret de canard.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/ce6c82585435ec8d26ba4329761a5ee3.jpg",
+  image: "/images/recipes/sauce-au-poivre.png",
   baseServings: 4, // personnes (estimé pour une sauce)
   
   ingredients: [

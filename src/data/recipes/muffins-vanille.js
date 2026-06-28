@@ -8,7 +8,7 @@ const muffinsVanille = {
   cookTime: "20 MIN",
   difficulty: "FACILE",
   description: "La base parfaite : des muffins simples, aérés et délicatement parfumés.",
-  image: "https://assets.afcdn.com/recipe/20160426/2659_w1024h1024c1cx1527cy2295.jpg",
+  image: "/images/recipes/muffins-vanille.png",
   baseServings: 12,
   
   ingredients: [

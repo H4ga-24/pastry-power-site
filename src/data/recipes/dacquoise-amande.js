@@ -8,7 +8,7 @@ const dacquoiseAmande = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Un biscuit meringué aux amandes, croustillant à l'extérieur et moelleux à l'intérieur. La base de nombreux entremets.",
-  image: "https://assets.afcdn.com/recipe/20170321/3841_w1024h1024c1cx1773cy2660.jpg",
+  image: "/images/recipes/dacquoise-amande.png",
   baseServings: 3, // 3 disques de 18-20cm
   
   ingredients: [

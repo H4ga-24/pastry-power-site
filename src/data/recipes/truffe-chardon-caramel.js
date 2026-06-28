@@ -8,7 +8,7 @@ const truffeChardonCaramel = {
   cookTime: "15 MIN",
   difficulty: "EXPERT",
   description: "Un bonbon mythique à l'aspect piquant. Une ganache fondante au caramel et à la fleur de sel, enrobée d'une couverture noire texturée grâce au passage sur une grille à chardon.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/3cb65d12941c94016dfe5729457af895.png",
+  image: "/images/recipes/truffe-chardon-caramel.png",
   baseServings: 200, // pièces
   
   ingredients: [

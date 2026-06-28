@@ -8,7 +8,7 @@ const cremeuxAuChocolat = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "La référence pour les amateurs de cacao. Une texture soyeuse et fondante, plus dense qu'une mousse mais plus légère qu'une ganache.",
-  image: "https://www.casseroleetchocolat.fr/wp-content/uploads/2018/11/cremeux-chocolat-1.jpeg",
+  image: "/images/recipes/cremeux-au-chocolat.png",
   baseServings: 1, // Environ 500g
   
   ingredients: [

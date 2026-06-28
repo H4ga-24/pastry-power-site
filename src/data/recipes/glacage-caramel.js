@@ -8,7 +8,7 @@ const glacageCaramel = {
   cookTime: "15 MIN",
   difficulty: "DIFFICILE",
   description: "Un glaçage miroir à la belle couleur ambrée et au goût intense de caramel, sans ajout de colorant.",
-  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-eqIfKBoUlQoiQklMz7y88kWMFXvLOPpjjIjHEia4PWPkpDSKx8YS4_UruOGnr5Lkj4XjQIrJ6-8rr5Pn98nMRWY8BF3PINvneIxiIC4VpoObmHSLdOKirG7TonP_bqNUWm3pd9VORkKv/s1600/MNFW5mHDSXOycUJiuTP4rg_thumb_6287.jpg",
+  image: "/images/recipes/glacage-caramel.png",
   baseServings: 600, // g
   
   ingredients: [

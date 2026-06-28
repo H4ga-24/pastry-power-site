@@ -8,7 +8,7 @@ const painDeThon = {
   cookTime: "45 MIN",
   difficulty: "TRÈS FACILE",
   description: "Un cake salé classique, moelleux et économique, idéal pour les apéritifs ou les entrées.",
-  image: "https://assets.magimix.com/files/rec_27840/photo_pain-thon-photo.jpg",
+  image: "/images/recipes/pain-de-thon.png",
   baseServings: 1, // "Pour 1 moule à cake"
 
   ingredients: [

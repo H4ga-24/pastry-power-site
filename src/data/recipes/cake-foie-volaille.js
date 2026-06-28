@@ -8,7 +8,7 @@ const cakeFoieVolaille = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Un cake de caractère, façon terrine chaude. Les foies de volaille déglacés au Porto apportent une richesse incroyable.",
-  image: "https://img.cuisineaz.com/1024x768/2015/04/15/i91265-cake-aux-pignons-de-pin-fromage-et-pesto.webp",
+  image: "/images/recipes/cake-foie-volaille.png",
   baseServings: 8, 
   
   ingredients: [

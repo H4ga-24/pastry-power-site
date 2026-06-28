@@ -8,7 +8,7 @@ const financierAuMiel = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Des financiers moelleux où le sucre est remplacé partiellement par du miel pour une saveur unique.",
-  image: "https://www.miels-et-saveurs.fr/wp-content/uploads/financiers-au-miel.jpg",
+  image: "/images/recipes/financier-au-miel.png",
   baseServings: 12,
   
   ingredients: [

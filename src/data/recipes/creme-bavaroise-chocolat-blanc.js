@@ -9,7 +9,7 @@ const cremeBavaroiseChocolatBlanc = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une version douce et crémeuse, idéale en association avec des fruits rouges acidulés (framboises, groseilles).",
-  image: "https://www.lesfoodies.com/_recipeimage/283930/bavarois-framboise-chocolat-blanc-2.jpg",
+  image: "/images/recipes/creme-bavaroise-chocolat-blanc.png",
   baseServings: 1, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const cakeJambonOlive = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "LA recette universelle du cake salé. Simple, efficace et appréciée de tous, petits et grands.",
-  image: "https://www.academiedugout.fr/media/11995/cake-olive-2.jpg",
+  image: "/images/recipes/cake-jambon-olive.png",
   baseServings: 8, 
   
   ingredients: [

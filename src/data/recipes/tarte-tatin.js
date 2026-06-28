@@ -8,7 +8,7 @@ const tarteTatin = {
   cookTime: "40 MIN",
   difficulty: "MOYEN",
   description: "Recette traditionnelle de la Tarte Tatin : la célèbre tarte renversée aux pommes caramélisées du Centre-Val de Loire.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/1a5ca5539663852108e731c91b138d9b.jpg",
+  image: "/images/recipes/tarte-tatin.png",
   baseServings: 6, // personnes
   
   ingredients: [

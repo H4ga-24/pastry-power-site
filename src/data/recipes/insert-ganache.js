@@ -8,7 +8,7 @@ const insertGanache = {
   cookTime: "5 MIN",
   difficulty: "TRÈS FACILE",
   description: "Un insert riche et fondant au chocolat, apportant une intensité cacao au cœur de votre dessert.",
-  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjB3SLcdHg_smuwc3zbuyTP8_g8CGxi5XTxSQEH36E7JkZSazvhYvA49bPRI1008aZgTFm9dIRinQ2A72ZarD1aeYgemYUTqYYKQbhW8_8V1_eHEsCrIvpoF1pQye_ABUoxK2rZci8wKQ5Z/s2048/CAKE+VANILLE+INSERT+CHOC+2.jpeg",
+  image: "/images/recipes/insert-ganache.png",
   baseServings: 6,
   
   ingredients: [

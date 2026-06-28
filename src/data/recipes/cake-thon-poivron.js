@@ -8,7 +8,7 @@ const cakeThonPoivron = {
   cookTime: "60 MIN",
   difficulty: "FACILE",
   description: "Le cake \"fond de placard\" par excellence, coloré et savoureux, parfait pour un pique-nique improvisé.",
-  image: "https://img.over-blog-kiwi.com/0/65/19/23/20190719/ob_d7ac80_cake-thon-poivron-olive.jpg",
+  image: "/images/recipes/cake-thon-poivron.png",
   baseServings: 8, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const tarteletteCitronMeringuee = {
   cookTime: "20 MIN",
   difficulty: "MOYEN",
   description: "Un grand classique : l'équilibre parfait entre l'acidité vive du crémeux citron et la douceur nuageuse de la meringue italienne.",
-  image: "https://tout-gourmand.fr/media/cache/voir_recette/media/images/recettes/26444-tout-gourmand-tartelettes-au-citron-meringuee.webp",
+  image: "/images/recipes/tartelette-citron-meringuee.png",
   baseServings: 6, // tartelettes
   
   ingredients: [

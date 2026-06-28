@@ -8,7 +8,7 @@ const tarteCacaoNoisetteRizSouffle = {
   cookTime: "20 MIN",
   difficulty: "MOYEN",
   description: "Une tarte qui joue sur les textures : une pâte cacaotée, une couche de praliné croustillant au riz soufflé et une ganache chocolat noir onctueuse.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/tarte-chocolat-de-paques/tarte-chocolat-de-paques-1200.jpg",
+  image: "/images/recipes/tarte-cacao-noisette-riz-souffle.png",
   baseServings: 6, // 1 tarte 22cm
   
   ingredients: [

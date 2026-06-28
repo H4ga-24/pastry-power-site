@@ -9,7 +9,7 @@ const cannelesDeBordeaux = {
   cookTime: "50 MIN",
   difficulty: "MOYEN",
   description: "Le fameux petit gâteau bordelais, à la croûte caramélisée et craquante, et au cœur tendre parfumé au rhum et à la vanille.",
-  image: "https://assets.afcdn.com/recipe/20230621/143653_w1024h1024c1cx960cy540cxt0cyt0cxb1920cyb1080.jpg",
+  image: "/images/recipes/canneles-de-bordeaux.png",
   baseServings: 16, 
   
   ingredients: [

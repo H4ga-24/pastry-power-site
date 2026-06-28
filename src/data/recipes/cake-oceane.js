@@ -8,7 +8,7 @@ const cakeOceane = {
   cookTime: "60 MIN",
   difficulty: "MOYEN",
   description: "Un cake aux saveurs marines, garni d'un cocktail de fruits de mer pour un apéritif original.",
-  image: "https://assets.afcdn.com/story/20220329/2166842_w1200h630c1cx600cy400cxt0cyt0cxb1200cyb800.jpg",
+  image: "/images/recipes/cake-oceane.png",
   baseServings: 8, 
   
   ingredients: [

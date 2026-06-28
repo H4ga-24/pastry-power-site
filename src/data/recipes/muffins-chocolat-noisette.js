@@ -8,7 +8,7 @@ const muffinsChocolatNoisette = {
   cookTime: "20 MIN",
   difficulty: "FACILE",
   description: "Le goûter parfait : moelleux, croquant et riche en chocolat.",
-  image: "https://empreintesucree.fr/wp-content/uploads/2022/02/1-muffins-chocolat-noisettes-recette-empreinte-sucree.jpg",
+  image: "/images/recipes/muffins-chocolat-noisette.png",
   baseServings: 12,
   
   ingredients: [

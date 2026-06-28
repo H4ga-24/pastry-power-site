@@ -8,7 +8,7 @@ const laPateABrioche = {
   cookTime: "30 MIN",
   difficulty: "MOYEN",
   description: "La brioche est une viennoiserie à pâte levée et fermentée, riche en beurre et en oeufs. Sa réussite dépend d'un pétrissage intensif et d'une longue fermentation.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/08/pate-a-brioche-1.jpg",
+  image: "/images/recipes/la-pate-a-brioche.png",
   baseServings: 8, // "1 Brioche ou 8 parts"
   
   ingredients: [

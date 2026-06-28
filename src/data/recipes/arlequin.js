@@ -8,7 +8,7 @@ const arlequin = {
   cookTime: "20 MIN",
   difficulty: "EXPERT",
   description: "Un entremets haut en couleur : l'alliance acidulée de la passion et de la framboise rencontre la douceur de la pistache dans un jeu de textures moelleuses et fondantes.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/f31e1f663893ced8b953a4ddb60456e7.png",
+  image: "/images/recipes/arlequin.png",
   baseServings: 5,
   
   ingredients: [

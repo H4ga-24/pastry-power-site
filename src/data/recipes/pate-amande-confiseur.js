@@ -8,7 +8,7 @@ const pateAmandeConfiseur = {
   cookTime: "15 MIN",
   difficulty: "TECHNIQUE",
   description: "La véritable recette de la pâte d'amande confiseur cuite, bien supérieure à la pâte d'amande crue en termes de texture et de conservation.",
-  image: "https://axelle.me/wp-content/uploads/2022/12/20221220_134842-1140x855.jpg",
+  image: "/images/recipes/pate-amande-confiseur.png",
   baseServings: 600,
   
   ingredients: [

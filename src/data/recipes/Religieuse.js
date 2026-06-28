@@ -8,7 +8,7 @@ const religieuse = {
   cookTime: "30 MIN",
   difficulty: "AVANCÉ",
   description: "L'élégance à la française. Deux choux superposés garnis de crème pâtissière, glacés au fondant et décorés d'une collerette de crème au beurre.",
-  image: "https://www.paul-reygrobellet.fr/WORDPRESS/wp-content/uploads/2019/04/patissier-religieuse-tradition-reygrobellet.jpg",
+  image: "/images/recipes/religieuse.png",
   baseServings: 4, // pièces
   
   ingredients: [

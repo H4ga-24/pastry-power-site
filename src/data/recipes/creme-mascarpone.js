@@ -8,7 +8,7 @@ const cremeMascarpone = {
   cookTime: "0 MIN",
   difficulty: "TRÈS FACILE",
   description: "Une crème riche, ferme et veloutée. Parfaite pour le tiramisu, ou comme base de chantilly mascarpone pour garnir des cupcakes ou lisser un gâteau.",
-  image: "https://cuisinedaubery.com/wp-content/uploads/2023/11/creme-mascarpone-pab_ALTERN07.jpg",
+  image: "/images/recipes/creme-mascarpone.png",
   baseServings: 1, // Pour environ 400g
   
   ingredients: [

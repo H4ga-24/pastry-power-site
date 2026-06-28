@@ -8,7 +8,7 @@ const focaccia = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "Une spécialité italienne moelleuse et parfumée à l'huile d'olive, aux herbes et à la fleur de sel. Idéale à l'apéritif ou en accompagnement.",
-  image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480/img/recipe/ras/Assets/63D3854D-D39C-4999-9DC0-AFF9583DB3F7/Derivates/BF9507B3-F2C0-4262-8346-649A5F980789.jpg",
+  image: "/images/recipes/focaccia.png",
   baseServings: 1, // 1 Plaque
   
   ingredients: [

@@ -8,7 +8,7 @@ const cakeBoudinNoir = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "L'alliance classique et sucrée-salée du boudin noir et de la pomme dans un cake moelleux.",
-  image: "https://www.delicimo.fr/wp-content/uploads/2017/06/IMG_1830.jpg",
+  image: "/images/recipes/cake-boudin-noir.png",
   baseServings: 8, 
   
   ingredients: [

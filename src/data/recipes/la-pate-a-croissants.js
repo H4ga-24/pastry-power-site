@@ -8,7 +8,7 @@ const laPateACroissants = {
   cookTime: "15 MIN",
   difficulty: "DIFFICILE",
   description: "La Pâte Levée Feuilletée (PLF) est la base de la viennoiserie. Elle combine la technique de la pâte levée (brioche) et celle du feuilletage (tourage) pour obtenir des croissants légers, croustillants et alvéolés.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/08/croissants.png",
+  image: "/images/recipes/la-pate-a-croissants.png",
   baseServings: 12, // "12 croissants"
   
   ingredients: [

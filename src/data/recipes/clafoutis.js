@@ -8,7 +8,7 @@ const clafoutis = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Le dessert rustique par excellence. Les puristes gardent les noyaux pour plus de goût !",
-  image: "https://www.hervecuisine.com/wp-content/uploads/2020/05/recette-clafoutis-facile.jpg",
+  image: "/images/recipes/clafoutis.png",
   baseServings: 6, 
   
   ingredients: [

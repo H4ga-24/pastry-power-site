@@ -8,7 +8,7 @@ const glacageNeutre = {
   cookTime: "5 MIN",
   difficulty: "FACILE",
   description: "Un nappage transparent essentiel pour protéger les fruits de l'oxydation, faire briller les tartes ou détendre d'autres glaçages.",
-  image: "https://encoreungateau.com/wp-content/uploads/2022/12/recette-nappage-neutre-maison.jpg",
+  image: "/images/recipes/glacage-neutre.png",
   baseServings: 500, // g
   
   ingredients: [

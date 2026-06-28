@@ -8,7 +8,7 @@ const insertCaramelFleurDeSel = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un cœur coulant et onctueux au bon goût de caramel, relevé par la fleur de sel pour un équilibre parfait.",
-  image: "https://www.scrapcooking.fr/modules/prestablog/views/img/grid-for-1-7/up-img/533.jpg",
+  image: "/images/recipes/insert-caramel-fleur-de-sel.png",
   baseServings: 6,
   
   ingredients: [

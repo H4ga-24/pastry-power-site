@@ -8,7 +8,7 @@ const cakeArtichautOlive = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Une recette raffinée mettant en valeur le cœur d'artichaut citronné.",
-  image: "https://yummix.fr/wp-content/uploads/2022/03/cake-artichauts-olives-romarin.jpg",
+  image: "/images/recipes/cake-artichaut-olive.png",
   baseServings: 8, 
   
   ingredients: [

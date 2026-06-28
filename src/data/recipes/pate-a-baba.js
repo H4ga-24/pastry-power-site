@@ -8,7 +8,7 @@ const pateABaba = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "Le baba est un gâteau à pâte levée, riche en beurre et en œufs, qui a la particularité d'être séché après cuisson pour être ensuite imbibé d'un sirop alcoolisé (souvent au rhum).",
-  image: "https://www.undejeunerdesoleil.com/wp-content/uploads/2016/04/Baba_rhum_recette.jpg",
+  image: "/images/recipes/pate-a-baba.png",
   baseServings: 8,
   
   ingredients: [

@@ -8,7 +8,7 @@ const insertCompoteeAbricotPassion = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un insert riche en fruits avec des morceaux d'abricots fondants, réveillés par le peps du fruit de la passion.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/entremet-paques/entremet-paques-640.jpg",
+  image: "/images/recipes/insert-compotee-abricot-passion.png",
   baseServings: 6,
   
   ingredients: [

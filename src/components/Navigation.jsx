@@ -93,7 +93,7 @@ const Navigation = () => {
       submenu: [
         { title: 'Sans Gluten', path: '/alternative/sans-gluten' },
         { title: 'Sans Sucre', path: '/alternative/sans-sucre' },
-        { title: 'Végétal', path: '/alternative/vegetal' }
+        { title: 'Végétal', path: '/alternative/vegan' }
       ]
     },
     { title: 'Communauté', path: '/communaute', submenu: [] }

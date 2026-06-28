@@ -9,7 +9,7 @@ const cremeDiplomate = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une crème pâtissière collée à la gélatine et allégée avec de la crème fouettée. C'est la base de nombreux entremets comme le Fraisier ou la tarte aux fruits.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/09/piplomate.png",
+  image: "/images/recipes/creme-diplomate.png",
   baseServings: 1, // Environ 600g
   
   ingredients: [

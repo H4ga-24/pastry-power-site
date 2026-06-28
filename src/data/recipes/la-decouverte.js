@@ -8,7 +8,7 @@ const laDecouverte = {
   cookTime: "45 MIN",
   difficulty: "EXPERT",
   description: "Une aventure gustative audacieuse. La chaleur du caramel au beurre salé rencontre la subtilité épicée du cumin, sur un fond croustillant praliné-sésame. Un équilibre parfait entre douceur et caractère.",
-  image: "https://images.unsplash.com/photo-1606807286281-3aa6a8e7d7a9",
+  image: "/images/recipes/la-decouverte.png",
   baseServings: 3, // "3 entremets (16cm, 18cm, 20cm)"
   
   ingredients: [

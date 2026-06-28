@@ -8,7 +8,7 @@ const laTeurgoule = {
   cookTime: "5H à 6H",
   difficulty: "TRÈS FACILE",
   description: "Le célèbre riz au lait normand à la cannelle, cuit très lentement au four dans une terrine en grès. Les grains de riz fondent littéralement dans le lait pour créer une texture crémeuse sous une croûte dorée.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/30be3f25abc534e5a963ef9e583d5c0f.jpg",
+  image: "/images/recipes/la-teurgoule.png",
   baseServings: 8, // "Terrine familiale"
   
   ingredients: [

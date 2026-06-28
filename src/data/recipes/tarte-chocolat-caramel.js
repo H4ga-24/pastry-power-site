@@ -8,7 +8,7 @@ const tarteChocolatCaramel = {
   cookTime: "20 MIN",
   difficulty: "AVANCÉ",
   description: "Un duo indémodable : un fond de tarte croquant, garni d'un caramel mou au beurre salé et surmonté d'une ganache montée ultra-légère au chocolat au lait.",
-  image: "https://cleliafoodphoto.fr/wp-content/uploads/2020/12/tarte-caramel-choclat.png",
+  image: "/images/recipes/tarte-chocolat-caramel.png",
   baseServings: 6, // 1 tarte 22cm
   
   ingredients: [

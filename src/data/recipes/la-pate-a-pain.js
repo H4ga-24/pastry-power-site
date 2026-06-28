@@ -8,7 +8,7 @@ const laPateAPain = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "La recette de base pour réaliser du pain blanc maison, type baguette de tradition, avec une croûte croustillante et une mie alvéolée.",
-  image: "https://www.francine.com/wp-content/uploads/2018/09/009_pate-a-pain.jpg",
+  image: "/images/recipes/la-pate-a-pain.png",
   baseServings: 3, // "3 baguettes ou 1 gros pain"
   
   ingredients: [

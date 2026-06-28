@@ -8,7 +8,7 @@ const sauceChien = {
   cookTime: "30 MIN (Repos)",
   difficulty: "TRÈS FACILE",
   description: "L'incontournable de la cuisine créole. Une sauce verte, fraîche et parfumée aux herbes, idéale pour accompagner les poissons grillés, les crustacés ou le poulet boucané.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/631b2c6de02f3e285561f898efaa6c96.jpg",
+  image: "/images/recipes/sauce-chien.png",
   baseServings: 4, // personnes
   
   ingredients: [

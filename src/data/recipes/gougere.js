@@ -8,7 +8,7 @@ const gougere = {
   cookTime: "30 MIN",
   difficulty: "FACILE",
   description: "Une pâte à choux salée, enrichie de Comté affiné et parfumée à la muscade. Un classique bourguignon parfait pour l'apéritif.",
-  image: "https://www.saveursfrance.com/wp-content/uploads/2025/11/hassan8524_closeup_zoomed-in_amateur_photo_from_pinterest_style_316e9e48-ab0f-45b8-91d4-335f307516bf-1.webp",
+  image: "/images/recipes/gougere.png",
   baseServings: 6,
   
   ingredients: [

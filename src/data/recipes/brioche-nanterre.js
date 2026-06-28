@@ -9,7 +9,7 @@ const briocheNanterre = {
   cookTime: "30 MIN",
   difficulty: "DIFFICILE",
   description: "La brioche classique rectangulaire composée de boules accolées. Une mie filante, riche en beurre et fondante.",
-  image: "https://www.meilleurduchef.com/mdc/photo/recette/brioche-nanterre/brioche-nanterre-1200.jpg",
+  image: "/images/recipes/brioche-nanterre.png",
   baseServings: 8, // 1 grosse brioche
   
   ingredients: [

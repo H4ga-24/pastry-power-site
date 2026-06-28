@@ -8,7 +8,7 @@ const cakeLardBanane = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Un cake exotique et surprenant qui joue sur les contrastes : le fumé du lard, la douceur de la banane et le croquant de la cacahuète.",
-  image: "https://storage.canalblog.com/57/50/692736/80741540_o.jpg",
+  image: "/images/recipes/cake-lard-banane.png",
   baseServings: 8, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const croquembouche = {
   cookTime: "1 HEURE",
   difficulty: "EXPERT",
   description: "La pièce montée traditionnelle des grands événements. Une pyramide majestueuse de choux garnis, cimentée au caramel croquant.",
-  image: "https://laviechantilly.fr/wp-content/uploads/2025/09/2025-09-09-11-51-25_.jpg",
+  image: "/images/recipes/croquembouche.png",
   baseServings: 20, // 60 à 80 choux
   
   ingredients: [

@@ -8,7 +8,7 @@ const sableDiamants = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Des sablés au beurre riches et fondants, roulés dans le sucre cristal pour un pourtour scintillant comme des diamants.",
-  image: "https://ateliersdeludo.fr/wp-content/uploads/2021/04/sables-diamant-1.jpg",
+  image: "/images/recipes/sable-diamants.png",
   baseServings: 30, // portions
   
   ingredients: [

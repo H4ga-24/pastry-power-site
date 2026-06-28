@@ -8,7 +8,7 @@ const tarteAuChocolat = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "Le summum de la gourmandise : une pâte sablée cacaotée ultra-croustillante garnie d'une ganache noire intense, fondante et brillante.",
-  image: "https://empreintesucree.fr/wp-content/uploads/2020/05/1-tarte-chocolat-recette-empreinte-sucree-1.jpg",
+  image: "/images/recipes/tarte-au-chocolat.png",
   baseServings: 6, // 1 tarte 22cm
   
   ingredients: [

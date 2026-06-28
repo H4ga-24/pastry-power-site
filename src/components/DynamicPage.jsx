@@ -3,7 +3,6 @@ import { useParams, useLocation, Link } from 'react-router-dom';
 import { Lock } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import RecipeLayout from './RecipeLayout';
-import AdBanner from './AdBanner';
 import { useAuth } from '../AuthContext';
 import { catalog } from '../data/catalog';
 
@@ -79,7 +78,7 @@ const DynamicPage = () => {
     const safeRecipe = {
       ...foundRecipeData,
       id: foundRecipeData.id || currentId,
-      isVip: entry.isVip, // ON PASSE BIEN L'INFO VIP AU LAYOUT
+      isVip: entry.isVip,
       subCategory: Array.isArray(foundRecipeData.subCategory)
         ? foundRecipeData.subCategory.join(' • ')
         : (foundRecipeData.subCategory || ''),
@@ -116,12 +115,6 @@ const DynamicPage = () => {
               >
                 Devenir Membre VIP
               </Link>
-              
-              {/* Ajout AdSense dans le dégradé */}
-              <div className="mt-8 border-t border-white/10 pt-6">
-                <AdBanner />
-              </div>
-              
               <p className="mt-6 text-sm text-gray-500">
                 Déjà membre ?{' '}
                 <Link to="/login" className="text-[#D4AF37] hover:text-white transition-colors underline">

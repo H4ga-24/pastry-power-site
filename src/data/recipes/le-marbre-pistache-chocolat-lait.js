@@ -8,7 +8,7 @@ const leMarbrePistacheChocolatLait = {
   cookTime: "40 MIN",
   difficulty: "EXPERT",
   description: "Une création visuelle et gustative saisissante. L'alliance douce et réconfortante du chocolat au lait rencontre la finesse de la pistache dans un jeu de textures aériennes, le tout reposant sur un croustillant praliné addictif.",
-  image: "https://images.unsplash.com/photo-1489516917245-377a51e7b292",
+  image: "/images/recipes/le-marbre-pistache-chocolat-lait.png",
   baseServings: 3, // "3 entremets"
   
   ingredients: [

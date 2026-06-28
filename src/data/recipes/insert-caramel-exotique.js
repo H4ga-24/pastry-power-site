@@ -8,7 +8,7 @@ const insertCaramelExotique = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Un caramel fruité original où la crème est remplacée par une purée de fruits exotiques pour une explosion de saveurs.",
-  image: "https://www.lesrecettesdevanessa.fr/wp-content/uploads/2023/05/Entremet-Chocolat-Exotique_recettes-de-vanessa.jpg",
+  image: "/images/recipes/insert-caramel-exotique.png",
   baseServings: 6,
   
   ingredients: [

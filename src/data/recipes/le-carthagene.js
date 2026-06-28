@@ -8,7 +8,7 @@ const leCarthagene = {
   cookTime: "45 MIN",
   difficulty: "AVANCÉ",
   description: "Entremet élégant associant la douceur tropicale de la mangue au peps vivifiant du gingembre, avec un crémeux caramel onctueux et un biscuit financier doré au beurre noisette.",
-  image: "https://images.unsplash.com/photo-1564327767378-abddd68f287d",
+  image: "/images/recipes/le-carthagene.png",
   baseServings: 3, // "3 Entremets (16, 18, 20cm)"
   
   ingredients: [

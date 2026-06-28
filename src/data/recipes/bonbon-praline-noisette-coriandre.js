@@ -8,7 +8,7 @@
   cookTime: "30 MIN",
   difficulty: "AVANCà‰",
   description: "Un praliné à  l'ancienne aux noisettes entières, subtilement parfumé à  la coriandre.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/bdd35f5690a50bab6276f23e8db8927f.png",
+  image: "/images/recipes/bonbon-praline-noisette-coriandre.png",
   baseServings: 1, 
   
   ingredients: [

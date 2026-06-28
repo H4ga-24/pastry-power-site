@@ -8,7 +8,7 @@ const tarteAuxPralines = {
   cookTime: "40 MIN (Total)",
   difficulty: "MOYEN",
   description: "La grande spécialité lyonnaise : un fond de tarte sablé croustillant garni d'un appareil rouge rubis fondant et ultra gourmand (Tant pour Tant crème et pralines concassées).",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/0fb7f65352bad271f01f7ef59f4fea8d.jpg",
+  image: "/images/recipes/tarte-aux-pralines.png",
   baseServings: 6, // 1 tarte 22cm
   
   ingredients: [

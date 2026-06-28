@@ -8,7 +8,7 @@ const cakeChevreNoixRaisins = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Un cake automnal très gourmand. Le croquant des noix et la douceur des raisins s'accordent parfaitement avec le fromage de chèvre.",
-  image: "https://img.cuisineaz.com/660x660/2018/10/01/i143099-cake-chevre-noix-et-raisins.jpeg",
+  image: "/images/recipes/cake-chevre-noix-raisins.png",
   baseServings: 8, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const glacageExotique = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Un glaçage miroir lumineux et fruité à base de purée de mangue ou passion, idéal pour les entremets aux saveurs tropicales.",
-  image: "https://cuisinedaubery.com/wp-content/uploads/2024/04/glacage-mangue_ALTERN09.jpg",
+  image: "/images/recipes/glacage-exotique.png",
   baseServings: 500, // g
   
   ingredients: [

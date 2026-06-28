@@ -8,7 +8,7 @@ const leDesirBaileys = {
   cookTime: "15 MIN",
   difficulty: "AVANCÉ",
   description: "L'élégance à l'état pur. Une mousse légère et parfumée au Bailey's associée à un biscuit 'Safari' intense en cacao, le tout enveloppé d'un velours noir mystérieux. Un dessert sophistiqué pour les amateurs de liqueurs crémeuses.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/0739838a3f34c2628a4cc80a5c54445f.png",
+  image: "/images/recipes/le-desir-baileys.png",
   baseServings: 12, // "1 cadre de 37 x 28,5 cm"
   
   ingredients: [

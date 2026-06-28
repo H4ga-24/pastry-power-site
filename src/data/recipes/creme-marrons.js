@@ -8,7 +8,7 @@ const cremeMarrons = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une mousse onctueuse aux marrons (type Mont-Blanc), réalisée sur une base de pâte à bombe pour une texture aérienne et riche.",
-  image: "https://assets.afcdn.com/recipe/20160916/10796_w1024h1024c1cx1500cy1000.webp",
+  image: "/images/recipes/creme-marrons.png",
   baseServings: 1, // Pour environ 600g
   
   ingredients: [

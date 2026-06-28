@@ -8,7 +8,7 @@ const cremeuxCafe = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un crémeux intense aux notes torréfiées, réalisé par infusion de grains de café pour une saveur pure et sans amertume.",
-  image: "https://i.pinimg.com/originals/e4/51/41/e45141b6fdcd365220cc07c25e98ad47.jpg",
+  image: "/images/recipes/cremeux-cafe.png",
   baseServings: 1, 
   
   ingredients: [

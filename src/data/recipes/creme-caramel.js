@@ -8,7 +8,7 @@ const cremeCaramel = {
   cookTime: "35 MIN",
   difficulty: "MOYEN",
   description: "Un dessert d'enfance indémodable : une crème prise au four nappée d'un caramel liquide maison.",
-  image: "https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/41/fotolia_60132005_subscription_monthly_xxl.jpg",
+  image: "/images/recipes/creme-caramel.png",
   baseServings: 4, 
   
   ingredients: [

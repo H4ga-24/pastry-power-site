@@ -8,7 +8,7 @@ const tarteFramboise = {
   cookTime: "35 MIN",
   difficulty: "MOYEN",
   description: "La tarte aux framboises façon boutique : un fond de pâte sucrée, une crème d'amande moelleuse, une fine couche de pâtissière et des framboises fraîches garnies de confit.",
-  image: "https://ateliersdeludo.fr/wp-content/uploads/2022/08/Tarte-Framboise-Cyril-Lignac.jpg",
+  image: "/images/recipes/tarte-framboise.png",
   baseServings: 6, // 1 tarte 22cm
   
   ingredients: [

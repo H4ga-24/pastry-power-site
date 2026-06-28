@@ -8,7 +8,7 @@ const cakeCarotte = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Un cake lumineux et parfumé où la douceur de la carotte est relevée par le cumin.",
-  image: "https://fourneauxetfourchettes.fr/wp-content/uploads/2020/12/32C3B9E8-FC30-43BC-B346-CFFA6A6A92CB-scaled.jpeg",
+  image: "/images/recipes/cake-carotte.png",
   baseServings: 6, 
   
   ingredients: [

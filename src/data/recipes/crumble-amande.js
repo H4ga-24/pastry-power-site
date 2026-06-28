@@ -8,7 +8,7 @@ const crumbleAmande = {
   cookTime: "30 MIN",
   difficulty: "FACILE",
   description: "Le crumble aux amandes est un véritable atout pour sublimer une grande variété de préparations pâtissières. Grâce à sa texture sablée, à la fois légère et croustillante, il apporte un contraste exquis.",
-  image: "https://assets.afcdn.com/recipe/20160404/56530_w1024h768c1cx1128cy2275cxt0cyt0cxb2151cyb3000.jpg",
+  image: "/images/recipes/crumble-amande.png",
   baseServings: 1, // Pour une tarte ou une plaque
   
   ingredients: [

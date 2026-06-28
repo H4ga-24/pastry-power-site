@@ -8,7 +8,7 @@ const lesBiarritz = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "De délicats biscuits plats aux amandes et citron, dont le dessous est nappé de chocolat noir.",
-  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFfugVfq3PiU-gPp-EPHP6RQdHEKHL0lIhONdDru6Dglb3daESvB_qp7r4DR2oemI27FsyDzQRV0P4J2KLxPQbbg1nb2rqV-q5Bfni_TtWLwgEJZEohDuBNAWM_Nyo54RpVwVk7y7yfHg3/s400/biarritz.JPG",
+  image: "/images/recipes/les-biarritz.png",
   baseServings: 24, // "24 biscuits"
   
   ingredients: [

@@ -8,7 +8,7 @@ const cremeOrange = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Aussi appelée 'Orange Curd', cette crème onctueuse est riche en saveurs d'agrumes. Idéale pour les tartes meringuées ou en insert.",
-  image: "https://www.mycake.fr/wp-content/uploads/2019/02/rs_CurdOrange_4x3.jpg",
+  image: "/images/recipes/creme-orange.png",
   baseServings: 1, // Environ 500g
   
   ingredients: [

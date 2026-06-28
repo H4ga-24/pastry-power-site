@@ -8,7 +8,7 @@ const cremeBruleeDulceyCafe = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Une variante gourmande mariant la douceur biscuitée du chocolat blond Dulcey à l'amertume subtile du café.",
-  image: "https://encoreungateau.com/wp-content/uploads/2024/02/creme-brulee-cafe-recette-480x270.jpg",
+  image: "/images/recipes/creme-brulee-dulcey-cafe.png",
   baseServings: 6, // 6 ramequins
   
   ingredients: [

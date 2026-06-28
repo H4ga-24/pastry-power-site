@@ -8,7 +8,7 @@ const cakeSaumonOseille = {
   cookTime: "1H 10",
   difficulty: "MOYEN",
   description: "Un classique de la cuisine française revisité en cake. L'acidité de l'oseille balance parfaitement le gras du saumon.",
-  image: "https://lespapillesdekaren.com/wp-content/uploads/2025/04/wp_57dab1_cake-au-saumon-et-a-l-oseille.JPG",
+  image: "/images/recipes/cake-saumon-oseille.png",
   baseServings: 8, 
   
   ingredients: [

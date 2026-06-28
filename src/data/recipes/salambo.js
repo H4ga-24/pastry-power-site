@@ -8,7 +8,7 @@ const salambo = {
   cookTime: "30 MIN",
   difficulty: "MOYEN",
   description: "Aussi appelé 'Gland', ce chou de forme oblongue est garni d'une crème pâtissière parfumée au Kirsch et glacé d'un fondant vert pâle, avec une extrémité au chocolat.",
-  image: "https://www.jullien-patisserie.fr/images/products_images/34/vO1Fr-FMzDo.jpeg",
+  image: "/images/recipes/salambo.png",
   baseServings: 6, // pièces
   
   ingredients: [

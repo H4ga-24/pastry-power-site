@@ -8,7 +8,7 @@ const cuissonSucreCaramel = {
   cookTime: "15 MIN",
   difficulty: "AVANCÉ",
   description: "Le caramel 'grand cassé' utilisé pour coller les choux des pièces montées et les glacer pour obtenir ce craquant vitrifié caractéristique.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/caramel-a-croquembouche/caramel-a-croquembouche-1200.jpg",
+  image: "/images/recipes/cuisson-sucre-caramel.png",
   baseServings: 1, // Pour glacer ~30 choux
   
   ingredients: [

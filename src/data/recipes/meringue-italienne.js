@@ -8,7 +8,7 @@ const meringueItalienne = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une meringue cuite par un sirop de sucre bouillant, idéale pour les macarons, les tartes meringuées et les mousses.",
-  image: "https://sweet-salty-lkc.com/wp-content/uploads/2025/05/Meringue-Italienne-Facile-Recette-Inratable-et-Gourmande-5-e1749396585282.jpg",
+  image: "/images/recipes/meringue-italienne.png",
   baseServings: 1, // bol
   
   ingredients: [

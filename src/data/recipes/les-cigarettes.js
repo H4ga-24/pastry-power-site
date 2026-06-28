@@ -8,7 +8,7 @@ const lesCigarettes = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Des biscuits fins et croustillants, roulés à la sortie du four pour former des tubes élégants.",
-  image: "https://assets.afcdn.com/recipe/20131121/12662_w1024h1024c1cx300cy200.webp",
+  image: "/images/recipes/les-cigarettes.png",
   baseServings: 20,
   
   ingredients: [

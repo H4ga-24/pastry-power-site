@@ -8,7 +8,7 @@ const cremeBeurreOeufs = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une version riche et onctueuse de la crème au beurre, réalisée sur une base de pâte à bombe (sirop versé sur jaunes d'œufs).",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/09/IMG_20210927_113242-1300x975.jpg",
+  image: "/images/recipes/creme-beurre-oeufs.png",
   baseServings: 1, // Environ 500g
   
   ingredients: [

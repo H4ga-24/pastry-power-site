@@ -8,7 +8,7 @@ const pateTartinerAmandeNoisette = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Une pâte à tartiner maison onctueuse, riche en fruits secs torréfiés, sans huile de palme et bien meilleure que celle du commerce.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2024/07/pate-a-tartiner-noisette.jpg",
+  image: "/images/recipes/pate-tartiner-amande-noisette.png",
   baseServings: 700, // g (environ 2 pots de 350g)
   
   ingredients: [

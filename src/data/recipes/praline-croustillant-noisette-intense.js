@@ -8,7 +8,7 @@ const pralineCroustillantNoisetteIntense = {
   cookTime: "15 MIN",
   difficulty: "AVANCÉ",
   description: "Un bonbon texturé à la puissance aromatique intense. Un praliné noisette croustillant enrichi de Royaltine, surmonté d'une noisette entière torréfiée pour un relief gourmand sous une fine couche de chocolat lait.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/b5d042ecdd3b83e40ed2c330fce9affc.jpg",
+  image: "/images/recipes/praline-croustillant-noisette-intense.png",
   baseServings: 160, // bonbons
   
   ingredients: [

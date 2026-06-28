@@ -8,7 +8,7 @@ const insertRizSouffleCaramelise = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Un insert croustillant apportant une texture légère et croquante, idéal pour contraster avec des mousses onctueuses.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2023/05/IMG_20230511_095646-1-1249x1300.jpg",
+  image: "/images/recipes/insert-riz-souffle-caramelise.png",
   baseServings: 6,
   
   ingredients: [

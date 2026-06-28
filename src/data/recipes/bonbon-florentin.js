@@ -8,7 +8,7 @@
   cookTime: "15 MIN",
   difficulty: "AVANCà‰",
   description: "L'élégance d'un classique revisité. Un disque de nougatine croustillante aux amandes, oranges et miel, surmonté d'une ganache noire intense et peu sucrée.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/cbef407c92ab7561d5406e122492664a.png",
+  image: "/images/recipes/bonbon-florentin.png",
   baseServings: 1, 
   
   ingredients: [

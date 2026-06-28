@@ -8,7 +8,7 @@ const rectangleFinancierPistacheAbricot = {
   cookTime: "30 MIN",
   difficulty: "AVANCÉ",
   description: "L'élégance d'un format 'Finger' allongé. La douceur biscuitée du chocolat blond Dulcey enveloppe l'acidité franche de l'abricot, le tout reposant sur un socle intense de pistache.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2022/05/pistache-abricot.jpg",
+  image: "/images/recipes/rectangle-financier-pistache-abricot.png",
   baseServings: 14, // "1 cadre = 14 parts"
   
   ingredients: [

@@ -8,7 +8,7 @@ const cremeBeurreMeringueItalienne = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "La reine des crèmes au beurre : légère, aérienne et parfaitement stable. Idéale pour garnir macarons, choux et entremets.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/07/creme-au-beurre-meringue-italienne.jpg",
+  image: "/images/recipes/creme-beurre-meringue-italienne.png",
   baseServings: 1, // Environ 500g
   
   ingredients: [

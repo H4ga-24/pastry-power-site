@@ -8,7 +8,7 @@ const cremeAmande = {
   cookTime: "25 MIN", // Temps de cuisson estimé dans une tarte
   difficulty: "FACILE",
   description: "La base de la galette des rois et des tartes amandine (Bourdaloue). Un mélange riche et fondant.",
-  image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/E3B8F710-97E6-4EC2-9620-704C6389BB4A/Derivates/B58E50E2-EA68-4972-8E6C-E9DE1BD6BF52.jpg",
+  image: "/images/recipes/creme-amande.png",
   baseServings: 1, // Environ 400g de crème
   
   ingredients: [

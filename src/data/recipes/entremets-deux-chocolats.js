@@ -8,7 +8,7 @@ const entremetsDeuxChocolats = {
   cookTime: "30 MIN",
   difficulty: "MOYEN",
   description: "L'alliance parfaite de deux chocolats. Un insert fondant au chocolat noir caché dans une mousse bavaroise au chocolat au lait, sur une dacquoise moelleuse. Un grand classique.",
-  image: "https://images.unsplash.com/photo-1713274782299-0b97a3e435f3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  image: "/images/recipes/entremets-deux-chocolats.png",
   baseServings: 1, // 1 Entremets de 20 cm
   
   ingredients: [

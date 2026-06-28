@@ -8,7 +8,7 @@ const petitFourPateAmande = {
   cookTime: "10 MIN",
   difficulty: "DIFFICILE",
   description: "Des petits fours traditionnels à base de pâte d'amande riche, dressés à la poche pour des formes élégantes.",
-  image: "https://img.over-blog.com/500x375/3/18/00/24/patiss-25/cafe-gourmand-2.JPG",
+  image: "/images/recipes/petit-four-pate-amande.png",
   baseServings: 20, // pièces
   
   ingredients: [

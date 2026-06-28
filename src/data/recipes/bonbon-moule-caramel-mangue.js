@@ -8,7 +8,7 @@
   cookTime: "30 MIN",
   difficulty: "INTERMà‰DIAIRE",
   description: "Une coque fine en chocolat au lait renfermant un coeur coulant de caramel exotique à  la mangue. L'alliance parfaite entre la douceur lactée et le fruité acidulé.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/8c854e72d9bd134985b3024ad0d26079.png",
+  image: "/images/recipes/bonbon-moule-caramel-mangue.png",
   baseServings: 1, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const sauceSamourai = {
   cookTime: "30 MIN (Repos)",
   difficulty: "TRÈS FACILE",
   description: "L'incontournable des friteries belges. Une sauce mayonnaise épicée, onctueuse et légèrement sucrée pour contrebalancer le feu du piment.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/7a4553917837540ebc6acbee58944c6e.jpg",
+  image: "/images/recipes/sauce-samourai.png",
   baseServings: 1, // bol
   
   ingredients: [

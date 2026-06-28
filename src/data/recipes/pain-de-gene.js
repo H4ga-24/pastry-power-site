@@ -8,7 +8,7 @@ const painDeGene = {
   cookTime: "40 MIN",
   difficulty: "MOYEN",
   description: "Le Pain de Gênes est un biscuit d'origine Italienne, au goût très subtil et qui sert de base à certains gâteaux et dessert à l'assiette. Prévoir deux doses pour votre carnet de recettes du cap pâtissier.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/pain-de-gene-tendances-food-1300x1300.jpg",
+  image: "/images/recipes/pain-de-gene.png",
   baseServings: 1, // "Masse obtenue 277g"
   
   ingredients: [

@@ -8,7 +8,7 @@ const tabletteFourrePistache = {
   cookTime: "15 MIN",
   difficulty: "INTERMÉDIAIRE",
   description: "Une tablette ultra-gourmande enrobée de chocolat blanc, révélant un cœur coulant au praliné pistache et du riz soufflé croustillant.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/6ac9773ded84387d8e7634f08574e034.jpg",
+  image: "/images/recipes/tablette-fourre-pistache.png",
   baseServings: 3, // Tablettes
   
   ingredients: [

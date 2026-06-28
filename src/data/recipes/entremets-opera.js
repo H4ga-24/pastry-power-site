@@ -8,7 +8,7 @@ const entremetsOpera = {
   cookTime: "30 MIN",
   difficulty: "AVANCÉ",
   description: "Le summum du raffinement parisien. Des couches successives de biscuit Joconde imbibé au café, de ganache chocolat et de crème au beurre café, le tout recouvert d'un glaçage intense.",
-  image: "https://cdn.stoneline.de/thumbnail/e9/a5/e5/1727689765/gateau-opera_1920x1920.jpeg?ts=1727689805",
+  image: "/images/recipes/entremets-opera.png",
   baseServings: 20, // "Pour un cadre de 40 x 60 cm"
   
   ingredients: [

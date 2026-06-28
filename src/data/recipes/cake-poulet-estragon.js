@@ -8,7 +8,7 @@ const cakePouletEstragon = {
   cookTime: "1H 10",
   difficulty: "FACILE",
   description: "Un cake complet qui fait office de plat principal avec une salade. L'estragon apporte sa note anisée caractéristique.",
-  image: "https://img.cuisineaz.com/660x660/2013/12/20/i64546-photo-de-cake-au-poulet-courgettes-et-estragon.jpeg",
+  image: "/images/recipes/cake-poulet-estragon.png",
   baseServings: 8, 
   
   ingredients: [

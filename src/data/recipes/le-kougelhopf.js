@@ -8,7 +8,7 @@ const leKougelhopf = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Le kougelhopf est une brioche à pâte levée, spécialité alsacienne, cuite dans un moule en terre cuite émaillée spécifique qui lui donne sa forme haute, cannelée et creusée en son milieu.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/10/kouglof-.jpg",
+  image: "/images/recipes/le-kougelhopf.png",
   baseServings: 5, // 5 pieces (selon le fichier, même si les quantités font penser à 1 gros ou 2 moyens)
   
   ingredients: [

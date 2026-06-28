@@ -9,7 +9,7 @@ const craquelinPateChoux = {
   cookTime: "0 MIN", // Se cuit avec le chou
   difficulty: "FACILE",
   description: "Le secret des choux modernes bien ronds et croustillants. Une fine couche de pâte sucrée qui se pose sur le chou avant cuisson.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2022/12/IMG_20221212_081945-975x1300.jpg",
+  image: "/images/recipes/craquelin-pate-choux.png",
   baseServings: 1, // Pour environ 20-30 choux
   
   ingredients: [

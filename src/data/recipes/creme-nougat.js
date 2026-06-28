@@ -8,7 +8,7 @@ const cremeNougat = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Une crème riche et parfumée aux éclats d'amandes, de pistaches et de miel, idéale pour garnir des choux ou des macarons.",
-  image: "https://www.cuisinetemeraire.fr/wp-content/uploads/2012/10/Pate-Nougat.jpg",
+  image: "/images/recipes/creme-nougat.png",
   baseServings: 1, // Environ 600g
   
   ingredients: [

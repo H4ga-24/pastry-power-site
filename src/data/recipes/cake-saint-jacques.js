@@ -8,7 +8,7 @@ const cakeSaintJacques = {
   cookTime: "1H 10",
   difficulty: "MOYEN",
   description: "Un cake de fête très raffiné. La douceur du poireau et la saveur délicate de la Saint-Jacques relevée par le curry.",
-  image: "https://i.f1g.fr/media/cms/1200x630_crop/2022/02/07/1717f8a6b852a6ce9896fa6eab703c86568c1b14665b66ae22cf31417f709e4b.jpg",
+  image: "/images/recipes/cake-saint-jacques.png",
   baseServings: 8, 
   
   ingredients: [

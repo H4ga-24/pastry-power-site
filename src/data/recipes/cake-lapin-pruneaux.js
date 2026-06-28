@@ -8,7 +8,7 @@ const cakeLapinPruneaux = {
   cookTime: "45 MIN",
   difficulty: "MOYEN",
   description: "Un cake raffiné utilisant des restes de lapin cuit. L'association lapin-pruneaux est un classique de la gastronomie française.",
-  image: "https://www.pleinevie.fr/wp-content/uploads/pleinevie/2019/01/recette-cake-aux-pruneaux-magret-canard-cresson.jpg",
+  image: "/images/recipes/cake-lapin-pruneaux.png",
   baseServings: 8, 
   
   ingredients: [

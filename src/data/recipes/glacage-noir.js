@@ -8,7 +8,7 @@ const glacageNoir = {
   cookTime: "10 MIN",
   difficulty: "DIFFICILE",
   description: "Le classique glaçage miroir noir intense, réalisé à base de cacao en poudre pour une couleur ébène profonde et brillante.",
-  image: "https://mapatisserie.fr/wp-content/uploads/2016/05/IMG_20160425_073459.jpg",
+  image: "/images/recipes/glacage-noir.png",
   baseServings: 600, // g
   
   ingredients: [

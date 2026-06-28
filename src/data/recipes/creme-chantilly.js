@@ -8,7 +8,7 @@ const cremeChantilly = {
   cookTime: "0 MIN",
   difficulty: "TRÈS FACILE",
   description: "Le classique aérien et sucré, indispensable pour accompagner les glaces, tartes ou simplement des fraises.",
-  image: "https://blog.cerfdellier.com/wp-content/uploads/2021/06/comment-faire-une-chantilly-maison.jpg",
+  image: "/images/recipes/creme-chantilly.png",
   baseServings: 1, // Pour ~500g de crème foisonnée
   
   ingredients: [

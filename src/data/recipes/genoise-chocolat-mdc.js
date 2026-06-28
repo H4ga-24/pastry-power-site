@@ -8,7 +8,7 @@ const genoiseChocolatMDC = {
   cookTime: "30 MIN",
   difficulty: "MOYEN",
   description: "La génoise au chocolat est un classique de la pâtisserie française. C'est un biscuit moelleux et aéré, idéal pour confectionner des gâteaux fourrés ou des forêts noires.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/genoise-chocolat/genoise-chocolat-1200.jpg",
+  image: "/images/recipes/genoise-chocolat-mdc.png",
   baseServings: 6, 
   
   ingredients: [

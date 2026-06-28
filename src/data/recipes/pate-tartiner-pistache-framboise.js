@@ -8,7 +8,7 @@ const pateTartinerPistacheFramboise = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "L'association vibrante de la pistache verte et de l'acidité de la framboise croustillante. Une gourmandise de luxe.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2024/07/Pate-a-tartiner-framboise-pistache.jpg",
+  image: "/images/recipes/pate-tartiner-pistache-framboise.png",
   baseServings: 500, // g (environ 2 pots de 250g)
   
   ingredients: [

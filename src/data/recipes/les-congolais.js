@@ -8,7 +8,7 @@ const lesCongolais = {
   cookTime: "15 MIN",
   difficulty: "TRÈS FACILE",
   description: "Des rochers à la noix de coco, croustillants à l'extérieur et moelleux à l'intérieur. Un classique indémodable.",
-  image: "https://mallaurydalmasso.com/wp-content/uploads/2025/01/Recette-congolais-recette-rochers-coco.jpg",
+  image: "/images/recipes/les-congolais.png",
   baseServings: 15,
   
   ingredients: [

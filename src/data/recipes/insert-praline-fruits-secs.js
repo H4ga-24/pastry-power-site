@@ -8,7 +8,7 @@ const insertPralineFruitsSecs = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une couche gourmande de praliné riche en fruits secs torréfiés, pour un insert croquant et savoureux.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/entremets-tablette-praline-noisette-caramel/entremets-tablette-praline-noisette-caramel-1200.jpg",
+  image: "/images/recipes/insert-praline-fruits-secs.png",
   baseServings: 6,
   
   ingredients: [

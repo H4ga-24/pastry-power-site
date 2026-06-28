@@ -8,7 +8,7 @@ const mayonnaiseMaison = {
   cookTime: "0 MIN",
   difficulty: "MOYEN",
   description: "Le grand classique indispensable. Une émulsion froide stable qui sert de base à de nombreuses autres sauces (Cocktail, Tartare, Andalouse...).",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/4bab0dd2583c8929df512f3d8fce6e78.jpg",
+  image: "/images/recipes/mayonnaise-maison.png",
   baseServings: 1, // Bol
   
   ingredients: [

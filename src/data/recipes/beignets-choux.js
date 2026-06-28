@@ -7,7 +7,7 @@ const beignetsChoux = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Aussi appelés 'Pets de nonne', ces petites boules de pâte à choux frites soufflent à la cuisson pour devenir incroyablement légères et aériennes.",
-  image: "https://www.ticino.ch/pictures/infoturistica/verybig4/tortelli-4.jpg",
+  image: "/images/recipes/beignets-choux.png",
   isVip: false,
   baseServings: 6,
   

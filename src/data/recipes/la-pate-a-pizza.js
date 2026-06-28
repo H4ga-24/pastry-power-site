@@ -8,7 +8,7 @@ const laPateAPizza = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "La base incontournable de la cuisine italienne. Une pâte fine, croustillante à l'extérieur et moelleuse à l'intérieur, avec une belle corniche.",
-  image: "https://odelices.ouest-france.fr/images/recettes/2015/pate_a_pizza.jpg",
+  image: "/images/recipes/la-pate-a-pizza.png",
   baseServings: 4, // "4 Pizzas"
   
   ingredients: [

@@ -8,7 +8,7 @@ const saintHonore = {
   cookTime: "40 MIN",
   difficulty: "AVANCÉ",
   description: "Le patron des boulangers. Une base de feuilletage, une couronne de choux caramélisés et une crème Chiboust (ou Chantilly) dressée à la douille spécifique.",
-  image: "https://www.patisserie-et-gourmandise.com/wp-content/uploads/2018/03/saint-honore-2.jpg",
+  image: "/images/recipes/saint-honore.png",
   baseServings: 6, // parts
   
   ingredients: [

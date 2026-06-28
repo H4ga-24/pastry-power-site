@@ -8,7 +8,7 @@ const cremePatissiereCitron = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Une version acidulée et fraîche de la classique crème pâtissière. Parfaite pour garnir des choux, des éclairs ou un fond de tarte.",
-  image: "https://www.cuisineactuelle.fr/imgre/fit/~1~cac~2018~09~25~ce09e092-b3d7-486a-a8b6-b8543b5533c1.jpeg/650x365/quality/80/crop-from/center/creme-patissiere-au-citron.jpeg",
+  image: "/images/recipes/creme-patissiere-citron.png",
   baseServings: 1, // Environ 500g
   
   ingredients: [

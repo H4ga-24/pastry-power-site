@@ -8,7 +8,7 @@
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Le grand classique de la confiserie italienne. Une pâte onctueuse de noisettes et de chocolat, fondante à  souhait.",
-  image: "https://encoreungateau.com/wp-content/uploads/2015/10/gianduja-recette-500x375.jpg",
+  image: "/images/recipes/gianduja-noisette.png",
   baseServings: 500, // g
   
   ingredients: [

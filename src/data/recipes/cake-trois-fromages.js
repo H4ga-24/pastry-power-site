@@ -8,7 +8,7 @@ const cakeTroisFromages = {
   cookTime: "55 MIN",
   difficulty: "FACILE",
   description: "Pour les amateurs de fromage ! Un cake riche et puissant avec du caractère.",
-  image: "https://www.ramenelapopotte.com/sites/default/files/cake_courgette_3_fromages_coupe_zoom.jpg",
+  image: "/images/recipes/cake-trois-fromages.png",
   baseServings: 8, 
   
   ingredients: [

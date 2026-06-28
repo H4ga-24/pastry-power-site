@@ -8,7 +8,7 @@ const speculoos = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Le célèbre biscuit belge aux épices, cassonade et cannelle, délicieux avec le café.",
-  image: "https://adc-dev-images-recipes.s3.eu-west-1.amazonaws.com/rep_fotolia_4983_speculoos_biscuit.jpg",
+  image: "/images/recipes/speculoos.png",
   baseServings: 20, // pièces
   
   ingredients: [

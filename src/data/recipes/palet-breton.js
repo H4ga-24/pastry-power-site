@@ -8,7 +8,7 @@ const paletBreton = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Le palet breton est un biscuit sablé emblématique, riche en beurre demi-sel et friable à souhait. Une base parfaite aussi pour des entremets.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2022/11/palets-bretons.jpg",
+  image: "/images/recipes/palet-breton.png",
   baseServings: 10,
   
   ingredients: [

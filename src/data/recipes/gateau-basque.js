@@ -8,7 +8,7 @@ const gateauBasque = {
   cookTime: "40 MIN",
   difficulty: "MOYEN",
   description: "Le gâteau basque est un mets sucré traditionnel, composé d'une pâte sablée croustillante fourrée soit de crème pâtissière (souvent parfumée au rhum/vanille), soit de confiture de cerises noires.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/1630facada9f0e9bd1ed39781dd85155.jpg",
+  image: "/images/recipes/gateau-basque.png",
   baseServings: 6,
   
   ingredients: [

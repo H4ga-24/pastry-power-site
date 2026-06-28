@@ -8,7 +8,7 @@ const cakePoivronsFeta = {
   cookTime: "60 MIN",
   difficulty: "FACILE",
   description: "Les saveurs de la Grèce dans un cake. Le trio poivron-feta-olive fonctionne à merveille pour un cake d'été.",
-  image: "https://www.cookomix.com/wp-content/uploads/mediapress/members/1/379/cake-proivrons-feta-olives-noires-thermomix-800x600.jpg",
+  image: "/images/recipes/cake-poivrons-feta.png",
   baseServings: 8, 
   
   ingredients: [

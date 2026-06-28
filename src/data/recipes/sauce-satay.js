@@ -8,7 +8,7 @@ const sauceSatay = {
   cookTime: "7 MIN",
   difficulty: "FACILE",
   description: "La célèbre sauce asiatique riche et gourmande au beurre de cacahuète, parfaite en trempette pour des brochettes de poulet ou des rouleaux de printemps.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/7f8d7e6c0ed7ce8b391f5fe6ab897b30.jpg",
+  image: "/images/recipes/sauce-satay.png",
   baseServings: 4, // personnes
   
   ingredients: [

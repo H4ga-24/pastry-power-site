@@ -8,7 +8,7 @@ const tarteletteOrange = {
   cookTime: "20 MIN",
   difficulty: "MOYEN",
   description: "Une alternative douce et parfumée à la tarte au citron. L'orange curd, onctueux et riche en zestes, est couronné de suprêmes d'orange frais.",
-  image: "https://www.aureliencohen.fr/wp-content/uploads/2020/02/Tartelettes-orange-sanguine-poivre-de-timut-2-683x1024.jpg",
+  image: "/images/recipes/tartelette-orange.png",
   baseServings: 6, // tartelettes
   
   ingredients: [

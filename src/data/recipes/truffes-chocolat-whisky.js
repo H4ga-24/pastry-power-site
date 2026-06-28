@@ -8,7 +8,7 @@ const truffesChocolatWhisky = {
   cookTime: "15 MIN",
   difficulty: "AVANCÉ",
   description: "La truffe de tradition : une ganache noire corsée au whisky tourbé, roulée dans un cacao pur pour une amertume élégante.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/79c549535c907e074738d632777d0154.png",
+  image: "/images/recipes/truffes-chocolat-whisky.png",
   baseServings: 100, // pièces (environ)
   
   ingredients: [

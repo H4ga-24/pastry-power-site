@@ -8,7 +8,7 @@ const cakeAnchoisTomate = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Un cake salé aux saveurs provençales, idéal pour l'apéritif ou un pique-nique.",
-  image: "https://www.torchonsetserviettes.fr/wp-content/uploads/2020/11/cake5-scaled.jpg",
+  image: "/images/recipes/cake-anchois-tomate.png",
   baseServings: 8, 
   
   ingredients: [

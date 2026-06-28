@@ -8,7 +8,7 @@ const painMaisSansGluten = {
   cookTime: "35 MIN",
   difficulty: "FACILE",
   description: "Un pain doré à la mie serrée mais moelleuse, réalisé sans farine de blé pour les intolérants au gluten.",
-  image: "https://images.unsplash.com/photo-1603279126476-93ce8278312c?q=80&w=1470&auto=format&fit=crop",
+  image: "/images/recipes/pain-mais-sans-gluten.png",
   baseServings: 2, // "Pour 2 petits pains"
 
   ingredients: [

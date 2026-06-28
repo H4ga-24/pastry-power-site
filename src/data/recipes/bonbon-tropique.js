@@ -8,7 +8,7 @@
   cookTime: "40 MIN",
   difficulty: "EXPERT",
   description: "L'acidité vibrante du pamplemousse et la douceur de la fraise en deux textures : pâte de fruit fondante et ganache soyeuse.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/984357cb94617ab514d713ee79520a0b.png",
+  image: "/images/recipes/bonbon-tropique.png",
   baseServings: 1, 
   
   ingredients: [

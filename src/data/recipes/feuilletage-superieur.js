@@ -8,7 +8,7 @@ const feuilletageSuperieur = {
   cookTime: "N/A",
   difficulty: "DIFFICILE",
   description: "Un feuilletage d'exception, riche et friable, idéal pour les mille-feuilles et les tartes fines.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/feuilletage-superieur-1300x862.png",
+  image: "/images/recipes/feuilletage-superieur.png",
   baseServings: 1, // "1 Pâton"
   
   ingredients: [

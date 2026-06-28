@@ -8,7 +8,7 @@ const orangesConfitesOrangettes = {
   cookTime: "30 MIN / Jour",
   difficulty: "EXPERT",
   description: "L'art du confisage traditionnel. Des écorces d'oranges gorgées de sirop pendant 8 jours pour une texture tendre et translucide, enrobées d'une fine couche de chocolat noir croquant.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/7e694ad1cc3c3fc50e9cfc869a0609db.png",
+  image: "/images/recipes/oranges-confites-orangettes.png",
   baseServings: 2000, // g (écorces départ)
   
   ingredients: [

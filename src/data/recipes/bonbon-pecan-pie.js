@@ -8,7 +8,7 @@
   cookTime: "45 MIN",
   difficulty: "AVANCà‰",
   description: "Un bi-couche gourmand : caramel vanille onctueux et praliné pécan croustillant, enrobé de chocolat noir.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/06e08202c0ddee0236bec58bc395cb43.png",
+  image: "/images/recipes/bonbon-pecan-pie.png",
   baseServings: 1, 
   
   ingredients: [

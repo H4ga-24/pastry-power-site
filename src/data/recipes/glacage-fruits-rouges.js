@@ -8,7 +8,7 @@ const glacageFruitsRouges = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Un glaçage rouge intense et brillant, parfait pour un entremets à la framboise ou à la fraise, réalisé avec une touche de purée de fruits.",
-  image: "https://tout-gourmand.fr/media/cache/voir_recette/media/images/recettes/42077-tout-gourmand-entremet-chocolat-blanc-et-fruits-rouges.webp",
+  image: "/images/recipes/glacage-fruits-rouges.png",
   baseServings: 700, // g
   
   ingredients: [

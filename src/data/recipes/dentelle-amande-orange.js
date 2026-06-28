@@ -8,7 +8,7 @@ const dentelleAmandeOrange = {
   cookTime: "8 MIN",
   difficulty: "MOYEN",
   description: "Des biscuits d'une finesse extrême, au bon goût d'orange et de caramel. Très fragiles et élégants.",
-  image: "https://static.750g.com/images/640-440/b1feec3f4b5e06242eb9a57c5cd092d2/tuilesdentelles.jpg",
+  image: "/images/recipes/dentelle-amande-orange.png",
   baseServings: 16, 
   
   ingredients: [

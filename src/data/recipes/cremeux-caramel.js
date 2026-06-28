@@ -8,7 +8,7 @@ const cremeuxCaramel = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "La gourmandise à l'état pur. Un caramel cuit à sec, déglacé à la crème et enrichi de jaunes d'œufs pour une texture fondante.",
-  image: "https://www.aureliencohen.fr/wp-content/uploads/2020/02/Entremets-vanille-caramel-speculoos-2-683x1024.jpg",
+  image: "/images/recipes/cremeux-caramel.png",
   baseServings: 1, 
   
   ingredients: [

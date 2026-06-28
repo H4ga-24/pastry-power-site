@@ -8,7 +8,7 @@ const insertBlancManger = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une préparation délicate et lactée à l'amande ou au coco, offrant une texture soyeuse et un goût subtil.",
-  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8nbIGhx5NgFwrx0hIxxW6LQGymQReaupTnCF5LBRm-UqRQ_YfT0aqqSOIFC2bBU_nJ18VC94niWMlryyLkZUCmIZIUj8xgVQeAIZTY-LbI8_F1oO2SsLbQVK0q7v0ao3zP8rflhPOOWGB/s1600/buchecoco90.jpg",
+  image: "/images/recipes/insert-blanc-manger.png",
   baseServings: 6,
   
   ingredients: [

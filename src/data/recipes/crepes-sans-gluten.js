@@ -9,7 +9,7 @@ const crepesSansGluten = {
   cookTime: "20 MIN",
   difficulty: "TRÈS FACILE",
   description: "Des crêpes fines, dorées et incroyablement légères. Le mélange riz-maïzena remplace la farine de blé à la perfection sans changer le goût.",
-  image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=1470&auto=format&fit=crop",
+  image: "/images/recipes/crepes-sans-gluten.png",
   baseServings: 4, // Pour environ 12-15 crêpes
   
   ingredients: [

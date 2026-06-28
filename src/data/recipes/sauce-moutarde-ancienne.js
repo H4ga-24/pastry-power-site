@@ -8,7 +8,7 @@ const sauceMoutardeAncienne = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Une sauce de caractère, à la fois crémeuse et relevée. L'équilibre entre la douceur de la crème et l'acidité du vinaigre et de la moutarde en fait le compagnon idéal des viandes blanches.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/173d8a186fceaa9eb1c081e757a2d213.jpg",
+  image: "/images/recipes/sauce-moutarde-ancienne.png",
   baseServings: 4, // personnes
   
   ingredients: [

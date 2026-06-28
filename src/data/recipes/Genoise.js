@@ -8,7 +8,7 @@ const genoise = {
   cookTime: "25 MIN",
   difficulty: "FACILE",
   description: "La base classique par excellence pour de nombreux entremets et gâteaux garnis.",
-  image: "https://img.cuisineaz.com/1024x1024/2016/04/28/i58827-genoise.webp",
+  image: "/images/recipes/genoise.png",
   baseServings: 1, 
   
   ingredients: [

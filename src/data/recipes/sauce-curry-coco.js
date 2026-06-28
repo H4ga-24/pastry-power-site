@@ -8,7 +8,7 @@ const sauceCurryCoco = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Une sauce d'inspiration indienne, onctueuse et parfumée. Très rapide à réaliser, elle transforme un simple blanc de poulet ou des crevettes en un plat exotique.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/f9a7f35f28f0b226c9c48be83f28e751.jpg",
+  image: "/images/recipes/sauce-curry-coco.png",
   baseServings: 4, // personnes
   
   ingredients: [

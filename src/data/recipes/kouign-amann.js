@@ -8,7 +8,7 @@ const kouignAmann = {
   cookTime: "30 MIN",
   difficulty: "DIFFICILE", // Difficile car technique de tourage
   description: "Littéralement 'Gâteau au beurre'. Une pâte à pain feuilletée généreusement garnie de beurre demi-sel et de sucre, créant une croûte caramélisée irrésistible.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/8eb2478d08f155364300cb7c90791297.jpg",
+  image: "/images/recipes/kouign-amann.png",
   baseServings: 6,
   
   ingredients: [

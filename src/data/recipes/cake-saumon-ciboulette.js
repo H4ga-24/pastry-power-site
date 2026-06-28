@@ -8,7 +8,7 @@ const cakeSaumonCiboulette = {
   cookTime: "55 MIN",
   difficulty: "FACILE",
   description: "Simple, frais et efficace. Le saumon fumé suffit à parfumer tout le cake.",
-  image: "https://i0.wp.com/unepausehealthyf.com/wp-content/uploads/2021/04/cake-sale%CC%81-saumon-fume%CC%81-scaled.jpeg",
+  image: "/images/recipes/cake-saumon-ciboulette.png",
   baseServings: 8, 
   
   ingredients: [

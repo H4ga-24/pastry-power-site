@@ -8,7 +8,7 @@ const cakeChampignons = {
   cookTime: "45 MIN",
   difficulty: "FACILE",
   description: "Un cake forestier très simple, relevé par une persillade.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/cake-champignons/cake-champignons-1200.jpg",
+  image: "/images/recipes/cake-champignons.png",
   baseServings: 8, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const insertPralineFeuilletine = {
   cookTime: "5 MIN",
   difficulty: "TRÈS FACILE",
   description: "Le fameux croustillant praliné, un classique indémodable pour apporter de la mâche à vos gâteaux.",
-  image: "https://sweetlycakes.com/wp-content/uploads/2022/12/croustillantpraline-9.jpg",
+  image: "/images/recipes/insert-praline-feuilletine.png",
   baseServings: 6,
   
   ingredients: [

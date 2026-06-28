@@ -8,7 +8,7 @@ const lesPancakes = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Le pancake est une crêpe d'aspect et de saveur très différents à la crêpe européenne (diamètre plus faible, plus épaisse). L'épaisseur provient de la consistance de la pâte et de l'usage d'un agent levant.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/08/Pancake.jpg",
+  image: "/images/recipes/les-pancakes.png",
   baseServings: 9, // "9 Nombre de pièces"
   
   ingredients: [

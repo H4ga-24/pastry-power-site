@@ -8,7 +8,7 @@ const glacageNoisette = {
   cookTime: "5 MIN",
   difficulty: "FACILE",
   description: "Un glaçage gourmand avec morceaux (type Rocher), à base de chocolat au lait et d'éclats de noisettes torréfiées. Parfait pour les cakes de voyage.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/glacage-pate-glacer/glacage-pate-glacer-640.jpg",
+  image: "/images/recipes/glacage-noisette.png",
   baseServings: 400, // g
   
   ingredients: [

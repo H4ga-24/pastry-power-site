@@ -9,7 +9,7 @@ const cremeBavaroiseChocolatCannelle = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un mélange chaleureux et épicé, où la force du chocolat noir rencontre la douceur de la cannelle infusée.",
-  image: "https://www.cuisineactuelle.fr/imgre/fit/~1~cac~2018~09~25~0faa870e-5bb1-4b9f-aa8f-43751673f202.jpeg/400x400/quality/80/crop-from/center/creme-au-chocolat-et-a-la-cannelle.jpeg",
+  image: "/images/recipes/creme-bavaroise-chocolat-cannelle.png",
   baseServings: 1, 
   
   ingredients: [

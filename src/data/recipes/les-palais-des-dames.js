@@ -8,7 +8,7 @@ const lesPalaisDesDames = {
   cookTime: "12 MIN",
   difficulty: "MOYEN",
   description: "Des biscuits moelleux originaires du Nord, garnis d'un glaçage royal et parfois de fruits confits.",
-  image: "https://static.750g.com/images/1200-630/43b0a2eabaed41fe32489244054bce9f/palets-de-dames.png",
+  image: "/images/recipes/les-palais-des-dames.png",
   baseServings: 20,
   
   ingredients: [

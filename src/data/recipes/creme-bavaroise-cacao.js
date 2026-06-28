@@ -9,7 +9,7 @@ const cremeBavaroiseCacao = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une bavaroise intense en goût chocolaté grâce à l'utilisation de cacao en poudre amer. Moins grasse qu'une mousse au chocolat classique.",
-  image: "https://www.maspatule.com/blog/wp-content/uploads/2022/10/BLOG-IMG_MISE_EN_AVT-mousse-bavaroise-chocolat.jpg",
+  image: "/images/recipes/creme-bavaroise-cacao.png",
   baseServings: 1, 
   
   ingredients: [

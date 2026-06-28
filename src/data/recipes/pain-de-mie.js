@@ -8,7 +8,7 @@ const painDeMie = {
   cookTime: "35 MIN",
   difficulty: "MOYEN",
   description: "Un pain à la mie blanche, serrée et moelleuse, enrichi en lait, sucre et matière grasse. Parfait pour les toasts, croque-monsieur et canapés.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/07/pain-de-mie.jpg",
+  image: "/images/recipes/pain-de-mie.png",
   baseServings: 1, // "1 pain"
   
   ingredients: [

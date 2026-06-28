@@ -8,7 +8,7 @@ const sableSpitz = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Des sablés viennois (Spritz) fondants et friables, souvent trempés dans le chocolat, idéals pour le goûter.",
-  image: "https://empreintesucree.fr/wp-content/uploads/2021/10/2-sables-viennois-spritz-recette-empreinte-sucree.jpg",
+  image: "/images/recipes/sable-spitz.png",
   baseServings: 24, // portions
   
   ingredients: [

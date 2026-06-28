@@ -8,7 +8,7 @@ const macaronCitronVert = {
   cookTime: "14 MIN",
   difficulty: "DIFFICILE",
   description: "La fraîcheur acidulée du citron vert capturée dans une crème onctueuse, nichée entre deux coques tendres et croquantes.",
-  image: "https://horizons-cdn.hostinger.com/65de4fb0-2eef-4e82-b782-d4d7e99e13fe/d19ff6df5fa5adf008867b48b0007ff0.jpg",
+  image: "/images/recipes/macaron-citron-vert.png",
   baseServings: 70,
   
   ingredients: [

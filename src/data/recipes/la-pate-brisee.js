@@ -8,7 +8,7 @@ const laPateBrisee = {
   cookTime: "30 MIN",
   difficulty: "FACILE",
   description: "La plus simple et la plus neutre des pâtes à tarte. Composée simplement de farine, de beurre et d'eau, elle est friable et croustillante, parfaite pour les tartes salées ou rustiques.",
-  image: "https://www.tendances-food.fr/wp-content/uploads/2021/08/pate-brisee.jpg",
+  image: "/images/recipes/la-pate-brisee.png",
   baseServings: 1, // "1 Tarte"
   
   ingredients: [

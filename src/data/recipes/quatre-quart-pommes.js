@@ -8,7 +8,7 @@ const quatreQuartPommes = {
   cookTime: "40 MIN",
   difficulty: "FACILE",
   description: "Le gâteau familial par excellence, moelleux et généreux en fruits.",
-  image: "https://www.elle-et-vire.com/uploads/cache/1920x1200/uploads/recip/recipe/3479/6242cdbfd58bc_pazapah-1.jpg",
+  image: "/images/recipes/quatre-quart-pommes.png",
   baseServings: 6, // personnes
   
   ingredients: [
