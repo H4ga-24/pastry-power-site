@@ -16,7 +16,7 @@ export const recipeData = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un tableau complet de proportions pour réaliser des crémeux onctueux avec une large variété de fruits et légumes.",
-  image: "https://lapetitecolin.fr/wp-content/uploads/2023/05/IMG_20230311_092339-1024x768.jpg"
+  image: "/images/recipes/les-cremeux-aux-fruits.png"
 };
 
 function CremeuxFruits() {

@@ -17,7 +17,7 @@ export const recipeData = {
   cookTime: "30 MIN",
   difficulty: "AVANCÉ",
   isVip: true, 
-  image: "https://www.chocolaterie-charpot.fr/99-large_default/nos-pates-de-fruits-maison.jpg",
+  image: "/images/recipes/pates-de-fruits.png",
   description: "La quintessence du fruit confit. Retrouvez notre grand tableau de cuisson."
 };
 
