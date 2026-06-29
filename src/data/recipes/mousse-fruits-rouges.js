@@ -9,7 +9,7 @@ const mousseFruitsRouges = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une mousse aérienne et fruitée sur base de meringue italienne (pour la tenue et la légèreté) et de purée de fruits.",
-  image: "/images/recettes/mousse-fruits-rouges.jpg",
+  image: "/images/recipes/mousse-fruits-rouges.png",
   baseServings: 6, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const cremeuxPassionMangue = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Le mariage parfait entre la douceur charnue de la mangue et l'acidité tranchante du fruit de la passion. Un classique indémodable.",
-  image: "https://liliebakery.fr/wp-content/uploads/2023/12/Insert-cremeux-mangue-passion-Lilie-Bakery-1024x1536.jpg",
+  image: "/images/recipes/cremeux-passion-mangue.png",
   baseServings: 6, 
   
   ingredients: [

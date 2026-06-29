@@ -8,7 +8,7 @@ const cremeuxVanille = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "La base absolue de la pâtisserie fine. Une texture veloutée et un parfum de vanille envoûtant pour garnir choux, tartes ou entremets.",
-  image: "https://mapatisserie.fr/wp-content/uploads/2024/02/recette-cremeux-vanille-01.jpg",
+  image: "/images/recipes/cremeux-vanille.png",
   baseServings: 6, // 6 parts ou 1 insert de 18cm
   
   ingredients: [

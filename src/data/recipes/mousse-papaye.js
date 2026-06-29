@@ -8,7 +8,7 @@ const moussePapaye = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse tropicale douce et onctueuse, à la saveur musquée caractéristique de la papaye.",
-  image: "https://i0.wp.com/www.diabetemagazine.fr/wp-content/uploads/2017/05/moussepapaye-pistache.jpg",
+  image: "/images/recipes/mousse-papaye.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

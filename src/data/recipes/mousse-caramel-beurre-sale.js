@@ -8,7 +8,7 @@ const mousseCaramelBeurreSale = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une mousse gourmande au goût intense de caramel, relevée par une pointe de sel de Guérande.",
-  image: "https://assets.afcdn.com/recipe/20160420/11068_w1024h576c1cx1920cy1920.jpg",
+  image: "/images/recipes/mousse-caramel-beurre-sale.png",
   baseServings: 4, // personnes
   
   ingredients: [

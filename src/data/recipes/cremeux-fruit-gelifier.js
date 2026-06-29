@@ -8,7 +8,7 @@ const cremeuxFruitGelifier = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une variante de crémeux aux fruits mettant l'accent sur la tenue et la texture (plus gélifiée), idéale pour les pochages nets et les entremets hauts.",
-  image: "https://img.cuisineaz.com/1024x576/2015/07/07/i27035-chantilly-aux-fruits-rouges.webp",
+  image: "/images/recipes/cremeux-fruit-gelifier.png",
   baseServings: 6, 
   
   ingredients: [

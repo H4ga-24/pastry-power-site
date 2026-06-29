@@ -8,7 +8,7 @@ const mousseCitronVert = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse très rafraîchissante, parfaite pour terminer un repas copieux. Elle s'associe très bien avec la noix de coco ou la fraise.",
-  image: "https://img.cuisineaz.com/1024x768/2016/07/14/i79813-mousse-citron-vert.jpg",
+  image: "/images/recipes/mousse-citron-vert.png",
   baseServings: 1, // pour 1 entremets
   
   ingredients: [

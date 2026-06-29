@@ -8,7 +8,7 @@ const cremeuxShisoVert = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une création originale aux notes herbacées et poivrées caractéristiques du shiso, parfaite pour accompagner des agrumes (yuzu, citron vert) ou des fruits rouges.",
-  image: "https://img-global.cpcdn.com/recipes/b02d5c2e75a6a9df/1200x630cq80/photo.jpg",
+  image: "/images/recipes/cremeux-shiso-vert.png",
   baseServings: 6, 
   
   ingredients: [

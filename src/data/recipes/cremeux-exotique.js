@@ -8,7 +8,7 @@ const cremeuxExotique = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une explosion de saveurs tropicales, alliant la douceur de la mangue et le peps du fruit de la passion dans une texture fondante.",
-  image: "https://cuisinedaubery.com/wp-content/uploads/2024/05/cremeux_manguecitronvert_ALTERN09.jpg",
+  image: "/images/recipes/cremeux-exotique.png",
   baseServings: 6, 
   
   ingredients: [

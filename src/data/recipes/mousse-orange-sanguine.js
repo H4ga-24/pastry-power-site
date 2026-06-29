@@ -8,7 +8,7 @@ const mousseOrangeSanguine = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse acidulée avec une légère amertume et une belle couleur rouge orangé.",
-  image: "https://img.cuisineaz.com/660x660/2013/12/20/i74001-mousse-a-l-orange.jpeg",
+  image: "/images/recipes/mousse-orange-sanguine.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

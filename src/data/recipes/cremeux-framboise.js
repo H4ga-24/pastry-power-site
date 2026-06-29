@@ -8,7 +8,7 @@ const cremeuxFramboise = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "La pureté du fruit dans une crème onctueuse. Ce crémeux offre une couleur vibrante et un goût intense, parfait pour équilibrer le sucre.",
-  image: "https://www.mycake.fr/wp-content/uploads/2017/04/rs_Fourrage_GanacheFramboise_16x9.jpg",
+  image: "/images/recipes/cremeux-framboise.png",
   baseServings: 6, 
   
   ingredients: [

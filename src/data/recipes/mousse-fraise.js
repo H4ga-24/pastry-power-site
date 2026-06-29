@@ -8,7 +8,7 @@ const mousseFraise = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse printanière au bon goût de fraise fraîche.",
-  image: "https://assets.afcdn.com/recipe/20221013/136048_w1024h1024c1cx1608cy1072cxt0cyt0cxb3216cyb2144.webp",
+  image: "/images/recipes/mousse-fraise.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

@@ -8,7 +8,7 @@ const cremeuxNoisette = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un crémeux ultra-gourmand au goût profond de noisette torréfiée, apporté par un praliné de qualité. Une texture dense et fondante.",
-  image: "https://www.maspatule.com/blog/wp-content/uploads/2025/02/Template_Blog_portrait-7.jpg",
+  image: "/images/recipes/cremeux-noisette.png",
   baseServings: 6, 
   
   ingredients: [

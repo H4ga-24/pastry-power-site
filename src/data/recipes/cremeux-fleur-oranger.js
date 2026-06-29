@@ -8,7 +8,7 @@ const cremeuxFleurOranger = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Un parfum délicat qui évoque la Méditerranée, idéal pour des desserts orientaux revisités ou pour accompagner des fruits secs.",
-  image: "https://www.elle-et-vire.com/uploads/cache/930w/uploads/recip/recipe/1830/cr-me-l-orange-1-1920x1200.jpg",
+  image: "/images/recipes/cremeux-fleur-oranger.png",
   baseServings: 6, 
   
   ingredients: [

@@ -8,7 +8,7 @@ const cremeuxPistache = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Un crémeux d'une onctuosité incomparable, révélant toute la puissance aromatique de la pistache torréfiée.",
-  image: "https://mapatisserie.fr/wp-content/uploads/2025/02/recette-creme-mousseline-pistache-04.jpg",
+  image: "/images/recipes/cremeux-pistache.png",
   baseServings: 6, 
   
   ingredients: [

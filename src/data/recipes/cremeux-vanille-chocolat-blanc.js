@@ -8,7 +8,7 @@ const cremeuxVanilleChocolatBlanc = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "Une texture soyeuse et très gourmande, alliant la douceur lactée du chocolat blanc à la rondeur de la vanille.",
-  image: "https://mapatisserie.fr/wp-content/uploads/2025/12/ganache-montee-chocolat-blanc-06.webp",
+  image: "/images/recipes/cremeux-vanille-chocolat-blanc.png",
   baseServings: 6, 
   
   ingredients: [

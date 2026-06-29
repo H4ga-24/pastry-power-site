@@ -8,7 +8,7 @@ const cremeuxEstragon = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "L'estragon apporte une note anisée surprenante et fraîche, qui sublime les desserts aux fruits rouges ou au citron.",
-  image: "https://www.ateliersetsaveurs.com/uploads/recipes/culinary/pictures/large/965-20181015114128.jpg",
+  image: "/images/recipes/cremeux-estragon.png",
   baseServings: 6, // 6 verrines ou un insert de 18cm
   
   ingredients: [

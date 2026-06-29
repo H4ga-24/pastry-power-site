@@ -8,7 +8,7 @@ const cremeuxVerveine = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une fraîcheur citronnée très élégante grâce à la verveine fraîche, idéale pour des desserts d'été légers (pêche, abricot).",
-  image: "https://mesdelices.fr/wp-content/uploads/2016/09/cr%C3%A8me-verveine-optimis%C3%A9e-680x453.jpg",
+  image: "/images/recipes/cremeux-verveine.png",
   baseServings: 6, 
   
   ingredients: [
