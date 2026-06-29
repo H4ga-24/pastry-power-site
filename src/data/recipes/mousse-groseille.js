@@ -8,7 +8,7 @@ const mousseGroseille = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse très acidulée et colorée, parfaite pour réveiller les papilles.",
-  image: "https://assets.afcdn.com/recipe/20150727/63157_w1024h1024c1cx1250cy1664.webp",
+  image: "/images/recipes/mousse-groseille.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

@@ -8,7 +8,7 @@ const mousseRizImperatrice = {
   cookTime: "25 MIN",
   difficulty: "MOYEN",
   description: "Une version aérée et raffinée du riz au lait, enrichie de crème anglaise collée et de fruits confits.",
-  image: "https://odelices.ouest-france.fr/images/recettes/2015/riz_a_l_imperatrice_aux_fruits_confits_et_chantilly5.jpg",
+  image: "/images/recipes/mousse-riz-imperatrice.png",
   baseServings: 6, // personnes
   
   ingredients: [

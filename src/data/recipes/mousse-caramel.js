@@ -8,7 +8,7 @@ const mousseCaramel = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une mousse au caramel classique, douce et onctueuse, sans le côté salé, idéale pour les enfants.",
-  image: "https://cache.marieclaire.fr/data/photo/w1000_ci/62/recette-mousse-caramel-beurre-sale.jpg",
+  image: "/images/recipes/mousse-caramel.png",
   baseServings: 4, // personnes
   
   ingredients: [

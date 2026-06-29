@@ -8,7 +8,7 @@ const mousseCerise = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse délicate à la griotte ou à la cerise noire, idéale pour revisiter la Forêt Noire en version entremets.",
-  image: "https://img-3.journaldesfemmes.fr/N8NeHSS2J2HiWGgdSsTmj8WAjUU=/750x500/79b11d88441243da966fe650d52d5e92/ccmcms-jdf/39694281.jpg",
+  image: "/images/recipes/mousse-cerise.png",
   baseServings: 1, // "Pour 1 cercle (20cm)"
   
   ingredients: [

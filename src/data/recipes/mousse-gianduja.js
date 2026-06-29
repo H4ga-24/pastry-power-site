@@ -8,7 +8,7 @@ const mousseGianduja = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse onctueuse au goût intense de noisette et de chocolat, parfaite pour les amateurs de praliné.",
-  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKjGuMbPfsDlzNUmPed-q6zEE78CIh_QoGH5wckN6Ov1mAefsKfGtQozWkkSNA1aC2ZswPYUs5R4uHflgMa5s7Wf_HtYDLKZsyaokqiitAvBdXvt390153nsWGdSN2Yt_YT_De692MGPyh/s660/creme-gianduja.jpg",
+  image: "/images/recipes/mousse-gianduja.png",
   baseServings: 1, // Pour 1 entremets
   
   ingredients: [

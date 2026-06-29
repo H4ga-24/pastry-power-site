@@ -8,7 +8,7 @@ const moussePeche = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse délicate à la pêche blanche ou jaune, saveur d'été par excellence.",
-  image: "https://img.cuisineaz.com/660x495/2015/07/21/i10965-mousse-aux-peches.jpg",
+  image: "/images/recipes/mousse-peche.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

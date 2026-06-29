@@ -8,7 +8,7 @@ const mousseAbricot = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse fruitée et légère, mettant en valeur la saveur acidulée de l'abricot. Idéale pour les entremets d'été.",
-  image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480/img/recipe/ras/Assets/D8818736-E6CD-4DA8-B447-BF091BB16C6B/Derivates/95127F03-131E-468A-A292-61034CF1F8D1.jpg",
+  image: "/images/recipes/mousse-abricot.png",
   baseServings: 1, // pour 1 entremets standard
   
   ingredients: [

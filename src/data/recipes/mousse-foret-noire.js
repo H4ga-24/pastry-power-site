@@ -8,7 +8,7 @@ const mousseForetNoire = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse au chocolat légère (souvent une ganache montée ou Chantilly chocolatée) idéale pour garnir une Forêt Noire revisitée.",
-  image: "https://www.lactalisfoodservice.fr/app/uploads/2022/07/lactalisfoodservice-inspiration-foret-noire-1200x675.png",
+  image: "/images/recipes/mousse-foret-noire.png",
   baseServings: 1, // Pour 1 gâteau
   
   ingredients: [

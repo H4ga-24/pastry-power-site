@@ -8,7 +8,7 @@ const mousseChocolatBlancOeuf = {
   cookTime: "5 MIN",
   difficulty: "FACILE",
   description: "La mousse 'grand-mère' traditionnelle, très aérée et forte en chocolat, réalisée avec des blancs en neige.",
-  image: "https://www.menezhom-atlantique.bzh/assets/uploads/sites/5/2022/11/mousse-au-chocolat-2.jpg",
+  image: "/images/recipes/mousse-chocolat-blanc-oeuf.png",
   baseServings: 6, // personnes
   
   ingredients: [

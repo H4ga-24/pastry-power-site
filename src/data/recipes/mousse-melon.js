@@ -8,7 +8,7 @@ const mousseMelon = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse estivale originale, très fraîche et parfumée, type melon charentais.",
-  image: "https://sf1.viepratique.fr/wp-content/uploads/sites/2/2013/10/187997.jpg",
+  image: "/images/recipes/mousse-melon.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

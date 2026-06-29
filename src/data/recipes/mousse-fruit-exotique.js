@@ -8,7 +8,7 @@ const mousseFruitExotique = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse onctueuse aux saveurs des îles (mangue, passion, ananas) pour un dessert frais et léger.",
-  image: "https://assets.afcdn.com/recipe/20170404/41108_w1024h1024c1cx1296cy1936.webp",
+  image: "/images/recipes/mousse-fruit-exotique.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

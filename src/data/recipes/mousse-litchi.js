@@ -8,7 +8,7 @@ const mousseLitchi = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse blanche délicate au parfum floral de litchi, souvent associée à la rose ou la framboise.",
-  image: "https://sf2.viepratique.fr/wp-content/uploads/sites/2/2015/04/Mousse-de-litchis-%C3%A0-la-rose-163879-2.jpg",
+  image: "/images/recipes/mousse-litchi.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

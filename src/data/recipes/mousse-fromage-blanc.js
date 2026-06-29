@@ -8,7 +8,7 @@ const mousseFromageBlanc = {
   cookTime: "0 MIN",
   difficulty: "TRÈS FACILE",
   description: "Un nuage de légèreté, très frais, idéal pour accompagner un coulis de fruits rouges ou du miel.",
-  image: "https://assets.afcdn.com/recipe/20160420/64057_w1024h1024c1cx2592cy1728.webp",
+  image: "/images/recipes/mousse-fromage-blanc.png",
   baseServings: 4, // personnes
   
   ingredients: [

@@ -8,7 +8,7 @@ const mousseMyrtille = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse à la couleur violet profond, douce et peu acide.",
-  image: "https://odelices.ouest-france.fr/images/recettes/mousse_de_myrtilles_a_l_agar_agar.jpg",
+  image: "/images/recipes/mousse-myrtille.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

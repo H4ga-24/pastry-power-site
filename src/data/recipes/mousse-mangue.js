@@ -8,7 +8,7 @@ const mousseMangue = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse solaire et fruitée, très appréciée pour son onctuosité naturelle.",
-  image: "https://img.cuisineaz.com/1024x768/2013/12/20/i87595-mousse-a-la-mangue.jpeg",
+  image: "/images/recipes/mousse-mangue.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

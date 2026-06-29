@@ -8,7 +8,7 @@ const mousseNoisette = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse pralinée intense, parfaite pour garnir un Paris-Brest revisité ou des entremets.",
-  image: "https://kissmychef.com/wp-content/uploads/2022/11/mousse-500x500.png",
+  image: "/images/recipes/mousse-noisette.png",
   baseServings: 4, // personnes (selon baseServings du fichier)
   
   ingredients: [

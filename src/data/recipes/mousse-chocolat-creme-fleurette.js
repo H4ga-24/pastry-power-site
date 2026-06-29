@@ -8,7 +8,7 @@ const mousseChocolatCremeFleurette = {
   cookTime: "0 MIN",
   difficulty: "FACILE",
   description: "Une mousse sans œufs, très crémeuse, basée sur une ganache allégée à la crème fouettée. Parfaite pour ceux qui évitent les œufs crus.",
-  image: "https://res.cloudinary.com/valrhona/image/upload/c_limit,f_auto,fl_progressive,q_auto,w_800/prod/var/site/storage/images/9/2/2/3/163229-1-fre-WO/Valrhona.com-Lexique-Recette-Mousse.jpg",
+  image: "/images/recipes/mousse-chocolat-creme-fleurette.png",
   baseServings: 1, // pour 1 entremets
   
   ingredients: [

@@ -8,7 +8,7 @@ const moussePamplemousse = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse fraîche et légèrement amère, parfaite pour une fin de repas légère.",
-  image: "https://img.cuisineaz.com/660x660/2018/12/12/i145118-mousse-pamplemousse-rose.jpeg",
+  image: "/images/recipes/mousse-pamplemousse.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

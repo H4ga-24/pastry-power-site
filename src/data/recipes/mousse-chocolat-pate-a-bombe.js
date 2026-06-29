@@ -8,7 +8,7 @@ const mousseChocolatPateABombe = {
   cookTime: "5 MIN",
   difficulty: "AVANCÉ",
   description: "Une mousse riche et onctueuse réalisée avec une pâte à bombe (sirop cuit sur jaunes d'œufs), offrant une texture soyeuse parfaite pour les entremets.",
-  image: "https://lapetitecolin.fr/wp-content/uploads/2023/05/IMG_20230402_102627-scaled.jpg",
+  image: "/images/recipes/mousse-chocolat-pate-a-bombe.png",
   baseServings: 1, // pour 1 entremets
   
   ingredients: [

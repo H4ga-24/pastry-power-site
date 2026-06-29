@@ -8,7 +8,7 @@ const mousseMarron = {
   cookTime: "5 MIN",
   difficulty: "FACILE",
   description: "Une mousse riche et réconfortante à la saveur d'automne, parfaite pour les bûches.",
-  image: "https://ellemijotequelquechose.com/wp-content/uploads/2020/12/Mousse-a-la-creme-de-marrons-500x500.jpg",
+  image: "/images/recipes/mousse-marron.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

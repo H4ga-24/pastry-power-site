@@ -8,7 +8,7 @@ const mousseCoco = {
   cookTime: "5 MIN",
   difficulty: "FACILE",
   description: "Une mousse blanche immaculée au goût doux et lacté de noix de coco.",
-  image: "https://images.ctfassets.net/1p5r6txvlxu4/33vykH1ToCmfKRgQj8ouoK/a912ddfe3574c7a41a88dd0202653a85/Mousse-noix-de-coco.jpg",
+  image: "/images/recipes/mousse-coco.png",
   baseServings: 1, // "Pour 1 cercle (20cm)"
   
   ingredients: [

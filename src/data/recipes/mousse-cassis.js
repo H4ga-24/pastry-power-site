@@ -8,7 +8,7 @@ const mousseCassis = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse à la couleur violette intense et au goût puissant, parfaite en association avec le marron ou la poire.",
-  image: "https://www.vici-restauration.com/wp-content/uploads/2024/05/recettes_mousse_cassis_entreprise_montagne_03-04-2021.jpg",
+  image: "/images/recipes/mousse-cassis.png",
   baseServings: 1, // "Pour 1 cercle (20cm)"
   
   ingredients: [

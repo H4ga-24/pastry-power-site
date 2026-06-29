@@ -8,7 +8,7 @@ const moussePomme = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Une mousse légère au goût de compote de pomme, typique de la Normandie.",
-  image: "https://www.metro.ca/userfiles/image/recipes/Mousse-pommes-264.jpg",
+  image: "/images/recipes/mousse-pomme.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

@@ -8,7 +8,7 @@ const mousseMenthe = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une mousse très fraîche obtenue par infusion de menthe fraîche dans la crème.",
-  image: "https://www.lesfoodies.com/_recipeimage/14862/mousse-a-la-menthe-2x-1124.jpeg",
+  image: "/images/recipes/mousse-menthe.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

@@ -8,7 +8,7 @@ const mousseCitronMascarpone = {
   cookTime: "0 MIN",
   difficulty: "FACILE",
   description: "Une mousse onctueuse et acidulée, mariage parfait entre la douceur du mascarpone et le peps du citron.",
-  image: "https://assets.afcdn.com/recipe/20201203/116055_w1024h768c1cx960cy540cxt0cyt0cxb1920cyb1080.webp",
+  image: "/images/recipes/mousse-citron-mascarpone.png",
   baseServings: 4, // personnes
   
   ingredients: [

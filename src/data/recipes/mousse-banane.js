@@ -8,7 +8,7 @@ const mousseBanane = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse onctueuse et réconfortante. L'ajout de citron empêche l'oxydation de la banane.",
-  image: "https://img.cuisineaz.com/660x660/2013/12/20/i39140-photo-de-mousse-de-banane.jpeg",
+  image: "/images/recipes/mousse-banane.png",
   baseServings: 1, // "Pour 1 cercle (20cm)"
   
   ingredients: [

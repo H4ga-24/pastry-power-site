@@ -8,7 +8,7 @@ const mousseKalamansi = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse d'agrume puissante et aromatique, entre la mandarine et le citron vert.",
-  image: "https://www.elle-et-vire.com/uploads/cache/1920x1200/uploads/recip/recipe/2100/5e78cad23beb5_5e451e9d99e22-finger-kalamansi.jpg",
+  image: "/images/recipes/mousse-kalamansi.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

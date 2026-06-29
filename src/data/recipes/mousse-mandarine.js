@@ -8,7 +8,7 @@ const mousseMandarine = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse légère et vitaminée, idéale en hiver pour terminer un repas copieux.",
-  image: "https://wordpress.potagercity.fr/wp-content/uploads/2019/01/RECETTE_mousse_mandarine.jpg",
+  image: "/images/recipes/mousse-mandarine.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

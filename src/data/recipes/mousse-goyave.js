@@ -8,7 +8,7 @@ const mousseGoyave = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse tropicale au parfum unique de goyave rose, douce et florale.",
-  image: "https://static.750g.com/images/1200-675/ac0e50ca19c6323fa9b1a5c603071939/mousse-chocolat-blanc-et-goyave.jpeg",
+  image: "/images/recipes/mousse-goyave.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

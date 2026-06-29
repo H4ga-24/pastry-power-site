@@ -8,7 +8,7 @@ const moussePoire = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse subtile à la poire Williams, idéale pour accompagner le chocolat ou le caramel.",
-  image: "https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/160/mousse-de-poires.jpg",
+  image: "/images/recipes/mousse-poire.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

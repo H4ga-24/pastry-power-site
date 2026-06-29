@@ -8,7 +8,7 @@ const mousseMirabelle = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse délicate au goût subtil de prune jaune, emblème de la Lorraine.",
-  image: "https://www.panierdesaison.com/wp-content/uploads/2020/08/recette-mousse-mirabelle-facile-500x500.jpg",
+  image: "/images/recipes/mousse-mirabelle.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

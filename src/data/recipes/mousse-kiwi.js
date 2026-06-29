@@ -8,7 +8,7 @@ const mousseKiwi = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une mousse originale et verte. Attention, le kiwi frais nécessite une cuisson pour neutraliser l'enzyme qui détruit la gélatine.",
-  image: "https://img.cuisineaz.com/1024x1024/2017/05/09/i125862-mousse-de-kiwi.jpeg",
+  image: "/images/recipes/mousse-kiwi.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

@@ -8,7 +8,7 @@ const mousseAnanas = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une mousse exotique et fraîche. Attention à l'ananas frais qui contient une enzyme empêchant la gélatine de prendre ; il faut le cuire !",
-  image: "https://www.markal.fr/application/files/medias_markal/recettes/1484-recette-mousse-ananas.jpg",
+  image: "/images/recipes/mousse-ananas.png",
   baseServings: 1, // pour 1 entremets
   
   ingredients: [

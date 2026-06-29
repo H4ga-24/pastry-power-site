@@ -8,7 +8,7 @@ const mousseMure = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse violette au goût intense et sauvage de sous-bois.",
-  image: "https://img.cuisineaz.com/660x495/2013/12/20/i67732-mousse-aux-mures.jpg",
+  image: "/images/recipes/mousse-mure.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

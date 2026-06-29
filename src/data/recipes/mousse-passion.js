@@ -8,7 +8,7 @@ const moussePassion = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse au caractère exotique affirmé, très acide et parfumée.",
-  image: "https://assets.afcdn.com/recipe/20170404/41108_w1024h1024c1cx1296cy1936.jpg",
+  image: "/images/recipes/mousse-passion.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [

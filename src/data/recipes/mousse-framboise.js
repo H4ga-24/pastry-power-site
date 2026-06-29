@@ -8,7 +8,7 @@ const mousseFramboise = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "Une mousse acidulée et parfumée, grand classique de la pâtisserie fruitière.",
-  image: "https://files.meilleurduchef.com/mdc/photo/recette/mousse-framboise/mousse-framboise-640.jpg",
+  image: "/images/recipes/mousse-framboise.png",
   baseServings: 1, // Pour 1 cercle
   
   ingredients: [
