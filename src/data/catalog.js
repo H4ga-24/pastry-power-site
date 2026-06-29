@@ -1195,7 +1195,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://www.ateliersetsaveurs.com/uploads/recipes/culinary/pictures/large/965-20181015114128.jpg",
+    "image": "/images/recipes/cremeux-estragon.png",
     "description": "L'estragon apporte une note anisée surprenante et fraîche, qui sublime les desserts aux fruits rouges ou au citron.",
     "isVip": false,
     "isTech": false,
@@ -1208,7 +1208,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://cuisinedaubery.com/wp-content/uploads/2024/05/cremeux_manguecitronvert_ALTERN09.jpg",
+    "image": "/images/recipes/cremeux-exotique.png",
     "description": "Une explosion de saveurs tropicales, alliant la douceur de la mangue et le peps du fruit de la passion dans une texture fondante.",
     "isVip": false,
     "isTech": false,
@@ -1221,7 +1221,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://www.elle-et-vire.com/uploads/cache/930w/uploads/recip/recipe/1830/cr-me-l-orange-1-1920x1200.jpg",
+    "image": "/images/recipes/cremeux-fleur-oranger.png",
     "description": "Un parfum délicat qui évoque la Méditerranée, idéal pour des desserts orientaux revisités ou pour accompagner des fruits secs.",
     "isVip": false,
     "isTech": false,
@@ -1234,7 +1234,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://www.mycake.fr/wp-content/uploads/2017/04/rs_Fourrage_GanacheFramboise_16x9.jpg",
+    "image": "/images/recipes/cremeux-framboise.png",
     "description": "La pureté du fruit dans une crème onctueuse. Ce crémeux offre une couleur vibrante et un goût intense, parfait pour équilibrer le sucre.",
     "isVip": false,
     "isTech": false,
@@ -1247,7 +1247,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://img.cuisineaz.com/1024x576/2015/07/07/i27035-chantilly-aux-fruits-rouges.webp",
+    "image": "/images/recipes/cremeux-fruit-gelifier.png",
     "description": "Une variante de crémeux aux fruits mettant l'accent sur la tenue et la texture (plus gélifiée), idéale pour les pochages nets et les entremets hauts.",
     "isVip": false,
     "isTech": false,
@@ -1260,7 +1260,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://www.maspatule.com/blog/wp-content/uploads/2025/02/Template_Blog_portrait-7.jpg",
+    "image": "/images/recipes/cremeux-noisette.png",
     "description": "Un crémeux ultra-gourmand au goût profond de noisette torréfiée, apporté par un praliné de qualité. Une texture dense et fondante.",
     "isVip": false,
     "isTech": false,
@@ -1273,7 +1273,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://liliebakery.fr/wp-content/uploads/2023/12/Insert-cremeux-mangue-passion-Lilie-Bakery-1024x1536.jpg",
+    "image": "/images/recipes/cremeux-passion-mangue.png",
     "description": "Le mariage parfait entre la douceur charnue de la mangue et l'acidité tranchante du fruit de la passion. Un classique indémodable.",
     "isVip": true,
     "isTech": false,
@@ -1286,7 +1286,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://mapatisserie.fr/wp-content/uploads/2025/02/recette-creme-mousseline-pistache-04.jpg",
+    "image": "/images/recipes/cremeux-pistache.png",
     "description": "Un crémeux d'une onctuosité incomparable, révélant toute la puissance aromatique de la pistache torréfiée.",
     "isVip": false,
     "isTech": false,
@@ -1299,7 +1299,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://img-global.cpcdn.com/recipes/b02d5c2e75a6a9df/1200x630cq80/photo.jpg",
+    "image": "/images/recipes/cremeux-shiso-vert.png",
     "description": "Une création originale aux notes herbacées et poivrées caractéristiques du shiso, parfaite pour accompagner des agrumes (yuzu, citron vert) ou des fruits rouges.",
     "isVip": true,
     "isTech": false,
@@ -1312,7 +1312,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://mapatisserie.fr/wp-content/uploads/2025/12/ganache-montee-chocolat-blanc-06.webp",
+    "image": "/images/recipes/cremeux-vanille-chocolat-blanc.png",
     "description": "Une texture soyeuse et très gourmande, alliant la douceur lactée du chocolat blanc à la rondeur de la vanille.",
     "isVip": false,
     "isTech": false,
@@ -1325,7 +1325,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://mapatisserie.fr/wp-content/uploads/2024/02/recette-cremeux-vanille-01.jpg",
+    "image": "/images/recipes/cremeux-vanille.png",
     "description": "La base absolue de la pâtisserie fine. Une texture veloutée et un parfum de vanille envoûtant pour garnir choux, tartes ou entremets.",
     "isVip": false,
     "isTech": false,
@@ -1338,7 +1338,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://mesdelices.fr/wp-content/uploads/2016/09/cr%C3%A8me-verveine-optimis%C3%A9e-680x453.jpg",
+    "image": "/images/recipes/cremeux-verveine.png",
     "description": "Une fraîcheur citronnée très élégante grâce à la verveine fraîche, idéale pour des desserts d'été légers (pêche, abricot).",
     "isVip": false,
     "isTech": false,
@@ -1351,7 +1351,7 @@ export const catalog = [
     "subCategory": [
       "Crémeux"
     ],
-    "image": "https://lapetitecolin.fr/wp-content/uploads/2023/05/IMG_20230311_092339-1024x768.jpg",
+    "image": "/images/recipes/les-cremeux-aux-fruits.png",
     "description": "Un tableau complet de proportions pour réaliser des crémeux onctueux avec une large variété de fruits et légumes.",
     "isVip": true,
     "isTech": false,
@@ -2508,7 +2508,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480/img/recipe/ras/Assets/D8818736-E6CD-4DA8-B447-BF091BB16C6B/Derivates/95127F03-131E-468A-A292-61034CF1F8D1.jpg",
+    "image": "/images/recipes/mousse-abricot.png",
     "description": "Une mousse fruitée et légère, mettant en valeur la saveur acidulée de l'abricot. Idéale pour les entremets d'été.",
     "isVip": false,
     "isTech": false,
@@ -2521,7 +2521,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.markal.fr/application/files/medias_markal/recettes/1484-recette-mousse-ananas.jpg",
+    "image": "/images/recipes/mousse-ananas.png",
     "description": "Une mousse exotique et fraîche. Attention à l'ananas frais qui contient une enzyme empêchant la gélatine de prendre ; il faut le cuire !",
     "isVip": false,
     "isTech": false,
@@ -2534,7 +2534,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/660x660/2013/12/20/i39140-photo-de-mousse-de-banane.jpeg",
+    "image": "/images/recipes/mousse-banane.png",
     "description": "Une mousse onctueuse et réconfortante. L'ajout de citron empêche l'oxydation de la banane.",
     "isVip": false,
     "isTech": false,
@@ -2547,7 +2547,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.afcdn.com/recipe/20160420/11068_w1024h576c1cx1920cy1920.jpg",
+    "image": "/images/recipes/mousse-caramel-beurre-sale.png",
     "description": "Une mousse gourmande au goût intense de caramel, relevée par une pointe de sel de Guérande.",
     "isVip": false,
     "isTech": false,
@@ -2560,7 +2560,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://cache.marieclaire.fr/data/photo/w1000_ci/62/recette-mousse-caramel-beurre-sale.jpg",
+    "image": "/images/recipes/mousse-caramel.png",
     "description": "Une mousse au caramel classique, douce et onctueuse, sans le côté salé, idéale pour les enfants.",
     "isVip": false,
     "isTech": false,
@@ -2573,7 +2573,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.vici-restauration.com/wp-content/uploads/2024/05/recettes_mousse_cassis_entreprise_montagne_03-04-2021.jpg",
+    "image": "/images/recipes/mousse-cassis.png",
     "description": "Une mousse à la couleur violette intense et au goût puissant, parfaite en association avec le marron ou la poire.",
     "isVip": false,
     "isTech": false,
@@ -2586,7 +2586,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img-3.journaldesfemmes.fr/N8NeHSS2J2HiWGgdSsTmj8WAjUU=/750x500/79b11d88441243da966fe650d52d5e92/ccmcms-jdf/39694281.jpg",
+    "image": "/images/recipes/mousse-cerise.png",
     "description": "Une mousse délicate à la griotte ou à la cerise noire, idéale pour revisiter la Forêt Noire en version entremets.",
     "isVip": false,
     "isTech": false,
@@ -2599,7 +2599,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.menezhom-atlantique.bzh/assets/uploads/sites/5/2022/11/mousse-au-chocolat-2.jpg",
+    "image": "/images/recipes/mousse-chocolat-blanc-oeuf.png",
     "description": "La mousse 'grand-mère' traditionnelle, très aérée et forte en chocolat, réalisée avec des blancs en neige.",
     "isVip": false,
     "isTech": false,
@@ -2612,7 +2612,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://res.cloudinary.com/valrhona/image/upload/c_limit,f_auto,fl_progressive,q_auto,w_800/prod/var/site/storage/images/9/2/2/3/163229-1-fre-WO/Valrhona.com-Lexique-Recette-Mousse.jpg",
+    "image": "/images/recipes/mousse-chocolat-creme-fleurette.png",
     "description": "Une mousse sans œufs, très crémeuse, basée sur une ganache allégée à la crème fouettée. Parfaite pour ceux qui évitent les œufs crus.",
     "isVip": false,
     "isTech": false,
@@ -2625,7 +2625,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://lapetitecolin.fr/wp-content/uploads/2023/05/IMG_20230402_102627-scaled.jpg",
+    "image": "/images/recipes/mousse-chocolat-pate-a-bombe.png",
     "description": "Une mousse riche et onctueuse réalisée avec une pâte à bombe (sirop cuit sur jaunes d'œufs), offrant une texture soyeuse parfaite pour les entremets.",
     "isVip": false,
     "isTech": false,
@@ -2638,7 +2638,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.afcdn.com/recipe/20201203/116055_w1024h768c1cx960cy540cxt0cyt0cxb1920cyb1080.webp",
+    "image": "/images/recipes/mousse-citron-mascarpone.png",
     "description": "Une mousse onctueuse et acidulée, mariage parfait entre la douceur du mascarpone et le peps du citron.",
     "isVip": false,
     "isTech": false,
@@ -2651,7 +2651,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/1024x768/2016/07/14/i79813-mousse-citron-vert.jpg",
+    "image": "/images/recipes/mousse-citron-vert.png",
     "description": "Une mousse très rafraîchissante, parfaite pour terminer un repas copieux. Elle s'associe très bien avec la noix de coco ou la fraise.",
     "isVip": true,
     "isTech": false,
@@ -2664,7 +2664,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://images.ctfassets.net/1p5r6txvlxu4/33vykH1ToCmfKRgQj8ouoK/a912ddfe3574c7a41a88dd0202653a85/Mousse-noix-de-coco.jpg",
+    "image": "/images/recipes/mousse-coco.png",
     "description": "Une mousse blanche immaculée au goût doux et lacté de noix de coco.",
     "isVip": false,
     "isTech": false,
@@ -2677,7 +2677,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.lactalisfoodservice.fr/app/uploads/2022/07/lactalisfoodservice-inspiration-foret-noire-1200x675.png",
+    "image": "/images/recipes/mousse-foret-noire.png",
     "description": "Une mousse au chocolat légère (souvent une ganache montée ou Chantilly chocolatée) idéale pour garnir une Forêt Noire revisitée.",
     "isVip": false,
     "isTech": false,
@@ -2690,7 +2690,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.afcdn.com/recipe/20221013/136048_w1024h1024c1cx1608cy1072cxt0cyt0cxb3216cyb2144.webp",
+    "image": "/images/recipes/mousse-fraise.png",
     "description": "Une mousse printanière au bon goût de fraise fraîche.",
     "isVip": false,
     "isTech": false,
@@ -2703,7 +2703,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://files.meilleurduchef.com/mdc/photo/recette/mousse-framboise/mousse-framboise-640.jpg",
+    "image": "/images/recipes/mousse-framboise.png",
     "description": "Une mousse acidulée et parfumée, grand classique de la pâtisserie fruitière.",
     "isVip": false,
     "isTech": false,
@@ -2716,7 +2716,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.afcdn.com/recipe/20160420/64057_w1024h1024c1cx2592cy1728.webp",
+    "image": "/images/recipes/mousse-fromage-blanc.png",
     "description": "Un nuage de légèreté, très frais, idéal pour accompagner un coulis de fruits rouges ou du miel.",
     "isVip": false,
     "isTech": false,
@@ -2729,7 +2729,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.afcdn.com/recipe/20170404/41108_w1024h1024c1cx1296cy1936.webp",
+    "image": "/images/recipes/mousse-fruit-exotique.png",
     "description": "Une mousse onctueuse aux saveurs des îles (mangue, passion, ananas) pour un dessert frais et léger.",
     "isVip": false,
     "isTech": false,
@@ -2742,7 +2742,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "/images/mousse-fruits-rouges.jpg",
+    "image": "/images/recipes/mousse-fruits-rouges.png",
     "description": "Une mousse aérienne et fruitée sur base de meringue italienne (pour la tenue et la légèreté) et de purée de fruits.",
     "isVip": true,
     "isTech": false,
@@ -2755,7 +2755,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKjGuMbPfsDlzNUmPed-q6zEE78CIh_QoGH5wckN6Ov1mAefsKfGtQozWkkSNA1aC2ZswPYUs5R4uHflgMa5s7Wf_HtYDLKZsyaokqiitAvBdXvt390153nsWGdSN2Yt_YT_De692MGPyh/s660/creme-gianduja.jpg",
+    "image": "/images/recipes/mousse-gianduja.png",
     "description": "Une mousse onctueuse au goût intense de noisette et de chocolat, parfaite pour les amateurs de praliné.",
     "isVip": false,
     "isTech": false,
@@ -2768,7 +2768,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://static.750g.com/images/1200-675/ac0e50ca19c6323fa9b1a5c603071939/mousse-chocolat-blanc-et-goyave.jpeg",
+    "image": "/images/recipes/mousse-goyave.png",
     "description": "Une mousse tropicale au parfum unique de goyave rose, douce et florale.",
     "isVip": false,
     "isTech": false,
@@ -2781,7 +2781,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.afcdn.com/recipe/20150727/63157_w1024h1024c1cx1250cy1664.webp",
+    "image": "/images/recipes/mousse-groseille.png",
     "description": "Une mousse très acidulée et colorée, parfaite pour réveiller les papilles.",
     "isVip": false,
     "isTech": false,
@@ -2794,7 +2794,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.elle-et-vire.com/uploads/cache/1920x1200/uploads/recip/recipe/2100/5e78cad23beb5_5e451e9d99e22-finger-kalamansi.jpg",
+    "image": "/images/recipes/mousse-kalamansi.png",
     "description": "Une mousse d'agrume puissante et aromatique, entre la mandarine et le citron vert.",
     "isVip": false,
     "isTech": false,
@@ -2807,7 +2807,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/1024x1024/2017/05/09/i125862-mousse-de-kiwi.jpeg",
+    "image": "/images/recipes/mousse-kiwi.png",
     "description": "Une mousse originale et verte. Attention, le kiwi frais nécessite une cuisson pour neutraliser l'enzyme qui détruit la gélatine.",
     "isVip": false,
     "isTech": false,
@@ -2820,7 +2820,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://sf2.viepratique.fr/wp-content/uploads/sites/2/2015/04/Mousse-de-litchis-%C3%A0-la-rose-163879-2.jpg",
+    "image": "/images/recipes/mousse-litchi.png",
     "description": "Une mousse blanche délicate au parfum floral de litchi, souvent associée à la rose ou la framboise.",
     "isVip": false,
     "isTech": false,
@@ -2833,7 +2833,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://wordpress.potagercity.fr/wp-content/uploads/2019/01/RECETTE_mousse_mandarine.jpg",
+    "image": "/images/recipes/mousse-mandarine.png",
     "description": "Une mousse légère et vitaminée, idéale en hiver pour terminer un repas copieux.",
     "isVip": false,
     "isTech": false,
@@ -2846,7 +2846,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/1024x768/2013/12/20/i87595-mousse-a-la-mangue.jpeg",
+    "image": "/images/recipes/mousse-mangue.png",
     "description": "Une mousse solaire et fruitée, très appréciée pour son onctuosité naturelle.",
     "isVip": false,
     "isTech": false,
@@ -2859,7 +2859,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://ellemijotequelquechose.com/wp-content/uploads/2020/12/Mousse-a-la-creme-de-marrons-500x500.jpg",
+    "image": "/images/recipes/mousse-marron.png",
     "description": "Une mousse riche et réconfortante à la saveur d'automne, parfaite pour les bûches.",
     "isVip": false,
     "isTech": false,
@@ -2872,7 +2872,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://sf1.viepratique.fr/wp-content/uploads/sites/2/2013/10/187997.jpg",
+    "image": "/images/recipes/mousse-melon.png",
     "description": "Une mousse estivale originale, très fraîche et parfumée, type melon charentais.",
     "isVip": true,
     "isTech": false,
@@ -2885,7 +2885,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.lesfoodies.com/_recipeimage/14862/mousse-a-la-menthe-2x-1124.jpeg",
+    "image": "/images/recipes/mousse-menthe.png",
     "description": "Une mousse très fraîche obtenue par infusion de menthe fraîche dans la crème.",
     "isVip": true,
     "isTech": false,
@@ -2898,7 +2898,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.panierdesaison.com/wp-content/uploads/2020/08/recette-mousse-mirabelle-facile-500x500.jpg",
+    "image": "/images/recipes/mousse-mirabelle.png",
     "description": "Une mousse délicate au goût subtil de prune jaune, emblème de la Lorraine.",
     "isVip": false,
     "isTech": false,
@@ -2911,7 +2911,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/660x495/2013/12/20/i67732-mousse-aux-mures.jpg",
+    "image": "/images/recipes/mousse-mure.png",
     "description": "Une mousse violette au goût intense et sauvage de sous-bois.",
     "isVip": false,
     "isTech": false,
@@ -2924,7 +2924,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://odelices.ouest-france.fr/images/recettes/mousse_de_myrtilles_a_l_agar_agar.jpg",
+    "image": "/images/recipes/mousse-myrtille.png",
     "description": "Une mousse à la couleur violet profond, douce et peu acide.",
     "isVip": false,
     "isTech": false,
@@ -2937,7 +2937,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://kissmychef.com/wp-content/uploads/2022/11/mousse-500x500.png",
+    "image": "/images/recipes/mousse-noisette.png",
     "description": "Une mousse pralinée intense, parfaite pour garnir un Paris-Brest revisité ou des entremets.",
     "isVip": false,
     "isTech": false,
@@ -2950,7 +2950,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/660x660/2013/12/20/i74001-mousse-a-l-orange.jpeg",
+    "image": "/images/recipes/mousse-orange-sanguine.png",
     "description": "Une mousse acidulée avec une légère amertume et une belle couleur rouge orangé.",
     "isVip": false,
     "isTech": false,
@@ -2963,7 +2963,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/660x660/2018/12/12/i145118-mousse-pamplemousse-rose.jpeg",
+    "image": "/images/recipes/mousse-pamplemousse.png",
     "description": "Une mousse fraîche et légèrement amère, parfaite pour une fin de repas légère.",
     "isVip": false,
     "isTech": false,
@@ -2976,7 +2976,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://i0.wp.com/www.diabetemagazine.fr/wp-content/uploads/2017/05/moussepapaye-pistache.jpg",
+    "image": "/images/recipes/mousse-papaye.png",
     "description": "Une mousse tropicale douce et onctueuse, à la saveur musquée caractéristique de la papaye.",
     "isVip": false,
     "isTech": false,
@@ -2989,7 +2989,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://assets.afcdn.com/recipe/20170404/41108_w1024h1024c1cx1296cy1936.jpg",
+    "image": "/images/recipes/mousse-passion.png",
     "description": "Une mousse au caractère exotique affirmé, très acide et parfumée.",
     "isVip": false,
     "isTech": false,
@@ -3002,7 +3002,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://img.cuisineaz.com/660x495/2015/07/21/i10965-mousse-aux-peches.jpg",
+    "image": "/images/recipes/mousse-peche.png",
     "description": "Une mousse délicate à la pêche blanche ou jaune, saveur d'été par excellence.",
     "isVip": false,
     "isTech": false,
@@ -3015,7 +3015,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://cache.marieclaire.fr/data/photo/w1000_c17/cuisine/160/mousse-de-poires.jpg",
+    "image": "/images/recipes/mousse-poire.png",
     "description": "Une mousse subtile à la poire Williams, idéale pour accompagner le chocolat ou le caramel.",
     "isVip": false,
     "isTech": false,
@@ -3028,7 +3028,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://www.metro.ca/userfiles/image/recipes/Mousse-pommes-264.jpg",
+    "image": "/images/recipes/mousse-pomme.png",
     "description": "Une mousse légère au goût de compote de pomme, typique de la Normandie.",
     "isVip": false,
     "isTech": false,
@@ -3041,7 +3041,7 @@ export const catalog = [
     "subCategory": [
       "Mousses"
     ],
-    "image": "https://odelices.ouest-france.fr/images/recettes/2015/riz_a_l_imperatrice_aux_fruits_confits_et_chantilly5.jpg",
+    "image": "/images/recipes/mousse-riz-imperatrice.png",
     "description": "Une version aérée et raffinée du riz au lait, enrichie de crème anglaise collée et de fruits confits.",
     "isVip": false,
     "isTech": false,
@@ -3249,7 +3249,7 @@ export const catalog = [
     "subCategory": [
       "Autres Confiseries"
     ],
-    "image": "https://www.chocolaterie-charpot.fr/99-large_default/nos-pates-de-fruits-maison.jpg",
+    "image": "/images/recipes/pates-de-fruits.png",
     "description": "La quintessence du fruit confit. Retrouvez notre grand tableau de cuisson.",
     "isVip": true,
     "isTech": false,
