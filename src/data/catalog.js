@@ -1143,7 +1143,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "/images/creme-patissiere.jpg",
+    "image": "/images/recipes/creme-patissiere.png",
     "description": "La mère de toutes les crèmes. Indispensable pour garnir choux, éclairs, religieuses et fonds de tarte.",
     "isVip": false,
     "isTech": false,
@@ -2339,7 +2339,7 @@ export const catalog = [
     "subCategory": [
       "Macarons"
     ],
-    "image": "/images/macaron-carotte.jpg",
+    "image": "/images/recipes/macaron-carotte.png",
     "description": "Une création audacieuse inspirée du Carrot Cake : une coque orange vibrante et une ganache onctueuse au jus de carotte réduit et cannelle.",
     "isVip": true,
     "isTech": false,
@@ -2391,7 +2391,7 @@ export const catalog = [
     "subCategory": [
       "Macarons"
     ],
-    "image": "/images/macaron-vanille.jpg",
+    "image": "/images/recipes/macaron-vanille.png",
     "description": "L'élégance absolue : une coque parsemée de grains de vanille et une ganache onctueuse infusée aux gousses de Madagascar.",
     "isVip": false,
     "isTech": false,

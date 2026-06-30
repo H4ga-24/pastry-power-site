@@ -8,7 +8,7 @@ const macaronCarotte = {
   cookTime: "14 MIN",
   difficulty: "DIFFICILE",
   description: "Une création audacieuse inspirée du Carrot Cake : une coque orange vibrante et une ganache onctueuse au jus de carotte réduit et cannelle.",
-  image: "/images/macaron-carotte.jpg",
+  image: "/images/recipes/macaron-carotte.png",
   baseServings: 70,
   
   ingredients: [

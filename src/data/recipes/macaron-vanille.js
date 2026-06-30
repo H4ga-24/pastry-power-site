@@ -8,7 +8,7 @@ const macaronVanille = {
   cookTime: "14 MIN",
   difficulty: "DIFFICILE",
   description: "L'élégance absolue : une coque parsemée de grains de vanille et une ganache onctueuse infusée aux gousses de Madagascar.",
-  image: "/images/macaron-vanille.jpg",
+  image: "/images/recipes/macaron-vanille.png",
   baseServings: 70,
   
   ingredients: [

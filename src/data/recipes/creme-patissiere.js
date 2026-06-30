@@ -8,7 +8,7 @@ const cremePatissiere = {
   cookTime: "10 MIN",
   difficulty: "FACILE",
   description: "La mère de toutes les crèmes. Indispensable pour garnir choux, éclairs, religieuses et fonds de tarte.",
-  image: "/images/creme-patissiere.jpg", // J'ai ajouté une image par défaut au cas où
+  image: "/images/recipes/creme-patissiere.png", // J'ai ajouté une image par défaut au cas où
   baseServings: 1, // Environ 700g
   
   ingredients: [
