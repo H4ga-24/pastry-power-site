@@ -8,7 +8,6 @@ import { catalog } from '../data/catalog';
 
 const recipeLoaders = import.meta.glob([
   '../data/recipes/**/*.{js,jsx}',
-  '../pages/recipes/**/*.{js,jsx}',
 ]);
 
 const techLoaders = import.meta.glob([

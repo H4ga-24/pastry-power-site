@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /login
-Disallow: /vip
+Disallow: /vip$
 Disallow: /reset-password
 
 Sitemap: https://pastrypower.fr/sitemap.xml

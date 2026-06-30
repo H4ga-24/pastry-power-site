@@ -2,33 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Check, Coffee, Clock, Play, Pause, RotateCcw, Timer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import GlossaryText from './GlossaryText';
-
-// L'OUTIL QUI TRADUIT TON TEXTE EN SECONDES
-const parseCookTime = (timeStr) => {
-  if (!timeStr) return 0;
-  const str = timeStr.toLowerCase().trim();
-  let minutes = 0;
-  
-  if (str.includes('h')) {
-    const parts = str.split('h');
-    minutes += (parseInt(parts[0]) || 0) * 60;
-    const mins = parts[1].replace(/[^0-9]/g, '');
-    if (mins) minutes += parseInt(mins);
-  } else if (str.includes('min')) {
-    minutes += parseInt(str.replace(/[^0-9]/g, '')) || 0;
-  }
-  return minutes * 60;
-};
-
-// L'OUTIL POUR AFFICHER JOLIEMENT LE TEMPS
-const formatTime = (totalSeconds) => {
-  const h = Math.floor(totalSeconds / 3600);
-  const m = Math.floor((totalSeconds % 3600) / 60);
-  const s = totalSeconds % 60;
-  
-  if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-};
+import { parseCookTime, formatTime } from '../utils/cookingTime';
 
 // 🔥 ON AJOUTE "servings" DANS LES PARAMÈTRES RÉCUPÉRÉS
 const CookingMode = ({ recipe, servings = 1, onClose }) => {
@@ -111,13 +85,13 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
   }, []);
 
   const toggleIngredient = (idx) => {
-    setCheckedIngredients(prev => 
+    setCheckedIngredients(prev =>
       prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]
     );
   };
 
   const toggleStep = (idx) => {
-    setCheckedSteps(prev => 
+    setCheckedSteps(prev =>
       prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]
     );
   };
@@ -126,7 +100,7 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
   const safeSteps = Array.isArray(recipe?.steps) ? recipe.steps : [];
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: '100%' }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
@@ -144,7 +118,7 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
           </p>
         </div>
 
-        <button 
+        <button
           onClick={onClose}
           className="bg-white/10 p-2 md:p-3 rounded-full hover:bg-white/20 transition-colors flex-shrink-0"
         >
@@ -153,7 +127,7 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
       </div>
 
       <div className="max-w-3xl mx-auto p-6 pb-32 space-y-12 mt-4">
-        
+
         {/* SECTION INGRÉDIENTS */}
         {safeIngredients.length > 0 && (
             <section>
@@ -162,7 +136,7 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {safeIngredients.map((ing, idx) => (
-                <div 
+                <div
                     key={idx}
                     onClick={() => toggleIngredient(idx)}
                     className={`p-4 rounded-xl border cursor-pointer transition-all duration-200 flex items-center gap-4 ${
@@ -197,20 +171,20 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
                 <p className="text-gray-400 text-sm">Précision recommandée</p>
               </div>
             </div>
-            
+
             <div className={`font-mono text-5xl tracking-widest font-light ${timeLeft === 0 ? 'text-red-500' : 'text-[#D4AF37]'}`}>
               {formatTime(timeLeft)}
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <button 
+              <button
                 onClick={toggleTimer}
                 className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors text-white"
                 title={isTimerRunning ? "Mettre en pause" : "Démarrer"}
               >
                 {isTimerRunning ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
               </button>
-              <button 
+              <button
                 onClick={resetTimer}
                 className="p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors text-white"
                 title="Réinitialiser"
@@ -229,7 +203,7 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
             </h3>
             <div className="space-y-6">
                 {safeSteps.map((step, idx) => (
-                <div 
+                <div
                     key={idx}
                     onClick={() => toggleStep(idx)}
                     className={`p-6 rounded-xl border cursor-pointer transition-all duration-200 flex gap-6 ${
@@ -254,7 +228,7 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
 
         <div className="text-center pt-10">
           <p className="text-gray-500 italic">"La pâtisserie est une affaire de précision."</p>
-          <button 
+          <button
             onClick={onClose}
             className="mt-8 px-8 py-4 bg-[#D4AF37] text-black font-bold uppercase tracking-widest rounded hover:bg-white transition-colors shadow-lg shadow-[#D4AF37]/20"
           >
