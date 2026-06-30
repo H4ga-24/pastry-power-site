@@ -29,7 +29,7 @@ const App = () => {
   const location = useLocation();
 
   // Liste des pages où Google interdit d'afficher des publicités
-  const noAdsRoutes = ['/login', '/mentions-legales', '/a-propos', '/vip', '/communaute'];
+  const noAdsRoutes = ['/login', '/mentions-legales', '/a-propos', '/vip', '/communaute', '/politique-confidentialite', '/contact', '/reset-password'];
   // On affiche la pub uniquement si l'utilisateur n'est pas premium ET qu'il n'est pas sur une page interdite
   const showAd = !isPremium && !noAdsRoutes.includes(location.pathname);
 

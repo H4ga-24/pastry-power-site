@@ -49,7 +49,7 @@ const LegalPage = () => {
           </p>
         </section>
 
-        {/* 3. PROPRIÉTÉ INTELLECTUELLE (Version Images Libres de Droits) */}
+        {/* 3. PROPRIÉTÉ INTELLECTUELLE */}
         <section className="space-y-4 border-b border-white/10 pb-8">
           <h2 className="text-xl text-[#D4AF37] font-bold uppercase">3. Propriété Intellectuelle & Crédits</h2>
           
@@ -60,8 +60,8 @@ const LegalPage = () => {
 
           <p className="leading-relaxed">
             <strong>Illustrations :</strong><br/>
-            Les photographies utilisées sur ce site proviennent de banques d'images libres de droits (Unsplash, Pexels) et restent la propriété intellectuelle de leurs auteurs respectifs.<br/>
-            Certaines illustrations peuvent également être la propriété de l'éditeur.
+            Les photographies illustrant les fiches recettes sont générées par intelligence artificielle et constituent la propriété intellectuelle exclusive de l'éditeur.<br/>
+            Les images d'illustration des pages de catégories proviennent de la banque d'images libre de droits Unsplash et restent la propriété intellectuelle de leurs auteurs respectifs.
           </p>
         </section>
 
@@ -96,6 +96,9 @@ const LegalPage = () => {
           <p className="leading-relaxed text-sm mb-2">
             Ce site utilise Google AdSense, un service de publicité fourni par Google Inc. (« Google »).
             En tant que prestataire tiers, Google utilise des cookies pour diffuser des annonces sur ce site. L'utilisation de cookies publicitaires par Google permet à l'entreprise et à ses partenaires de diffuser des annonces auprès de nos utilisateurs en fonction de leur visite sur notre site et/ou sur d'autres sites Web.
+          </p>
+          <p className="leading-relaxed text-sm mb-2">
+            L'affichage de ces publicités est subordonné à votre consentement, recueilli via la bannière de cookies présentée lors de votre première visite. Tant que vous n'avez pas accepté les cookies, aucune publicité personnalisée n'est diffusée.
           </p>
           <p className="leading-relaxed text-sm">
             Les utilisateurs peuvent choisir de désactiver la publicité personnalisée en consultant la page <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">Paramètres des annonces de Google</a>. Alternativement, vous pouvez désactiver l'utilisation de cookies par un fournisseur tiers relatifs à la publicité personnalisée en consultant le site <a href="https://www.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">www.aboutads.info</a>.

@@ -50,6 +50,7 @@ const VipPage = () => {
           <ul className="space-y-4 mb-8 flex-grow">
             <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Accès illimité aux contenus VIP</li>
             <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Nouveautés ajoutées chaque mois</li>
+            <li className="flex items-center gap-3 text-gray-400 text-sm"><Check size={16} /> Zéro publicité</li>
           </ul>
 
           <a href={getLink(STRIPE_MONTHLY)} target="_blank" rel="noopener noreferrer">

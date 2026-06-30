@@ -47,7 +47,10 @@ const PrivacyPage = () => {
             <li>Afficher des publicités personnalisées (cookies publicitaires — Google AdSense)</li>
           </ul>
           <p className="leading-relaxed text-sm">
-            Vous pouvez refuser ou supprimer les cookies à tout moment via les paramètres de votre navigateur. Notez que la désactivation de certains cookies peut affecter le bon fonctionnement du site.
+            Lors de votre première visite, une bannière de consentement vous permet d'accepter ou de refuser les cookies non essentiels, notamment les cookies publicitaires. Tant que vous n'avez pas donné votre accord, aucune publicité personnalisée n'est diffusée sur le site.
+          </p>
+          <p className="leading-relaxed text-sm">
+            Vous pouvez à tout moment modifier votre choix via cette bannière, ou refuser et supprimer les cookies via les paramètres de votre navigateur. Notez que la désactivation de certains cookies peut affecter le bon fonctionnement du site.
           </p>
         </section>
 
@@ -55,6 +58,9 @@ const PrivacyPage = () => {
           <h2 className="text-xl text-[#D4AF37] font-bold uppercase">4. Google AdSense & publicité personnalisée</h2>
           <p className="leading-relaxed text-sm">
             Ce site utilise <strong>Google AdSense</strong>, un service de régie publicitaire fourni par Google LLC. Google AdSense utilise des cookies publicitaires pour afficher des annonces pertinentes en fonction de votre navigation sur ce site et sur d'autres sites Web.
+          </p>
+          <p className="leading-relaxed text-sm">
+            Conformément à la section 3 ci-dessus, ces cookies ne sont déposés et ces annonces personnalisées ne sont diffusées qu'après votre consentement explicite via la bannière de cookies.
           </p>
           <p className="leading-relaxed text-sm">
             Google, en tant que fournisseur tiers, utilise des cookies (dont le cookie <code className="bg-white/10 px-1 py-0.5 rounded text-xs">DART</code>) pour diffuser des annonces basées sur les visites de nos utilisateurs sur ce site et sur d'autres sites Internet.
@@ -124,7 +130,7 @@ const PrivacyPage = () => {
           <p className="leading-relaxed text-sm">
             Cette politique de confidentialité peut être mise à jour à tout moment. La date de dernière révision est indiquée ci-dessous. Nous vous encourageons à la consulter régulièrement.
           </p>
-          <p className="text-xs text-gray-500">Dernière mise à jour : juin 2025</p>
+          <p className="text-xs text-gray-500">Dernière mise à jour : juin 2026</p>
         </section>
 
       </div>
