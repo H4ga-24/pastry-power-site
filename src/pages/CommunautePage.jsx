@@ -24,9 +24,11 @@ export default function CommunautePage() {
 
   async function loadPosts() {
     setLoading(true);
+    // ⚠️ On ne sélectionne JAMAIS profiles(email) ici : cette requête est publique
+    // et visible par tout visiteur, même non connecté.
     let query = supabase
       .from('forum_posts')
-      .select('id, title, category, tags, upvotes, created_at, body, profiles(username, email), forum_replies(count)');
+      .select('id, title, category, tags, upvotes, created_at, body, profiles(username), forum_replies(count)');
 
     if (category !== 'all') query = query.eq('category', category);
     query = sort === 'popular'
@@ -39,8 +41,7 @@ export default function CommunautePage() {
   }
 
   const getDisplayName = (profiles) => {
-    if (!profiles) return 'Anonyme';
-    return profiles.username || profiles.email?.split('@')[0] || 'Anonyme';
+    return profiles?.username || 'Anonyme';
   };
 
   return (

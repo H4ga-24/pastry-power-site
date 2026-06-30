@@ -46,9 +46,11 @@ export default function RecipeFeedback({ recipeId }) {
       }
     }
 
+    // ⚠️ On ne sélectionne JAMAIS profiles(email) ici : cette requête est publique
+    // et visible par tout visiteur, même non connecté.
     const { data: cmts } = await supabase
       .from('recipe_comments')
-      .select('id, body, created_at, user_id, profiles(username, email)')
+      .select('id, body, created_at, user_id, profiles(username)')
       .eq('recipe_id', recipeId)
       .is('parent_id', null)
       .order('created_at', { ascending: false })
@@ -87,8 +89,7 @@ export default function RecipeFeedback({ recipeId }) {
   }
 
   const getDisplayName = (profiles) => {
-    if (!profiles) return 'Anonyme';
-    return profiles.username || profiles.email?.split('@')[0] || 'Anonyme';
+    return profiles?.username || 'Anonyme';
   };
 
   return (

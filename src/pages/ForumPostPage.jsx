@@ -18,12 +18,14 @@ export default function ForumPostPage() {
   useEffect(() => { loadPost(); }, [postId, user?.id]);
 
   async function loadPost() {
+    // ⚠️ On ne sélectionne JAMAIS profiles(email) ici : page publique,
+    // accessible sans connexion.
     const { data: postData } = await supabase
-      .from('forum_posts').select('*, profiles(username, email)').eq('id', postId).single();
+      .from('forum_posts').select('*, profiles(username)').eq('id', postId).single();
     setPost(postData);
 
     const { data: repliesData } = await supabase
-      .from('forum_replies').select('*, profiles(username, email)')
+      .from('forum_replies').select('*, profiles(username)')
       .eq('post_id', postId).order('created_at', { ascending: true });
     setReplies(repliesData ?? []);
 
@@ -71,8 +73,7 @@ export default function ForumPostPage() {
   }
 
   const getDisplayName = (profiles) => {
-    if (!profiles) return 'Anonyme';
-    return profiles.username || profiles.email?.split('@')[0] || 'Anonyme';
+    return profiles?.username || 'Anonyme';
   };
 
   if (loading) return <div className="min-h-screen bg-[#121212] pt-28 flex items-center justify-center"><p className="text-gray-500">Chargement…</p></div>;
