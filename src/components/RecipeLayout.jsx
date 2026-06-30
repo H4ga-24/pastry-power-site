@@ -9,7 +9,7 @@ import { useAuth } from '../AuthContext';
 import { catalog } from '../data/catalog';
 import RecipeFeedback from './RecipeFeedback';
 import { supabase } from '../supabase';
-import { parseCookTime, formatTime } from '../utils/cookingTime';
+import { parseCookTime, formatTime, playTimerAlarm } from '../utils/cookingTime';
 
 const SITE_URL = 'https://pastrypower.fr';
 
@@ -61,6 +61,7 @@ const RecipeLayout = ({ recipe }) => {
       interval = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
     } else if (timeLeft === 0 && isTimerRunning) {
       setIsTimerRunning(false);
+      playTimerAlarm();
     }
     return () => clearInterval(interval);
   }, [isTimerRunning, timeLeft]);

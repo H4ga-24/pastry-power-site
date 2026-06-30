@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Check, Coffee, Clock, Play, Pause, RotateCcw, Timer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import GlossaryText from './GlossaryText';
-import { parseCookTime, formatTime } from '../utils/cookingTime';
+import { parseCookTime, formatTime, playTimerAlarm } from '../utils/cookingTime';
 
 // 🔥 ON AJOUTE "servings" DANS LES PARAMÈTRES RÉCUPÉRÉS
 const CookingMode = ({ recipe, servings = 1, onClose }) => {
@@ -23,6 +23,7 @@ const CookingMode = ({ recipe, servings = 1, onClose }) => {
       }, 1000);
     } else if (timeLeft === 0 && isTimerRunning) {
       setIsTimerRunning(false);
+      playTimerAlarm();
     }
     return () => clearInterval(interval);
   }, [isTimerRunning, timeLeft]);
