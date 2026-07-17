@@ -34,6 +34,33 @@ function esc(str) {
     .replace(/"/g, '&quot;')
 }
 
+// --- Static footer injected into EVERY prerendered page ---
+// (crawler-facing only: React remplace #root au chargement, donc pas besoin de styles)
+const FOOTER_HTML = `<footer>
+  <nav aria-label="Pied de page"><ul>
+      <li><a href="/patisserie">Toutes les Recettes</a></li>
+      <li><a href="/technologie">Technologie Culinaire</a></li>
+      <li><a href="/a-propos">Qui suis-je ?</a></li>
+      <li><a href="/mentions-legales">Mentions Légales</a></li>
+      <li><a href="/politique-confidentialite">Politique de Confidentialité</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul></nav>
+  <p>&copy; ${new Date().getFullYear()} Pastry Power. Tous droits réservés. Fait avec passion en Normandie.</p>
+</footer>`
+
+// Injecte body + footer dans #root, + title/meta/canonical (+ extra head éventuel) dans le template
+function renderPage({ title, desc, canonical, bodyHTML, extraHead = [] }) {
+  return template
+    .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
+    .replace('</head>', [
+      `  <meta name="description" content="${esc(desc)}">`,
+      `  <link rel="canonical" href="${canonical}">`,
+      ...extraHead,
+      '</head>',
+    ].join('\n'))
+    .replace('<div id="root"></div>', `<div id="root">${bodyHTML}${FOOTER_HTML}</div>`)
+}
+
 function buildJsonLd(recipe, entry) {
   return JSON.stringify({
     '@context': 'https://schema.org',
@@ -98,6 +125,43 @@ const CATEGORIES = [
   { slug: 'alternative',  label: 'Alternative',  key: 'Alternative' },
 ]
 
+// --- Legal / info pages (statique, pour que Google trouve la privacy policy) ---
+const LEGAL_PAGES = [
+  {
+    slug: 'a-propos',
+    title: 'Qui suis-je ? | Pastry Power',
+    desc: 'Pastry Power : la référence technique pour les passionnés de pâtisserie, créée avec passion en Normandie.',
+    h1: 'Qui suis-je ?',
+    body: `<p>Pastry Power est un site de référence dédié à la pâtisserie, la confiserie, la chocolaterie et la technologie culinaire. On y trouve des centaines de fiches techniques détaillées, des recettes professionnelles et des explications sur la chimie des ingrédients.</p>
+  <p>Le projet est né d'une passion pour le savoir-faire pâtissier et de l'envie de le rendre accessible. Chaque recette est pensée comme une fiche technique claire : ingrédients, étapes et conseils du chef.</p>`,
+  },
+  {
+    slug: 'mentions-legales',
+    title: 'Mentions Légales | Pastry Power',
+    desc: 'Mentions légales du site Pastry Power : éditeur, hébergeur et propriété intellectuelle.',
+    h1: 'Mentions Légales',
+    body: `<p>Les présentes mentions légales précisent l'identité de l'éditeur du site, son hébergeur et les conditions d'utilisation.</p>
+  <p>Éditeur du site : Pastry Power. Contact : pastrypower76@gmail.com. L'ensemble du contenu (textes, recettes, images) est protégé par le droit de la propriété intellectuelle et ne peut être reproduit sans autorisation.</p>`,
+  },
+  {
+    slug: 'politique-confidentialite',
+    title: 'Politique de Confidentialité | Pastry Power',
+    desc: 'Politique de confidentialité de Pastry Power : cookies, cookies publicitaires (Google AdSense), mesure d\'audience et droits RGPD.',
+    h1: 'Politique de Confidentialité',
+    body: `<p>Cette politique décrit comment Pastry Power traite vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD).</p>
+  <p>Le site utilise des cookies, dont des cookies de mesure d'audience et des cookies publicitaires (Google AdSense) permettant d'afficher des annonces. Votre consentement est recueilli via notre bandeau de consentement avant tout dépôt de cookie non essentiel, et vous pouvez le modifier ou le retirer à tout moment.</p>
+  <p>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour toute demande, écrivez à pastrypower76@gmail.com.</p>`,
+  },
+  {
+    slug: 'contact',
+    title: 'Contact | Pastry Power',
+    desc: 'Contactez Pastry Power : question, remarque ou collaboration.',
+    h1: 'Contact',
+    body: `<p>Une question, une remarque ou une demande de collaboration ? Écrivez-nous.</p>
+  <p>Email : <a href="mailto:pastrypower76@gmail.com">pastrypower76@gmail.com</a>. Retrouvez-nous aussi sur Instagram, YouTube, TikTok et Dailymotion.</p>`,
+  },
+]
+
 // --- Generate Homepage ---
 ;(function generateHomepage() {
   const title = 'Pastry Power — Recettes de Pâtisserie Professionnelles'
@@ -116,15 +180,7 @@ const CATEGORIES = [
     </ul></nav>
 </main>`
 
-  const page = template
-    .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
-    .replace('</head>', [
-      `  <meta name="description" content="${esc(desc)}">`,
-      `  <link rel="canonical" href="${canonical}">`,
-      '</head>',
-    ].join('\n'))
-    .replace('<div id="root"></div>', `<div id="root">${bodyHTML}</div>`)
-
+  const page = renderPage({ title, desc, canonical, bodyHTML })
   writeFileSync(join(DIST, 'index.html'), page, 'utf-8')
   console.log('  ✓ Homepage / générée')
 })()
@@ -149,19 +205,27 @@ for (const cat of CATEGORIES) {
   const desc = `Toutes nos recettes de ${cat.label.toLowerCase()} : ${recipes.length} fiche${recipes.length !== 1 ? 's' : ''} technique${recipes.length !== 1 ? 's' : ''} avec ingrédients, étapes détaillées et conseils de chef.`
   const canonical = `${SITE}/${cat.slug}`
 
-  const page = template
-    .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
-    .replace('</head>', [
-      `  <meta name="description" content="${esc(desc)}">`,
-      `  <link rel="canonical" href="${canonical}">`,
-      '</head>',
-    ].join('\n'))
-    .replace('<div id="root"></div>', `<div id="root">${bodyHTML}</div>`)
+  const page = renderPage({ title, desc, canonical, bodyHTML })
 
   const outDir = join(DIST, cat.slug)
   mkdirSync(outDir, { recursive: true })
   writeFileSync(join(outDir, 'index.html'), page, 'utf-8')
   console.log(`  ✓ Catégorie /${cat.slug} générée (${recipes.length} recettes)`)
+}
+
+// --- Generate Legal / Info Pages ---
+for (const p of LEGAL_PAGES) {
+  const bodyHTML = `<main>
+  <h1>${esc(p.h1)}</h1>
+  ${p.body}
+</main>`
+  const canonical = `${SITE}/${p.slug}`
+  const page = renderPage({ title: p.title, desc: p.desc, canonical, bodyHTML })
+
+  const outDir = join(DIST, p.slug)
+  mkdirSync(outDir, { recursive: true })
+  writeFileSync(join(outDir, 'index.html'), page, 'utf-8')
+  console.log(`  ✓ Page /${p.slug} générée`)
 }
 
 // --- Main loop (recipe pages) ---
@@ -191,18 +255,13 @@ for (const entry of catalog) {
     const jsonLd = buildJsonLd(recipe, entry)
     const bodyHTML = buildBodyHTML(recipe)
 
-    const page = template
-      // 1. Inject recipe title
-      .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)} | Pastry Power</title>`)
-      // 2. Inject meta description + canonical + JSON-LD just before </head>
-      .replace('</head>', [
-        `  <meta name="description" content="${description.replace(/"/g, '&quot;')}">`,
-        `  <link rel="canonical" href="${canonical}">`,
-        `  <script type="application/ld+json">${jsonLd}</script>`,
-        '</head>',
-      ].join('\n'))
-      // 3. Inject recipe HTML inside #root (React will replace it on load)
-      .replace('<div id="root"></div>', `<div id="root">${bodyHTML}</div>`)
+    const page = renderPage({
+      title: `${title} | Pastry Power`,
+      desc: description,
+      canonical,
+      bodyHTML,
+      extraHead: [`  <script type="application/ld+json">${jsonLd}</script>`],
+    })
 
     const outDir = join(DIST, 'recipe', entry.id)
     mkdirSync(outDir, { recursive: true })
