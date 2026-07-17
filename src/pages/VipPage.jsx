@@ -1,17 +1,47 @@
 import React from 'react';
 import { useAuth } from '../AuthContext';
-import { Crown, Check, ArrowRight, Star, Sparkles } from 'lucide-react';
+import { Crown, Check, ArrowRight, Star, Sparkles, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
 
 const VipPage = () => {
-  const { user } = useAuth();
-  
+  const { user, isPremium } = useAuth();
+
   const STRIPE_MONTHLY = "https://buy.stripe.com/8x214o2df3Mbg05dmL2B203";
   const STRIPE_ANNUAL = "https://buy.stripe.com/bJeaEY5pr1E35lrgyX2B204";
+  const STRIPE_BILLING_PORTAL = "https://billing.stripe.com/p/login/fZu7sMbNP1E33dj6Yn2B200";
 
   const getLink = (url) => {
     return user ? `${url}?client_reference_id=${user.id}` : url;
   };
+
+  // --- Déjà membre VIP : on bloque l'accès aux offres, pas de risque de double paiement ---
+  if (isPremium) {
+    return (
+      <div className="min-h-screen bg-[#121212] text-white py-20 px-4 flex flex-col items-center justify-center text-center">
+        <CheckCircle2 className="w-16 h-16 text-[#D4AF37] mb-6" />
+        <h1 className="text-3xl md:text-4xl font-serif mb-4">
+          Vous êtes déjà <span className="text-[#D4AF37]">Membre VIP</span>
+        </h1>
+        <p className="text-gray-400 max-w-md mb-10">
+          Votre abonnement est actif. Vous avez déjà accès à l'intégralité des recettes et outils exclusifs — inutile de reprendre un abonnement.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a href={STRIPE_BILLING_PORTAL} target="_blank" rel="noopener noreferrer">
+            <Button className="bg-[#D4AF37] text-black font-bold px-8 py-6 rounded-none hover:bg-[#b8962e]">
+              Gérer mon abonnement
+            </Button>
+          </a>
+          <Link to="/patisserie">
+            <Button className="bg-transparent border border-white/20 text-white px-8 py-6 rounded-none hover:bg-white/5">
+              Voir les recettes
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#121212] text-white py-20 px-4">
