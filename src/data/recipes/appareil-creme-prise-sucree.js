@@ -8,7 +8,7 @@ const appareilCremePriseSucree = {
   cookTime: "35 MIN",
   difficulty: "TRÈS FACILE",
   description: "Aussi appelée 'migaine', c'est l'appareil indispensable pour les tartes aux fruits (alsacienne, normande) ou les clafoutis fondants.",
-  image: "/images/appareil-creme-prise-sucree.jpg", // J'ai ajouté une image par défaut au cas où
+  image: "/images/recipes/appareil-creme-prise-sucree.png", // J'ai ajouté une image par défaut au cas où
   baseServings: 450, // mL
   
   ingredients: [

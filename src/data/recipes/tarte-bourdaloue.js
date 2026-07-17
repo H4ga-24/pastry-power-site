@@ -8,7 +8,7 @@ const tarteBourdaloue = {
   cookTime: "40 MIN",
   difficulty: "MOYEN",
   description: "Un grand classique parisien : une pâte sucrée, une crème d'amande moelleuse parfumée au rhum et des demi-poires pochées disposées en rosace.",
-  image: "/images/tarte-bourdaloue.jpg", // Note: fallback image added
+  image: "/images/recipes/tarte-bourdaloue.png", // Note: fallback image added
   baseServings: 6, // 1 tarte 22-24cm
   
   ingredients: [

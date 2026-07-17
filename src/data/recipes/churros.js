@@ -8,7 +8,7 @@ const churros = {
   cookTime: "15 MIN",
   difficulty: "FACILE",
   description: "Le beignet espagnol croustillant à l'extérieur et moelleux à l'intérieur, roulé dans le sucre cannelle.",
-  image: "/images/churros.jpg",
+  image: "/images/recipes/churros.png",
   baseServings: 4, 
   
   ingredients: [

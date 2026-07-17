@@ -8,7 +8,7 @@ const cakeAuxFruits = {
   cookTime: "1H 10",
   difficulty: "MOYEN",
   description: "Le cake anglais traditionnel riche en fruits confits et raisins macérés.",
-  image: "/images/cake-aux-fruits.jpg",
+  image: "/images/recipes/cake-aux-fruits.png",
   baseServings: 10, 
   
   ingredients: [

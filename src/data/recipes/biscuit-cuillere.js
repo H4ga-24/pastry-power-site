@@ -8,7 +8,7 @@ const biscuitCuillere = {
   cookTime: "11 MIN",
   difficulty: "FACILE",
   description: "Le grand classique de la pâtisserie française, indispensable pour les charlottes et tiramisus. Sa texture est légère, moelleuse à cœur et perles de sucre croquantes en surface.",
-  image: "/images/biscuit-cuillere.jpg", // Image d'illustration si manquante
+  image: "/images/recipes/biscuit-cuillere.png", // Image d'illustration si manquante
   baseServings: 1, // 1 plaque ou 1 cartouchière
   
   ingredients: [

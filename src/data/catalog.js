@@ -22,7 +22,7 @@ export const catalog = [
     "subCategory": [
       "Sauces"
     ],
-    "image": "/images/appareil-creme-prise-salee.jpg",
+    "image": "/images/recipes/appareil-creme-prise-salee.png",
     "description": "La base indispensable et inratable pour toutes vos quiches, tartes salées et flans de légumes. Une texture soyeuse et un équilibre parfait.",
     "isVip": false,
     "isTech": false,
@@ -35,7 +35,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "/images/appareil-creme-prise-sucree.jpg",
+    "image": "/images/recipes/appareil-creme-prise-sucree.png",
     "description": "Aussi appelée 'migaine', c'est l'appareil indispensable pour les tartes aux fruits (alsacienne, normande) ou les clafoutis fondants.",
     "isVip": false,
     "isTech": false,
@@ -61,7 +61,7 @@ export const catalog = [
     "subCategory": [
       "Petits Fours Secs"
     ],
-    "image": "/images/baton-marechaux.jpg",
+    "image": "/images/recipes/baton-marechaux.png",
     "description": "Un classique de la biscuiterie française. Une meringue française serrée aux amandes et noisettes, dressée en bâtonnets, croquante à l'extérieur et moelleuse à cœur.",
     "isVip": false,
     "isTech": false,
@@ -101,7 +101,7 @@ export const catalog = [
       "Biscuits",
       "Gâteaux de Voyage"
     ],
-    "image": "/images/biscuit-aux-marron.jpg",
+    "image": "/images/recipes/biscuit-au-marron.png",
     "description": "Un gâteau de voyage au goût automnal profond. Sa texture est exceptionnellement moelleuse grâce à l'utilisation de pâte de marrons.",
     "isVip": false,
     "isTech": false,
@@ -114,7 +114,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuit-aux-noix.jpg",
+    "image": "/images/recipes/biscuit-aux-noix.png",
     "description": "Un biscuit riche et savoureux, monté sur une base de meringue française. Idéal comme base pour un entremets d'automne ou au café.",
     "isVip": false,
     "isTech": false,
@@ -141,7 +141,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuit-cuillere-amande.jpg",
+    "image": "/images/recipes/biscuit-cuillere-amande.png",
     "description": "Une variante plus riche et parfumée du biscuit cuillère traditionnel, apportant la rondeur et le moelleux de l'amande douce. Parfait pour des entremets fruités ou pralinés.",
     "isVip": false,
     "isTech": false,
@@ -154,7 +154,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuit-cuillere.jpg",
+    "image": "/images/recipes/biscuit-cuillere.png",
     "description": "Le grand classique de la pâtisserie française, indispensable pour les charlottes et tiramisus. Sa texture est légère, moelleuse à cœur et perles de sucre croquantes en surface.",
     "isVip": false,
     "isTech": false,
@@ -169,7 +169,7 @@ export const catalog = [
       "Gâteaux de Voyage",
       "Desserts Régionaux"
     ],
-    "image": "/images/biscuit-de-savoie.jpg",
+    "image": "/images/recipes/biscuit-de-savoie.png",
     "description": "Gâteau régional ultra-léger et aérien, sans aucune matière grasse ajoutée. Sa croûte est légèrement croustillante et son cœur d'un moelleux incomparable.",
     "isVip": false,
     "isTech": false,
@@ -182,7 +182,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuit-joconde.jpg",
+    "image": "/images/recipes/biscuit-joconde.png",
     "description": "Le biscuit star de l'entremets Opéra ! Riche en amandes, il est souple, fin et absorbe parfaitement les sirops de punchage sans se désagréger.",
     "isVip": true,
     "isTech": false,
@@ -195,7 +195,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuit-roule.jpg",
+    "image": "/images/recipes/biscuit-roule.png",
     "description": "Le biscuit souple par excellence. Sa technique d'incorporation lui permet d'être roulé à chaud ou à froid sans jamais se casser. Indispensable pour les bûches de Noël !",
     "isVip": false,
     "isTech": false,
@@ -208,7 +208,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuit-sacher.jpg",
+    "image": "/images/recipes/biscuit-sacher.png",
     "description": "D'origine autrichienne, ce biscuit au chocolat dense et ultra-fondant est enrichi de pâte d'amande. Il offre une mache exceptionnelle pour les entremets très chocolatés.",
     "isVip": true,
     "isTech": false,
@@ -221,7 +221,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuit-viennois.jpg",
+    "image": "/images/recipes/biscuit-viennois.png",
     "description": "Un biscuit d'une souplesse extrême, très alvéolé et léger. C'est l'alternative parfaite au biscuit roulé classique pour des montages plus aériens et délicats.",
     "isVip": false,
     "isTech": false,
@@ -234,7 +234,7 @@ export const catalog = [
     "subCategory": [
       "Biscuits"
     ],
-    "image": "/images/biscuits-meringues.jpg",
+    "image": "/images/recipes/biscuits-meringues.png",
     "description": "Un tableau comparatif des grands classiques des biscuits à base de meringue : Succès, Progrès, Japonais, Macaron Cachemire et Dacquoises.",
     "isVip": true,
     "isTech": false,
@@ -337,7 +337,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "/images/brioche.jpg",
+    "image": "/images/recipes/brioche.png",
     "description": "La pure tradition boulangère française. Une mie filante, beurrée et légère, qui demande du temps, du froid et un pétrissage maîtrisé.",
     "isVip": true,
     "isTech": false,
@@ -350,7 +350,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "/images/brownie.jpg",
+    "image": "/images/recipes/brownie.png",
     "description": "Un gâteau de voyage d'origine américaine, ultra dense et riche. Une fine croûte craquante sur le dessus et un cœur fondant intensément chocolaté.",
     "isVip": false,
     "isTech": false,
@@ -402,7 +402,7 @@ export const catalog = [
     "subCategory": [
       "Gâteaux de Voyage"
     ],
-    "image": "/images/cake-aux-fruits.jpg",
+    "image": "/images/recipes/cake-aux-fruits.png",
     "description": "Le cake anglais traditionnel riche en fruits confits et raisins macérés.",
     "isVip": false,
     "isTech": false,
@@ -766,7 +766,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "/images/chouquette.jpg",
+    "image": "/images/recipes/chouquette.png",
     "description": "Le petit plaisir du goûter. Un chou léger, doré et généreusement recouvert de grains de sucre croquants.",
     "isVip": false,
     "isTech": false,
@@ -792,7 +792,7 @@ export const catalog = [
     "subCategory": [
       "Pâte à Choux"
     ],
-    "image": "/images/churros.jpg",
+    "image": "/images/recipes/churros.png",
     "description": "Le beignet espagnol croustillant à l'extérieur et moelleux à l'intérieur, roulé dans le sucre cannelle.",
     "isVip": false,
     "isTech": false,
@@ -922,7 +922,7 @@ export const catalog = [
     "subCategory": [
       "Crèmes"
     ],
-    "image": "/images/creme-bavaroise-the.jpg",
+    "image": "/images/recipes/creme-bavaroise-the.png",
     "description": "Une variante raffinée et aromatique de la bavaroise, infusée au thé (Matcha, Earl Grey ou Jasmin) pour une saveur subtile et délicate.",
     "isVip": true,
     "isTech": false,
@@ -1455,7 +1455,7 @@ export const catalog = [
     "subCategory": [
       "Entremets"
     ],
-    "image": "/images/eclat-aux-epices.jpg",
+    "image": "/images/recipes/eclat-aux-epices.png",
     "description": "Une création chaleureuse alliant la douceur de la poire à la force du pain d'épices, enrobée d'une mousse chocolat lait subtilement épicée.",
     "isVip": true,
     "isTech": false,
@@ -1689,7 +1689,7 @@ export const catalog = [
     "subCategory": [
       "Glaçages"
     ],
-    "image": "/images/glacage-chocolat-blanc.jpg",
+    "image": "/images/recipes/glacage-chocolat-blanc.png",
     "description": "La base parfaite du glaçage miroir. Il peut être coloré selon vos envies ou laissé blanc (avec du dioxyde de titane pour un blanc pur).",
     "isVip": false,
     "isTech": false,
@@ -3666,7 +3666,7 @@ export const catalog = [
     "subCategory": [
       "Tartes"
     ],
-    "image": "/images/tarte-bourdaloue.jpg",
+    "image": "/images/recipes/tarte-bourdaloue.png",
     "description": "Un grand classique parisien : une pâte sucrée, une crème d'amande moelleuse parfumée au rhum et des demi-poires pochées disposées en rosace.",
     "isVip": false,
     "isTech": false,

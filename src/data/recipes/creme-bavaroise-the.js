@@ -9,7 +9,7 @@ const cremeBavaroiseThe = {
   cookTime: "10 MIN",
   difficulty: "MOYEN",
   description: "Une variante raffinée et aromatique de la bavaroise, infusée au thé (Matcha, Earl Grey ou Jasmin) pour une saveur subtile et délicate.",
-  image: "/images/creme-bavaroise-the.jpg", // Image d'illustration
+  image: "/images/recipes/creme-bavaroise-the.png", // Image d'illustration
   baseServings: 1, 
   
   ingredients: [

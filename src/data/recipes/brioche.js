@@ -9,7 +9,7 @@ const brioche = {
   cookTime: "26 MIN",
   difficulty: "EXPERT",
   description: "La pure tradition boulangère française. Une mie filante, beurrée et légère, qui demande du temps, du froid et un pétrissage maîtrisé.",
-  image: "/images/brioche.jpg",
+  image: "/images/recipes/brioche.png",
   baseServings: 2, // 2 brioches
   
   ingredients: [

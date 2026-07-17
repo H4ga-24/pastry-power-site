@@ -8,7 +8,7 @@ const biscuitJoconde = {
   cookTime: "9 MIN",
   difficulty: "MOYEN",
   description: "Le biscuit star de l'entremets Opéra ! Riche en amandes, il est souple, fin et absorbe parfaitement les sirops de punchage sans se désagréger.",
-  image: "/images/biscuit-joconde.jpg", // Image d'illustration
+  image: "/images/recipes/biscuit-joconde.png", // Image d'illustration
   baseServings: 1, // 1 plaque 40x60cm
   
   ingredients: [

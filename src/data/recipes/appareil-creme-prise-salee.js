@@ -8,7 +8,7 @@ const appareilCremePriseSalee = {
   cookTime: "40 MIN",
   difficulty: "TRÈS FACILE",
   description: "La base indispensable et inratable pour toutes vos quiches, tartes salées et flans de légumes. Une texture soyeuse et un équilibre parfait.",
-  image: "/images/appareil-creme-prise-salee.jpg", // J'ai ajouté une image par défaut au cas où
+  image: "/images/recipes/appareil-creme-prise-salee.png", // J'ai ajouté une image par défaut au cas où
   baseServings: 450, // mL
   
   ingredients: [

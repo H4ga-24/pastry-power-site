@@ -8,7 +8,7 @@ const glacageChocolatBlanc = {
   cookTime: "5 MIN",
   difficulty: "MOYEN",
   description: "La base parfaite du glaçage miroir. Il peut être coloré selon vos envies ou laissé blanc (avec du dioxyde de titane pour un blanc pur).",
-  image: "/images/glacage-chocolat-blanc.jpg", // Image d'illustration
+  image: "/images/recipes/glacage-chocolat-blanc.png", // Image d'illustration
   baseServings: 800, // g
   
   ingredients: [

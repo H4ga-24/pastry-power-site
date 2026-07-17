@@ -8,7 +8,7 @@ const chouquette = {
   cookTime: "25 MIN",
   difficulty: "FACILE",
   description: "Le petit plaisir du goûter. Un chou léger, doré et généreusement recouvert de grains de sucre croquants.",
-  image: "/images/chouquette.jpg", // Image d'illustration
+  image: "/images/recipes/chouquette.png", // Image d'illustration
   baseServings: 30, // 30 chouquettes
   
   ingredients: [

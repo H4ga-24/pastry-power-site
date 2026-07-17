@@ -18,14 +18,9 @@ content = CATALOG_FILE.read_text(encoding="utf-8")
 updated = 0
 skipped = 0
 
-# Pour chaque id dans le catalog, si l'image locale existe → remplacer l'URL
-# On cherche les blocs: "id": "XXX", ... "image": "...",
-# et on remplace l'image si /images/recipes/XXX.png existe
-
 def replace_image(match):
     global updated, skipped
     block = match.group(0)
-    # Extraire l'id
     id_match = re.search(r'"id"\s*:\s*"([^"]+)"', block)
     if not id_match:
         skipped += 1
@@ -40,7 +35,6 @@ def replace_image(match):
 
     local_url = f"/images/recipes/{recipe_id}.png"
 
-    # Remplacer l'image dans ce bloc
     new_block = re.sub(
         r'("image"\s*:\s*)"[^"]*"',
         rf'\1"{local_url}"',
@@ -55,7 +49,6 @@ def replace_image(match):
 
     return new_block
 
-# Matcher chaque entrée du tableau (objet JSON)
 new_content = re.sub(
     r'\{[^{}]*"id"\s*:[^{}]*\}',
     replace_image,

@@ -8,7 +8,7 @@ const brownie = {
   cookTime: "22 MIN",
   difficulty: "FACILE",
   description: "Un gâteau de voyage d'origine américaine, ultra dense et riche. Une fine croûte craquante sur le dessus et un cœur fondant intensément chocolaté.",
-  image: "/images/brownie.jpg",
+  image: "/images/recipes/brownie.png",
   baseServings: 8, // 1 cadre de 20x20cm
   
   ingredients: [

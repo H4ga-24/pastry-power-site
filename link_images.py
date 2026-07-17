@@ -27,7 +27,6 @@ for js_file in sorted(RECIPES_DIR.glob("*.js")) :
     local_url = f"/images/recipes/{recipe_id}.png"
     content   = js_file.read_text(encoding="utf-8")
 
-    # Remplace toute valeur de image: (URL externe ou locale) par le chemin local
     new_content = re.sub(
         r'(image\s*:\s*")[^"]*(")',
         rf'\g<1>{local_url}\g<2>',

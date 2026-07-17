@@ -8,7 +8,7 @@ const batonMarechaux = {
   cookTime: "15 MIN",
   difficulty: "MOYEN",
   description: "Un classique de la biscuiterie française. Une meringue française serrée aux amandes et noisettes, dressée en bâtonnets, croquante à l'extérieur et moelleuse à cœur.",
-  image: "/images/baton-marechaux.jpg", // Image d'illustration
+  image: "/images/recipes/baton-marechaux.png", // Image d'illustration
   baseServings: 20,
   
   ingredients: [
