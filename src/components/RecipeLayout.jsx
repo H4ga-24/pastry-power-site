@@ -8,6 +8,8 @@ import OptimizedImage from './OptimizedImage';
 import { useAuth } from '../AuthContext';
 import { catalog } from '../data/catalog';
 import RecipeFeedback from './RecipeFeedback';
+import RecipeNotes from './RecipeNotes';
+import RelatedRecipes from './RelatedRecipes';
 import { supabase } from '../supabase';
 import { parseCookTime, formatTime, playTimerAlarm } from '../utils/cookingTime';
 
@@ -87,6 +89,7 @@ const RecipeLayout = ({ recipe }) => {
   );
 
   const pageUrl = `${SITE_URL}/recipe/${recipe.id}`;
+  const absoluteImage = recipe.image && recipe.image.startsWith('/') ? `${SITE_URL}${recipe.image}` : recipe.image;
 
   const formatDurationISO8601 = (timeString) => {
     if (!timeString) return undefined;
@@ -114,8 +117,11 @@ const RecipeLayout = ({ recipe }) => {
     '@type': 'Recipe',
     name: recipe.title,
     description: recipe.description || '',
-    image: recipe.image ? [recipe.image] : [],
+    image: absoluteImage ? [absoluteImage] : [],
     author: { '@type': 'Organization', name: 'Pastry Power', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'Pastry Power', url: SITE_URL },
+    // Fiche VIP vue par un non-abonné : les données structurées ne décrivent que l'aperçu.
+    ...(isVipRecipe ? { isAccessibleForFree: false } : {}),
     url: pageUrl,
     prepTime: formatDurationISO8601(recipe.prepTime),
     cookTime: formatDurationISO8601(recipe.cookTime),
@@ -129,10 +135,10 @@ const RecipeLayout = ({ recipe }) => {
         ratingCount: String(realCount),
       },
     } : {}),
-    recipeIngredient: (recipe.ingredients || []).map(ing =>
+    recipeIngredient: (isLocked ? (recipe.ingredients || []).slice(0, PREVIEW_INGREDIENTS) : (recipe.ingredients || [])).map(ing =>
       `${ing.amount || ''} ${ing.unit || ''} ${ing.name}`.trim()
     ),
-    recipeInstructions: (recipe.steps || []).map((step, i) => ({
+    recipeInstructions: (isLocked ? (recipe.steps || []).slice(0, PREVIEW_STEPS) : (recipe.steps || [])).map((step, i) => ({
       '@type': 'HowToStep',
       position: i + 1,
       name: step.title || `Étape ${i + 1}`,
@@ -158,11 +164,11 @@ const RecipeLayout = ({ recipe }) => {
         <meta property="og:url"         content={pageUrl} />
         <meta property="og:site_name"   content="Pastry Power" />
         <meta property="og:locale"      content="fr_FR" />
-        {recipe.image && <meta property="og:image" content={recipe.image} />}
+        {absoluteImage && <meta property="og:image" content={absoluteImage} />}
         <meta name="twitter:card"        content="summary_large_image" />
         <meta name="twitter:title"       content={`${recipe.title} - Pastry Power`} />
         <meta name="twitter:description" content={recipe.description} />
-        {recipe.image && <meta name="twitter:image" content={recipe.image} />}
+        {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
         <script type="application/ld+json">{JSON.stringify(schemaRecipe)}</script>
       </Helmet>
 
@@ -437,12 +443,16 @@ const RecipeLayout = ({ recipe }) => {
                 </div>
               )}
 
+              {!isLocked && <RecipeNotes id={recipe.id} />}
+
               {!isLocked && <RecipeFeedback recipeId={recipe.id} />}
 
             </div>
           </div>
         </div>
       </div>
+
+      <RelatedRecipes id={recipe.id} />
 
       {!isLocked && (
         <button

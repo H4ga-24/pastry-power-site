@@ -72,7 +72,8 @@ export default function ForumPostPage() {
     setReplies(prev => prev.filter(r => r.id !== id));
   }
 
-  const getDisplayName = (profiles) => {
+  const getDisplayName = (profiles, isAnonymous = false) => {
+    if (isAnonymous) return 'Anonyme';
     return profiles?.username || 'Anonyme';
   };
 
@@ -102,7 +103,7 @@ export default function ForumPostPage() {
               <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap">{post.body}</p>
               <div className="flex items-center justify-between mt-4">
                 <p className="text-xs text-gray-600">
-                  par <span className="text-gray-400">{getDisplayName(post.profiles)}</span> · {new Date(post.created_at).toLocaleDateString('fr-FR')}
+                  par <span className="text-gray-400">{getDisplayName(post.profiles, post.is_anonymous)}</span> · {new Date(post.created_at).toLocaleDateString('fr-FR')}
                 </p>
                 {user?.id === post.user_id && (
                   <button onClick={handleDeletePost} className="flex items-center gap-1 text-xs text-gray-600 hover:text-red-400 transition-colors">

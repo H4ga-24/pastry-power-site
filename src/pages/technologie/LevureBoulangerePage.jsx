@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Thermometer, FlaskConical, Microscope, Zap } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Sn
 export const recipeData = {
   title: "La Levure Boulangère (Biologique)", // ex: "La Farine"
   category: "Technologie - Levures Biologiques",
-  description: "Fiche technique détaillée.",
-  image: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Compressed_fresh_yeast_-_1.jpg", // Image par défaut
+  description: "Fiche technique détaillée sur la levure boulangère : origine, fermentation alcoolique, classification et ennemis mortels.",
+  image: "/images/recipes/brioche-nanterre.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const LevureBoulangerePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : La Levure Boulangère (Biologique) - Maison Dorée</title>
+        <title>Fiche Technique : La Levure Boulangère (Biologique) - Pastry Power</title>
         <meta name="description" content="Fiche technique détaillée sur la levure boulangère : origine, fermentation alcoolique, classification et ennemis mortels." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const LevureBoulangerePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Compressed_fresh_yeast_-_1.jpg" 
+            src="/images/recipes/brioche-nanterre.png" 
             alt="La Levure Boulangère" 
             className="w-full h-full object-cover"
           />

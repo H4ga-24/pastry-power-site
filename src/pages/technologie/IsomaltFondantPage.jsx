@@ -1,14 +1,14 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Thermometer } from 'lucide-react';
 // 👇 COPIE ÇA DANS TOUS TES FICHIERS TECHNO 👇
 export const recipeData = {
   title: "Isomalt & Fondant Pâtissier", // ex: "La Farine"
-  category: "Technologie - sucres",
-  description: "Fiche technique détaillée.",
-  image: "https://cdn8.futura-sciences.com/a1920/images/glossaire/Celine/pectine%20%C2%A0MaxCab%2C%20Adobe%20Stock.jpeg", // Image par défaut
+  category: "Technologie - Sucres",
+  description: "Tout savoir sur l'isomalt et le fondant pâtissier : histoire, composition, propriétés et techniques de manipulation.",
+  image: "/images/recipes/cuisson-sucre-caramel.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
   isVip: true
@@ -18,7 +18,7 @@ const IsomaltFondantPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Isomalt & Fondant Pâtissier - Maison Dorée</title>
+        <title>Fiche Technique : Isomalt & Fondant Pâtissier - Pastry Power</title>
         <meta name="description" content="Tout savoir sur l'isomalt et le fondant pâtissier : histoire, composition, propriétés et techniques de manipulation." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const IsomaltFondantPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://files.meilleurduchef.com/mdc/photo/recette/marbrer-millefeuille/marbrer-millefeuille-etape-2-480.jpg" 
+            src="/images/recipes/cuisson-sucre-caramel.png" 
             alt="Isomalt & Fondant" 
             className="w-full h-full object-cover"
           />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, Droplets, Flame, Thermometer } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, Droplets, Flame, Thermomet
 export const recipeData = {
   title: "Les Chocolats de Couverture", // ex: "La Farine"
   category: "Technologie - Chocolat (Tech)",
-  description: "Fiche technique détaillée.",
-  image: "https://i0.wp.com/lapistacheraie.wordpress.com/wp-content/uploads/2015/06/choco5.jpg", // Image par défaut
+  description: "Fiche technique sur les chocolats de couverture : définition, tempérage, fluidité et règles d'or pour un résultat professionnel.",
+  image: "/images/recipes/glacage-chocolat-noir.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const ChocolatsCouverturePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Les Chocolats de Couverture - Maison Dorée</title>
+        <title>Fiche Technique : Les Chocolats de Couverture - Pastry Power</title>
         <meta name="description" content="Fiche technique sur les chocolats de couverture : définition, tempérage, fluidité et règles d'or pour un résultat professionnel." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const ChocolatsCouverturePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://i0.wp.com/lapistacheraie.wordpress.com/wp-content/uploads/2015/06/choco5.jpg" 
+            src="/images/recipes/glacage-chocolat-noir.png" 
             alt="Les Chocolats de Couverture" 
             className="w-full h-full object-cover"
           />

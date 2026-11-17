@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const CONSENT_KEY = 'pp_cookie_consent'; // 'accepted' | 'declined'
+import { getConsent, setConsent, hasCertifiedCmp, waitForCmp } from '../lib/consent';
 
-export const getConsent = () => {
-  try { return localStorage.getItem(CONSENT_KEY); }
-  catch { return null; }
-};
-
-const setConsent = (value) => {
-  try {
-    localStorage.setItem(CONSENT_KEY, value);
-    window.dispatchEvent(new CustomEvent('pp:consent', { detail: value }));
-  } catch {}
-};
+// Conservé pour les imports existants.
+export { getConsent };
 
 const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!getConsent()) {
-      const t = setTimeout(() => setVisible(true), 600);
-      return () => clearTimeout(t);
-    }
+    if (getConsent()) return undefined;
+    let alive = true;
+    // Si le message RGPD de Google (CMP certifiée) est actif, c'est lui qui gère le consentement :
+    // on n'affiche pas deux bandeaux.
+    waitForCmp(3000).then((cmp) => { if (alive && !cmp) setVisible(true); });
+    const watcher = setInterval(() => { if (hasCertifiedCmp()) setVisible(false); }, 1000);
+    const stop = setTimeout(() => clearInterval(watcher), 20000);
+    return () => { alive = false; clearInterval(watcher); clearTimeout(stop); };
   }, []);
 
   if (!visible) return null;

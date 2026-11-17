@@ -1,5 +1,16 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "redirects": [
+    { "source": "/vip/technologie/:id", "destination": "/techno/:id", "permanent": true },
+    { "source": "/technologie/chocolat", "destination": "/technologie/tech-chocolat", "permanent": true },
+    { "source": "/cuisine/cake-sale", "destination": "/patisserie/cake-sale", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/login", "destination": "/spa.html" },
+    { "source": "/reset-password", "destination": "/spa.html" },
+    { "source": "/vip", "destination": "/spa.html" },
+    { "source": "/communaute", "destination": "/spa.html" },
+    { "source": "/communaute/:path*", "destination": "/spa.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -7,7 +18,15 @@
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]

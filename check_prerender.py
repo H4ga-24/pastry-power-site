@@ -2,15 +2,19 @@
 """
 check_prerender.py
 ------------------
-Barrière POST-DÉPLOIEMENT. Pour chaque URL du sitemap, vérifie dans le HTML
-BRUT (sans JS) : title + meta description + h1 + texte, ET la présence des
-liens du footer (mentions légales, confidentialité, contact, à propos).
-En plus : contrôle dédié que les 4 pages légales sont bien dans le sitemap
-et prérendues (pas des coquilles SPA vides).
+Contrôle APRÈS DÉPLOIEMENT, à lancer avant chaque nouvelle demande AdSense.
 
-⚠  Le footer n'est dans le HTML statique QUE si tu as modifié prerender.mjs
-   pour l'injecter. Tant que ce n'est pas fait, la colonne footer sera rouge
-   partout — c'est attendu, ce script sert justement à valider ce correctif.
+Pour chaque URL du sitemap, dans le HTML BRUT (sans JavaScript, comme un robot) :
+  - title + meta description + h1 + assez de texte
+  - URL canonique identique à l'adresse de la page (pas de doublon de l'accueil)
+  - pas de balise noindex
+  - liens du pied de page (mentions légales, confidentialité, contact, à propos)
+
+Puis des contrôles globaux :
+  - aucun titre en double sur le site
+  - une adresse inexistante répond bien 404 (pas de « fausse page »)
+  - les fiches technologie sont dans le sitemap, les rubriques vides n'y sont pas
+  - ads.txt et robots.txt sont en place
 
     pip install requests beautifulsoup4
     python check_prerender.py
@@ -37,6 +41,10 @@ except ImportError:
 UA = "PastryPowerPrerenderCheck/1.0"
 TIMEOUT = 15
 MIN_TEXT = 250
+MIN_WORDS_RECIPE = 150   # en dessous, une fiche recette est jugée trop courte
+PUBLISHER_ID = "pub-4373695426341440"
+EMPTY_SECTIONS = ["/alternative/sans-sucre", "/alternative/vegan", "/alternative/sans-lactose",
+                  "/alternative/vegetal", "/cuisine/traiteur"]
 
 # liens attendus dans le footer (chemins, pas URLs complètes)
 FOOTER_LINKS = ["/mentions-legales", "/politique-confidentialite",
@@ -55,8 +63,9 @@ def get_sitemap_urls(sitemap_url):
 
 
 def audit(url):
-    r = {"url": url, "status": None, "title_len": 0, "meta": False,
-         "h1": 0, "text": 0, "footer": 0, "severity": "OK", "problems": []}
+    r = {"url": url, "status": None, "title": "", "title_len": 0, "meta": False,
+         "h1": 0, "text": 0, "words": 0, "canonical": "", "footer": 0,
+         "severity": "OK", "problems": []}
     try:
         resp = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
         r["status"] = resp.status_code
@@ -67,7 +76,12 @@ def audit(url):
         soup = BeautifulSoup(html, "html.parser")
 
         title = (soup.title.string or "").strip() if soup.title else ""
+        r["title"] = title
         r["title_len"] = len(title)
+        canon = soup.find("link", attrs={"rel": "canonical"})
+        r["canonical"] = (canon.get("href", "") if canon else "").strip()
+        robots = soup.find("meta", attrs={"name": "robots"})
+        noindex = bool(robots and "noindex" in robots.get("content", "").lower())
         md = soup.find("meta", attrs={"name": "description"})
         r["meta"] = bool(md and md.get("content", "").strip())
         r["h1"] = len(soup.find_all("h1"))
@@ -78,7 +92,9 @@ def audit(url):
 
         for t in soup(["script", "style", "noscript"]):
             t.decompose()
-        r["text"] = len(" ".join(soup.get_text(" ").split()))
+        clean_text = " ".join(soup.get_text(" ").split())
+        r["text"] = len(clean_text)
+        r["words"] = len(clean_text.split())
 
         if r["title_len"] == 0: r["problems"].append("pas de <title>")
         if r["h1"] == 0: r["problems"].append("pas de <h1>")
@@ -87,8 +103,17 @@ def audit(url):
         if r["footer"] < len(FOOTER_LINKS):
             r["problems"].append(f"footer {r['footer']}/{len(FOOTER_LINKS)} liens")
 
-        hard = r["title_len"] == 0 or r["h1"] == 0 or r["text"] < MIN_TEXT
-        soft = (not r["meta"]) or r["footer"] < len(FOOTER_LINKS)
+        same = urlparse(r["canonical"]).path.rstrip("/") == urlparse(url).path.rstrip("/")
+        if not r["canonical"]: r["problems"].append("pas d'URL canonique")
+        elif not same: r["problems"].append(f"canonique ≠ page ({r['canonical']})")
+        if noindex: r["problems"].append("page en noindex dans le sitemap")
+        short_recipe = ("/recipe/" in url and "pp-paywall" not in html
+                        and r["words"] < MIN_WORDS_RECIPE)
+        if short_recipe: r["problems"].append(f"fiche courte ({r['words']} mots)")
+
+        hard = (r["title_len"] == 0 or r["h1"] == 0 or r["text"] < MIN_TEXT
+                or not same or noindex)
+        soft = (not r["meta"]) or r["footer"] < len(FOOTER_LINKS) or short_recipe
         r["severity"] = "ROUGE" if hard else ("ORANGE" if soft else "OK")
     except Exception as e:
         r["severity"] = "ROUGE"; r["problems"].append(f"{e.__class__.__name__}: {e}")
@@ -128,6 +153,50 @@ def main():
             for r in sorted(bucket, key=lambda x: x["url"])[:40]:
                 print(f"  {r['url']}\n      → {', '.join(r['problems'])}")
 
+    # --- titres en double ---
+    by_title = {}
+    for r in results:
+        if r["title"]:
+            by_title.setdefault(r["title"], []).append(r["url"])
+    doubles = {t: u for t, u in by_title.items() if len(u) > 1}
+    if doubles:
+        print(f"\n🔴 TITRES EN DOUBLE ({len(doubles)}) :")
+        for t, u in list(doubles.items())[:20]:
+            print(f"  « {t} » → {len(u)} pages, ex. {u[0]} et {u[1]}")
+
+    # --- contrôles globaux ---
+    print("\n" + "=" * 55 + "\nCONTRÔLES GLOBAUX\n" + "=" * 55)
+    global_errors = len(doubles)
+
+    def check(label, ok, detail=""):
+        nonlocal global_errors
+        if not ok:
+            global_errors += 1
+        print(f"  {'✓' if ok else '✗'} {label}{' — ' + detail if detail else ''}")
+
+    def fetch(path):
+        try:
+            return requests.get(origin + path, headers={"User-Agent": UA}, timeout=TIMEOUT)
+        except Exception:
+            return None
+
+    if origin:
+        missing = fetch("/cette-page-nexiste-pas-" + str(int(time.time())))
+        check("Une adresse inexistante répond 404", bool(missing is not None and missing.status_code == 404),
+              f"HTTP {missing.status_code}" if missing is not None else "pas de réponse")
+        bad_recipe = fetch("/recipe/recette-qui-nexiste-pas")
+        check("Une recette inexistante répond 404", bool(bad_recipe is not None and bad_recipe.status_code == 404),
+              f"HTTP {bad_recipe.status_code}" if bad_recipe is not None else "pas de réponse")
+        ads = fetch("/ads.txt")
+        check("ads.txt en place", bool(ads is not None and ads.status_code == 200 and PUBLISHER_ID in ads.text))
+        robots = fetch("/robots.txt")
+        check("robots.txt déclare le sitemap", bool(robots is not None and "sitemap" in robots.text.lower()))
+    tech = [u for u in urls if "/techno/" in u]
+    check("Fiches technologie dans le sitemap", len(tech) >= 15, f"{len(tech)} fiches")
+    empties = [p for p in EMPTY_SECTIONS if any(urlparse(u).path.rstrip("/") == p for u in urls)]
+    check("Aucune rubrique vide dans le sitemap", not empties, ", ".join(empties))
+    check("Aucun titre en double", not doubles, f"{len(doubles)} doublon(s)" if doubles else "")
+
     # --- contrôle dédié des 4 pages légales ---
     print("\n" + "=" * 55 + "\nPAGES LÉGALES\n" + "=" * 55)
     sitemap_paths = {urlparse(u).path.rstrip("/") for u in urls}
@@ -142,18 +211,18 @@ def main():
 
     print("\n" + "=" * 55)
     print(f"✅ OK {len([r for r in results if r['severity']=='OK'])}   "
-          f"🟠 {len(orange)}   🔴 {len(rouge)}")
+          f"🟠 {len(orange)}   🔴 {len(rouge)}   contrôles globaux en échec : {global_errors}")
 
     with open(args.csv, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["url", "severity", "status", "title_len", "meta",
-                    "h1", "text", "footer_links", "problems"])
+                    "h1", "text", "words", "canonical", "footer_links", "problems"])
         for r in results:
             w.writerow([r["url"], r["severity"], r["status"], r["title_len"],
-                        r["meta"], r["h1"], r["text"], r["footer"],
+                        r["meta"], r["h1"], r["text"], r["words"], r["canonical"], r["footer"],
                         " | ".join(r["problems"])])
     print(f"📄 {args.csv}")
-    sys.exit(1 if rouge else 0)
+    sys.exit(1 if (rouge or global_errors) else 0)
 
 
 if __name__ == "__main__":

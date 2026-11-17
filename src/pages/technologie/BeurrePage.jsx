@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Thermometer, MapPin } from 'lucide-react';
@@ -17,7 +17,7 @@ const BeurrePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Le Beurre - Maison Dorée</title>
+        <title>Fiche Technique : Le Beurre - Pastry Power</title>
         <meta name="description" content="Tout savoir sur le beurre en pâtisserie : origine, composition, états physiques et réaction de Maillard." />
       </Helmet>
 
@@ -26,7 +26,7 @@ const BeurrePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://producteurslaitiersducanada.ca/sites/default/files/styles/full_width_large/public/CONSU19-009_DFC_ways_to_make_your_life_butter_IMAGE_Leading_1068x711_0.jpg" 
+            src="https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?q=80&w=800" 
             alt="Le Beurre" 
             className="w-full h-full object-cover"
           />

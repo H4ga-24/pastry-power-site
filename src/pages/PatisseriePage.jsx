@@ -1,122 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import { ChefHat, ArrowRight, Crown } from 'lucide-react';
-import { catalog } from '../data/catalog';
-
-// ---------------------------------------------------------------
-// 1. CONFIGURATION DES HUBS (inchangée)
-// ---------------------------------------------------------------
-
-const HUBS = {
-  'patisserie': {
-    title: "Pâtisserie",
-    description: "L'excellence technique au service de la gourmandise.",
-    image: "https://images.unsplash.com/photo-1694449053032-c48fd40fce89?q=60&w=1200&auto=format&fit=crop",
-    sections: [
-      { title: "Biscuits",          id: "biscuit",    image: "https://images.unsplash.com/photo-1691442563474-df78f0cf8f46?q=60&w=600&auto=format&fit=crop",        desc: "Les bases éponges..." },
-      { title: "Pâtes",             id: "pate",       image: "https://plus.unsplash.com/premium_photo-1722693808030-ff33914c4107?q=60&w=600&auto=format&fit=crop",  desc: "Sablée, Feuilletée..." },
-      { title: "Crèmes",            id: "creme",      image: "https://plus.unsplash.com/premium_photo-1664474573144-4375bd16e13c?q=60&w=600&auto=format&fit=crop",  desc: "Pâtissière, Anglaise..." },
-      { title: "Glaçages",          id: "glacage",    image: "https://plus.unsplash.com/premium_photo-1722686589246-f0969c3d72c4?q=60&w=600&auto=format&fit=crop",  desc: "Miroir, Rocher..." },
-      { title: "Mousses",           id: "mousse",     image: "https://images.unsplash.com/flagged/photo-1557234985-425e10c9d7f1?q=60&w=600&auto=format&fit=crop",   desc: "Légèreté aérienne..." },
-      { title: "Inserts",           id: "insert",     image: "https://www.femmeactuelle.fr/imgre/fit/~1~fac~2022~01~13~cbd82aad-1bf5-425d-b9b5-b8b62eb8ef92.jpeg/1200x630/focus-point/1189%2C933/patisserie-comment-faire-un-insert-comme-un-chef.jpg", desc: "Cœurs fruités..." },
-      { title: "Crémeux",           id: "cremeux",    image: "https://plus.unsplash.com/premium_photo-1701210418103-4a912af9398f?q=60&w=600&auto=format&fit=crop",  desc: "Onctuosité..." },
-      { title: "Petits Fours Secs", id: "petit-four", image: "https://plus.unsplash.com/premium_photo-1726072366210-8e83c3406c4b?q=60&w=600&auto=format&fit=crop",  desc: "Sablés..." },
-      { title: "Gâteaux de Voyage", id: "voyage",     image: "https://images.unsplash.com/photo-1662793295930-15702b7a1f37?q=60&w=600&auto=format&fit=crop",        desc: "Cakes, Madeleines..." },
-      { title: "Cakes Salés",       id: "cake-sale",  image: "https://images.unsplash.com/photo-1584796101179-52cfea2e6f52?q=60&w=600&auto=format&fit=crop",        desc: "Traiteur..." },
-      { title: "Pâte à Choux",      id: "choux",      image: "https://images.unsplash.com/photo-1761637604739-790197a32073?q=60&w=600&auto=format&fit=crop",        desc: "Éclairs, Choux..." },
-      { title: "Tartes",            id: "tarte",      image: "https://plus.unsplash.com/premium_photo-1664472613567-2176b50ddb28?q=60&w=600&auto=format&fit=crop",  desc: "Fonds croquants..." },
-      { title: "Entremets",         id: "entremets",  image: "https://images.unsplash.com/photo-1541779859250-7c67d623e4da?q=60&w=800&auto=format&fit=crop",        desc: "Montages..." },
-      { title: "Desserts Régionaux",id: "regional",   image: "https://images.unsplash.com/photo-1631978931011-a033b99bce1e?q=60&w=600&auto=format&fit=crop",        desc: "Traditions..." },
-    ],
-  },
-  'alternative': {
-    title: "Alternative & Bien-être",
-    description: "La pâtisserie adaptée à tous les régimes.",
-    sections: [
-      { title: "Sans Gluten",       id: "sans-gluten",  image: "https://plus.unsplash.com/premium_photo-1700399458190-eb33043ae7b2?q=60&w=600&auto=format&fit=crop", desc: "Farines de riz, maïs, sarrasin..." },
-      { title: "Sans Sucre / IG Bas",id: "sans-sucre",  image: "https://images.unsplash.com/photo-1655169947079-5b2a38815147?q=60&w=600&auto=format&fit=crop",       desc: "Miel, Agave, Coco, Édulcorants." },
-      { title: "Végétal / Végan",   id: "vegan",        image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=60&w=600",                            desc: "Sans produits animaux." },
-      { title: "Sans Lactose",      id: "sans-lactose", image: "https://images.unsplash.com/photo-1600788907416-456578634209?q=60&w=600",                            desc: "Laits végétaux et huiles." },
-    ],
-  },
-  'technologie': {
-    title: "Technologie",
-    description: "La science des ingrédients et des réactions.",
-    sections: [
-      { title: "Farines",   id: "farine",    image: "https://images.unsplash.com/photo-1545587195-a625d872ca82?q=60&w=600&auto=format&fit=crop",                        desc: "Blés et gluten." },
-      { title: "Sucres",    id: "sucre",     image: "https://plus.unsplash.com/premium_photo-1744312220263-a93627dc6801?q=60&w=600&auto=format&fit=crop",             desc: "Saccharose et sirops." },
-      { title: "Corps Gras",id: "gras",      image: "https://images.unsplash.com/photo-1652282556241-0ce13285d00f?q=60&w=600&auto=format&fit=crop",                   desc: "Beurre et huiles." },
-      { title: "Gélifiants",id: "gelifiant", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=60&w=600&auto=format&fit=crop",            desc: "Gélatine, Pectine..." },
-      { title: "Œufs",      id: "oeuf",      image: "https://images.unsplash.com/photo-1737099950756-9869b0383ba7?q=60&w=600&auto=format&fit=crop",                   desc: "Structure et émulsion." },
-      { title: "Levures",   id: "levure",    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=60&w=600&auto=format&fit=crop",                   desc: "Fermentations et poudres." },
-      { title: "Chocolat",  id: "chocolat",  image: "https://plus.unsplash.com/premium_photo-1723568493016-5e5cdc069ff3?q=60&w=600&auto=format&fit=crop",            desc: "Cristallisation et tempérage." },
-    ],
-  },
-  'confiserie': {
-    title: "Confiserie",
-    description: "Le travail du sucre et du chocolat.",
-    sections: [
-      { title: "Macarons",           id: "macaron",            image: "https://images.unsplash.com/photo-1702034519504-b7cf62c36413?q=60&w=600&auto=format&fit=crop",      desc: "Coques et ganaches." },
-      { title: "Autres Confiseries", id: "confiserie-diverse", image: "https://plus.unsplash.com/premium_photo-1674819643863-7c9e5fe09297?q=60&w=600&auto=format&fit=crop", desc: "Caramels, pâtes de fruits." },
-    ],
-  },
-  'cuisine': {
-    title: "Cuisine",
-    description: "L'univers salé et traiteur.",
-    sections: [
-      { title: "Traiteur",    id: "traiteur",  image: "https://images.unsplash.com/photo-1740047602722-b4993b79e4b7?q=60&w=600&auto=format&fit=crop", desc: "Pièces cocktails." },
-      { title: "Sauces",      id: "sauce",     image: "https://images.unsplash.com/photo-1563599175592-c58dc214deff?q=60&w=600&auto=format&fit=crop", desc: "Bases salées." },
-      { title: "Cakes Salés", id: "cake-sale", image: "/images/cake-sale.jpg",                                                                        desc: "Cakes Salés..." },
-    ],
-  },
-  'chocolaterie': {
-    title: "Chocolaterie",
-    description: "L'art du tempérage, des ganaches et des moulages.",
-    sections: [],
-  },
-};
-
-const URL_TO_SUBCATEGORY = {
-  'biscuit':            'Biscuits',
-  'pate':               'Pâtes',
-  'creme':              'Crèmes',
-  'glacage':            'Glaçages',
-  'mousse':             'Mousses',
-  'insert':             'Inserts',
-  'cremeux':            'Crémeux',
-  'petit-four':         'Petits Fours Secs',
-  'voyage':             'Gâteaux de Voyage',
-  'cake-sale':          'Cakes Salés',
-  'choux':              'Pâte à Choux',
-  'tarte':              'Tartes',
-  'entremets':          'Entremets',
-  'regional':           'Desserts Régionaux',
-  'sans-gluten':        'Sans Gluten',
-  'sans-sucre':         'Sans Sucre / IG Bas',
-  'vegan':              'Végétal / Végan',
-  'sans-lactose':       'Sans Lactose',
-  'macaron':            'Macarons',
-  'confiserie-diverse': 'Autres Confiseries',
-  'traiteur':           'Traiteur',
-  'sauce':              'Sauces',
-};
-
-const TECH_MAPPING = {
-  'farine':        'farine',
-  'sucre':         'sucre',
-  'gras':          'gras',
-  'gelifiant':     'gelifiant',
-  'oeuf':          'oeuf',
-  'levure':        'levure',
-  'tech-chocolat': 'chocolat',
-};
-
-// ---------------------------------------------------------------
-// 2. Helpers
-// ---------------------------------------------------------------
-
-const normalize = (str) =>
-  str ? str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') : '';
+import Seo from '../components/Seo';
+import {
+  HUBS, getHubItems, getSectionItems, getVisibleSections, isHubMode, itemUrl, canonicalListPath,
+} from '../data/hubs';
 
 // ---------------------------------------------------------------
 // 3. COMPOSANT
@@ -136,45 +24,45 @@ const PatisseriePage = ({ category: propCategory }) => {
 
   // Ces calculs doivent être AVANT tout return conditionnel (règle des hooks React)
   const isTechSection = activeHubId === 'technologie';
-  const targetExactSubCategory = URL_TO_SUBCATEGORY[activeSectionId];
+  const visibleSections = useMemo(() => getVisibleSections(activeHubId), [activeHubId]);
+  const hubMode = !activeSectionId && isHubMode(activeHubId);
+  const activeSection = activeSectionId
+    ? (activeHub?.sections || []).find(s => s.id === activeSectionId) || null
+    : null;
 
-  const filteredItems = useMemo(() => {
-    return catalog.filter(item => {
-      if (isTechSection) {
-        if (!item.isTech) return false;
-        const techKeyword = TECH_MAPPING[activeSectionId] || activeSectionId;
-        const search = normalize(techKeyword);
-        return normalize(item.category).includes(search) || normalize(item.id).includes(search);
-      }
-      if (item.isTech) return false;
+  const filteredItems = useMemo(
+    () => (activeSectionId ? getSectionItems(activeHubId, activeSectionId) : getHubItems(activeHubId)),
+    [activeHubId, activeSectionId],
+  );
 
-      if (targetExactSubCategory) {
-        return item.subCategory?.includes(targetExactSubCategory);
-      }
-
-      return normalize(item.category) === normalize(activeHubId);
-    });
-  }, [activeHubId, activeSectionId, isTechSection, targetExactSubCategory]);
-
-  const pageTitle = isTechSection
-    ? (activeHub?.sections?.find(s => s.id === activeSectionId)?.title || activeHubId)
-    : (targetExactSubCategory || activeHub?.title || activeHubId);
+  const pageTitle = activeSection?.title || activeHub?.title || activeHubId;
+  const canonicalPath = canonicalListPath(activeHubId, activeSectionId);
+  const seoDescription = activeSection?.intro || activeHub?.intro || activeHub?.description || '';
 
   // A. MODE HUB
-  if (!activeSectionId && activeHub?.sections?.length > 0) {
+  if (hubMode) {
     return (
+      <>
+      <Seo
+        title={`${activeHub.title} : fiches et recettes | Pastry Power`}
+        description={seoDescription}
+        path={canonicalPath}
+      />
       <div className="min-h-screen bg-[#121212] text-white pt-24 px-6 pb-20 font-sans">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-serif mb-6">{activeHub.title}</h1>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg mb-8">{activeHub.description}</p>
+            {activeHub.intro && (
+              <p className="text-gray-500 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">{activeHub.intro}</p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {activeHub.sections.map((sub) => (
+            {visibleSections.map((sub) => (
               <Link
                 key={sub.id}
-                to={`/${activeHubId}/${sub.id}`}
+                to={sub.path}
                 className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10 hover:border-[#D4AF37] transition-all duration-500"
               >
                 <div className="aspect-video bg-gray-900 flex items-center justify-center overflow-hidden">
@@ -200,30 +88,64 @@ const PatisseriePage = ({ category: propCategory }) => {
               </Link>
             ))}
           </div>
+
+          {filteredItems.length <= 30 && (
+            <div className="mt-20">
+              <h2 className="text-3xl font-serif mb-8 text-center">
+                Toutes les fiches <span className="text-[#D4AF37] italic">{activeHub.title}</span>
+              </h2>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {filteredItems.map((item) => (
+                  <li key={item.id}>
+                    <Link
+                      to={itemUrl(item)}
+                      className="block h-full bg-[#1a1a1a] rounded-xl border border-white/10 hover:border-[#D4AF37] transition-colors p-5"
+                    >
+                      <span className="flex items-center gap-2 font-serif text-xl text-white mb-2">
+                        {item.title}
+                        {item.isVip && (
+                          <span className="bg-[#D4AF37] text-black text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 font-sans">
+                            <Crown size={10} fill="black" /> VIP
+                          </span>
+                        )}
+                      </span>
+                      <span className="block text-gray-500 text-sm leading-relaxed">{item.description}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
+      </>
     );
   }
 
   // B. MODE LISTE DES RECETTES
 
   // Correction cruciale pour le SEO AdSense et le Paywall
-  const getItemUrl = (item) => {
-    return item.isTech ? `/techno/${item.id}` : `/recipe/${item.id}`;
-  };
+  const getItemUrl = itemUrl;
 
   return (
+    <>
+    <Seo
+      title={`${pageTitle} : ${filteredItems.length} fiche${filteredItems.length > 1 ? 's' : ''} | Pastry Power`}
+      description={seoDescription}
+      path={canonicalPath}
+      noindex={filteredItems.length === 0}
+    />
     <div className="min-h-screen bg-[#121212] text-white pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Link
-            to={isTechSection || targetExactSubCategory ? `/${activeHubId}` : '/'}
+            to={activeSectionId ? `/${activeHubId}` : '/'}
             className="text-gray-500 hover:text-[#D4AF37] text-xs uppercase tracking-widest mb-4 block"
           >
             ← Retour
           </Link>
           <h1 className="text-5xl font-serif mb-4 capitalize">{pageTitle}</h1>
-          <p className="text-gray-400">{filteredItems.length} fiche(s) trouvée(s)</p>
+          <p className="text-gray-400">{filteredItems.length} fiche{filteredItems.length > 1 ? 's' : ''}{isTechSection ? ' de technologie' : ''}</p>
         </div>
 
         {filteredItems.length > 0 ? (
@@ -275,6 +197,7 @@ const PatisseriePage = ({ category: propCategory }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

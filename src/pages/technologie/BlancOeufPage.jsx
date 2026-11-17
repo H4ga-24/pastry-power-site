@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Wind } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Sn
 export const recipeData = {
   title: "Le Blanc d'Œuf (Albumen)", // ex: "La Farine"
   category: "Technologie - Oeuf",
-  description: "Fiche technique détaillée.",
-  image: "https://img.cuisineaz.com/1200x675/2020/12/16/i158469-creme-liquide.jpeg", // Image par défaut
+  description: "Fiche technique sur le blanc d'œuf en pâtisserie : composition, foisonnement, rôle dans les meringues et astuces de conservation.",
+  image: "/images/recipes/meringue-francaise.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const BlancOeufPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Le Blanc d'Œuf (Albumen) - Maison Dorée</title>
+        <title>Fiche Technique : Le Blanc d'Œuf (Albumen) - Pastry Power</title>
         <meta name="description" content="Fiche technique sur le blanc d'œuf en pâtisserie : composition, foisonnement, rôle dans les meringues et astuces de conservation." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const BlancOeufPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://img-3.journaldesfemmes.fr/q4Q_6RdyxFOxhyelsA4S_AB_AUg=/1500x/smart/733d71af35df4530a62bc425f19a1be7/ccmcms-jdf/25729935.jpg" 
+            src="/images/recipes/meringue-francaise.png" 
             alt="Le Blanc d'Œuf" 
             className="w-full h-full object-cover"
           />

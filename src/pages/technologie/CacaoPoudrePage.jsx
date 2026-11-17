@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, TestTube, FlaskConical, Droplets } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Te
 export const recipeData = {
   title: "Le Cacao en Poudre", // ex: "La Farine"
   category: "Technologie - Chocolat (Tech)",
-  description: "Fiche technique détaillée.",
+  description: "Fiche technique détaillée sur le cacao en poudre : origine, composition, différence entre cacao naturel et alcalinisé, et règles d'utilisation en pâtisserie.",
   image: "https://images.unsplash.com/photo-1704079783785-cfd81c4b99b6?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const CacaoPoudrePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Le Cacao en Poudre - Maison Dorée</title>
+        <title>Fiche Technique : Le Cacao en Poudre - Pastry Power</title>
         <meta name="description" content="Fiche technique détaillée sur le cacao en poudre : origine, composition, différence entre cacao naturel et alcalinisé, et règles d'utilisation en pâtisserie." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const CacaoPoudrePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://img.cuisineaz.com/1024x768/2018/08/17/i141739-cacao-en-poudre.jpeg" 
+            src="https://images.unsplash.com/photo-1704079783785-cfd81c4b99b6?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
             alt="Le Cacao en Poudre" 
             className="w-full h-full object-cover"
           />

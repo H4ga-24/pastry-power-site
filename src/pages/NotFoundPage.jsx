@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CloudOff, Home } from 'lucide-react';
+import Seo from '../components/Seo';
 
 const NotFoundPage = () => {
   return (
     <div className="min-h-screen bg-[#121212] flex flex-col items-center justify-center text-center px-6">
+      <Seo title="Page introuvable | Pastry Power" noindex />
       <div className="bg-[#1a1a1a] p-12 rounded-2xl border border-white/5 shadow-2xl max-w-lg w-full">
         <CloudOff size={80} className="text-[#D4AF37] mx-auto mb-8 opacity-80" />
         

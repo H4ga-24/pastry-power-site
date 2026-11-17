@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Crown } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { getFeaturedItems, getFeaturedTech, itemUrl, countItems } from '../data/hubs';
+
+const featuredRecipes = getFeaturedItems(8);
+const featuredTech = getFeaturedTech(4);
 
 const LandingPage = () => {
   const categories = [
@@ -45,10 +49,11 @@ const LandingPage = () => {
 
   return (
     <div className="bg-[#121212] min-h-screen text-white font-sans">
-      <Helmet>
-        <title>Pastry Power | L'Art de la Pâtisserie et de la Technologie</title>
-        <meta name="description" content="Apprenez la pâtisserie française avec des recettes détaillées, des cours de technologie et un accès exclusif VIP." />
-      </Helmet>
+      <Seo
+        title={"Pastry Power | Recettes de pâtisserie professionnelles et technologie"}
+        description={"Plus de 290 fiches recettes de pâtisserie, confiserie et chocolaterie, et des cours de technologie sur les ingrédients,. Grammages précis, étapes détaillées, conseils de chef."}
+        path="/"
+      />
       
       {/* --- HERO SECTION --- */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -116,6 +121,72 @@ const LandingPage = () => {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* --- SECTION FICHES À DÉCOUVRIR --- */}
+      <section className="py-12 lg:py-20 px-4 max-w-[1600px] mx-auto bg-[#121212]">
+        <div className="text-center mb-10 lg:mb-16">
+          <h2 className="text-3xl md:text-5xl font-serif mb-4">
+            Fiches <span className="text-[#D4AF37] italic">à découvrir</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            {countItems('patisserie') + countItems('confiserie') + countItems('chocolaterie') + countItems('cuisine') + countItems('alternative')} recettes
+            rédigées comme des fiches techniques de laboratoire : grammages précis, étapes dans l'ordre, températures et conseils de chef.
+          </p>
+          <div className="w-20 h-0.5 bg-[#D4AF37]/50 mx-auto mt-6"></div>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+          {featuredRecipes.map((item) => (
+            <Link
+              to={itemUrl(item)}
+              key={item.id}
+              className="group bg-[#1a1a1a] rounded-lg overflow-hidden border border-white/5 hover:border-[#D4AF37]/50 transition-colors"
+            >
+              <div className="aspect-[4/3] overflow-hidden bg-gray-900">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-base md:text-xl font-serif text-white mb-2 group-hover:text-[#D4AF37]">{item.title}</h3>
+                <p className="hidden md:block text-gray-500 text-sm leading-relaxed line-clamp-2">{item.description}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          <div>
+            <h3 className="text-2xl md:text-3xl font-serif text-white mb-3">
+              Comprendre <span className="text-[#D4AF37] italic">les ingrédients</span>
+            </h3>
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+              Pourquoi une crème tranche, pourquoi une pâte se rétracte : les fiches de technologie expliquent le rôle
+              de chaque ingrédient, comme au CAP pâtissier.
+            </p>
+            <Link to="/technologie" className="text-[#D4AF37] text-sm font-bold uppercase tracking-widest hover:underline">
+              Toutes les fiches de technologie →
+            </Link>
+          </div>
+          <ul className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3">
+            {featuredTech.map((item) => (
+              <li key={item.id}>
+                <Link
+                  to={itemUrl(item)}
+                  className="block h-full bg-[#1a1a1a] rounded-lg border border-white/5 hover:border-[#D4AF37]/50 transition-colors p-4"
+                >
+                  <span className="block font-serif text-white text-lg mb-1">{item.title}</span>
+                  <span className="block text-gray-500 text-sm leading-relaxed line-clamp-2">{item.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

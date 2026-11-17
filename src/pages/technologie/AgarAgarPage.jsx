@@ -1,19 +1,18 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Thermometer, FlaskConical, Leaf, Flame } from 'lucide-react';
 
 // 👇 1. IMPORT DE L'IMAGE LOCALE ICI
 // (Vérifiez l'extension : .jpg, .png ou .webp ?)
-import agarAgarImg from '/images/agar-agar.jpg'; 
 
 // 👇 DONNÉES DE LA PAGE (Menu) 👇
 export const recipeData = {
   title: "L'Agar-Agar",
   category: "Technologie - Gélifiants",
   description: "L'algue rouge au pouvoir gélifiant puissant et cassant. Alternative végétale.",
-  image: agarAgarImg, // 👈 2. UTILISATION DE LA VARIABLE
+  image: "/images/agar-agar.jpg",
   prepTime: "Théorie",
   difficulty: "Niveau 1"
 };
@@ -34,7 +33,7 @@ const AgarAgarPage = () => {
           
           {/* 👇 3. UTILISATION DE LA VARIABLE DANS L'IMAGE PRINCIPALE */}
           <img 
-            src={agarAgarImg} 
+            src="/images/agar-agar.jpg" 
             alt="L'Agar-agar" 
             className="w-full h-full object-cover"
           />

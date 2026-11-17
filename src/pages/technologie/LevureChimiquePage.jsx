@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Thermometer, FlaskConical, TestTube } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Sn
 export const recipeData = {
   title: "La Levure Chimique", // ex: "La Farine"
   category: "Technologie - Levures Biologiques",
-  description: "Fiche technique détaillée.",
-  image: "https://img-3.journaldesfemmes.fr/LRtqbv1Nnfkvkm_3P3bWWnLmxrU=/1500x/smart/b30b76812b8e4234a3817cdd0aaa9594/ccmcms-jdf/15657777.jpg", // Image par défaut
+  description: "Fiche technique détaillée sur la levure chimique : composition, double action, différence avec la levure boulangère et règles de dosage.",
+  image: "/images/recipes/muffins-chocolat-noisette.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const LevureChimiquePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : La Levure Chimique - Maison Dorée</title>
+        <title>Fiche Technique : La Levure Chimique - Pastry Power</title>
         <meta name="description" content="Fiche technique détaillée sur la levure chimique : composition, double action, différence avec la levure boulangère et règles de dosage." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const LevureChimiquePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://img-3.journaldesfemmes.fr/LRtqbv1Nnfkvkm_3P3bWWnLmxrU=/1500x/smart/b30b76812b8e4234a3817cdd0aaa9594/ccmcms-jdf/15657777.jpg" 
+            src="/images/recipes/muffins-chocolat-noisette.png" 
             alt="La Levure Chimique" 
             className="w-full h-full object-cover"
           />

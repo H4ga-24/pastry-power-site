@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Droplets, Snowflake } from 'lucide-react';
@@ -7,8 +7,8 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Dr
 export const recipeData = {
   title: "Huiles & Beurre de Cacao", // ex: "La Farine"
   category: "Technologie - Corps Gras",
-  description: "Fiche technique détaillée.",
-  image: "https://www.simkhabiocosmetiques.ca/wp-content/uploads/2015/09/beurre-cacao-morceaux.png", // Image par défaut
+  description: "Tout savoir sur les huiles et le beurre de cacao en pâtisserie : origine, composition, propriétés techniques et tempérage.",
+  image: "/images/recipes/glacage-chocolat-blanc.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
   isVip: true
@@ -18,7 +18,7 @@ const HuilesBeurreCacaoPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Huiles & Beurre de Cacao - Maison Dorée</title>
+        <title>Fiche Technique : Huiles & Beurre de Cacao - Pastry Power</title>
         <meta name="description" content="Tout savoir sur les huiles et le beurre de cacao en pâtisserie : origine, composition, propriétés techniques et tempérage." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const HuilesBeurreCacaoPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://www.simkhabiocosmetiques.ca/wp-content/uploads/2015/09/beurre-cacao-morceaux.png" 
+            src="/images/recipes/glacage-chocolat-blanc.png" 
             alt="Huiles & Beurre de Cacao" 
             className="w-full h-full object-cover"
           />

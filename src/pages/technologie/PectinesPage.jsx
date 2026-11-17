@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Droplets, Thermometer, FlaskConical, Leaf } from 'lucide-react';
@@ -8,7 +8,7 @@ export const recipeData = {
   category: "Technologie - Gélifiants",
   description: "Gélifiant végétal activé par l'acidité. Idéal pour les confitures et pâtes de fruits.",
   // 👇 Image : Poudre blanche (Pectine)
-  image: "https://cdn8.futura-sciences.com/a1920/images/glossaire/Celine/pectine%20%C2%A0MaxCab%2C%20Adobe%20Stock.jpeg",
+  image: "/images/recipes/pates-de-fruits.png",
   prepTime: "Théorie",
   difficulty: "Niveau 2",
   isVip: true
@@ -17,7 +17,7 @@ const PectinesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Les Pectines - Maison Dorée</title>
+        <title>Fiche Technique : Les Pectines - Pastry Power</title>
         <meta name="description" content="Fiche technique détaillée sur les pectines en pâtisserie : origine végétale, différence entre Pectine Jaune et NH, conditions d'activation et règles d'utilisation." />
       </Helmet>
 
@@ -26,7 +26,7 @@ const PectinesPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://cdn8.futura-sciences.com/a1920/images/glossaire/Celine/pectine%20%C2%A0MaxCab%2C%20Adobe%20Stock.jpeg" 
+            src="/images/recipes/pates-de-fruits.png" 
             alt="Les Pectines" 
             className="w-full h-full object-cover"
           />

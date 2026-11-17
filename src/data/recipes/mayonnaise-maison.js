@@ -1,7 +1,7 @@
 const mayonnaiseMaison = {
   id: "mayonnaise-maison",
   title: "Mayonnaise Maison",
-  category: "cuisine", // "Cuisine" est la catégorie la plus adaptée pour les sauces
+  category: "Cuisine", // "Cuisine" est la catégorie la plus adaptée pour les sauces
   subCategory: ["Sauces"], // Catégorie adaptée (Cuisine -> Bases)
   isVip: false,
   prepTime: "10 MIN",

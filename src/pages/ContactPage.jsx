@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 import { Mail } from 'lucide-react';
 
 const ContactPage = () => {
@@ -16,10 +16,11 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-[#121212] text-gray-300 pt-32 pb-20 px-6 font-sans">
-      <Helmet>
-        <title>Contact | Pastry Power</title>
-        <meta name="description" content="Contactez l'équipe Pastry Power pour toute question, suggestion ou collaboration." />
-      </Helmet>
+      <Seo
+        title={"Contact | Pastry Power"}
+        description={"Contactez l'équipe Pastry Power pour toute question, suggestion ou collaboration."}
+        path="/contact"
+      />
 
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
