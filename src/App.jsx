@@ -69,7 +69,7 @@ const App = () => {
 
           {/* --- PAGES STATIQUES --- */}
           <Route path="/mentions-legales"          element={<LegalPage />} />
-          <Route path="/a-propos"                  element={<><Seo title="Qui suis-je ? Alexandre Perreau | Pastry Power" description="Alexandre Perreau, fondateur de Pastry Power : plus de 160 000 passionnés sur TikTok et un site de fiches techniques pour comprendre la pâtisserie, pas seulement la reproduire." path="/a-propos" /><AboutPage /></>} />
+          <Route path="/a-propos"                  element={<><Seo title="Qui suis-je ? | Pastry Power" description="Le créateur de Pastry Power : plus de 160 000 passionnés sur TikTok et un site de fiches techniques pour comprendre la pâtisserie, pas seulement la reproduire." path="/a-propos" /><AboutPage /></>} />
           <Route path="/contact"                   element={<ContactPage />} />
           <Route path="/politique-confidentialite" element={<PrivacyPage />} />
 

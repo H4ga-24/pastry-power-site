@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Clock, ChefHat, Scale, Lightbulb, Users, Minus, Plus, Utensils, Quote, Play, Pause, RotateCcw, Timer, Lock } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -119,7 +118,7 @@ const RecipeLayout = ({ recipe }) => {
     name: recipe.title,
     description: recipe.description || '',
     image: absoluteImage ? [absoluteImage] : [],
-    author: { '@type': 'Person', name: 'Alexandre Perreau', url: `${SITE_URL}/a-propos` },
+    author: { '@type': 'Organization', name: 'Pastry Power', url: SITE_URL },
     publisher: { '@type': 'Organization', name: 'Pastry Power', url: SITE_URL },
     // Fiche VIP vue par un non-abonné : les données structurées ne décrivent que l'aperçu.
     ...(isVipRecipe ? { isAccessibleForFree: false } : {}),
@@ -198,9 +197,6 @@ const RecipeLayout = ({ recipe }) => {
                 {recipe.restTime  && <div className="flex items-center gap-3"><Clock   className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.restTime} REPOS</span></div>}
                 <div className="flex items-center gap-3"><Scale className="w-5 h-5 text-[#D4AF37]" /><span>{recipe.difficulty}</span></div>
               </div>
-              <p className="text-sm text-white/70 -mt-4 mb-8">
-                Par <Link to="/a-propos" className="text-[#D4AF37] hover:underline">Alexandre Perreau</Link>, Pastry Power
-              </p>
             </div>
           </div>
         </div>

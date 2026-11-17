@@ -51,7 +51,7 @@ const LandingPage = () => {
     <div className="bg-[#121212] min-h-screen text-white font-sans">
       <Seo
         title={"Pastry Power | Recettes de pâtisserie professionnelles et technologie"}
-        description={"Plus de 290 fiches recettes de pâtisserie, confiserie et chocolaterie, et des cours de technologie sur les ingrédients, par Alexandre Perreau. Grammages précis, étapes détaillées, conseils de chef."}
+        description={"Plus de 290 fiches recettes de pâtisserie, confiserie et chocolaterie, et des cours de technologie sur les ingrédients,. Grammages précis, étapes détaillées, conseils de chef."}
         path="/"
       />
       

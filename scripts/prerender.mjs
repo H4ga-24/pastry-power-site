@@ -23,7 +23,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
 const DIST = join(ROOT, 'dist')
 const SITE = 'https://pastrypower.fr'
-const AUTHOR = { name: 'Alexandre Perreau', url: `${SITE}/a-propos` }
+// Auteur affiché dans les données structurées : la marque (le nom du créateur reste sur la page « Qui suis-je ? »).
+const AUTHOR = { name: 'Pastry Power', url: `${SITE}/a-propos` }
 const TODAY = new Date().toISOString().slice(0, 10)
 
 // Mêmes seuils que le paywall de l'application (src/components/RecipeLayout.jsx)
@@ -313,7 +314,6 @@ function recipeBodyHTML(recipe, entry, locked) {
     recipe.description ? `<p>${esc(clean(recipe.description))}</p>` : '',
     image ? `<p><img src="${esc(image)}" alt="${esc(recipe.title || entry.title)}"></p>` : '',
     facts ? `<p>${facts}</p>` : '',
-    `<p>Par <a href="/a-propos">${AUTHOR.name}</a>, Pastry Power</p>`,
     ingredientsHTML ? `<h2>Ingrédients</h2>\n<ul>\n${ingredientsHTML}\n</ul>` : '',
     !locked && recipe.equipment?.length ? `<h2>Matériel</h2>\n<ul>\n${recipe.equipment.map((e) => `  <li>${esc(e)}</li>`).join('\n')}\n</ul>` : '',
     stepsHTML ? `<h2>Préparation</h2>\n<ol>\n${stepsHTML}\n</ol>` : '',
@@ -353,7 +353,7 @@ function recipeLd(recipe, entry, locked) {
     name: recipe.title || entry.title,
     description: clean(recipe.description || entry.description),
     ...(image ? { image: [image] } : {}),
-    author: { '@type': 'Person', name: AUTHOR.name, url: AUTHOR.url },
+    author: { '@type': 'Organization', name: AUTHOR.name, url: SITE },
     publisher: { '@type': 'Organization', name: 'Pastry Power', url: SITE },
     url: `${SITE}/recipe/${entry.id}`,
     recipeCategory: entry.subCategory?.[0] || entry.category,
@@ -408,7 +408,7 @@ console.log('  ✓ spa.html et 404.html générés')
   const recipeCount = catalog.filter((e) => !e.isTech).length
   const techItems = catalog.filter((e) => e.isTech)
   const title = 'Pastry Power | Recettes de pâtisserie professionnelles et technologie'
-  const desc = `Plus de ${Math.floor(recipeCount / 10) * 10} fiches recettes de pâtisserie, confiserie et chocolaterie, et des cours de technologie sur les ingrédients, par ${AUTHOR.name}. Grammages précis, étapes détaillées, conseils de chef.`
+  const desc = `Plus de ${Math.floor(recipeCount / 10) * 10} fiches recettes de pâtisserie, confiserie et chocolaterie, et des cours de technologie sur les ingrédients. Grammages précis, étapes détaillées, conseils de chef.`
 
   const hubsHTML = HUB_ORDER
     .map((id) => {
@@ -425,7 +425,7 @@ console.log('  ✓ spa.html et 404.html générés')
   const bodyHTML = `<main>
 <h1>Pastry Power — recettes de pâtisserie professionnelles et technologie</h1>
 <p>Pastry Power réunit ${recipeCount} recettes rédigées comme des fiches techniques de laboratoire : grammages au gramme près, étapes dans l'ordre, températures de cuisson et conseils de chef. À côté des recettes, ${techItems.length} fiches de technologie expliquent le rôle de chaque ingrédient — farine, sucre, œuf, beurre, gélifiants, levures, chocolat — pour comprendre pourquoi une recette réussit ou échoue.</p>
-<p>Le site est écrit par <a href="/a-propos">${AUTHOR.name}</a>, créateur de Pastry Power, suivi par plus de 160 000 passionnés sur TikTok.</p>
+<p>Pastry Power, c'est aussi plus de 160 000 passionnés sur TikTok. <a href="/a-propos">Découvrir le projet</a>.</p>
 <h2>Les rubriques</h2>
 <ul>
 ${hubsHTML}
@@ -454,7 +454,7 @@ ${techItems.map(itemLine).join('\n')}
       name: 'Pastry Power',
       url: `${SITE}/`,
       inLanguage: 'fr-FR',
-      publisher: { '@type': 'Organization', name: 'Pastry Power', url: SITE, founder: { '@type': 'Person', name: AUTHOR.name, url: AUTHOR.url } },
+      publisher: { '@type': 'Organization', name: 'Pastry Power', url: SITE},
     })],
   }), { priority: '1.0', changefreq: 'weekly' })
   console.log('  ✓ Accueil généré')
@@ -523,8 +523,8 @@ for (const hubId of HUB_ORDER) {
 const INFO_PAGES = [
   {
     path: '/a-propos', file: 'src/pages/AboutPage.jsx',
-    title: `Qui suis-je ? ${AUTHOR.name} | Pastry Power`,
-    desc: `${AUTHOR.name}, fondateur de Pastry Power : plus de 160 000 passionnés sur TikTok et un site de fiches techniques pour comprendre la pâtisserie, pas seulement la reproduire.`,
+    title: 'Qui suis-je ? | Pastry Power',
+    desc: `Le créateur de Pastry Power : plus de 160 000 passionnés sur TikTok et un site de fiches techniques pour comprendre la pâtisserie, pas seulement la reproduire.`,
     minWords: 120,
   },
   { path: '/mentions-legales', file: 'src/pages/LegalPage.jsx', minWords: 250 },
@@ -601,7 +601,6 @@ for (const entry of catalog) {
       const bodyHTML = `<article>
 ${breadcrumbHTML(crumbs)}
 ${content}
-<p>Par <a href="/a-propos">${AUTHOR.name}</a>, Pastry Power</p>
 ${locked ? VIP_NOTE(entry.isTech ? 'La suite de ce cours de technologie est accessible aux membres.' : 'La suite de cette fiche est accessible aux membres.') : ''}
 ${relatedHTML(entry.id, entry.isTech ? 'Autres fiches de technologie' : 'Dans la même famille')}
 </article>`
@@ -620,7 +619,7 @@ ${relatedHTML(entry.id, entry.isTech ? 'Autres fiches de technologie' : 'Dans la
             headline: title,
             description: clean(desc),
             ...(absolute(data.image || entry.image) ? { image: [absolute(data.image || entry.image)] } : {}),
-            author: { '@type': 'Person', name: AUTHOR.name, url: AUTHOR.url },
+            author: { '@type': 'Organization', name: AUTHOR.name, url: SITE },
             publisher: { '@type': 'Organization', name: 'Pastry Power', url: SITE },
             mainEntityOfPage: `${SITE}${path}`,
             inLanguage: 'fr-FR',
