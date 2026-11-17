@@ -1,0 +1,294 @@
+id,title,category,isVip,image,desc_len,no_image,remote_image,family
+amarretti,L'Amarretti,Pâtisserie,True,/images/recipes/amarretti.png,166,False,False,
+appareil-creme-prise-salee,Appareil à Crème Prise Salée,Cuisine,False,/images/appareil-creme-prise-salee.jpg,139,True,False,
+appareil-creme-prise-sucree,Appareil à Crème Prise Sucrée,Pâtisserie,False,/images/appareil-creme-prise-sucree.jpg,132,True,False,
+arlequin,L'Arlequin,Pâtisserie,True,/images/recipes/arlequin.png,168,False,False,
+baton-marechaux,Bâtons de maréchaux,Pâtisserie,False,/images/baton-marechaux.jpg,164,True,False,
+beignets-choux,Beignets de Pâte à Choux,Pâtisserie,False,/images/recipes/beignets-choux.png,145,False,False,
+biscuit-amandes,Biscuit aux Amandes,Pâtisserie,False,/images/recipes/biscuit-amandes.png,146,False,False,Biscuit
+biscuit-au-marron,Biscuit au Marron,Pâtisserie,False,/images/biscuit-aux-marron.jpg,131,True,False,Biscuit
+biscuit-aux-noix,Biscuit aux Noix,Pâtisserie,False,/images/biscuit-aux-noix.jpg,129,True,False,Biscuit
+biscuit-chocolat-sans-farine,Biscuit Chocolat Sans Farine,Alternative,False,/images/recipes/biscuit-chocolat-sans-farine.png,138,False,False,Biscuit
+biscuit-cuillere-amande,Biscuit Cuillère Amande,Pâtisserie,False,/images/biscuit-cuillere-amande.jpg,172,True,False,Biscuit
+biscuit-cuillere,Biscuit Cuillère,Pâtisserie,False,/images/biscuit-cuillere.jpg,176,True,False,Biscuit
+biscuit-de-savoie,Biscuit de Savoie,Pâtisserie,False,/images/biscuit-de-savoie.jpg,153,True,False,Biscuit
+biscuit-joconde,Biscuit Joconde,Pâtisserie,True,/images/biscuit-joconde.jpg,142,True,False,Biscuit
+biscuit-roule,Biscuit Roulé,Pâtisserie,False,/images/biscuit-roule.jpg,168,True,False,Biscuit
+biscuit-sacher,Biscuit Sacher,Pâtisserie,True,/images/biscuit-sacher.jpg,169,True,False,Biscuit
+biscuit-viennois,Biscuit Viennois,Pâtisserie,False,/images/biscuit-viennois.jpg,158,True,False,Biscuit
+biscuits-meringues,Biscuits Meringués (Succès),Pâtisserie,True,/images/biscuits-meringues.jpg,137,True,False,
+bonbon-florentin,Bonbon Florentin & Ganache Amère,Chocolaterie,True,/images/recipes/bonbon-florentin.png,154,False,False,Bonbon
+bonbon-moule-caramel-mangue,Bonbon Moulé Caramel Mangue,Chocolaterie,False,/images/recipes/bonbon-moule-caramel-mangue.png,162,False,False,Bonbon
+bonbon-passion-griottine,Bonbon Chocolat Passion Griottine,Chocolaterie,True,/images/recipes/bonbon-passion-griottine.png,173,False,False,Bonbon
+bonbon-pecan-pie,Bonbon Chocolat Pécan Pie,Chocolaterie,True,/images/recipes/bonbon-pecan-pie.png,104,False,False,Bonbon
+bonbon-praline-noisette-coriandre,Bonbon Praliné Noisette & Coriandre,Chocolaterie,True,/images/recipes/bonbon-praline-noisette-coriandre.png,85,False,False,Bonbon
+bonbon-praline-pistache,Bonbon Praliné Pistache & Pâte d'Amande,Chocolaterie,True,/images/recipes/bonbon-praline-pistache.png,80,False,False,Bonbon
+bonbon-tropique,Bonbon Tropique (Fraise & Pamplemousse),Chocolaterie,True,/images/recipes/bonbon-tropique.png,123,False,False,Bonbon
+brioche-nanterre,Brioche Nanterre (Pur Beurre),Pâtisserie,True,/images/recipes/brioche-nanterre.png,109,False,False,
+brioche,Pâte à Brioche,Pâtisserie,True,/images/brioche.jpg,133,True,False,Pâte
+brownie,Brownie aux Noix de Pécan,Pâtisserie,False,/images/brownie.jpg,145,True,False,
+cake-anchois-tomate,"Cake Anchois, Tomates & Olives",Pâtisserie,False,/images/recipes/cake-anchois-tomate.png,78,False,False,Cake
+cake-artichaut-olive,Cake Artichauts & Olives,Pâtisserie,False,/images/recipes/cake-artichaut-olive.png,68,False,False,Cake
+cake-asperges-girolles,Cake Asperges & Girolles,Pâtisserie,True,/images/recipes/cake-asperges-girolles.png,78,False,False,Cake
+cake-aux-fruits,Cake aux Fruits Confits,Pâtisserie,False,/images/cake-aux-fruits.jpg,72,True,False,Cake
+cake-boudin-noir,Cake Boudin Noir & Pomme,Pâtisserie,False,/images/recipes/cake-boudin-noir.png,89,False,False,Cake
+cake-carotte,Cake Salé Carotte & Cumin,Pâtisserie,False,/images/recipes/cake-carotte.png,81,False,False,Cake
+cake-champignons,Cake Champignons de Paris,Pâtisserie,False,/images/recipes/cake-champignons.png,57,False,False,Cake
+cake-cheddar-jambon,"Cake Cheddar, Jambon & Bière",Pâtisserie,False,/images/recipes/cake-cheddar-jambon.png,100,False,False,Cake
+cake-chevre-courgette,Cake Chèvre & Courgette,Pâtisserie,True,/images/recipes/cake-chevre-courgette.png,102,False,False,Cake
+cake-chevre-noix-raisins,"Cake Chèvre, Noix & Raisins",Pâtisserie,False,/images/recipes/cake-chevre-noix-raisins.png,130,False,False,Cake
+cake-foie-volaille,Cake Foie de Volaille & Pignons,Pâtisserie,False,/images/recipes/cake-foie-volaille.png,118,False,False,Cake
+cake-jambon-olive,Cake Jambon & Olives,Pâtisserie,False,/images/recipes/cake-jambon-olive.png,93,False,False,Cake
+cake-lapin-pruneaux,"Cake Lapin, Pruneaux & Cresson",Pâtisserie,False,/images/recipes/cake-lapin-pruneaux.png,126,False,False,Cake
+cake-lard-banane,"Cake Lard, Banane & Cacahuète",Pâtisserie,False,/images/recipes/cake-lard-banane.png,133,False,False,Cake
+cake-lardons-pruneaux,Cake Lardons & Pruneaux,Pâtisserie,False,/images/recipes/cake-lardons-pruneaux.png,83,False,False,Cake
+cake-marbre,Cake marbré,Pâtisserie,False,/images/recipes/cake-marbre.png,64,False,False,Cake
+cake-oceane,Cake Océane,Pâtisserie,False,/images/recipes/cake-oceane.png,92,False,False,Cake
+cake-pdt-courgette,Cake P. de Terre & Courgette,Pâtisserie,False,/images/recipes/cake-pdt-courgette.png,110,False,False,Cake
+cake-poivrons-feta,"Cake Poivrons, Feta & Olives",Pâtisserie,False,/images/recipes/cake-poivrons-feta.png,107,False,False,Cake
+cake-poulet-estragon,Cake Poulet & Estragon,Pâtisserie,False,/images/recipes/cake-poulet-estragon.png,117,False,False,Cake
+cake-ratatouille,Cake Ratatouille,Pâtisserie,False,/images/recipes/cake-ratatouille.png,105,False,False,Cake
+cake-roquefort-lard-noix,"Cake Roquefort, Lard & Noix",Pâtisserie,True,/images/recipes/cake-roquefort-lard-noix.png,103,False,False,Cake
+cake-saint-jacques,Cake Saint-Jacques & Poireaux,Pâtisserie,True,/images/recipes/cake-saint-jacques.png,115,False,False,Cake
+cake-saumon-ciboulette,Cake Saumon Fumé,Pâtisserie,False,/images/recipes/cake-saumon-ciboulette.png,73,False,False,Cake
+cake-saumon-fume,Cake Saumon Fumé & Harengs,Pâtisserie,True,/images/recipes/cake-saumon-fume.png,105,False,False,Cake
+cake-saumon-oseille,Cake Saumon & Oseille,Pâtisserie,False,/images/recipes/cake-saumon-oseille.png,117,False,False,Cake
+cake-thon-poivron,Cake Thon & Poivrons,Pâtisserie,False,/images/recipes/cake-thon-poivron.png,9,False,False,Cake
+cake-tomate-mozza,"Cake Tomate, Mozzarella & Basilic",Pâtisserie,False,/images/recipes/cake-tomate-mozza.png,97,False,False,Cake
+cake-trois-fromages,Cake aux 3 Fromages,Pâtisserie,False,/images/recipes/cake-trois-fromages.png,75,False,False,Cake
+canneles-de-bordeaux,Cannelés de Bordeaux,Pâtisserie,True,/images/recipes/canneles-de-bordeaux.png,122,False,False,
+caramel-beurre-sale-religieuses,Caramel Beurre Salé (Insert),Pâtisserie,False,/images/recipes/caramel-beurre-sale-religieuses.png,141,False,False,
+chouquette,Chouquettes,Pâtisserie,False,/images/chouquette.jpg,104,True,False,
+choux-creme,Choux à la Crème & Craquelin,Pâtisserie,False,/images/recipes/choux-creme.png,119,False,False,
+churros,Churros,Pâtisserie,False,/images/churros.jpg,103,True,False,
+clafoutis,Clafoutis aux Cerises,Pâtisserie,False,/images/recipes/clafoutis.png,87,False,False,
+craquant-breton,Craquant Breton,Pâtisserie,False,/images/recipes/craquant-breton.png,135,False,False,
+craquelin-pate-choux,Craquelin pour Pâte à Choux,Pâtisserie,False,/images/recipes/craquelin-pate-choux.png,127,False,False,
+creme-amande,Crème d'Amande,Pâtisserie,False,/images/recipes/creme-amande.png,96,False,False,Crème
+creme-anglaise,Crème Anglaise,Pâtisserie,False,/images/recipes/creme-anglaise.png,120,False,False,Crème
+creme-bavaroise-cacao,Crème Bavaroise au Cacao,Pâtisserie,False,/images/recipes/creme-bavaroise-cacao.png,136,False,False,Crème
+creme-bavaroise-chocolat-blanc,Crème Bavaroise Chocolat Blanc,Pâtisserie,False,/images/recipes/creme-bavaroise-chocolat-blanc.png,110,False,False,Crème
+creme-bavaroise-chocolat-cannelle,Crème Bavaroise Chocolat Cannelle,Pâtisserie,True,/images/recipes/creme-bavaroise-chocolat-cannelle.png,105,False,False,Crème
+creme-bavaroise-noisette,Crème Bavaroise Noisette,Pâtisserie,True,/images/recipes/creme-bavaroise-noisette.png,126,False,False,Crème
+creme-bavaroise-the,Crème Bavaroise au Thé,Pâtisserie,True,/images/creme-bavaroise-the.jpg,134,True,False,Crème
+creme-bavaroise,Crème Bavaroise Vanille,Pâtisserie,False,/images/recipes/creme-bavaroise.png,149,False,False,Crème
+creme-beurre-meringue-italienne,Crème au Beurre (Meringue Italienne),Pâtisserie,True,/images/recipes/creme-beurre-meringue-italienne.png,121,False,False,Crème
+creme-beurre-oeufs,Crème au Beurre (Pâte à Bombe),Pâtisserie,False,/images/recipes/creme-beurre-oeufs.png,124,False,False,Crème
+creme-brulee-dulcey-cafe,Crème Brûlée Dulcey Café,Pâtisserie,True,/images/recipes/creme-brulee-dulcey-cafe.png,106,False,False,Crème
+creme-brulee,Crème Brûlée Vanille,Pâtisserie,False,/images/recipes/creme-brulee.png,109,False,False,Crème
+creme-caramel,Crème au Caramel,Pâtisserie,False,/images/recipes/creme-caramel.png,94,False,False,Crème
+creme-chantilly,Crème Chantilly,Pâtisserie,False,/images/recipes/creme-chantilly.png,106,False,False,Crème
+creme-chiboust,Crème Chiboust,Pâtisserie,True,/images/recipes/creme-chiboust.png,131,False,False,Crème
+creme-diplomate,Crème Diplomate,Pâtisserie,False,/images/recipes/creme-diplomate.png,157,False,False,Crème
+creme-frangipane,Crème Frangipane,Pâtisserie,False,/images/recipes/creme-frangipane.png,114,False,False,Crème
+creme-marrons,Crème Légère aux Marrons,Pâtisserie,True,/images/recipes/creme-marrons.png,125,False,False,Crème
+creme-mascarpone,Crème Mascarpone (Chantilly),Pâtisserie,False,/images/recipes/creme-mascarpone.png,146,False,False,Crème
+creme-mousseline,Crème Mousseline,Pâtisserie,True,/images/recipes/creme-mousseline.png,131,False,False,Crème
+creme-nougat,Crème Pâtissière au Nougat,Pâtisserie,True,/images/recipes/creme-nougat.png,120,False,False,Crème
+creme-orange,Crème à l'Orange (Orange Curd),Pâtisserie,False,/images/recipes/creme-orange.png,130,False,False,Crème
+creme-patissiere-citron,Crème Pâtissière Citron,Pâtisserie,False,/images/recipes/creme-patissiere-citron.png,130,False,False,Crème
+creme-patissiere,Crème Pâtissière,Pâtisserie,False,/images/recipes/creme-patissiere.png,102,False,False,Crème
+cremeux-au-chocolat,Crémeux au Chocolat,Pâtisserie,False,/images/recipes/cremeux-au-chocolat.png,131,False,False,Crémeux
+cremeux-cafe,Crémeux Café,Pâtisserie,False,/images/recipes/cremeux-cafe.png,118,False,False,Crémeux
+cremeux-caramel,Crémeux Caramel,Pâtisserie,False,/images/recipes/cremeux-caramel.png,125,False,False,Crémeux
+cremeux-estragon,Crémeux Estragon,Pâtisserie,False,/images/recipes/cremeux-estragon.png,115,False,False,Crémeux
+cremeux-exotique,Crémeux Exotique,Pâtisserie,False,/images/recipes/cremeux-exotique.png,129,False,False,Crémeux
+cremeux-fleur-oranger,Crémeux Fleur d'Oranger,Pâtisserie,False,/images/recipes/cremeux-fleur-oranger.png,126,False,False,Crémeux
+cremeux-framboise,Crémeux Framboise,Pâtisserie,False,/images/recipes/cremeux-framboise.png,136,False,False,Crémeux
+cremeux-fruit-gelifier,Crémeux aux Fruits (Haute Tenue),Pâtisserie,False,/images/recipes/cremeux-fruit-gelifier.png,149,False,False,Crémeux
+cremeux-noisette,Crémeux Noisette,Pâtisserie,False,/images/recipes/cremeux-noisette.png,130,False,False,Crémeux
+cremeux-passion-mangue,Crémeux Passion Mangue,Pâtisserie,True,/images/recipes/cremeux-passion-mangue.png,130,False,False,Crémeux
+cremeux-pistache,Crémeux Pistache,Pâtisserie,False,/images/recipes/cremeux-pistache.png,106,False,False,Crémeux
+cremeux-shiso-vert,Crémeux Shiso Vert,Pâtisserie,True,/images/recipes/cremeux-shiso-vert.png,161,False,False,Crémeux
+cremeux-vanille-chocolat-blanc,Crémeux Vanille Chocolat Blanc,Pâtisserie,False,/images/recipes/cremeux-vanille-chocolat-blanc.png,110,False,False,Crémeux
+cremeux-vanille,Crémeux Vanille,Pâtisserie,False,/images/recipes/cremeux-vanille.png,133,False,False,Crémeux
+cremeux-verveine,Crémeux Verveine,Pâtisserie,False,/images/recipes/cremeux-verveine.png,122,False,False,Crémeux
+les-cremeux-aux-fruits,Les Crémeux aux Fruits,Pâtisserie,True,/images/recipes/les-cremeux-aux-fruits.png,113,False,False,Crémeux
+crepes-sans-gluten,Crêpes Légères (Sans Gluten),Alternative,False,/images/recipes/crepes-sans-gluten.png,138,False,False,
+croquembouche,Croquembouche (Pièce Montée),Pâtisserie,True,/images/recipes/croquembouche.png,125,False,False,
+crumble-amande,Crumble Amande,Pâtisserie,False,/images/recipes/crumble-amande.png,201,False,False,
+cuisson-sucre-caramel,Cuisson Sucre Caramel (Glaçage),Confiserie,True,/images/recipes/cuisson-sucre-caramel.png,138,False,False,
+dacquoise-amande,Dacquoise Amande,Pâtisserie,False,/images/recipes/dacquoise-amande.png,117,False,False,
+dentelle-amande-orange,Dentelle Amande à l'Orange,Pâtisserie,False,/images/recipes/dentelle-amande-orange.png,98,False,False,
+eclair,L'Éclair,Pâtisserie,False,/images/recipes/eclair.png,134,False,False,
+eclat-aux-epices,L'Éclat aux Épices,Pâtisserie,True,/images/eclat-aux-epices.jpg,139,True,False,
+entremets-bavarois-vanille,Entremets Bavarois Vanille & Cœur Chocolat,Pâtisserie,False,/images/recipes/entremets-bavarois-vanille.png,203,False,False,Entremets
+entremets-deux-chocolats,Entremets Deux Chocolats,Pâtisserie,True,/images/recipes/entremets-deux-chocolats.png,175,False,False,Entremets
+entremets-framboise-rhubarbe,Entremets Framboise & Rhubarbe,Pâtisserie,False,/images/recipes/entremets-framboise-rhubarbe.png,227,False,False,Entremets
+entremets-opera,Entremets Opéra,Pâtisserie,True,/images/recipes/entremets-opera.png,181,False,False,Entremets
+entremets-poire-epices-noisette,"Entremets Poire, Épices & Noisette",Pâtisserie,True,/images/recipes/entremets-poire-epices-noisette.png,186,False,False,Entremets
+far-breton,Far Breton,Pâtisserie,False,/images/recipes/far-breton.png,65,False,False,
+feuilletage-superieur,Feuilletage supérieur,Pâtisserie,True,/images/recipes/feuilletage-superieur.png,96,False,False,
+financier-au-miel,Financier au miel,Pâtisserie,False,/images/recipes/financier-au-miel.png,98,False,False,
+focaccia,Focaccia,Pâtisserie,False,/images/recipes/focaccia.png,140,False,False,
+gateau-basque,Gâteau basque,Pâtisserie,False,/images/recipes/gateau-basque.png,194,False,False,
+genoise-au-chocolat,Biscuit au chocolat,Pâtisserie,False,/images/recipes/genoise-au-chocolat.png,119,False,False,Biscuit
+genoise-chocolat-mdc,Génoise au chocolat (Classique),Pâtisserie,False,/images/recipes/genoise-chocolat-mdc.png,169,False,False,
+genoise,Génoise,Pâtisserie,False,/images/recipes/genoise.png,78,False,False,
+gianduja-amande,Gianduja Amande,Confiserie,False,/images/recipes/gianduja-amande.png,167,False,False,
+gianduja-noisette,Gianduja Noisette,Confiserie,True,/images/recipes/gianduja-noisette.png,115,False,False,
+glacage-caramel,Glaçage Caramel,Pâtisserie,True,/images/recipes/glacage-caramel.png,98,False,False,Glaçage
+glacage-chataigne,Glaçage Châtaigne,Pâtisserie,True,/images/recipes/glacage-chataigne.png,130,False,False,Glaçage
+glacage-chocolat-blanc,Glaçage Chocolat Blanc,Pâtisserie,False,/images/glacage-chocolat-blanc.jpg,135,True,False,Glaçage
+glacage-chocolat-noir,Glaçage Chocolat Noir (Couverture),Pâtisserie,False,/images/recipes/glacage-chocolat-noir.png,111,False,False,Glaçage
+glacage-exotique,Glaçage Exotique,Pâtisserie,True,/images/recipes/glacage-exotique.png,123,False,False,Glaçage
+glacage-fruits-rouges,Glaçage Fruits Rouges,Pâtisserie,False,/images/recipes/glacage-fruits-rouges.png,138,False,False,Glaçage
+glacage-lactee,Glaçage Lactée,Pâtisserie,False,/images/recipes/glacage-lactee.png,120,False,False,Glaçage
+glacage-neutre,Glaçage Neutre (Nappage),Pâtisserie,False,/images/recipes/glacage-neutre.png,129,False,False,Glaçage
+glacage-noir,Glaçage Noir (Miroir Cacao),Pâtisserie,False,/images/recipes/glacage-noir.png,121,False,False,Glaçage
+glacage-noisette,Glaçage Noisette (Rocher),Pâtisserie,False,/images/recipes/glacage-noisette.png,146,False,False,Glaçage
+gougere,Gougère au Comté,Pâtisserie,False,/images/recipes/gougere.png,124,False,False,
+insert-appareil-noix,Insert Appareil Noix,Pâtisserie,True,/images/recipes/insert-appareil-noix.png,115,False,False,Insert
+insert-blanc-manger,Insert Blanc-Manger,Pâtisserie,False,/images/recipes/insert-blanc-manger.png,104,False,False,Insert
+insert-caramel-exotique,Insert Caramel Exotique,Pâtisserie,False,/images/recipes/insert-caramel-exotique.png,117,False,False,Insert
+insert-caramel-fleur-de-sel,Insert Caramel Fleur de Sel,Pâtisserie,False,/images/recipes/insert-caramel-fleur-de-sel.png,105,False,False,Insert
+insert-caramel-moelleux-fleur-de-sel,Insert Caramel Moelleux Fleur de Sel,Pâtisserie,True,/images/recipes/insert-caramel-moelleux-fleur-de-sel.png,104,False,False,Insert
+insert-compotee-abricot-passion,Insert Compotée Abricot Passion,Pâtisserie,True,/images/recipes/insert-compotee-abricot-passion.png,110,False,False,Insert
+insert-creme-brulee,Insert Crème Brûlée,Pâtisserie,False,/images/recipes/insert-creme-brulee.png,100,False,False,Insert
+insert-ganache,Insert Ganache,Pâtisserie,False,/images/recipes/insert-ganache.png,95,False,False,Insert
+insert-gelifie-aux-fruits,Insert Gélifié aux Fruits,Pâtisserie,False,/images/recipes/insert-gelifie-aux-fruits.png,98,False,False,Insert
+insert-praline-feuilletine,Insert Praliné Feuilletine,Pâtisserie,True,/images/recipes/insert-praline-feuilletine.png,97,False,False,Insert
+insert-praline-fruits-secs,Insert Praliné Fruits Secs,Pâtisserie,False,/images/recipes/insert-praline-fruits-secs.png,101,False,False,Insert
+insert-riz-souffle-caramelise,Insert Riz Soufflé Caramélisé,Pâtisserie,False,/images/recipes/insert-riz-souffle-caramelise.png,116,False,False,Insert
+kouign-amann,Le Kouign-Amann (Bretagne),Pâtisserie,True,/images/recipes/kouign-amann.png,157,False,False,
+la-decouverte,La Découverte,Pâtisserie,False,/images/recipes/la-decouverte.png,201,False,False,
+la-pate-a-brioche,La pâte à brioche,Pâtisserie,False,/images/recipes/la-pate-a-brioche.png,161,False,False,Pâte
+la-pate-a-choux,La Pâte à Choux,Pâtisserie,False,/images/recipes/la-pate-a-choux.png,156,False,False,Pâte
+la-pate-a-crepes,La pâte à crêpes,Pâtisserie,False,/images/recipes/la-pate-a-crepes.png,118,False,False,Pâte
+la-pate-a-croissants,La pâte à croissants,Pâtisserie,True,/images/recipes/la-pate-a-croissants.png,212,False,False,Pâte
+la-pate-a-foncer,La pâte à foncer,Pâtisserie,False,/images/recipes/la-pate-a-foncer.png,201,False,False,Pâte
+la-pate-a-pain,La pâte à pain,Pâtisserie,False,/images/recipes/la-pate-a-pain.png,133,False,False,Pâte
+la-pate-a-pizza,La pâte à pizza,Pâtisserie,False,/images/recipes/la-pate-a-pizza.png,143,False,False,Pâte
+la-pate-brisee,La pâte brisée,Pâtisserie,False,/images/recipes/la-pate-brisee.png,183,False,False,Pâte
+la-pate-sablee,La pâte sablée,Pâtisserie,False,/images/recipes/la-pate-sablee.png,117,False,False,Pâte
+la-pate-sucree,La pâte sucrée,Pâtisserie,False,/images/recipes/la-pate-sucree.png,130,False,False,Pâte
+la-teurgoule,La Teurgoule (Normandie),Pâtisserie,False,/images/recipes/la-teurgoule.png,207,False,False,
+langue-de-chat,Langue de chat,Pâtisserie,False,/images/recipes/langue-de-chat.png,85,False,False,
+le-carthagene,Le Carthagène,Pâtisserie,False,/images/recipes/le-carthagene.png,174,False,False,
+le-desir-baileys,Le Désir Bailey's,Pâtisserie,True,/images/recipes/le-desir-baileys.png,227,False,False,
+le-desir-kalamansi,Le Désir Kalamansi,Pâtisserie,True,/images/recipes/le-desir-kalamansi.png,231,False,False,
+le-kougelhopf,Le Kougelhopf,Pâtisserie,False,/images/recipes/le-kougelhopf.png,186,False,False,
+le-kouglof-alsacien,Le Kouglof Alsacien,Pâtisserie,False,/images/recipes/le-kouglof-alsacien.png,155,False,False,
+le-marbre-pistache-chocolat-lait,Le Marbré Pistache Chocolat Lait,Pâtisserie,True,/images/recipes/le-marbre-pistache-chocolat-lait.png,227,False,False,
+les-biarritz,Les Biarritz,Pâtisserie,False,/images/recipes/les-biarritz.png,93,False,False,
+les-cigarettes,Les cigarettes,Pâtisserie,False,/images/recipes/les-cigarettes.png,94,False,False,
+les-congolais,Les Congolais,Pâtisserie,False,/images/recipes/les-congolais.png,111,False,False,
+les-cookies,Les cookies,Pâtisserie,False,/images/recipes/les-cookies.png,108,False,False,
+les-florentin,Les florentin,Pâtisserie,False,/images/recipes/les-florentin.png,104,False,False,
+les-palais-des-dames,Les palais des dames,Pâtisserie,False,/images/recipes/les-palais-des-dames.png,98,False,False,
+les-pancakes,Les pancakes,Pâtisserie,False,/images/recipes/les-pancakes.png,205,False,False,
+les-sables-au-beurre,Les sablés au beurre,Pâtisserie,False,/images/recipes/les-sables-au-beurre.png,85,False,False,
+les-mousses-chocolat-fruits,Les Mousses Chocolat aux Fruits,Pâtisserie,True,/images/recipes/les-mousses-chocolat-fruits.png,83,False,False,
+macaron-carotte,Macaron Carotte & Cannelle,Confiserie,True,/images/recipes/macaron-carotte.png,138,False,False,Macaron
+macaron-chocolat,Macaron Chocolat,Confiserie,False,/images/recipes/macaron-chocolat.png,157,False,False,Macaron
+macaron-citron-vert,Macaron Citron Vert,Confiserie,False,/images/recipes/macaron-citron-vert.png,119,False,False,Macaron
+macaron-fruits-des-bois,Macaron Fruits des Bois,Confiserie,False,/images/recipes/macaron-fruits-des-bois.png,116,False,False,Macaron
+macaron-vanille,Macaron Vanille Intense,Confiserie,False,/images/recipes/macaron-vanille.png,120,False,False,Macaron
+madeleine,Madeleine,Pâtisserie,False,/images/recipes/madeleine.png,80,False,False,
+madeleines-de-commercy,Les Madeleines de Commercy (Lorraine),Pâtisserie,False,/images/recipes/madeleines-de-commercy.png,113,False,False,
+mayonnaise-maison,Mayonnaise Maison,Cuisine,False,/images/recipes/mayonnaise-maison.png,142,False,False,
+meringue-francaise,Meringue Française,Pâtisserie,False,/images/recipes/meringue-francaise.png,90,False,False,
+meringue-italienne,Meringue Italienne,Confiserie,False,/images/recipes/meringue-italienne.png,115,False,False,
+meringue-suisse,Meringue Suisse,Pâtisserie,False,/images/recipes/meringue-suisse.png,130,False,False,
+mille-feuille-classique,Mille-feuille Classique (Vanille & Marbrage),Pâtisserie,False,/images/recipes/mille-feuille-classique.png,177,False,False,
+moelleux-chocolat,Moelleux Chocolat,Pâtisserie,False,/images/recipes/moelleux-chocolat.png,64,False,False,
+mousse-abricot,Mousse Abricot,Pâtisserie,False,/images/recipes/mousse-abricot.png,113,False,False,Mousse
+mousse-ananas,Mousse Ananas,Pâtisserie,False,/images/recipes/mousse-ananas.png,136,False,False,Mousse
+mousse-banane,Mousse Banane,Pâtisserie,False,/images/recipes/mousse-banane.png,90,False,False,Mousse
+mousse-caramel-beurre-sale,Mousse Caramel Beurre Salé,Pâtisserie,False,/images/recipes/mousse-caramel-beurre-sale.png,91,False,False,Mousse
+mousse-caramel,Mousse Caramel,Pâtisserie,False,/images/recipes/mousse-caramel.png,96,False,False,Mousse
+mousse-cassis,Mousse Cassis,Pâtisserie,False,/images/recipes/mousse-cassis.png,113,False,False,Mousse
+mousse-cerise,Mousse Cerise,Pâtisserie,False,/images/recipes/mousse-cerise.png,113,False,False,Mousse
+mousse-chocolat-blanc-oeuf,Mousse Chocolat & Blancs,Pâtisserie,False,/images/recipes/mousse-chocolat-blanc-oeuf.png,106,False,False,Mousse
+mousse-chocolat-creme-fleurette,Mousse Chocolat Crème Fleurette,Pâtisserie,False,/images/recipes/mousse-chocolat-creme-fleurette.png,133,False,False,Mousse
+mousse-chocolat-pate-a-bombe,Mousse Chocolat Pâte à Bombe,Pâtisserie,False,/images/recipes/mousse-chocolat-pate-a-bombe.png,149,False,False,Mousse
+mousse-citron-mascarpone,Mousse Citron Mascarpone,Pâtisserie,False,/images/recipes/mousse-citron-mascarpone.png,102,False,False,Mousse
+mousse-citron-vert,Mousse Citron Vert,Pâtisserie,True,/images/recipes/mousse-citron-vert.png,133,False,False,Mousse
+mousse-coco,Mousse Coco,Pâtisserie,False,/images/recipes/mousse-coco.png,67,False,False,Mousse
+mousse-foret-noire,Mousse pour Forêt Noire,Pâtisserie,False,/images/recipes/mousse-foret-noire.png,128,False,False,Mousse
+mousse-fraise,Mousse Fraise,Pâtisserie,False,/images/recipes/mousse-fraise.png,53,False,False,Mousse
+mousse-framboise,Mousse Framboise,Pâtisserie,False,/images/recipes/mousse-framboise.png,76,False,False,Mousse
+mousse-fromage-blanc,Mousse Fromage Blanc,Pâtisserie,False,/images/recipes/mousse-fromage-blanc.png,95,False,False,Mousse
+mousse-fruit-exotique,Mousse Fruits Exotiques,Pâtisserie,False,/images/recipes/mousse-fruit-exotique.png,99,False,False,Mousse
+mousse-fruits-rouges,Mousse aux Fruits Rouges,Pâtisserie,True,/images/recipes/mousse-fruits-rouges.png,115,False,False,Mousse
+mousse-gianduja,Mousse Gianduja,Pâtisserie,False,/images/recipes/mousse-gianduja.png,103,False,False,Mousse
+mousse-goyave,Mousse Goyave,Pâtisserie,False,/images/recipes/mousse-goyave.png,71,False,False,Mousse
+mousse-groseille,Mousse Groseille,Pâtisserie,False,/images/recipes/mousse-groseille.png,74,False,False,Mousse
+mousse-kalamansi,Mousse Kalamansi,Pâtisserie,False,/images/recipes/mousse-kalamansi.png,82,False,False,Mousse
+mousse-kiwi,Mousse Kiwi,Pâtisserie,False,/images/recipes/mousse-kiwi.png,128,False,False,Mousse
+mousse-litchi,Mousse Litchi,Pâtisserie,False,/images/recipes/mousse-litchi.png,99,False,False,Mousse
+mousse-mandarine,Mousse Mandarine,Pâtisserie,False,/images/recipes/mousse-mandarine.png,79,False,False,Mousse
+mousse-mangue,Mousse Mangue,Pâtisserie,False,/images/recipes/mousse-mangue.png,76,False,False,Mousse
+mousse-marron,Mousse Marron,Pâtisserie,False,/images/recipes/mousse-marron.png,82,False,False,Mousse
+mousse-melon,Mousse Melon,Pâtisserie,True,/images/recipes/mousse-melon.png,79,False,False,Mousse
+mousse-menthe,Mousse Menthe,Pâtisserie,True,/images/recipes/mousse-menthe.png,77,False,False,Mousse
+mousse-mirabelle,Mousse Mirabelle,Pâtisserie,False,/images/recipes/mousse-mirabelle.png,74,False,False,Mousse
+mousse-mure,Mousse Mûre,Pâtisserie,False,/images/recipes/mousse-mure.png,60,False,False,Mousse
+mousse-myrtille,Mousse Myrtille,Pâtisserie,False,/images/recipes/mousse-myrtille.png,59,False,False,Mousse
+mousse-noisette,Mousse Noisette,Pâtisserie,False,/images/recipes/mousse-noisette.png,91,False,False,Mousse
+mousse-orange-sanguine,Mousse Orange Sanguine,Pâtisserie,False,/images/recipes/mousse-orange-sanguine.png,79,False,False,Mousse
+mousse-pamplemousse,Mousse Pamplemousse,Pâtisserie,False,/images/recipes/mousse-pamplemousse.png,78,False,False,Mousse
+mousse-papaye,Mousse Papaye,Pâtisserie,False,/images/recipes/mousse-papaye.png,90,False,False,Mousse
+mousse-passion,Mousse Passion,Pâtisserie,False,/images/recipes/mousse-passion.png,65,False,False,Mousse
+mousse-peche,Mousse Pêche,Pâtisserie,False,/images/recipes/mousse-peche.png,77,False,False,Mousse
+mousse-poire,Mousse Poire,Pâtisserie,False,/images/recipes/mousse-poire.png,90,False,False,Mousse
+mousse-pomme,Mousse Pomme,Pâtisserie,False,/images/recipes/mousse-pomme.png,71,False,False,Mousse
+mousse-riz-imperatrice,Mousse Riz à l'Impératrice,Pâtisserie,False,/images/recipes/mousse-riz-imperatrice.png,101,False,False,Mousse
+muffins-chocolat-noisette,Muffins Pépites & Noisette,Pâtisserie,False,/images/recipes/muffins-chocolat-noisette.png,60,False,False,
+muffins-vanille,Muffins Vanille,Pâtisserie,False,/images/recipes/muffins-vanille.png,71,False,False,
+muscadine-au-cognac,Muscadine au Cognac,Chocolaterie,False,/images/recipes/muscadine-au-cognac.png,193,False,False,
+noisettes-caramel-chocolat,Noisettes Caramel & Chocolat (Clusters),Chocolaterie,False,/images/recipes/noisettes-caramel-chocolat.png,196,False,False,
+oranges-confites-orangettes,Oranges Confites & Orangettes,Confiserie,False,/images/recipes/oranges-confites-orangettes.png,181,False,False,
+pain-de-gene,Pain de gène,Pâtisserie,True,/images/recipes/pain-de-gene.png,203,False,False,
+pain-de-mie,Pain de Mie,Pâtisserie,False,/images/recipes/pain-de-mie.png,141,False,False,
+pain-de-thon,Pain de Thon,Pâtisserie,False,/images/recipes/pain-de-thon.png,88,False,False,
+pain-mais-sans-gluten,Pain au Maïs (Sans Gluten),Pâtisserie,True,/images/recipes/pain-mais-sans-gluten.png,103,False,False,
+palet-breton,Palet Breton,Pâtisserie,False,/images/recipes/palet-breton.png,141,False,False,
+paris-brest,Paris-Brest,Pâtisserie,True,/images/recipes/paris-brest.png,163,False,False,
+pate-a-baba,La pâte à baba,Pâtisserie,False,/images/recipes/pate-a-baba.png,178,False,False,Pâte
+pate-amande-confiseur,Pâte d'amande confiseur,Confiserie,False,/images/recipes/pate-amande-confiseur.png,138,False,False,Pâte
+pate-tartiner-amande-noisette,Pâte à Tartiner Amande Noisette,Confiserie,False,/images/recipes/pate-tartiner-amande-noisette.png,130,False,False,Pâte
+pate-tartiner-pistache-framboise,Pâte à Tartiner Pistache Framboise,Confiserie,False,/images/recipes/pate-tartiner-pistache-framboise.png,115,False,False,Pâte
+pates-de-fruits,Pâtes de Fruits (Tableau),Confiserie,True,/images/recipes/pates-de-fruits.png,74,False,False,
+petit-four-pate-amande,Petit four poche pâte d'amande 50%,Pâtisserie,False,/images/recipes/petit-four-pate-amande.png,107,False,False,
+praline-croustillant-noisette-intense,Praliné Croustillant Noisette Intense,Chocolaterie,False,/images/recipes/praline-croustillant-noisette-intense.png,212,False,False,
+praline-sec,Le praliné à sec,Confiserie,False,/images/recipes/praline-sec.png,153,False,False,
+profiteroles,Profiteroles,Pâtisserie,False,/images/recipes/profiteroles.png,133,False,False,
+quatre-quart-pommes,Quatre-quart aux pommes,Pâtisserie,False,/images/recipes/quatre-quart-pommes.png,66,False,False,
+rectangle-financier-pistache-abricot,"Rectangle Financier Pistache, Abricot & Dulcey",Pâtisserie,False,/images/recipes/rectangle-financier-pistache-abricot.png,179,False,False,
+religieuse,Religieuse,Pâtisserie,False,/images/recipes/religieuse.png,142,False,False,
+rocher-amande-coco,Rocher amande ou coco,Pâtisserie,False,/images/recipes/rocher-amande-coco.png,94,False,False,
+rocher-croustillant,Rocher Croustillant (Praliné Feuilletine),Chocolaterie,False,/images/recipes/rocher-croustillant.png,180,False,False,
+rochers-pralines-maison,Rochers Pralinés,Chocolaterie,False,/images/recipes/rochers-pralines-maison.png,165,False,False,
+sable-diamants,Sablé diamants,Pâtisserie,False,/images/recipes/sable-diamants.png,118,False,False,
+sable-spitz,Sablé Spitz,Pâtisserie,False,/images/recipes/sable-spitz.png,107,False,False,
+saint-honore,Saint-Honoré,Pâtisserie,True,/images/recipes/saint-honore.png,154,False,False,
+salambo,Salambo,Pâtisserie,False,/images/recipes/salambo.png,164,False,False,
+sauce-au-poivre,La Sauce au Poivre,Cuisine,False,/images/recipes/sauce-au-poivre.png,139,False,False,Sauce
+sauce-chien,La Sauce Chien (Antillaise),Cuisine,False,/images/recipes/sauce-chien.png,169,False,False,Sauce
+sauce-curry-coco,La Sauce Curry Coco,Cuisine,False,/images/recipes/sauce-curry-coco.png,160,False,False,Sauce
+sauce-moutarde-ancienne,La Sauce Moutarde à l'Ancienne,Cuisine,False,/images/recipes/sauce-moutarde-ancienne.png,187,False,False,Sauce
+sauce-samourai,La Sauce Samouraï,Cuisine,False,/images/recipes/sauce-samourai.png,136,False,False,Sauce
+sauce-satay,La Sauce Satay (Cacahuète),Cuisine,False,/images/recipes/sauce-satay.png,151,False,False,Sauce
+sauce-tomate-maison,La Sauce Tomate Maison,Cuisine,False,/images/recipes/sauce-tomate-maison.png,75,False,False,Sauce
+speculoos,Spéculoos,Pâtisserie,False,/images/recipes/speculoos.png,83,False,False,
+sponge-cake,Sponge Cake,Pâtisserie,False,/images/recipes/sponge-cake.png,71,False,False,
+streusel-amande,Streusel amande,Pâtisserie,False,/images/recipes/streusel-amande.png,146,False,False,
+tablette-fourre-fraise,Tablette fourré fraise,Chocolaterie,False,/images/recipes/tablette-fourre-fraise.png,155,False,False,
+tablette-fourre-framboise,Tablette fourrée framboise,Chocolaterie,False,/images/recipes/tablette-fourre-framboise.png,162,False,False,
+tablette-fourre-pistache,Tablette fourrée pistache,Chocolaterie,False,/images/recipes/tablette-fourre-pistache.png,132,False,False,
+tarte-abricot-pistache,Tarte Abricot Pistache,Pâtisserie,False,/images/recipes/tarte-abricot-pistache.png,115,False,False,Tarte
+tarte-alsacienne-aux-pommes,Tarte Alsacienne aux Pommes,Pâtisserie,False,/images/recipes/tarte-alsacienne-aux-pommes.png,160,False,False,Tarte
+tarte-au-chocolat,Tarte au Chocolat,Pâtisserie,False,/images/recipes/tarte-au-chocolat.png,133,False,False,Tarte
+tarte-aux-pommes,Tarte aux Pommes Fine,Pâtisserie,False,/images/recipes/tarte-aux-pommes.png,155,False,False,Tarte
+tarte-aux-pralines,Tarte aux Pralines Roses,Pâtisserie,False,/images/recipes/tarte-aux-pralines.png,173,False,False,Tarte
+tarte-bourdaloue,Tarte Bourdaloue,Pâtisserie,False,/images/tarte-bourdaloue.jpg,140,True,False,Tarte
+tarte-cacao-noisette-riz-souffle,"Tarte Cacao, Noisette & Riz Soufflé",Pâtisserie,False,/images/recipes/tarte-cacao-noisette-riz-souffle.png,146,False,False,Tarte
+tarte-chocolat-caramel,Tarte Chocolat Lait & Caramel Beurre Salé,Pâtisserie,False,/images/recipes/tarte-chocolat-caramel.png,152,False,False,Tarte
+tarte-framboise,Tarte aux Framboises,Pâtisserie,False,/images/recipes/tarte-framboise.png,170,False,False,Tarte
+tarte-tatin,La Tarte Tatin (Centre-Val de Loire),Pâtisserie,False,/images/recipes/tarte-tatin.png,117,False,False,Tarte
+tartelette-citron-meringuee,Tartelette Citron Meringuée,Pâtisserie,False,/images/recipes/tartelette-citron-meringuee.png,128,False,False,
+tartelette-orange,Tartelette à l'Orange,Pâtisserie,False,/images/recipes/tartelette-orange.png,140,False,False,
+truffe-chardon-caramel,Truffe Chardon au Caramel,Chocolaterie,False,/images/recipes/truffe-chardon-caramel.png,175,False,False,
+truffes-chocolat-whisky,Truffes Chocolat & Whisky,Chocolaterie,False,/images/recipes/truffes-chocolat-whisky.png,120,False,False,
+tuile,Tuiles aux amandes,Pâtisserie,False,/images/recipes/tuile.png,115,False,False,
