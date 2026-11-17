@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Droplets, Thermometer } from 'lucide-react';
@@ -8,7 +8,7 @@ export const recipeData = {
   category: "Technologie - Gélifiants",
   description: "Origine animale, degrés Bloom et hydratation. L'incontournable des bavarois.",
   // 👇 Image : Feuilles de gélatine (Vrai lien)
-  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg27fBxTwXr1uAhcW9IMJnEpGXY7Q1rFP297Y-41kroRQpgcoz_rbRNtpCVDdPF2Of_Ii1ki8UqRUdH5zJLIGgnCiADUv9famZY-7uDjmjjeHMEocyhb3Peo4az3OQ-ejtytuzgZsnbMtQZ/s660/20200106_211345.jpg",
+  image: "/images/recipes/creme-bavaroise.png",
   prepTime: "Théorie",
   difficulty: "Niveau 1"
 };
@@ -16,7 +16,7 @@ const GelatinePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : La Gélatine - Maison Dorée</title>
+        <title>Fiche Technique : La Gélatine - Pastry Power</title>
         <meta name="description" content="Fiche technique détaillée sur la gélatine en pâtisserie : origine, force en bloom, thermoréversibilité et règles d'utilisation." />
       </Helmet>
 
@@ -25,7 +25,7 @@ const GelatinePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg27fBxTwXr1uAhcW9IMJnEpGXY7Q1rFP297Y-41kroRQpgcoz_rbRNtpCVDdPF2Of_Ii1ki8UqRUdH5zJLIGgnCiADUv9famZY-7uDjmjjeHMEocyhb3Peo4az3OQ-ejtytuzgZsnbMtQZ/s660/20200106_211345.jpg" 
+            src="/images/recipes/creme-bavaroise.png" 
             alt="La Gélatine" 
             className="w-full h-full object-cover"
           />

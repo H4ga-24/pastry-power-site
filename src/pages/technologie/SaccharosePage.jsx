@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Thermometer } from 'lucide-react';
@@ -7,7 +7,7 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Th
 export const recipeData = {
   title: "Saccharose", // ex: "La Farine"
   category: "Technologie - Sucres",
-  description: "Fiche technique détaillée.",
+  description: "Tout savoir sur le saccharose : histoire, propriétés chimiques, variétés et cuisson du sucre.",
   image: "/images/saccharose.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie"
@@ -17,7 +17,7 @@ const SaccharosePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Le Saccharose (Sucre Blanc) - Maison Dorée</title>
+        <title>Fiche Technique : Le Saccharose (Sucre Blanc) - Pastry Power</title>
         <meta name="description" content="Tout savoir sur le saccharose : histoire, propriétés chimiques, variétés et cuisson du sucre." />
       </Helmet>
 
@@ -26,7 +26,7 @@ const SaccharosePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://img.passeportsante.net/1200x675/2021-05-03/i105315-saccharose-nu.webp" 
+            src="/images/saccharose.jpg" 
             alt="Le Saccharose" 
             className="w-full h-full object-cover"
           />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useParams, Navigate } from 'react-router-dom';
 
 import CookieBanner from './components/CookieBanner';
 import Navigation from './components/Navigation';
@@ -10,6 +10,8 @@ import ScrollToTop from './components/ScrollToTop';
 import Login from './Login';
 import AdBanner from './components/AdBanner';
 import { useAuth } from './AuthContext';
+import { isAdEligiblePath } from './data/hubs';
+import Seo from './components/Seo';
 
 import PatisseriePage from './pages/PatisseriePage';
 import LandingPage from './pages/LandingPage';
@@ -24,14 +26,19 @@ import ResetPasswordPage from './pages/ResetPasswordPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 
+// Ancienne adresse des fiches technologie : une seule URL par fiche désormais.
+const LegacyTechRedirect = () => {
+  const { id } = useParams();
+  return <Navigate to={`/techno/${id}`} replace />;
+};
+
 const App = () => {
   const { isPremium } = useAuth();
   const location = useLocation();
 
-  // Liste des pages où Google interdit d'afficher des publicités
-  const noAdsRoutes = ['/login', '/mentions-legales', '/a-propos', '/vip', '/communaute', '/politique-confidentialite', '/contact', '/reset-password'];
-  // On affiche la pub uniquement si l'utilisateur n'est pas premium ET qu'il n'est pas sur une page interdite
-  const showAd = !isPremium && !noAdsRoutes.includes(location.pathname);
+  // Publicité : uniquement sur du contenu éditorial public et non vide (accueil, rubriques, fiches en accès libre).
+  // Jamais sur une fiche VIP verrouillée, une 404, le forum, la connexion ou les pages légales.
+  const showAd = !isPremium && isAdEligiblePath(location.pathname);
 
   return (
     <div className="flex flex-col min-h-screen bg-[#121212]">
@@ -44,9 +51,9 @@ const App = () => {
         <Routes>
           {/* --- ACCUEIL --- */}
           <Route path="/"      element={<LandingPage />} />
-          <Route path="/login"           element={<Login />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
-          <Route path="/vip"            element={<VipPage />} />
+          <Route path="/login"           element={<><Seo title="Connexion | Pastry Power" noindex /><Login /></>} />
+          <Route path="/reset-password" element={<><Seo title="Réinitialiser le mot de passe | Pastry Power" noindex /><ResetPasswordPage /></>} />
+          <Route path="/vip"            element={<><Seo title="Club VIP | Pastry Power" description="Le Club VIP Pastry Power : recettes exclusives et fiches inédites ajoutées chaque mois." path="/vip" /><VipPage /></>} />
 
           {/* --- RECETTES ---
               IMPORTANT : toutes les recettes (libres ET vip) passent par DynamicPage.
@@ -55,14 +62,14 @@ const App = () => {
               Cela permet à Google de crawler le contenu et valider AdSense.
           */}
           <Route path="/recipe/:id"          element={<DynamicPage />} />
-          <Route path="/vip/technologie/:id" element={<DynamicPage />} />
+          <Route path="/vip/technologie/:id" element={<LegacyTechRedirect />} />
           <Route path="/techno/:id"          element={<DynamicPage />} />
           {/* ⚠️  L'ancienne route /vip/:id avec <ProtectedRoute> a été supprimée
               car elle affichait une page vide aux crawlers → refus AdSense */}
 
           {/* --- PAGES STATIQUES --- */}
           <Route path="/mentions-legales"          element={<LegalPage />} />
-          <Route path="/a-propos"                  element={<AboutPage />} />
+          <Route path="/a-propos"                  element={<><Seo title="Qui suis-je ? Alexandre Perreau | Pastry Power" description="Alexandre Perreau, fondateur de Pastry Power : plus de 160 000 passionnés sur TikTok et un site de fiches techniques pour comprendre la pâtisserie, pas seulement la reproduire." path="/a-propos" /><AboutPage /></>} />
           <Route path="/contact"                   element={<ContactPage />} />
           <Route path="/politique-confidentialite" element={<PrivacyPage />} />
 
@@ -85,9 +92,9 @@ const App = () => {
           <Route path="/alternative/:subcategory" element={<PatisseriePage />} />
 
           {/* --- COMMUNAUTÉ --- */}
-          <Route path="/communaute" element={<CommunautePage />} />
-          <Route path="/communaute/nouveau" element={<NouveauPostPage />} />
-          <Route path="/communaute/:postId" element={<ForumPostPage />} />
+          <Route path="/communaute" element={<><Seo title="Communauté | Pastry Power" description="Le forum Pastry Power : posez vos questions de pâtisserie et partagez vos réalisations." noindex /><CommunautePage /></>} />
+          <Route path="/communaute/nouveau" element={<><Seo title="Nouveau message | Pastry Power" noindex /><NouveauPostPage /></>} />
+          <Route path="/communaute/:postId" element={<><Seo title="Discussion | Communauté Pastry Power" noindex /><ForumPostPage /></>} />
 
           {/* --- 404 --- */}
           <Route path="*" element={<NotFoundPage />} />

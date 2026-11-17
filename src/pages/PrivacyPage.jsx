@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 
 const PrivacyPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <div className="min-h-screen bg-[#121212] text-gray-300 pt-32 pb-20 px-6 font-sans">
-      <Helmet>
-        <title>Politique de Confidentialité | Pastry Power</title>
-        <meta name="description" content="Politique de confidentialité de Pastry Power : cookies, Google AdSense, données personnelles et vos droits RGPD." />
-      </Helmet>
+      <Seo
+        title={"Politique de Confidentialité | Pastry Power"}
+        description={"Politique de confidentialité de Pastry Power : cookies, Google AdSense, données personnelles et vos droits RGPD."}
+        path="/politique-confidentialite"
+      />
 
       <div className="max-w-3xl mx-auto space-y-12">
 

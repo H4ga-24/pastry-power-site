@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Wheat, Sprout, Leaf, Scale } from 'lucide-react';
@@ -7,8 +7,8 @@ import { ArrowLeft, BookOpen, Wheat, Sprout, Leaf, Scale } from 'lucide-react';
 export const recipeData = {
   title: "Les Farines Typées & Anciennes", // ex: "La Farine"
   category: "Technologie - Farines",
-  description: "Fiche technique détaillée.",
-  image: "https://www.celnat.fr/wp-content/uploads/2020/12/Farines.jpg", // Image par défaut
+  description: "Découvrez les farines typées (T80, T110, T150), le seigle et les blés anciens (Épeautre, Kamut, Sarrasin) en pâtisserie.",
+  image: "/images/recipes/la-pate-a-brioche.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie"
 };
@@ -17,7 +17,7 @@ const FarinesTypeesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Les Farines Typées & Anciennes - Maison Dorée</title>
+        <title>Fiche Technique : Les Farines Typées & Anciennes - Pastry Power</title>
         <meta name="description" content="Découvrez les farines typées (T80, T110, T150), le seigle et les blés anciens (Épeautre, Kamut, Sarrasin) en pâtisserie." />
       </Helmet>
 
@@ -26,7 +26,7 @@ const FarinesTypeesPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://www.celnat.fr/wp-content/uploads/2020/12/Farines.jpg" 
+            src="/images/recipes/la-pate-a-brioche.png" 
             alt="Sélection de farines anciennes et typées" 
             className="w-full h-full object-cover"
           />

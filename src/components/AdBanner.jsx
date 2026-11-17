@@ -1,25 +1,33 @@
-import { useEffect, useState } from 'react';
-import { getConsent } from './CookieBanner';
+import { useEffect, useRef, useState } from 'react';
+import { getConsent, hasCertifiedCmp, waitForCmp } from '../lib/consent';
+
+// Une annonce n'est demandée que si le visiteur a accepté sur notre bandeau,
+// ou si la CMP certifiée de Google est active (elle transmet elle-même le choix du visiteur à AdSense).
+const isAllowed = () => getConsent() === 'accepted' || hasCertifiedCmp();
 
 export default function AdBanner() {
-  const [consent, setConsent] = useState(() => getConsent());
+  const [allowed, setAllowed] = useState(isAllowed);
+  const pushed = useRef(false);
 
   useEffect(() => {
-    const handler = (e) => setConsent(e.detail);
+    let alive = true;
+    const handler = () => setAllowed(isAllowed());
     window.addEventListener('pp:consent', handler);
-    return () => window.removeEventListener('pp:consent', handler);
+    waitForCmp(5000).then((cmp) => { if (alive && cmp) setAllowed(true); });
+    return () => { alive = false; window.removeEventListener('pp:consent', handler); };
   }, []);
 
   useEffect(() => {
-    if (consent !== 'accepted') return;
+    if (!allowed || pushed.current) return;
+    pushed.current = true;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (err) {
       console.error('AdSense error:', err);
     }
-  }, [consent]);
+  }, [allowed]);
 
-  if (consent !== 'accepted') return null;
+  if (!allowed) return null;
 
   return (
     <div className="w-full text-center my-8 overflow-hidden">

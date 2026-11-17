@@ -1,8 +1,8 @@
-// scripts/generate-catalog.js
+// script/generate-catalog.mjs
 // Génère src/data/catalog.js à partir des fichiers recettes et technologie.
 //
 // UTILISATION (depuis la racine du projet) :
-//   node scripts/generate-catalog.js
+//   node script/generate-catalog.mjs
 //
 // À relancer à chaque fois que vous ajoutez ou supprimez une recette.
 
@@ -106,7 +106,7 @@ if (existsSync(techDir)) {
       category,
       subCategory: [],
       image: image || 'https://images.unsplash.com/photo-1516100882582-96c3a05fe590?q=60&w=800',
-      description: 'Comprendre les fondamentaux.',
+      description: extractString(content, 'description') || 'Comprendre les fondamentaux.',
       isVip,
       isTech: true,
       moduleFile: file,
@@ -119,7 +119,7 @@ if (existsSync(techDir)) {
 const allItems = [...recipes, ...techItems];
 
 const output = `// ⚠️  FICHIER AUTO-GÉNÉRÉ — ne pas modifier manuellement.
-// Pour régénérer : node scripts/generate-catalog.js
+// Pour régénérer : node script/generate-catalog.mjs
 
 export const catalog = ${JSON.stringify(allItems, null, 2)};
 `;

@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SearchModal from './SearchModal';
 // 1. IMPORT DU NOUVEAU MENU UTILISATEUR
 import UserMenu from './UserMenu';
+import { sectionHasItems, isHubMode } from '../data/hubs';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,7 @@ const Navigation = () => {
     }
   }, [isOpen]);
 
-  const navItems = [
+  const allNavItems = [
     { 
       title: 'Pâtisserie', 
       path: '/patisserie', 
@@ -93,11 +94,20 @@ const Navigation = () => {
       submenu: [
         { title: 'Sans Gluten', path: '/alternative/sans-gluten' },
         { title: 'Sans Sucre', path: '/alternative/sans-sucre' },
-        { title: 'Végétal', path: '/alternative/vegan' }
+        { title: 'Végétal', path: '/alternative/vegan' },
+        { title: 'Sans Lactose', path: '/alternative/sans-lactose' }
       ]
     },
     { title: 'Communauté', path: '/communaute', submenu: [] }
   ];
+
+  // On ne propose jamais une sous-rubrique vide : le menu suit automatiquement le contenu du catalogue.
+  const navItems = allNavItems.map((item) => {
+    const hubId = item.path.replace('/', '');
+    if (!item.submenu?.length || !isHubMode(hubId)) return { ...item, submenu: [] };
+    const submenu = item.submenu.filter((sub) => sub.isLabel || sectionHasItems(sub.path));
+    return { ...item, submenu };
+  });
 
   return (
     <>

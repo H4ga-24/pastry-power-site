@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Layers, ShieldCheck, Snowflake } from 'lucide-react';
@@ -7,8 +7,8 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, La
 export const recipeData = {
   title: "Oeuf Entier", // ex: "La Farine"
   category: "Technologie - Oeuf",
-  description: "Fiche technique détaillée.",
-  image: "https://www.framboizeinthekitchen.com/wp-content/uploads/2018/04/oeufs.jpg", // Image par défaut
+  description: "Tout savoir sur l'œuf entier en pâtisserie : anatomie, composition, propriétés de coagulation et règles d'hygiène.",
+  image: "/images/recipes/genoise.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie"
 };
@@ -17,7 +17,7 @@ const OeufEntierPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique Approfondie : L'Œuf Entier (Ovomel) - Maison Dorée</title>
+        <title>Fiche Technique Approfondie : L'Œuf Entier (Ovomel) - Pastry Power</title>
         <meta name="description" content="Tout savoir sur l'œuf entier en pâtisserie : anatomie, composition, propriétés de coagulation et règles d'hygiène." />
       </Helmet>
 
@@ -26,7 +26,7 @@ const OeufEntierPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://www.framboizeinthekitchen.com/wp-content/uploads/2018/04/oeufs.jpg" 
+            src="/images/recipes/genoise.png" 
             alt="L'Œuf Entier" 
             className="w-full h-full object-cover"
           />

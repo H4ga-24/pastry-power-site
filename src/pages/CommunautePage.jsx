@@ -26,21 +26,25 @@ export default function CommunautePage() {
     setLoading(true);
     // ⚠️ On ne sélectionne JAMAIS profiles(email) ici : cette requête est publique
     // et visible par tout visiteur, même non connecté.
-    let query = supabase
-      .from('forum_posts')
-      .select('id, title, category, tags, upvotes, created_at, body, profiles(username), forum_replies(count)');
+    const baseColumns = 'id, title, category, tags, upvotes, created_at, body, profiles(username), forum_replies(count)';
+    const run = (columns) => {
+      let query = supabase.from('forum_posts').select(columns);
+      if (category !== 'all') query = query.eq('category', category);
+      query = sort === 'popular'
+        ? query.order('upvotes', { ascending: false })
+        : query.order('created_at', { ascending: false });
+      return query.limit(30);
+    };
 
-    if (category !== 'all') query = query.eq('category', category);
-    query = sort === 'popular'
-      ? query.order('upvotes', { ascending: false })
-      : query.order('created_at', { ascending: false });
-
-    const { data } = await query.limit(30);
+    // is_anonymous est facultatif : si la colonne n'existe pas (encore) en base, on relit sans elle.
+    let { data, error } = await run(`${baseColumns}, is_anonymous`);
+    if (error) ({ data } = await run(baseColumns));
     setPosts(data ?? []);
     setLoading(false);
   }
 
-  const getDisplayName = (profiles) => {
+  const getDisplayName = (profiles, isAnonymous = false) => {
+    if (isAnonymous) return 'Anonyme';
     return profiles?.username || 'Anonyme';
   };
 
@@ -145,7 +149,7 @@ export default function CommunautePage() {
                     <p className="font-medium text-white group-hover:text-[#D4AF37] transition-colors truncate">{post.title}</p>
                     <p className="text-gray-500 text-xs mt-1 truncate">{post.body?.slice(0, 100)}…</p>
                     <div className="flex items-center gap-3 mt-2 text-xs text-gray-600">
-                      <span>par <span className="text-gray-400">{getDisplayName(post.profiles)}</span></span>
+                      <span>par <span className="text-gray-400">{getDisplayName(post.profiles, post.is_anonymous)}</span></span>
                       <span>·</span>
                       <span>{new Date(post.created_at).toLocaleDateString('fr-FR')}</span>
                       <span>·</span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Microscope, Scale, ChefHat, Wheat } from 'lucide-react';
@@ -7,8 +7,8 @@ import { ArrowLeft, BookOpen, Microscope, Scale, ChefHat, Wheat } from 'lucide-r
 export const recipeData = {
   title: "La Farine de Blé (Tendre)", // ex: "La Farine"
   category: "Technologie - Farines",
-  description: "Fiche technique détaillée.",
-  image: "https://sf2.doctissimo.fr/wp-content/uploads/doctissimo/2024/09/1726049283040.jpeg", // Image par défaut
+  description: "Encyclopédie technique de la farine de blé.",
+  image: "/images/recipes/la-pate-a-pain.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie"
 };
@@ -17,7 +17,7 @@ const FarineDeBlePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : La Farine de Blé - Maison Dorée</title>
+        <title>Fiche Technique : La Farine de Blé - Pastry Power</title>
         <meta name="description" content="Encyclopédie technique de la farine de blé." />
       </Helmet>
 
@@ -26,7 +26,7 @@ const FarineDeBlePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://sf2.doctissimo.fr/wp-content/uploads/doctissimo/2024/09/1726049283040.jpeg" 
+            src="/images/recipes/la-pate-a-pain.png" 
             alt="Champs de blé et farine" 
             className="w-full h-full object-cover"
           />

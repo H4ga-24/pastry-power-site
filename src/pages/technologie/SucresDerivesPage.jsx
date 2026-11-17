@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Droplets } from 'lucide-react';
@@ -7,8 +7,8 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Dr
 export const recipeData = {
   title: "Les Sucres Dérivés (Glucose, Inverti, Miel)", // ex: "La Farine"
   category: "Technologie - Sucres",
-  description: "Fiche technique détaillée.",
-  image: "https://www.mon-petit-pot-de-miel.com/img/old_mppm_blog/pots%20de%20miel.jpg", // Image par défaut
+  description: "Tout savoir sur les sucres dérivés : sirop de glucose, sucre inverti (trimoline), miel et dextrose. Propriétés techniques et usages.",
+  image: "/images/recipes/financier-au-miel.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
   isVip: true
@@ -18,7 +18,7 @@ const SucresDerivesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Les Sucres Dérivés (Glucose, Inverti, Miel) - Maison Dorée</title>
+        <title>Fiche Technique : Les Sucres Dérivés (Glucose, Inverti, Miel) - Pastry Power</title>
         <meta name="description" content="Tout savoir sur les sucres dérivés : sirop de glucose, sucre inverti (trimoline), miel et dextrose. Propriétés techniques et usages." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const SucresDerivesPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://www.mon-petit-pot-de-miel.com/img/old_mppm_blog/pots%20de%20miel.jpg" 
+            src="/images/recipes/financier-au-miel.png" 
             alt="Miel et Sucres Dérivés" 
             className="w-full h-full object-cover"
           />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Lightbulb, Scale, ChefHat, AlertTriangle } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Lightbulb, Scale, ChefHat, AlertTriangle } f
 export const recipeData = {
   title: "Fécules & Amidons", // ex: "La Farine"
   category: "Technologie - Farines",
-  description: "Fiche technique détaillée.",
+  description: "Fiche technique complète sur les fécules et amidons : définitions, histoire, propriétés, usages et pièges à éviter.",
   image: "/images/fecules-amidons.jpg", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const FeculesAmidonsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Fécules & Amidons - Maison Dorée</title>
+        <title>Fiche Technique : Fécules & Amidons - Pastry Power</title>
         <meta name="description" content="Fiche technique complète sur les fécules et amidons : définitions, histoire, propriétés, usages et pièges à éviter." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const FeculesAmidonsPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://www.valpibio.com/wp-content/uploads/2019/12/farine-riz-single@2x.jpg" 
+            src="/images/fecules-amidons.jpg" 
             alt="Fécules et Amidons" 
             className="w-full h-full object-cover"
           />

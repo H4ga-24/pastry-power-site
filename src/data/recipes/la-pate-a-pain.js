@@ -1,7 +1,7 @@
 const laPateAPain = {
   id: "la-pate-a-pain",
   title: "La pâte à pain",
-  category: "patisserie", // "Boulangerie" n'est pas dans ta liste stricte mais c'est cohérent pâtisserie
+  category: "Pâtisserie", // "Boulangerie" n'est pas dans ta liste stricte mais c'est cohérent pâtisserie
   subCategory: ["Pâtes"], // "Bases" n'est pas dans ta liste stricte pâtisserie mais c'est cohérent boulangerie
   isVip: false,
   prepTime: "20 MIN + Repos",

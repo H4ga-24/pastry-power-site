@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useAuth } from '../AuthContext';
@@ -19,6 +19,16 @@ export default function NouveauPostPage() {
   const [tagsInput, setTagsInput] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [isAnonymous, setIsAnonymous] = useState(false);
+  // La case n'apparaît que si la colonne is_anonymous existe en base (sinon rien ne change).
+  const [anonymousAvailable, setAnonymousAvailable] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    supabase.from('forum_posts').select('is_anonymous').limit(1)
+      .then(({ error: probeError }) => { if (alive) setAnonymousAvailable(!probeError); });
+    return () => { alive = false; };
+  }, []);
 
   if (!user) {
     return (
@@ -34,9 +44,11 @@ export default function NouveauPostPage() {
     setSubmitting(true);
     setError('');
     const tags = tagsInput.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+    const payload = { user_id: user.id, category, title: title.trim(), body: body.trim(), tags };
+    if (anonymousAvailable && isAnonymous) payload.is_anonymous = true;
     const { data, error: err } = await supabase
       .from('forum_posts')
-      .insert({ user_id: user.id, category, title: title.trim(), body: body.trim(), tags })
+      .insert(payload)
       .select('id')
       .single();
     if (err) { setError('Une erreur est survenue. Réessayez.'); setSubmitting(false); return; }
@@ -82,6 +94,20 @@ export default function NouveauPostPage() {
               placeholder="Ex: ganache, chocolat, tempérage"
               className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37]/50 transition-colors" />
           </div>
+          {anonymousAvailable && (
+            <label className="flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={isAnonymous}
+                onChange={e => setIsAnonymous(e.target.checked)}
+                className="mt-1 h-4 w-4 accent-[#D4AF37]"
+              />
+              <span>
+                <span className="block text-sm text-white">Publier en anonyme</span>
+                <span className="block text-xs text-gray-500">Votre pseudo ne sera pas affiché sur ce post.</span>
+              </span>
+            </label>
+          )}
           {error && <p className="text-red-400 text-sm">{error}</p>}
           <button onClick={handleSubmit} disabled={submitting}
             className="w-full py-3 bg-[#D4AF37] hover:bg-[#D4AF37]/80 disabled:opacity-40 text-black font-bold rounded-xl transition-colors">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Snowflake, Droplets } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Sn
 export const recipeData = {
   title: "La Crème (Fleurette & Liquide)", // ex: "La Farine"
   category: "Technologie - Crèmes",
-  description: "Fiche technique détaillée.",
-  image: "https://img.cuisineaz.com/1200x675/2020/12/16/i158469-creme-liquide.jpeg", // Image par défaut
+  description: "Tout savoir sur la crème fleurette et liquide : origine, composition, foisonnement et usages techniques en pâtisserie.",
+  image: "/images/recipes/creme-chantilly.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const CremePage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : La Crème (Fleurette & Liquide) - Maison Dorée</title>
+        <title>Fiche Technique : La Crème (Fleurette & Liquide) - Pastry Power</title>
         <meta name="description" content="Tout savoir sur la crème fleurette et liquide : origine, composition, foisonnement et usages techniques en pâtisserie." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const CremePage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://img.cuisineaz.com/1200x675/2020/12/16/i158469-creme-liquide.jpeg" 
+            src="/images/recipes/creme-chantilly.png" 
             alt="La Crème" 
             className="w-full h-full object-cover"
           />

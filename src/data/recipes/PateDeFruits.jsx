@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Clock, ChefHat, Minus, Plus, ArrowLeft, Lightbulb, Quote, Scale, UtensilsCrossed, Table2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -115,7 +115,7 @@ function PateDeFruits() {
 
   return (
     <div className="min-h-screen bg-[#121212] text-white font-sans pt-32 pb-20">
-      <Helmet><title>{recipeData.title} - Maison Dorée</title></Helmet>
+      <Helmet><title>{recipeData.title} - Pastry Power</title></Helmet>
       
       <div className="container mx-auto px-4 max-w-7xl">
         <Link to="/confiserie">

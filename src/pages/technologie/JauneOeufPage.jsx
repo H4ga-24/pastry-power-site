@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Droplets } from 'lucide-react';
@@ -7,18 +7,18 @@ import { ArrowLeft, BookOpen, Atom, Scale, Lightbulb, ChefHat, AlertTriangle, Dr
 export const recipeData = {
   title: "Le Jaune d'Œuf (Vitellus)", // ex: "La Farine"
   category: "Technologie - Oeuf",
-  description: "Fiche technique détaillée.",
-  image: "https://www.lanutrition.fr/sites/default/files/ressources/oeufs_fond_blanc.jpg", // Image par défaut
+  description: "Fiche technique détaillée sur le jaune d'œuf en pâtisserie : composition, rôle d'émulsion, sablage et astuces du chef.",
+  image: "/images/recipes/creme-anglaise.png", // Image par défaut
   prepTime: "Lecture : 5 min",
   difficulty: "Théorie",
-  isVip: true
+  isVip: false
 };
 // 👆 FIN DU BLOC 👆
 const JauneOeufPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fiche Technique : Le Jaune d'Œuf (Vitellus) - Maison Dorée</title>
+        <title>Fiche Technique : Le Jaune d'Œuf (Vitellus) - Pastry Power</title>
         <meta name="description" content="Fiche technique détaillée sur le jaune d'œuf en pâtisserie : composition, rôle d'émulsion, sablage et astuces du chef." />
       </Helmet>
 
@@ -27,7 +27,7 @@ const JauneOeufPage = () => {
         <div className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <img 
-            src="https://www.lanutrition.fr/sites/default/files/ressources/oeufs_fond_blanc.jpg" 
+            src="/images/recipes/creme-anglaise.png" 
             alt="Le Jaune d'Œuf" 
             className="w-full h-full object-cover"
           />

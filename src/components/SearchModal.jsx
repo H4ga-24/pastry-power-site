@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Search, ChevronRight, ChefHat, Lock } from 'lucide-react';
 import { catalog } from '../data/catalog';
+import { itemUrl } from '../data/hubs';
 
 // Pré-calcul hors composant : normalisation des titres pour la recherche
 // (fait une seule fois au chargement du module, pas à chaque frappe)
@@ -55,12 +56,8 @@ const SearchModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const getItemUrl = (item) => {
-    if (item.isVip) {
-      return item.isTech ? `/vip/technologie/${item.id}` : `/vip/${item.id}`;
-    }
-    return item.isTech ? `/techno/${item.id}` : `/recipe/${item.id}`;
-  };
+  // Une seule adresse par fiche, qu'elle soit VIP ou non (le paywall est géré dans la page).
+  const getItemUrl = (item) => itemUrl(item);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-24 px-4">

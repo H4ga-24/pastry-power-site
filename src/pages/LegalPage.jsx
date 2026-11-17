@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 
 const LegalPage = () => {
   // Remonte en haut de page au chargement
@@ -7,10 +7,11 @@ const LegalPage = () => {
 
   return (
     <div className="min-h-screen bg-[#121212] text-gray-300 pt-32 pb-20 px-6 font-sans">
-      <Helmet>
-        <title>Mentions Légales | Pastry Power</title>
-        <meta name="description" content="Mentions légales du site Pastry Power : éditeur, hébergement, propriété intellectuelle, conditions de vente et politique de confidentialité RGPD." />
-      </Helmet>
+      <Seo
+        title={"Mentions Légales | Pastry Power"}
+        description={"Mentions légales du site Pastry Power : éditeur, hébergement, propriété intellectuelle, conditions de vente et politique de confidentialité RGPD."}
+        path="/mentions-legales"
+      />
 
       <div className="max-w-3xl mx-auto space-y-12">
         
